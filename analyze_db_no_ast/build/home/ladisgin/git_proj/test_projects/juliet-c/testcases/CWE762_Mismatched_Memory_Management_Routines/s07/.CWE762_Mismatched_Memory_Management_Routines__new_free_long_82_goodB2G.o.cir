@@ -1,0 +1,36 @@
+!s64i = !cir.int<s, 64>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc5 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":25:78)
+#loc6 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":25:85)
+#loc7 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":25:92)
+#loc12 = loc(fused[#loc6, #loc7])
+!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_base = !cir.struct<class "CWE762_Mismatched_Memory_Management_Routines__new_free_long_82::CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G = !cir.struct<class "CWE762_Mismatched_Memory_Management_Routines__new_free_long_82::CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G" {!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/test_projects/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s07/CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<i64, dense<64> : vector<2xi64>>, #dlti.dl_entry<i128, dense<128> : vector<2xi64>>, #dlti.dl_entry<!llvm.ptr<270>, dense<32> : vector<4xi64>>, #dlti.dl_entry<!llvm.ptr<272>, dense<64> : vector<4xi64>>, #dlti.dl_entry<!llvm.ptr<271>, dense<32> : vector<4xi64>>, #dlti.dl_entry<f16, dense<16> : vector<2xi64>>, #dlti.dl_entry<f64, dense<64> : vector<2xi64>>, #dlti.dl_entry<f128, dense<128> : vector<2xi64>>, #dlti.dl_entry<i32, dense<32> : vector<2xi64>>, #dlti.dl_entry<i8, dense<8> : vector<2xi64>>, #dlti.dl_entry<i16, dense<16> : vector<2xi64>>, #dlti.dl_entry<!llvm.ptr, dense<64> : vector<4xi64>>, #dlti.dl_entry<i1, dense<8> : vector<2xi64>>, #dlti.dl_entry<f80, dense<128> : vector<2xi64>>, #dlti.dl_entry<"dlti.endianness", "little">, #dlti.dl_entry<"dlti.stack_alignment", 128 : i64>>, llvm.data_layout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"} {
+  cir.func private  @_ZdlPvm(!cir.ptr<!void>, !u64i) extra(#fn_attr) loc(#loc10)
+  cir.func  @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_long_8270CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G6actionEPl(%arg0: !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G> loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":25:78), %arg1: !cir.ptr<!s64i> loc(fused[#loc6, #loc7])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !cir.ptr<!s64i>, !cir.ptr<!cir.ptr<!s64i>>, ["data", init] {alignment = 8 : i64} loc(#loc12)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G>> loc(#loc8)
+    cir.store %arg1, %1 : !cir.ptr<!s64i>, !cir.ptr<!cir.ptr<!s64i>> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G>>, !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_free_long_823A3ACWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G> loc(#loc5)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!s64i>>, !cir.ptr<!s64i> loc(#loc9)
+    %4 = cir.cast(bitcast, %3 : !cir.ptr<!s64i>), !cir.ptr<!void> loc(#loc9)
+    %5 = cir.const #cir.int<8> : !u64i loc(#loc5)
+    cir.call @_ZdlPvm(%4, %5) : (!cir.ptr<!void>, !u64i) -> () extra(#fn_attr) loc(#loc5)
+    cir.return loc(#loc4)
+  } loc(#loc11)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/test_projects/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s07/CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":0:0)
+#loc1 = loc("/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/new":140:1)
+#loc2 = loc("/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/new":141:41)
+#loc3 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":25:1)
+#loc4 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":29:1)
+#loc8 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":26:1)
+#loc9 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_long_82_goodB2G.cpp":28:12)
+#loc10 = loc(fused[#loc1, #loc2])
+#loc11 = loc(fused[#loc3, #loc4])

@@ -1,0 +1,116 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+#false = #cir.bool<false> : !cir.bool
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc6 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":25:70)
+#loc7 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":25:77)
+#loc8 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":25:81)
+#true = #cir.bool<true> : !cir.bool
+#loc33 = loc(fused[#loc7, #loc8])
+!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_base = !cir.struct<class "CWE400_Resource_Exhaustion__connect_socket_for_loop_82::CWE400_Resource_Exhaustion__connect_socket_for_loop_82_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G = !cir.struct<class "CWE400_Resource_Exhaustion__connect_socket_for_loop_82::CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G" {!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/test_projects/juliet-c/testcases/CWE400_Resource_Exhaustion/s01/CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<#dlti.dl_entry<f80, dense<128> : vector<2xi64>>, #dlti.dl_entry<i128, dense<128> : vector<2xi64>>, #dlti.dl_entry<i16, dense<16> : vector<2xi64>>, #dlti.dl_entry<i8, dense<8> : vector<2xi64>>, #dlti.dl_entry<i1, dense<8> : vector<2xi64>>, #dlti.dl_entry<!llvm.ptr, dense<64> : vector<4xi64>>, #dlti.dl_entry<f128, dense<128> : vector<2xi64>>, #dlti.dl_entry<!llvm.ptr<270>, dense<32> : vector<4xi64>>, #dlti.dl_entry<i64, dense<64> : vector<2xi64>>, #dlti.dl_entry<i32, dense<32> : vector<2xi64>>, #dlti.dl_entry<!llvm.ptr<272>, dense<64> : vector<4xi64>>, #dlti.dl_entry<!llvm.ptr<271>, dense<32> : vector<4xi64>>, #dlti.dl_entry<f16, dense<16> : vector<2xi64>>, #dlti.dl_entry<f64, dense<64> : vector<2xi64>>, #dlti.dl_entry<"dlti.stack_alignment", 128 : i64>, #dlti.dl_entry<"dlti.endianness", "little">>, llvm.data_layout = "e-m:e-p270:32:32-p271:32:32-p272:64:64-i64:64-i128:128-f80:128-n8:16:32:64-S128"} {
+  cir.func private  @printLine(!cir.ptr<!s8i>) loc(#loc31)
+  cir.global "private"  constant internal dsolocal @".str" = #cir.const_array<"Hello\00" : !cir.array<!s8i x 6>> : !cir.array<!s8i x 6> {alignment = 1 : i64} loc(#loc3)
+  cir.func  @_ZN54CWE400_Resource_Exhaustion__connect_socket_for_loop_8262CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G6actionEi(%arg0: !cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G> loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":25:70), %arg1: !s32i loc(fused[#loc7, #loc8])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc6)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["count", init] {alignment = 4 : i64} loc(#loc33)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G>> loc(#loc9)
+    cir.store %arg1, %1 : !s32i, !cir.ptr<!s32i> loc(#loc9)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G>>, !cir.ptr<!ty_CWE400_Resource_Exhaustion__connect_socket_for_loop_823A3ACWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G> loc(#loc6)
+    cir.scope {
+      %3 = cir.alloca !u64i, !cir.ptr<!u64i>, ["i", init] {alignment = 8 : i64} loc(#loc35)
+      %4 = cir.const #cir.int<0> : !s32i loc(#loc13)
+      %5 = cir.cast(integral, %4 : !s32i), !u64i loc(#loc13)
+      cir.store %5, %3 : !u64i, !cir.ptr<!u64i> loc(#loc35)
+      cir.scope {
+        %6 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc16)
+        %7 = cir.const #cir.int<0> : !s32i loc(#loc17)
+        %8 = cir.cmp(gt, %6, %7) : !s32i, !cir.bool loc(#loc37)
+        %9 = cir.ternary(%8, true {
+          %10 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc19)
+          %11 = cir.const #cir.int<20> : !s32i loc(#loc20)
+          %12 = cir.cmp(le, %10, %11) : !s32i, !cir.bool loc(#loc38)
+          %13 = cir.ternary(%12, true {
+            %14 = cir.const #true loc(#loc18)
+            cir.yield %14 : !cir.bool loc(#loc18)
+          }, false {
+            %14 = cir.const #false loc(#loc18)
+            cir.yield %14 : !cir.bool loc(#loc18)
+          }) : (!cir.bool) -> !cir.bool loc(#loc18)
+          cir.yield %13 : !cir.bool loc(#loc18)
+        }, false {
+          %10 = cir.const #false loc(#loc18)
+          cir.yield %10 : !cir.bool loc(#loc18)
+        }) : (!cir.bool) -> !cir.bool loc(#loc18)
+        cir.if %9 {
+          cir.scope {
+            %10 = cir.const #cir.int<0> : !s32i loc(#loc24)
+            %11 = cir.cast(integral, %10 : !s32i), !u64i loc(#loc24)
+            cir.store %11, %3 : !u64i, !cir.ptr<!u64i> loc(#loc41)
+            cir.for : cond {
+              %12 = cir.load %3 : !cir.ptr<!u64i>, !u64i loc(#loc26)
+              %13 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc27)
+              %14 = cir.cast(integral, %13 : !s32i), !u64i loc(#loc27)
+              %15 = cir.cmp(lt, %12, %14) : !u64i, !cir.bool loc(#loc42)
+              cir.condition(%15) loc(#loc42)
+            } body {
+              %12 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 6>> loc(#loc3)
+              %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 6>>), !cir.ptr<!s8i> loc(#loc3)
+              cir.call @printLine(%13) : (!cir.ptr<!s8i>) -> () loc(#loc28)
+              cir.yield loc(#loc23)
+            } step {
+              %12 = cir.load %3 : !cir.ptr<!u64i>, !u64i loc(#loc29)
+              %13 = cir.unary(inc, %12) : !u64i, !u64i loc(#loc30)
+              cir.store %13, %3 : !u64i, !cir.ptr<!u64i> loc(#loc43)
+              cir.yield loc(#loc40)
+            } loc(#loc40)
+          } loc(#loc40)
+        } loc(#loc39)
+      } loc(#loc36)
+    } loc(#loc34)
+    cir.return loc(#loc5)
+  } loc(#loc32)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/test_projects/juliet-c/testcases/CWE400_Resource_Exhaustion/s01/CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":34:27)
+#loc4 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":25:1)
+#loc5 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":38:1)
+#loc9 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":26:1)
+#loc10 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":27:5)
+#loc11 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":37:5)
+#loc12 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":28:9)
+#loc13 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":28:20)
+#loc14 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":30:9)
+#loc15 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":36:9)
+#loc16 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":30:13)
+#loc17 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":30:21)
+#loc18 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":30:23)
+#loc19 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":30:26)
+#loc20 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":30:35)
+#loc21 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":31:9)
+#loc22 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:13)
+#loc23 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":35:13)
+#loc24 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:22)
+#loc25 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:18)
+#loc26 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:25)
+#loc27 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:37)
+#loc28 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":34:17)
+#loc29 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:45)
+#loc30 = loc("CWE400_Resource_Exhaustion__connect_socket_for_loop_82_goodB2G.cpp":32:44)
+#loc31 = loc(fused[#loc1, #loc2])
+#loc32 = loc(fused[#loc4, #loc5])
+#loc34 = loc(fused[#loc10, #loc11])
+#loc35 = loc(fused[#loc12, #loc13])
+#loc36 = loc(fused[#loc14, #loc15])
+#loc37 = loc(fused[#loc16, #loc17])
+#loc38 = loc(fused[#loc19, #loc20])
+#loc39 = loc(fused[#loc21, #loc15])
+#loc40 = loc(fused[#loc22, #loc23])
+#loc41 = loc(fused[#loc25, #loc24])
+#loc42 = loc(fused[#loc26, #loc27])
+#loc43 = loc(fused[#loc30, #loc29])

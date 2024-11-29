@@ -1,0 +1,8 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+CWE242_Use_of_Inherently_Dangerous_Function__basic_01.c:30:18: error: call to undeclared function 'gets'; ISO C99 and later do not support implicit function declarations [-Wimplicit-function-declaration]
+   30 |         result = gets(dest);
+      |                  ^
+CWE242_Use_of_Inherently_Dangerous_Function__basic_01.c:30:16: error: incompatible integer to pointer conversion assigning to 'char *' from 'int' [-Wint-conversion]
+   30 |         result = gets(dest);
+      |                ^ ~~~~~~~~~~
+2 errors generated.

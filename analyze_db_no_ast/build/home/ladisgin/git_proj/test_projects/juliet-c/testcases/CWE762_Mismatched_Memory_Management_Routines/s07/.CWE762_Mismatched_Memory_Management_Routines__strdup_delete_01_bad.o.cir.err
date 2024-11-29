@@ -1,0 +1,9 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+CWE762_Mismatched_Memory_Management_Routines__strdup_delete_01_bad.cpp:54:30: warning: ISO C++11 does not allow conversion from string literal to 'char *' [-Wwritable-strings]
+   54 |     BadClass badClassObject ("BadClass");
+      |                              ^
+CWE762_Mismatched_Memory_Management_Routines__strdup_delete_01_bad.cpp:43:14: error: definition with same mangled name '_ZN62CWE762_Mismatched_Memory_Management_Routines__strdup_delete_018BadClass9printNameEv' as another definition
+   43 |         void printName()
+      |              ^
+CWE762_Mismatched_Memory_Management_Routines__strdup_delete_01_bad.cpp:43:14: note: previous definition is here
+1 warning and 1 error generated.

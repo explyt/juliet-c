@@ -1,0 +1,6 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+CWE762_Mismatched_Memory_Management_Routines__new_free_01_bad.cpp:46:14: error: definition with same mangled name '_ZN57CWE762_Mismatched_Memory_Management_Routines__new_free_018BadClass11printLetterEv' as another definition
+   46 |         void printLetter()
+      |              ^
+CWE762_Mismatched_Memory_Management_Routines__new_free_01_bad.cpp:46:14: note: previous definition is here
+1 error generated.
