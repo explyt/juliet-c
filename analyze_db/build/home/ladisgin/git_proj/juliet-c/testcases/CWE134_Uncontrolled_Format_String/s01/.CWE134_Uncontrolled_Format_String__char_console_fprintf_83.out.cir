@@ -1,0 +1,83 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.struct<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.struct<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.struct<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#fn_attr2 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+#loc6 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":24:69)
+#loc7 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":24:136)
+#loc8 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":24:143)
+#loc21 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":31:69)
+#loc28 = loc(fused[#loc7, #loc8])
+!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B = !cir.struct<class "CWE134_Uncontrolled_Format_String__char_console_fprintf_83::CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B" {!cir.ptr<!s8i>} #cir.record.decl.ast>
+!ty__IO_FILE = !cir.struct<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.struct<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.struct<struct "_IO_FILE">>, !cir.ptr<!void>, !cir.ptr<!cir.ptr<!cir.struct<struct "_IO_FILE">>>, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE134_Uncontrolled_Format_String/s01/CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @strcpy(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc26)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"fixedstringtest\00" : !cir.array<!s8i x 16>> : !cir.array<!s8i x 16> {alignment = 1 : i64} loc(#loc3)
+  cir.func @_ZN58CWE134_Uncontrolled_Format_String__char_console_fprintf_8366CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2BC2EPc(%arg0: !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":24:69), %arg1: !cir.ptr<!s8i> loc(fused[#loc7, #loc8])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc6)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["dataCopy", init] {alignment = 8 : i64} loc(#loc28)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>> loc(#loc9)
+    cir.store %arg1, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc9)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>>, !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> loc(#loc6)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc10)
+    %4 = cir.get_member %2[0] {name = "data"} : !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc11)
+    cir.store %3, %4 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc29)
+    %5 = cir.get_global @strcpy : !cir.ptr<!cir.func<!cir.ptr<!s8i> (!cir.ptr<!s8i>, !cir.ptr<!s8i>)>> loc(#loc13)
+    %6 = cir.get_member %2[0] {name = "data"} : !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc11)
+    %7 = cir.load %6 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc14)
+    %8 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 16>> loc(#loc3)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 16>>), !cir.ptr<!s8i> loc(#loc3)
+    %10 = cir.call @strcpy(%7, %9) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc13)
+    cir.return loc(#loc5)
+  } loc(#loc27)
+  cir.func private @_ZN58CWE134_Uncontrolled_Format_String__char_console_fprintf_8366CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2BC1EPc(!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>, !cir.ptr<!s8i>) alias(@_ZN58CWE134_Uncontrolled_Format_String__char_console_fprintf_8366CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2BC2EPc) loc(#loc27)
+  cir.func private @fprintf(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i extra(#fn_attr) loc(#loc30)
+  cir.global "private" external @stdout : !cir.ptr<!ty__IO_FILE> {alignment = 8 : i64} loc(#loc31)
+  cir.func @_ZN58CWE134_Uncontrolled_Format_String__char_console_fprintf_8366CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2BD2Ev(%arg0: !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":31:69)) extra(#fn_attr2) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc21)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>> loc(#loc22)
+    %1 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>>, !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> loc(#loc21)
+    %2 = cir.get_global @fprintf : !cir.ptr<!cir.func<!s32i (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...)>> loc(#loc23)
+    %3 = cir.get_global @stdout : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc31)
+    %4 = cir.load %3 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc24)
+    %5 = cir.get_member %1[0] {name = "data"} : !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc11)
+    %6 = cir.load %5 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc25)
+    %7 = cir.call @fprintf(%4, %6) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc23)
+    cir.return loc(#loc20)
+  } loc(#loc32)
+  cir.func private @_ZN58CWE134_Uncontrolled_Format_String__char_console_fprintf_8366CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2BD1Ev(!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_console_fprintf_833A3ACWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B>) alias(@_ZN58CWE134_Uncontrolled_Format_String__char_console_fprintf_8366CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2BD2Ev) loc(#loc32)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE134_Uncontrolled_Format_String/s01/CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":0:0)
+#loc1 = loc("/usr/include/string.h":141:1)
+#loc2 = loc("/usr/include/string.h":142:14)
+#loc3 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":28:18)
+#loc4 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":24:1)
+#loc5 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":29:1)
+#loc9 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":25:1)
+#loc10 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":26:12)
+#loc11 = loc("./CWE134_Uncontrolled_Format_String__char_console_fprintf_83.h":50:12)
+#loc12 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":26:5)
+#loc13 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":28:5)
+#loc14 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":28:12)
+#loc15 = loc("/usr/include/stdio.h":357:1)
+#loc16 = loc("/usr/include/stdio.h":358:45)
+#loc17 = loc("/usr/include/stdio.h":150:1)
+#loc18 = loc("/usr/include/stdio.h":150:14)
+#loc19 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":31:1)
+#loc20 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":35:1)
+#loc22 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":32:1)
+#loc23 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":34:5)
+#loc24 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":34:13)
+#loc25 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_83_goodG2B.cpp":34:21)
+#loc26 = loc(fused[#loc1, #loc2])
+#loc27 = loc(fused[#loc4, #loc5])
+#loc29 = loc(fused[#loc12, #loc10])
+#loc30 = loc(fused[#loc15, #loc16])
+#loc31 = loc(fused[#loc17, #loc18])
+#loc32 = loc(fused[#loc19, #loc20])
