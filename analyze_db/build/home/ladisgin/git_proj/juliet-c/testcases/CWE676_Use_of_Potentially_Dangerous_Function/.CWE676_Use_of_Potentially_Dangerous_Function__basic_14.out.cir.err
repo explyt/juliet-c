@@ -1,0 +1,47 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+emitTopLevelDecl codegen for decl kind 'FileScopeAsm' not implemented
+clang: /home/ladisgin/git_proj/clangir/clang/lib/CIR/CodeGen/CIRGenModule.cpp:1731: void clang::CIRGen::CIRGenModule::emitTopLevelDecl(clang::Decl*): Assertion `false && "Not yet implemented"' failed.
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+Stack dump:
+0.	Program arguments: /home/ladisgin/git_proj/clangir/build/bin/clang -S -Xclang -emit-cir -std=c++11 -I ../../testcasesupport -DINCLUDEMAIN -c CWE676_Use_of_Potentially_Dangerous_Function__basic_14.cpp -o /home/ladisgin/git_proj/juliet-c/testcases/CWE676_Use_of_Potentially_Dangerous_Function/.CWE676_Use_of_Potentially_Dangerous_Function__basic_14.out.cir
+1.	CWE676_Use_of_Potentially_Dangerous_Function__basic_14.cpp:20:1: current parser token 'using'
+2.	/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/iostream:44:11: LLVM IR generation of declaration 'std'
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
+0  clang     0x0000000001aaf03b llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 43
+1  clang     0x0000000001aac584 llvm::sys::CleanupOnSignal(unsigned long) + 132
+2  clang     0x00000000019f5e10
+3  libc.so.6 0x00007f85ddbf6dd0
+4  libc.so.6 0x00007f85ddc4fc94
+5  libc.so.6 0x00007f85ddbf6d1e gsignal + 30
+6  libc.so.6 0x00007f85ddbde942 abort + 223
+7  libc.so.6 0x00007f85ddbde85e
+8  libc.so.6 0x00007f85ddbeee47
+9  clang     0x00000000031e5ff8
+10 clang     0x00000000031e62b5 clang::CIRGen::CIRGenModule::emitDeclContext(clang::DeclContext const*) + 133
+11 clang     0x00000000031c8ca3 cir::CIRGenerator::HandleTopLevelDecl(clang::DeclGroupRef) + 131
+12 clang     0x0000000003099f8c
+13 clang     0x00000000053c09b4 clang::ParseAST(clang::Sema&, bool, bool) + 596
+14 clang     0x0000000002741cd9 clang::FrontendAction::Execute() + 169
+15 clang     0x00000000026bdf7e clang::CompilerInstance::ExecuteAction(clang::FrontendAction&) + 1886
+16 clang     0x00000000028273ee clang::ExecuteCompilerInvocation(clang::CompilerInstance*) + 1742
+17 clang     0x0000000000522f6b cc1_main(llvm::ArrayRef<char const*>, char const*, void*) + 6299
+18 clang     0x0000000000519f00
+19 clang     0x00000000024813a9
+20 clang     0x00000000019f6272 llvm::CrashRecoveryContext::RunSafely(llvm::function_ref<void ()>) + 146
+21 clang     0x000000000248376e
+22 clang     0x000000000244139b clang::driver::Compilation::ExecuteCommand(clang::driver::Command const&, clang::driver::Command const*&, bool) const + 155
+23 clang     0x000000000244245e clang::driver::Compilation::ExecuteJobs(clang::driver::JobList const&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&, bool) const + 222
+24 clang     0x000000000244e554 clang::driver::Driver::ExecuteCompilation(clang::driver::Compilation&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&) + 356
+25 clang     0x000000000051f110 clang_main(int, char**, llvm::ToolContext const&) + 9168
+26 clang     0x000000000042abb3 main + 83
+27 libc.so.6 0x00007f85ddbe0248
+28 libc.so.6 0x00007f85ddbe030b __libc_start_main + 139
+29 clang     0x0000000000519525 _start + 37
+clang: error: clang frontend command failed with exit code 134 (use -v to see invocation)
+clang version 20.0.0git (git@github.com:llvm/clangir.git 888f00c5bd78e8355c9f7288c1a3237884a04dbc)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/ladisgin/git_proj/clangir/build/bin
+Build config: +assertions
+clang: error: unable to execute command: Aborted (core dumped)
+clang: note: diagnostic msg: Error generating preprocessed source(s).

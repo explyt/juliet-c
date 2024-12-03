@@ -1,0 +1,72 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+loc(fused["CWE122_Heap_Based_Buffer_Overflow__cpp_CWE129_listen_socket_81a.cpp":122:84, "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE129_listen_socket_81a.cpp":122:151]): error: operand #0 does not dominate this use
+loc(fused["CWE122_Heap_Based_Buffer_Overflow__cpp_CWE129_listen_socket_81a.cpp":139:93, "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE129_listen_socket_81a.cpp":139:164]): error: operand #0 does not dominate this use
+fatal error: error in backend: CIR codegen: module verification error before running CIR passes
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+Stack dump:
+0.	Program arguments: /home/ladisgin/git_proj/clangir/build/bin/clang -S -Xclang -emit-cir -std=c++11 -I ../../../testcasesupport -DINCLUDEMAIN -c CWE122_Heap_Based_Buffer_Overflow__cpp_CWE129_listen_socket_81a.cpp -o /home/ladisgin/git_proj/juliet-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/.CWE122_Heap0  clang0  clang     0x0000000001aaf03b llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 43
+1  clang     0x0000000001aac584 llvm::sys::CleanupOnSignal(unsigned long) + 132
+2  clang     0x00000000019f5e10
+3  libc.so.6 0x00007f6107b30  clang     0x0000000001aaf03b llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 43
+1  clang     0x0000000001aac584 llvm::sys::CleanupOnSignal(unsigned l8  clang   2  clang     0x00000000019f6336 llvm::CrashRecoveryContext::HandleExit(int) + 118
+3  clang     0x0000000001aa560e llvm::sys::Process::Exit(int, bool) + 30
+4  clang     0x000000000051fe63
+5  clang     0x0000000001a01359 llvm::report_fatal_error(llvm::Twine const&, bool) + 89
+6  clang     0x0000000001a014cf
+7  clang     0x000000000309dbc5
+8  clang     0x00000000053c0c1c clang::ParseAST(clang::Sema&, bool, bool) + 1212
+9  clang     0x0000000002741cd9 clang::FrontendAction::Execute() + 169
+10 clang     0x00000000026bdf7e clang::CompilerInstance::ExecuteAction(clang::FrontendAction&) + 1886
+11 clang     0x00000000028273ee clang::ExecuteCompilerInvocation(clang::CompilerInstance*) + 1742
+12 clang     0x0000000000522f6b cc1_main(llvm::ArrayRef<char const*>, char const*, void*) + 6299
+13 clang     0x0000000000519f00
+14 clang     0x00000000024813a9
+15 clang     0x00000000019f6272 llvm::CrashRecoveryContext::RunSafely(llvm::function_ref<void ()>) + 146
+16 clang     0x000000000248376e
+17 clang     0x000000000244139b clang::driver::Compilation::ExecuteCommand(clang::driver::Command const&, clang::driver::Command const*&, bool) const + 155
+18 clang     0x000000000244245e clang::driver::Compilation::ExecuteJobs(clang::driver::JobList const&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&, bool) const + 222
+19 clang     0x000000000244e554 clang::driver::Driver::ExecuteCompilation(clang::driver::Compilation&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&) + 356
+20 clang     0x000000000051f110 clang_main(int, char**, llvm::ToolContext const&) + 9168
+21 clang     0x000000000042abb3 main + 83
+22 libc.so.6 0x00007fe703929248
+23 libc.so.6 0x00007fe70392930b __libc_start_main + 139
+24 clang     0x0000000000519525 _start + 37
+clang: error: clang frontend command failed with exit code 70 (use -v to see invocation)
+clang version 20.0.0git (git@github.com:llvm/clangir.git 888f00c5bd78e8355c9f7288c1a3237884a04dbc)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/ladisgin/git_proj/clangir/build/bin
+Build config: +assertions
+clang: note: diagnostic msg: Error generating preprocessed source(s).
+en::CIRGenFunctionInfo const&) + 1975
+26 clang     0x00000000031e3f38 clang::CIRGen::CIRGenModule::emitGlobalFunctionDefinition(clang::GlobalDecl, mlir::Operation*) + 440
+27 clang     0x00000000031e4555 clang::CIRGen::CIRGenModule::emitGlobalDefinition(clang::GlobalDecl, mlir::Operation*) + 165
+28 clang     0x00000000031e5747 clang::CIRGen::CIRGenModule::emitGlobal(clang::GlobalDecl) + 1623
+29 clang     0x00000000031e5de7
+30 clang     0x00000000031e62b5 clang::CIRGen::CIRGenModule::emitDeclContext(clang::DeclContext const*) + 133
+31 clang     0x00000000031c8ca3 cir::CIRGenerator::HandleTopLevelDecl(clang::DeclGroupRef) + 131
+32 clang     0x0000000003099f8c
+33 clang     0x00000000053c09b4 clang::ParseAST(clang::Sema&, bool, bool) + 596
+34 clang     0x0000000002741cd9 clang::FrontendAction::Execute() + 169
+35 clang     0x00000000026bdf7e clang::CompilerInstance::ExecuteAction(clang::FrontendAction&) + 1886
+36 clang     0x00000000028273ee clang::ExecuteCompilerInvocation(clang::CompilerInstance*) + 1742
+37 clang     0x0000000000522f6b cc1_main(llvm::ArrayRef<char const*>, char const*, void*) + 6299
+38 clang     0x0000000000519f00
+39 clang     0x00000000024813a9
+40 clang     0x00000000019f6272 llvm::CrashRecoveryContext::RunSafely(llvm::function_ref<void ()>) + 146
+41 clang     0x000000000248376e
+42 clang     0x000000000244139b clang::driver::Compilation::ExecuteCommand(clang::driver::Command const&, clang::driver::Command const*&, bool) const + 155
+43 clang     0x000000000244245e clang::driver::Compilation::ExecuteJobs(clang::driver::JobList const&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&, bool) const + 222
+44 clang     0x000000000244e554 clang::driver::Driver::ExecuteCompilation(clang::driver::Compilation&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&) + 356
+45 clang     0x000000000051f110 clang_main(int, char**, llvm::ToolContext const&) + 9168
+46 clang     0x000000000042abb3 main + 83
+47 libc.so.6 0x00007f6107b29248
+48 libc.so.6 0x00007f6107b2930b __libc_start_main + 139
+49 clang     0x0000000000519525 _start + 37
+clang: error: clang frontend command failed with exit code 134 (use -v to see invocation)
+clang version 20.0.0git (git@github.com:llvm/clangir.git 888f00c5bd78e8355c9f7288c1a3237884a04dbc)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/ladisgin/git_proj/clangir/build/bin
+Build config: +assclang: eclang: error: unable to execute command: Aborted (core dumped)
+clang: note: diagnostic msg: Error generating preprocessed source(s).
