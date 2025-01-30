@@ -1,5 +1,5 @@
-CC=/usr/bin/gcc -Wno-implicit-function-declaration -Wno-int-conversion
-CPP=/usr/bin/g++ -std=c++11
+CC=/usr/bin/gcc -Wno-implicit-function-declaration -Wno-int-conversion -Wno-exceptions -Wno-implicit-function-declaration -Wno-int-conversion
+CPP=/usr/bin/g++ -std=c++11 -Wno-terminate -std=c++11
 DEBUG=-g
 CFLAGS=-c
 LFLAGS=-lpthread -lm
