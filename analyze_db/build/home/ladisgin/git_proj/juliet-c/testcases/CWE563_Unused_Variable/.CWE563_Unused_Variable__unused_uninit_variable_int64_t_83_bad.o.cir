@@ -1,0 +1,43 @@
+!s64i = !cir.int<s, 64>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+#loc3 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":23:64)
+#loc4 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":23:126)
+#loc5 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":23:134)
+#loc12 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":30:64)
+!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad = !cir.struct<class "CWE563_Unused_Variable__unused_uninit_variable_int64_t_83::CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad" {!s64i} #cir.record.decl.ast>
+#loc15 = loc(fused[#loc4, #loc5])
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE563_Unused_Variable/CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func @_ZN57CWE563_Unused_Variable__unused_uninit_variable_int64_t_8361CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_badC2El(%arg0: !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad> loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":23:64), %arg1: !s64i loc(fused[#loc4, #loc5])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc3)
+    %1 = cir.alloca !s64i, !cir.ptr<!s64i>, ["dataCopy", init] {alignment = 8 : i64} loc(#loc15)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>> loc(#loc6)
+    cir.store %arg1, %1 : !s64i, !cir.ptr<!s64i> loc(#loc6)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>>, !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad> loc(#loc3)
+    %3 = cir.load %1 : !cir.ptr<!s64i>, !s64i loc(#loc7)
+    %4 = cir.get_member %2[0] {name = "data"} : !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad> -> !cir.ptr<!s64i> loc(#loc8)
+    cir.store %3, %4 : !s64i, !cir.ptr<!s64i> loc(#loc16)
+    cir.return loc(#loc2)
+  } loc(#loc14)
+  cir.func private @_ZN57CWE563_Unused_Variable__unused_uninit_variable_int64_t_8361CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_badC1El(!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>, !s64i) alias(@_ZN57CWE563_Unused_Variable__unused_uninit_variable_int64_t_8361CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_badC2El) loc(#loc14)
+  cir.func @_ZN57CWE563_Unused_Variable__unused_uninit_variable_int64_t_8361CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_badD2Ev(%arg0: !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad> loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":30:64)) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc12)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>> loc(#loc13)
+    %1 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>>, !cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad> loc(#loc12)
+    cir.return loc(#loc11)
+  } loc(#loc17)
+  cir.func private @_ZN57CWE563_Unused_Variable__unused_uninit_variable_int64_t_8361CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_badD1Ev(!cir.ptr<!ty_CWE563_Unused_Variable__unused_uninit_variable_int64_t_833A3ACWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad>) alias(@_ZN57CWE563_Unused_Variable__unused_uninit_variable_int64_t_8361CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_badD2Ev) loc(#loc17)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE563_Unused_Variable/CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":0:0)
+#loc1 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":23:1)
+#loc2 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":28:1)
+#loc6 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":24:1)
+#loc7 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":25:12)
+#loc8 = loc("./CWE563_Unused_Variable__unused_uninit_variable_int64_t_83.h":33:13)
+#loc9 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":25:5)
+#loc10 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":30:1)
+#loc11 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":35:1)
+#loc13 = loc("CWE563_Unused_Variable__unused_uninit_variable_int64_t_83_bad.cpp":31:1)
+#loc14 = loc(fused[#loc1, #loc2])
+#loc16 = loc(fused[#loc9, #loc7])
+#loc17 = loc(fused[#loc10, #loc11])

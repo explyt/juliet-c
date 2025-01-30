@@ -1,0 +1,65 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.struct<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.struct<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.struct<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+#loc3 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":21:86)
+#loc4 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":21:93)
+#loc10 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":31:90)
+#loc11 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":31:97)
+#loc21 = loc(fused[#loc3, #loc4])
+#loc24 = loc(fused[#loc10, #loc11])
+!ty__IO_FILE = !cir.struct<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.struct<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.struct<struct "_IO_FILE">>, !cir.ptr<!void>, !cir.ptr<!cir.ptr<!cir.struct<struct "_IO_FILE">>>, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE775_Missing_Release_of_File_Descriptor_or_Handle/CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<!llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func @CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d_badSink(%arg0: !cir.ptr<!ty__IO_FILE> loc(fused[#loc3, #loc4])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data", init] {alignment = 8 : i64} loc(#loc21)
+    cir.store %arg0, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc5)
+    cir.return loc(#loc2)
+  } loc(#loc20)
+  cir.func private @fclose(!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc22)
+  cir.func @CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d_goodB2GSink(%arg0: !cir.ptr<!ty__IO_FILE> loc(fused[#loc10, #loc11])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data", init] {alignment = 8 : i64} loc(#loc24)
+    cir.store %arg0, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc12)
+    cir.br ^bb1 loc(#loc25)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc15)
+    %2 = cir.const #cir.ptr<null> : !cir.ptr<!void> loc(#loc16)
+    %3 = cir.cast(bitcast, %2 : !cir.ptr<!void>), !cir.ptr<!ty__IO_FILE> loc(#loc16)
+    %4 = cir.cmp(ne, %1, %3) : !cir.ptr<!ty__IO_FILE>, !cir.bool loc(#loc26)
+    cir.brcond %4 ^bb2, ^bb3 loc(#loc27)
+  ^bb2:  // pred: ^bb1
+    %5 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc18)
+    %6 = cir.call @fclose(%5) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc19)
+    cir.br ^bb3 loc(#loc14)
+  ^bb3:  // 2 preds: ^bb1, ^bb2
+    cir.br ^bb4 loc(#loc14)
+  ^bb4:  // pred: ^bb3
+    cir.return loc(#loc9)
+  } loc(#loc23)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE775_Missing_Release_of_File_Descriptor_or_Handle/CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":0:0)
+#loc1 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":21:1)
+#loc2 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":25:1)
+#loc5 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":22:1)
+#loc6 = loc("/usr/include/stdio.h":184:1)
+#loc7 = loc("/usr/include/stdio.h":184:36)
+#loc8 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":31:1)
+#loc9 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":38:1)
+#loc12 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":32:1)
+#loc13 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":34:5)
+#loc14 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":37:5)
+#loc15 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":34:9)
+#loc16 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":34:17)
+#loc17 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":35:5)
+#loc18 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":36:16)
+#loc19 = loc("CWE775_Missing_Release_of_File_Descriptor_or_Handle__fopen_no_close_53d.c":36:9)
+#loc20 = loc(fused[#loc1, #loc2])
+#loc22 = loc(fused[#loc6, #loc7])
+#loc23 = loc(fused[#loc8, #loc9])
+#loc25 = loc(fused[#loc13, #loc14])
+#loc26 = loc(fused[#loc15, #loc16])
+#loc27 = loc(fused[#loc17, #loc14])

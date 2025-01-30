@@ -1,0 +1,557 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s06/CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @_Znwm(!u64i) -> !cir.ptr<!void> loc(#loc177)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc178)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc5)
+  cir.func private @free(!cir.ptr<!void>) extra(#fn_attr) loc(#loc179)
+  cir.func @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_153badEv() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc181)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc12)
+    cir.store %1, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc182)
+    cir.br ^bb1 loc(#loc183)
+  ^bb1:  // pred: ^bb0
+    %2 = cir.const #cir.int<6> : !s32i loc(#loc16)
+    cir.br ^bb2 loc(#loc14)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %2 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc14)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc17)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %3 = cir.const #cir.int<1> : !u64i loc(#loc184)
+    %4 = cir.call @_Znwm(%3) : (!u64i) -> !cir.ptr<!void> loc(#loc20)
+    %5 = cir.cast(bitcast, %4 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc184)
+    cir.store %5, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc185)
+    cir.br ^bb6 loc(#loc22)
+  ^bb5:  // pred: ^bb2
+    %6 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc5)
+    %7 = cir.cast(array_to_ptrdecay, %6 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc5)
+    cir.call @printLine(%7) : (!cir.ptr<!s8i>) -> () loc(#loc23)
+    cir.br ^bb6 loc(#loc24)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc15)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc186)
+  ^bb8:  // pred: ^bb7
+    %8 = cir.const #cir.int<7> : !s32i loc(#loc27)
+    cir.br ^bb9 loc(#loc25)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %8 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc25)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc28)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %9 = cir.get_global @free : !cir.ptr<!cir.func<!void (!cir.ptr<!void>)>> loc(#loc29)
+    %10 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc30)
+    %11 = cir.cast(bitcast, %10 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc30)
+    cir.call @free(%11) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc29)
+    cir.br ^bb13 loc(#loc31)
+  ^bb12:  // pred: ^bb9
+    %12 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc32)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc32)
+    cir.call @printLine(%13) : (!cir.ptr<!s8i>) -> () loc(#loc33)
+    cir.br ^bb13 loc(#loc34)
+  ^bb13:  // 2 preds: ^bb11, ^bb12
+    cir.br ^bb14 loc(#loc26)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc9)
+  } loc(#loc180)
+  cir.func private @_ZdlPv(!cir.ptr<!void>) extra(#fn_attr) loc(#loc187)
+  cir.func internal private @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodB2G1Ev() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc189)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc41)
+    cir.store %1, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc190)
+    cir.br ^bb1 loc(#loc191)
+  ^bb1:  // pred: ^bb0
+    %2 = cir.const #cir.int<6> : !s32i loc(#loc45)
+    cir.br ^bb2 loc(#loc43)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %2 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc43)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc46)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %3 = cir.const #cir.int<1> : !u64i loc(#loc192)
+    %4 = cir.call @_Znwm(%3) : (!u64i) -> !cir.ptr<!void> loc(#loc49)
+    %5 = cir.cast(bitcast, %4 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc192)
+    cir.store %5, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc193)
+    cir.br ^bb6 loc(#loc51)
+  ^bb5:  // pred: ^bb2
+    %6 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc52)
+    %7 = cir.cast(array_to_ptrdecay, %6 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc52)
+    cir.call @printLine(%7) : (!cir.ptr<!s8i>) -> () loc(#loc53)
+    cir.br ^bb6 loc(#loc54)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc44)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc194)
+  ^bb8:  // pred: ^bb7
+    %8 = cir.const #cir.int<8> : !s32i loc(#loc57)
+    cir.br ^bb9 loc(#loc55)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %8 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc55)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc58)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc59)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc59)
+    cir.call @printLine(%10) : (!cir.ptr<!s8i>) -> () loc(#loc60)
+    cir.br ^bb13 loc(#loc61)
+  ^bb12:  // pred: ^bb9
+    %11 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc62)
+    %12 = cir.cast(bitcast, %11 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc62)
+    cir.call @_ZdlPv(%12) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc49)
+    cir.br ^bb13 loc(#loc63)
+  ^bb13:  // 2 preds: ^bb11, ^bb12
+    cir.br ^bb14 loc(#loc56)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc38)
+  } loc(#loc188)
+  cir.func internal private @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodB2G2Ev() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc196)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc68)
+    cir.store %1, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc197)
+    cir.br ^bb1 loc(#loc198)
+  ^bb1:  // pred: ^bb0
+    %2 = cir.const #cir.int<6> : !s32i loc(#loc72)
+    cir.br ^bb2 loc(#loc70)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %2 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc70)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc73)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %3 = cir.const #cir.int<1> : !u64i loc(#loc199)
+    %4 = cir.call @_Znwm(%3) : (!u64i) -> !cir.ptr<!void> loc(#loc76)
+    %5 = cir.cast(bitcast, %4 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc199)
+    cir.store %5, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc200)
+    cir.br ^bb6 loc(#loc78)
+  ^bb5:  // pred: ^bb2
+    %6 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc79)
+    %7 = cir.cast(array_to_ptrdecay, %6 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc79)
+    cir.call @printLine(%7) : (!cir.ptr<!s8i>) -> () loc(#loc80)
+    cir.br ^bb6 loc(#loc81)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc71)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc201)
+  ^bb8:  // pred: ^bb7
+    %8 = cir.const #cir.int<7> : !s32i loc(#loc84)
+    cir.br ^bb9 loc(#loc82)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %8 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc82)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc85)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %9 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc86)
+    %10 = cir.cast(bitcast, %9 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc86)
+    cir.call @_ZdlPv(%10) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc76)
+    cir.br ^bb13 loc(#loc87)
+  ^bb12:  // pred: ^bb9
+    %11 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc88)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc88)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc89)
+    cir.br ^bb13 loc(#loc90)
+  ^bb13:  // 2 preds: ^bb11, ^bb12
+    cir.br ^bb14 loc(#loc83)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc65)
+  } loc(#loc195)
+  cir.func private @malloc(!u64i) -> !cir.ptr<!void> extra(#fn_attr) loc(#loc202)
+  cir.func private @exit(!s32i) extra(#fn_attr) loc(#loc203)
+  cir.func internal private @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodG2B1Ev() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc205)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc99)
+    cir.store %1, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc206)
+    cir.br ^bb1 loc(#loc207)
+  ^bb1:  // pred: ^bb0
+    %2 = cir.const #cir.int<5> : !s32i loc(#loc103)
+    cir.br ^bb2 loc(#loc101)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %2 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc101)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc104)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %3 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc105)
+    %4 = cir.cast(array_to_ptrdecay, %3 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc105)
+    cir.call @printLine(%4) : (!cir.ptr<!s8i>) -> () loc(#loc106)
+    cir.br ^bb10 loc(#loc107)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @malloc : !cir.ptr<!cir.func<!cir.ptr<!void> (!u64i)>> loc(#loc108)
+    %6 = cir.const #cir.int<100> : !s32i loc(#loc109)
+    %7 = cir.cast(integral, %6 : !s32i), !u64i loc(#loc109)
+    %8 = cir.const #cir.int<1> : !u64i loc(#loc208)
+    %9 = cir.binop(mul, %7, %8) : !u64i loc(#loc209)
+    %10 = cir.call @malloc(%9) : (!u64i) -> !cir.ptr<!void> extra(#fn_attr) loc(#loc108)
+    %11 = cir.cast(bitcast, %10 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc210)
+    cir.store %11, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc211)
+    cir.br ^bb6 loc(#loc212)
+  ^bb6:  // pred: ^bb5
+    %12 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc116)
+    %13 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc117)
+    %14 = cir.cmp(eq, %12, %13) : !cir.ptr<!s8i>, !cir.bool loc(#loc213)
+    cir.brcond %14 ^bb7, ^bb8 loc(#loc214)
+  ^bb7:  // pred: ^bb6
+    %15 = cir.get_global @exit : !cir.ptr<!cir.func<!void (!s32i)>> loc(#loc119)
+    %16 = cir.const #cir.int<1> : !s32i loc(#loc120)
+    %17 = cir.unary(minus, %16) : !s32i, !s32i loc(#loc121)
+    cir.call @exit(%17) : (!s32i) -> () extra(#fn_attr) loc(#loc119)
+    cir.br ^bb8 loc(#loc115)
+  ^bb8:  // 2 preds: ^bb6, ^bb7
+    cir.br ^bb9 loc(#loc115)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc122)
+  ^bb10:  // 2 preds: ^bb4, ^bb9
+    cir.br ^bb11 loc(#loc102)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc215)
+  ^bb12:  // pred: ^bb11
+    %18 = cir.const #cir.int<7> : !s32i loc(#loc125)
+    cir.br ^bb13 loc(#loc123)
+  ^bb13:  // pred: ^bb12
+    cir.switch.flat %18 : !s32i, ^bb16 [
+      7: ^bb15
+    ] loc(#loc123)
+  ^bb14:  // no predecessors
+    cir.br ^bb15 loc(#loc126)
+  ^bb15:  // 2 preds: ^bb13, ^bb14
+    %19 = cir.get_global @free : !cir.ptr<!cir.func<!void (!cir.ptr<!void>)>> loc(#loc127)
+    %20 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc128)
+    %21 = cir.cast(bitcast, %20 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc128)
+    cir.call @free(%21) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc127)
+    cir.br ^bb17 loc(#loc129)
+  ^bb16:  // pred: ^bb13
+    %22 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc130)
+    %23 = cir.cast(array_to_ptrdecay, %22 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc130)
+    cir.call @printLine(%23) : (!cir.ptr<!s8i>) -> () loc(#loc131)
+    cir.br ^bb17 loc(#loc132)
+  ^bb17:  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc124)
+  ^bb18:  // pred: ^bb17
+    cir.return loc(#loc96)
+  } loc(#loc204)
+  cir.func internal private @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodG2B2Ev() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc217)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc137)
+    cir.store %1, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc218)
+    cir.br ^bb1 loc(#loc219)
+  ^bb1:  // pred: ^bb0
+    %2 = cir.const #cir.int<6> : !s32i loc(#loc141)
+    cir.br ^bb2 loc(#loc139)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %2 : !s32i, ^bb9 [
+      6: ^bb4
+    ] loc(#loc139)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc142)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %3 = cir.get_global @malloc : !cir.ptr<!cir.func<!cir.ptr<!void> (!u64i)>> loc(#loc143)
+    %4 = cir.const #cir.int<100> : !s32i loc(#loc144)
+    %5 = cir.cast(integral, %4 : !s32i), !u64i loc(#loc144)
+    %6 = cir.const #cir.int<1> : !u64i loc(#loc220)
+    %7 = cir.binop(mul, %5, %6) : !u64i loc(#loc221)
+    %8 = cir.call @malloc(%7) : (!u64i) -> !cir.ptr<!void> extra(#fn_attr) loc(#loc143)
+    %9 = cir.cast(bitcast, %8 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc222)
+    cir.store %9, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc223)
+    cir.br ^bb5 loc(#loc224)
+  ^bb5:  // pred: ^bb4
+    %10 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc151)
+    %11 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc152)
+    %12 = cir.cmp(eq, %10, %11) : !cir.ptr<!s8i>, !cir.bool loc(#loc225)
+    cir.brcond %12 ^bb6, ^bb7 loc(#loc226)
+  ^bb6:  // pred: ^bb5
+    %13 = cir.get_global @exit : !cir.ptr<!cir.func<!void (!s32i)>> loc(#loc154)
+    %14 = cir.const #cir.int<1> : !s32i loc(#loc155)
+    %15 = cir.unary(minus, %14) : !s32i, !s32i loc(#loc156)
+    cir.call @exit(%15) : (!s32i) -> () extra(#fn_attr) loc(#loc154)
+    cir.br ^bb7 loc(#loc150)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    cir.br ^bb8 loc(#loc150)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb10 loc(#loc157)
+  ^bb9:  // pred: ^bb2
+    %16 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc158)
+    %17 = cir.cast(array_to_ptrdecay, %16 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc158)
+    cir.call @printLine(%17) : (!cir.ptr<!s8i>) -> () loc(#loc159)
+    cir.br ^bb10 loc(#loc160)
+  ^bb10:  // 2 preds: ^bb8, ^bb9
+    cir.br ^bb11 loc(#loc140)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc227)
+  ^bb12:  // pred: ^bb11
+    %18 = cir.const #cir.int<7> : !s32i loc(#loc163)
+    cir.br ^bb13 loc(#loc161)
+  ^bb13:  // pred: ^bb12
+    cir.switch.flat %18 : !s32i, ^bb16 [
+      7: ^bb15
+    ] loc(#loc161)
+  ^bb14:  // no predecessors
+    cir.br ^bb15 loc(#loc164)
+  ^bb15:  // 2 preds: ^bb13, ^bb14
+    %19 = cir.get_global @free : !cir.ptr<!cir.func<!void (!cir.ptr<!void>)>> loc(#loc165)
+    %20 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc166)
+    %21 = cir.cast(bitcast, %20 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc166)
+    cir.call @free(%21) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc165)
+    cir.br ^bb17 loc(#loc167)
+  ^bb16:  // pred: ^bb13
+    %22 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc168)
+    %23 = cir.cast(array_to_ptrdecay, %22 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc168)
+    cir.call @printLine(%23) : (!cir.ptr<!s8i>) -> () loc(#loc169)
+    cir.br ^bb17 loc(#loc170)
+  ^bb17:  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc162)
+  ^bb18:  // pred: ^bb17
+    cir.return loc(#loc134)
+  } loc(#loc216)
+  cir.func @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_154goodEv() extra(#fn_attr1) {
+    cir.call @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodB2G1Ev() : () -> () loc(#loc173)
+    cir.call @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodB2G2Ev() : () -> () loc(#loc174)
+    cir.call @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodG2B1Ev() : () -> () loc(#loc175)
+    cir.call @_ZN62CWE762_Mismatched_Memory_Management_Routines__new_free_char_15L8goodG2B2Ev() : () -> () loc(#loc176)
+    cir.return loc(#loc172)
+  } loc(#loc228)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s06/CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":0:0)
+#loc1 = loc("/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/new":131:20)
+#loc2 = loc("/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/new":132:41)
+#loc3 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc4 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc5 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":37:19)
+#loc6 = loc("/usr/include/stdlib.h":687:1)
+#loc7 = loc("/usr/include/stdlib.h":687:32)
+#loc8 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":24:1)
+#loc9 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":52:1)
+#loc10 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":26:5)
+#loc11 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":26:12)
+#loc12 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":28:12)
+#loc13 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":28:5)
+#loc14 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":29:5)
+#loc15 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":39:5)
+#loc16 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":29:12)
+#loc17 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":31:5)
+#loc18 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":33:16)
+#loc19 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":33:20)
+#loc20 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":24:6)
+#loc21 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":33:9)
+#loc22 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":34:9)
+#loc23 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":37:9)
+#loc24 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":38:9)
+#loc25 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":40:5)
+#loc26 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":51:5)
+#loc27 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":40:12)
+#loc28 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":42:5)
+#loc29 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":45:9)
+#loc30 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":45:14)
+#loc31 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":46:9)
+#loc32 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":49:19)
+#loc33 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":49:9)
+#loc34 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":50:9)
+#loc35 = loc("/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/new":135:1)
+#loc36 = loc("/usr/lib/gcc/x86_64-redhat-linux/14/../../../../include/c++/14/new":136:41)
+#loc37 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":59:1)
+#loc38 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":86:1)
+#loc39 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":61:5)
+#loc40 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":61:12)
+#loc41 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":63:12)
+#loc42 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":63:5)
+#loc43 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":64:5)
+#loc44 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":74:5)
+#loc45 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":64:12)
+#loc46 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":66:5)
+#loc47 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":68:16)
+#loc48 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":68:20)
+#loc49 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":59:13)
+#loc50 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":68:9)
+#loc51 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":69:9)
+#loc52 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":72:19)
+#loc53 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":72:9)
+#loc54 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":73:9)
+#loc55 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":75:5)
+#loc56 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":85:5)
+#loc57 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":75:12)
+#loc58 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":77:5)
+#loc59 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":79:19)
+#loc60 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":79:9)
+#loc61 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":80:9)
+#loc62 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":83:16)
+#loc63 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":84:9)
+#loc64 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":89:1)
+#loc65 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":116:1)
+#loc66 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":91:5)
+#loc67 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":91:12)
+#loc68 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":93:12)
+#loc69 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":93:5)
+#loc70 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":94:5)
+#loc71 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":104:5)
+#loc72 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":94:12)
+#loc73 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":96:5)
+#loc74 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":98:16)
+#loc75 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":98:20)
+#loc76 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":89:13)
+#loc77 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":98:9)
+#loc78 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":99:9)
+#loc79 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":102:19)
+#loc80 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":102:9)
+#loc81 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":103:9)
+#loc82 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":105:5)
+#loc83 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":115:5)
+#loc84 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":105:12)
+#loc85 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":107:5)
+#loc86 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":109:16)
+#loc87 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":110:9)
+#loc88 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":113:19)
+#loc89 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":113:9)
+#loc90 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":114:9)
+#loc91 = loc("/usr/include/stdlib.h":672:1)
+#loc92 = loc("/usr/include/stdlib.h":672:45)
+#loc93 = loc("/usr/include/stdlib.h":756:1)
+#loc94 = loc("/usr/include/stdlib.h":756:70)
+#loc95 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":119:1)
+#loc96 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":148:1)
+#loc97 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":121:5)
+#loc98 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":121:12)
+#loc99 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":123:12)
+#loc100 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":123:5)
+#loc101 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":124:5)
+#loc102 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":135:5)
+#loc103 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":124:12)
+#loc104 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":126:5)
+#loc105 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":128:19)
+#loc106 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":128:9)
+#loc107 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":129:9)
+#loc108 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":132:24)
+#loc109 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":132:31)
+#loc110 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":132:35)
+#loc111 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":132:46)
+#loc112 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":132:47)
+#loc113 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":132:9)
+#loc114 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:9)
+#loc115 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:37)
+#loc116 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:13)
+#loc117 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:21)
+#loc118 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:27)
+#loc119 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:28)
+#loc120 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:34)
+#loc121 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":133:33)
+#loc122 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":134:9)
+#loc123 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":136:5)
+#loc124 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":147:5)
+#loc125 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":136:12)
+#loc126 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":138:5)
+#loc127 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":141:9)
+#loc128 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":141:14)
+#loc129 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":142:9)
+#loc130 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":145:19)
+#loc131 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":145:9)
+#loc132 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":146:9)
+#loc133 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":151:1)
+#loc134 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":180:1)
+#loc135 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":153:5)
+#loc136 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":153:12)
+#loc137 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":155:12)
+#loc138 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":155:5)
+#loc139 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":156:5)
+#loc140 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":167:5)
+#loc141 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":156:12)
+#loc142 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":158:5)
+#loc143 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":160:24)
+#loc144 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":160:31)
+#loc145 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":160:35)
+#loc146 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":160:46)
+#loc147 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":160:47)
+#loc148 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":160:9)
+#loc149 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:9)
+#loc150 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:37)
+#loc151 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:13)
+#loc152 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:21)
+#loc153 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:27)
+#loc154 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:28)
+#loc155 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:34)
+#loc156 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":161:33)
+#loc157 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":162:9)
+#loc158 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":165:19)
+#loc159 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":165:9)
+#loc160 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":166:9)
+#loc161 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":168:5)
+#loc162 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":179:5)
+#loc163 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":168:12)
+#loc164 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":170:5)
+#loc165 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":173:9)
+#loc166 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":173:14)
+#loc167 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":174:9)
+#loc168 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":177:19)
+#loc169 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":177:9)
+#loc170 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":178:9)
+#loc171 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":182:1)
+#loc172 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":188:1)
+#loc173 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":184:5)
+#loc174 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":185:5)
+#loc175 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":186:5)
+#loc176 = loc("CWE762_Mismatched_Memory_Management_Routines__new_free_char_15.cpp":187:5)
+#loc177 = loc(fused[#loc1, #loc2])
+#loc178 = loc(fused[#loc3, #loc4])
+#loc179 = loc(fused[#loc6, #loc7])
+#loc180 = loc(fused[#loc8, #loc9])
+#loc181 = loc(fused[#loc10, #loc11])
+#loc182 = loc(fused[#loc13, #loc12])
+#loc183 = loc(fused[#loc14, #loc15])
+#loc184 = loc(fused[#loc18, #loc19])
+#loc185 = loc(fused[#loc21, #loc19])
+#loc186 = loc(fused[#loc25, #loc26])
+#loc187 = loc(fused[#loc35, #loc36])
+#loc188 = loc(fused[#loc37, #loc38])
+#loc189 = loc(fused[#loc39, #loc40])
+#loc190 = loc(fused[#loc42, #loc41])
+#loc191 = loc(fused[#loc43, #loc44])
+#loc192 = loc(fused[#loc47, #loc48])
+#loc193 = loc(fused[#loc50, #loc48])
+#loc194 = loc(fused[#loc55, #loc56])
+#loc195 = loc(fused[#loc64, #loc65])
+#loc196 = loc(fused[#loc66, #loc67])
+#loc197 = loc(fused[#loc69, #loc68])
+#loc198 = loc(fused[#loc70, #loc71])
+#loc199 = loc(fused[#loc74, #loc75])
+#loc200 = loc(fused[#loc77, #loc75])
+#loc201 = loc(fused[#loc82, #loc83])
+#loc202 = loc(fused[#loc91, #loc92])
+#loc203 = loc(fused[#loc93, #loc94])
+#loc204 = loc(fused[#loc95, #loc96])
+#loc205 = loc(fused[#loc97, #loc98])
+#loc206 = loc(fused[#loc100, #loc99])
+#loc207 = loc(fused[#loc101, #loc102])
+#loc208 = loc(fused[#loc110, #loc111])
+#loc209 = loc(fused[#loc109, #loc111])
+#loc210 = loc(fused[#loc108, #loc112])
+#loc211 = loc(fused[#loc113, #loc112])
+#loc212 = loc(fused[#loc114, #loc115])
+#loc213 = loc(fused[#loc116, #loc117])
+#loc214 = loc(fused[#loc118, #loc115])
+#loc215 = loc(fused[#loc123, #loc124])
+#loc216 = loc(fused[#loc133, #loc134])
+#loc217 = loc(fused[#loc135, #loc136])
+#loc218 = loc(fused[#loc138, #loc137])
+#loc219 = loc(fused[#loc139, #loc140])
+#loc220 = loc(fused[#loc145, #loc146])
+#loc221 = loc(fused[#loc144, #loc146])
+#loc222 = loc(fused[#loc143, #loc147])
+#loc223 = loc(fused[#loc148, #loc147])
+#loc224 = loc(fused[#loc149, #loc150])
+#loc225 = loc(fused[#loc151, #loc152])
+#loc226 = loc(fused[#loc153, #loc150])
+#loc227 = loc(fused[#loc161, #loc162])
+#loc228 = loc(fused[#loc171, #loc172])

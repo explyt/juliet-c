@@ -1,0 +1,119 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+#loc6 = loc("CWE617_Reachable_Assertion__rand_66b.c":25:51)
+#loc7 = loc("CWE617_Reachable_Assertion__rand_66b.c":25:65)
+#loc16 = loc("CWE617_Reachable_Assertion__rand_66b.c":38:55)
+#loc17 = loc("CWE617_Reachable_Assertion__rand_66b.c":38:69)
+#loc25 = loc(fused[#loc6, #loc7])
+#loc28 = loc(fused[#loc16, #loc17])
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE617_Reachable_Assertion/CWE617_Reachable_Assertion__rand_66b.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @__assert_fail(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) extra(#fn_attr) loc(#loc23)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"data > ASSERT_VALUE\00" : !cir.array<!s8i x 20>> : !cir.array<!s8i x 20> {alignment = 1 : i64} loc(#loc3)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"CWE617_Reachable_Assertion__rand_66b.c\00" : !cir.array<!s8i x 39>> : !cir.array<!s8i x 39> {alignment = 1 : i64} loc(#loc3)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"void CWE617_Reachable_Assertion__rand_66b_badSink(int *)\00" : !cir.array<!s8i x 57>> : !cir.array<!s8i x 57> {alignment = 1 : i64} loc(#loc3)
+  cir.func @CWE617_Reachable_Assertion__rand_66b_badSink(%arg0: !cir.ptr<!s32i> loc(fused[#loc6, #loc7])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s32i>, !cir.ptr<!cir.ptr<!s32i>>, ["dataArray", init] {alignment = 8 : i64} loc(#loc25)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc26)
+    cir.store %arg0, %0 : !cir.ptr<!s32i>, !cir.ptr<!cir.ptr<!s32i>> loc(#loc10)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!s32i>>, !cir.ptr<!s32i> loc(#loc11)
+    %3 = cir.const #cir.int<2> : !s32i loc(#loc12)
+    %4 = cir.ptr_stride(%2 : !cir.ptr<!s32i>, %3 : !s32i), !cir.ptr<!s32i> loc(#loc9)
+    %5 = cir.load %4 : !cir.ptr<!s32i>, !s32i loc(#loc11)
+    cir.store %5, %1 : !s32i, !cir.ptr<!s32i> loc(#loc26)
+    %6 = cir.const #cir.int<4> : !u64i loc(#loc3)
+    cir.br ^bb1 loc(#loc3)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc3)
+  ^bb2:  // pred: ^bb1
+    %7 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc3)
+    %8 = cir.const #cir.int<5> : !s32i loc(#loc3)
+    %9 = cir.cmp(gt, %7, %8) : !s32i, !cir.bool loc(#loc3)
+    cir.brcond %9 ^bb3, ^bb4 loc(#loc3)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb5 loc(#loc3)
+  ^bb4:  // pred: ^bb2
+    %10 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc3)
+    %11 = cir.cast(array_to_ptrdecay, %10 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc3)
+    %12 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 39>> loc(#loc3)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 39>>), !cir.ptr<!s8i> loc(#loc3)
+    %14 = cir.const #cir.int<30> : !s32i loc(#loc3)
+    %15 = cir.cast(integral, %14 : !s32i), !u32i loc(#loc3)
+    %16 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 57>> loc(#loc3)
+    %17 = cir.cast(array_to_ptrdecay, %16 : !cir.ptr<!cir.array<!s8i x 57>>), !cir.ptr<!s8i> loc(#loc3)
+    cir.call @__assert_fail(%11, %13, %15, %17) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc3)
+    cir.br ^bb5 loc(#loc3)
+  ^bb5:  // 2 preds: ^bb3, ^bb4
+    cir.br ^bb6 loc(#loc3)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb7 loc(#loc3)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc5)
+  } loc(#loc24)
+  cir.global "private" constant cir_private dsolocal @".str.3" = #cir.const_array<"void CWE617_Reachable_Assertion__rand_66b_goodG2BSink(int *)\00" : !cir.array<!s8i x 61>> : !cir.array<!s8i x 61> {alignment = 1 : i64} loc(#loc13)
+  cir.func @CWE617_Reachable_Assertion__rand_66b_goodG2BSink(%arg0: !cir.ptr<!s32i> loc(fused[#loc16, #loc17])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s32i>, !cir.ptr<!cir.ptr<!s32i>>, ["dataArray", init] {alignment = 8 : i64} loc(#loc28)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc29)
+    cir.store %arg0, %0 : !cir.ptr<!s32i>, !cir.ptr<!cir.ptr<!s32i>> loc(#loc20)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!s32i>>, !cir.ptr<!s32i> loc(#loc21)
+    %3 = cir.const #cir.int<2> : !s32i loc(#loc22)
+    %4 = cir.ptr_stride(%2 : !cir.ptr<!s32i>, %3 : !s32i), !cir.ptr<!s32i> loc(#loc19)
+    %5 = cir.load %4 : !cir.ptr<!s32i>, !s32i loc(#loc21)
+    cir.store %5, %1 : !s32i, !cir.ptr<!s32i> loc(#loc29)
+    %6 = cir.const #cir.int<4> : !u64i loc(#loc13)
+    cir.br ^bb1 loc(#loc13)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc13)
+  ^bb2:  // pred: ^bb1
+    %7 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc13)
+    %8 = cir.const #cir.int<5> : !s32i loc(#loc13)
+    %9 = cir.cmp(gt, %7, %8) : !s32i, !cir.bool loc(#loc13)
+    cir.brcond %9 ^bb3, ^bb4 loc(#loc13)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb5 loc(#loc13)
+  ^bb4:  // pred: ^bb2
+    %10 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc13)
+    %11 = cir.cast(array_to_ptrdecay, %10 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc13)
+    %12 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 39>> loc(#loc13)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 39>>), !cir.ptr<!s8i> loc(#loc13)
+    %14 = cir.const #cir.int<42> : !s32i loc(#loc13)
+    %15 = cir.cast(integral, %14 : !s32i), !u32i loc(#loc13)
+    %16 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 61>> loc(#loc13)
+    %17 = cir.cast(array_to_ptrdecay, %16 : !cir.ptr<!cir.array<!s8i x 61>>), !cir.ptr<!s8i> loc(#loc13)
+    cir.call @__assert_fail(%11, %13, %15, %17) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc13)
+    cir.br ^bb5 loc(#loc13)
+  ^bb5:  // 2 preds: ^bb3, ^bb4
+    cir.br ^bb6 loc(#loc13)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb7 loc(#loc13)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc15)
+  } loc(#loc27)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE617_Reachable_Assertion/CWE617_Reachable_Assertion__rand_66b.c":0:0)
+#loc1 = loc("/usr/include/assert.h":67:1)
+#loc2 = loc("/usr/include/assert.h":69:43)
+#loc3 = loc("CWE617_Reachable_Assertion__rand_66b.c":30:5)
+#loc4 = loc("CWE617_Reachable_Assertion__rand_66b.c":25:1)
+#loc5 = loc("CWE617_Reachable_Assertion__rand_66b.c":31:1)
+#loc8 = loc("CWE617_Reachable_Assertion__rand_66b.c":28:5)
+#loc9 = loc("CWE617_Reachable_Assertion__rand_66b.c":28:27)
+#loc10 = loc("CWE617_Reachable_Assertion__rand_66b.c":26:1)
+#loc11 = loc("CWE617_Reachable_Assertion__rand_66b.c":28:16)
+#loc12 = loc("CWE617_Reachable_Assertion__rand_66b.c":28:26)
+#loc13 = loc("CWE617_Reachable_Assertion__rand_66b.c":42:5)
+#loc14 = loc("CWE617_Reachable_Assertion__rand_66b.c":38:1)
+#loc15 = loc("CWE617_Reachable_Assertion__rand_66b.c":43:1)
+#loc18 = loc("CWE617_Reachable_Assertion__rand_66b.c":40:5)
+#loc19 = loc("CWE617_Reachable_Assertion__rand_66b.c":40:27)
+#loc20 = loc("CWE617_Reachable_Assertion__rand_66b.c":39:1)
+#loc21 = loc("CWE617_Reachable_Assertion__rand_66b.c":40:16)
+#loc22 = loc("CWE617_Reachable_Assertion__rand_66b.c":40:26)
+#loc23 = loc(fused[#loc1, #loc2])
+#loc24 = loc(fused[#loc4, #loc5])
+#loc26 = loc(fused[#loc8, #loc9])
+#loc27 = loc(fused[#loc14, #loc15])
+#loc29 = loc(fused[#loc18, #loc19])

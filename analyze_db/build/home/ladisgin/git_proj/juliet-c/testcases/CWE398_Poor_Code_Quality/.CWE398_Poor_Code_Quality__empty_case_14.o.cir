@@ -1,0 +1,269 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE398_Poor_Code_Quality/CWE398_Poor_Code_Quality__empty_case_14.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<f64 = dense<64> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.global "private" external @globalFive : !s32i {alignment = 4 : i64} loc(#loc81)
+  cir.func private @rand() -> !s32i extra(#fn_attr) loc(#loc82)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc83)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"Hello from bad()\00" : !cir.array<!s8i x 17>> : !cir.array<!s8i x 17> {alignment = 1 : i64} loc(#loc7)
+  cir.func no_proto @CWE398_Poor_Code_Quality__empty_case_14_bad() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x", init] {alignment = 4 : i64} loc(#loc85)
+    cir.br ^bb1 loc(#loc86)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.get_global @globalFive : !cir.ptr<!s32i> loc(#loc81)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc14)
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc15)
+    %4 = cir.cmp(eq, %2, %3) : !s32i, !cir.bool loc(#loc87)
+    cir.brcond %4 ^bb2, ^bb11 loc(#loc88)
+  ^bb2:  // pred: ^bb1
+    cir.br ^bb3 loc(#loc89)
+  ^bb3:  // pred: ^bb2
+    %5 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc19)
+    %6 = cir.const #cir.int<3> : !s32i loc(#loc20)
+    %7 = cir.binop(rem, %5, %6) : !s32i loc(#loc90)
+    cir.store %7, %0 : !s32i, !cir.ptr<!s32i> loc(#loc85)
+    cir.br ^bb4 loc(#loc91)
+  ^bb4:  // pred: ^bb3
+    %8 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc23)
+    cir.br ^bb5 loc(#loc21)
+  ^bb5:  // pred: ^bb4
+    cir.switch.flat %8 : !s32i, ^bb8 [
+      0: ^bb7
+    ] loc(#loc21)
+  ^bb6:  // no predecessors
+    cir.br ^bb7 loc(#loc24)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    cir.br ^bb8 loc(#loc25)
+  ^bb8:  // 2 preds: ^bb5, ^bb7
+    cir.br ^bb9 loc(#loc22)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc18)
+  ^bb10:  // pred: ^bb9
+    %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 17>> loc(#loc7)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 17>>), !cir.ptr<!s8i> loc(#loc7)
+    cir.call @printLine(%10) : (!cir.ptr<!s8i>) -> () loc(#loc26)
+    cir.br ^bb11 loc(#loc13)
+  ^bb11:  // 2 preds: ^bb1, ^bb10
+    cir.br ^bb12 loc(#loc13)
+  ^bb12:  // pred: ^bb11
+    cir.return loc(#loc9)
+  } loc(#loc84)
+  cir.func no_proto @CWE398_Poor_Code_Quality__empty_case_14_good() extra(#fn_attr1) {
+    %0 = cir.get_global @good1 : !cir.ptr<!cir.func<!void ()>> loc(#loc93)
+    cir.call %0() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc29)
+    %1 = cir.get_global @good2 : !cir.ptr<!cir.func<!void ()>> loc(#loc94)
+    cir.call %1() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc31)
+    cir.return loc(#loc28)
+  } loc(#loc92)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc33)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"Inside the case statement\00" : !cir.array<!s8i x 26>> : !cir.array<!s8i x 26> {alignment = 1 : i64} loc(#loc34)
+  cir.global "private" constant cir_private dsolocal @".str.3" = #cir.const_array<"Hello from good()\00" : !cir.array<!s8i x 18>> : !cir.array<!s8i x 18> {alignment = 1 : i64} loc(#loc35)
+  cir.func no_proto internal private @good1() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x", init] {alignment = 4 : i64} loc(#loc96)
+    cir.br ^bb1 loc(#loc97)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.get_global @globalFive : !cir.ptr<!s32i> loc(#loc81)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc42)
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc43)
+    %4 = cir.cmp(ne, %2, %3) : !s32i, !cir.bool loc(#loc98)
+    cir.brcond %4 ^bb2, ^bb3 loc(#loc99)
+  ^bb2:  // pred: ^bb1
+    %5 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc33)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc33)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc47)
+    cir.br ^bb12 loc(#loc45)
+  ^bb3:  // pred: ^bb1
+    cir.br ^bb4 loc(#loc100)
+  ^bb4:  // pred: ^bb3
+    %7 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc50)
+    %8 = cir.const #cir.int<3> : !s32i loc(#loc51)
+    %9 = cir.binop(rem, %7, %8) : !s32i loc(#loc101)
+    cir.store %9, %0 : !s32i, !cir.ptr<!s32i> loc(#loc96)
+    cir.br ^bb5 loc(#loc102)
+  ^bb5:  // pred: ^bb4
+    %10 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc54)
+    cir.br ^bb6 loc(#loc52)
+  ^bb6:  // pred: ^bb5
+    cir.switch.flat %10 : !s32i, ^bb9 [
+      0: ^bb8
+    ] loc(#loc52)
+  ^bb7:  // no predecessors
+    cir.br ^bb8 loc(#loc55)
+  ^bb8:  // 2 preds: ^bb6, ^bb7
+    %11 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 26>> loc(#loc34)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 26>>), !cir.ptr<!s8i> loc(#loc34)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc56)
+    cir.br ^bb9 loc(#loc57)
+  ^bb9:  // 2 preds: ^bb6, ^bb8
+    cir.br ^bb10 loc(#loc53)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc49)
+  ^bb11:  // pred: ^bb10
+    %13 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 18>> loc(#loc35)
+    %14 = cir.cast(array_to_ptrdecay, %13 : !cir.ptr<!cir.array<!s8i x 18>>), !cir.ptr<!s8i> loc(#loc35)
+    cir.call @printLine(%14) : (!cir.ptr<!s8i>) -> () loc(#loc58)
+    cir.br ^bb12 loc(#loc41)
+  ^bb12:  // 2 preds: ^bb2, ^bb11
+    cir.br ^bb13 loc(#loc41)
+  ^bb13:  // pred: ^bb12
+    cir.return loc(#loc37)
+  } loc(#loc95)
+  cir.func no_proto internal private @good2() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x", init] {alignment = 4 : i64} loc(#loc104)
+    cir.br ^bb1 loc(#loc105)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.get_global @globalFive : !cir.ptr<!s32i> loc(#loc81)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc65)
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc66)
+    %4 = cir.cmp(eq, %2, %3) : !s32i, !cir.bool loc(#loc106)
+    cir.brcond %4 ^bb2, ^bb11 loc(#loc107)
+  ^bb2:  // pred: ^bb1
+    cir.br ^bb3 loc(#loc108)
+  ^bb3:  // pred: ^bb2
+    %5 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc70)
+    %6 = cir.const #cir.int<3> : !s32i loc(#loc71)
+    %7 = cir.binop(rem, %5, %6) : !s32i loc(#loc109)
+    cir.store %7, %0 : !s32i, !cir.ptr<!s32i> loc(#loc104)
+    cir.br ^bb4 loc(#loc110)
+  ^bb4:  // pred: ^bb3
+    %8 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc74)
+    cir.br ^bb5 loc(#loc72)
+  ^bb5:  // pred: ^bb4
+    cir.switch.flat %8 : !s32i, ^bb8 [
+      0: ^bb7
+    ] loc(#loc72)
+  ^bb6:  // no predecessors
+    cir.br ^bb7 loc(#loc75)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    %9 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 26>> loc(#loc76)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 26>>), !cir.ptr<!s8i> loc(#loc76)
+    cir.call @printLine(%10) : (!cir.ptr<!s8i>) -> () loc(#loc77)
+    cir.br ^bb8 loc(#loc78)
+  ^bb8:  // 2 preds: ^bb5, ^bb7
+    cir.br ^bb9 loc(#loc73)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc69)
+  ^bb10:  // pred: ^bb9
+    %11 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 18>> loc(#loc79)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 18>>), !cir.ptr<!s8i> loc(#loc79)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc80)
+    cir.br ^bb11 loc(#loc64)
+  ^bb11:  // 2 preds: ^bb1, ^bb10
+    cir.br ^bb12 loc(#loc64)
+  ^bb12:  // pred: ^bb11
+    cir.return loc(#loc60)
+  } loc(#loc103)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE398_Poor_Code_Quality/CWE398_Poor_Code_Quality__empty_case_14.c":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase.h":118:1)
+#loc2 = loc("../../testcasesupport/std_testcase.h":118:12)
+#loc3 = loc("/usr/include/stdlib.h":573:1)
+#loc4 = loc("/usr/include/stdlib.h":573:24)
+#loc5 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc6 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc7 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":33:19)
+#loc8 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":20:1)
+#loc9 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":35:1)
+#loc10 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":26:13)
+#loc11 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":26:32)
+#loc12 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":22:5)
+#loc13 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":34:5)
+#loc14 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":22:8)
+#loc15 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":22:20)
+#loc16 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":23:5)
+#loc17 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":25:9)
+#loc18 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":32:9)
+#loc19 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":26:22)
+#loc20 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":26:31)
+#loc21 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":27:13)
+#loc22 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":31:13)
+#loc23 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":27:21)
+#loc24 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":29:13)
+#loc25 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":30:17)
+#loc26 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":33:9)
+#loc27 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":84:1)
+#loc28 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":88:1)
+#loc29 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":86:5)
+#loc30 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":86:11)
+#loc31 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":87:5)
+#loc32 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":87:11)
+#loc33 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":47:19)
+#loc34 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":57:27)
+#loc35 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":61:19)
+#loc36 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":42:1)
+#loc37 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":63:1)
+#loc38 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":53:13)
+#loc39 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":53:32)
+#loc40 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":44:5)
+#loc41 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":62:5)
+#loc42 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":44:8)
+#loc43 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":44:20)
+#loc44 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":45:5)
+#loc45 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":48:5)
+#loc46 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":50:5)
+#loc47 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":47:9)
+#loc48 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":52:9)
+#loc49 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":60:9)
+#loc50 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":53:22)
+#loc51 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":53:31)
+#loc52 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":54:13)
+#loc53 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":59:13)
+#loc54 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":54:21)
+#loc55 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":56:13)
+#loc56 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":57:17)
+#loc57 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":58:17)
+#loc58 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":61:9)
+#loc59 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":66:1)
+#loc60 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":82:1)
+#loc61 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":72:13)
+#loc62 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":72:32)
+#loc63 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":68:5)
+#loc64 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":81:5)
+#loc65 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":68:8)
+#loc66 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":68:20)
+#loc67 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":69:5)
+#loc68 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":71:9)
+#loc69 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":79:9)
+#loc70 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":72:22)
+#loc71 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":72:31)
+#loc72 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":73:13)
+#loc73 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":78:13)
+#loc74 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":73:21)
+#loc75 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":75:13)
+#loc76 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":76:27)
+#loc77 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":76:17)
+#loc78 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":77:17)
+#loc79 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":80:19)
+#loc80 = loc("CWE398_Poor_Code_Quality__empty_case_14.c":80:9)
+#loc81 = loc(fused[#loc1, #loc2])
+#loc82 = loc(fused[#loc3, #loc4])
+#loc83 = loc(fused[#loc5, #loc6])
+#loc84 = loc(fused[#loc8, #loc9])
+#loc85 = loc(fused[#loc10, #loc11])
+#loc86 = loc(fused[#loc12, #loc13])
+#loc87 = loc(fused[#loc14, #loc15])
+#loc88 = loc(fused[#loc16, #loc13])
+#loc89 = loc(fused[#loc17, #loc18])
+#loc90 = loc(fused[#loc19, #loc20])
+#loc91 = loc(fused[#loc21, #loc22])
+#loc92 = loc(fused[#loc27, #loc28])
+#loc93 = loc(fused[#loc29, #loc30])
+#loc94 = loc(fused[#loc31, #loc32])
+#loc95 = loc(fused[#loc36, #loc37])
+#loc96 = loc(fused[#loc38, #loc39])
+#loc97 = loc(fused[#loc40, #loc41])
+#loc98 = loc(fused[#loc42, #loc43])
+#loc99 = loc(fused[#loc44, #loc45, #loc46, #loc41])
+#loc100 = loc(fused[#loc48, #loc49])
+#loc101 = loc(fused[#loc50, #loc51])
+#loc102 = loc(fused[#loc52, #loc53])
+#loc103 = loc(fused[#loc59, #loc60])
+#loc104 = loc(fused[#loc61, #loc62])
+#loc105 = loc(fused[#loc63, #loc64])
+#loc106 = loc(fused[#loc65, #loc66])
+#loc107 = loc(fused[#loc67, #loc64])
+#loc108 = loc(fused[#loc68, #loc69])
+#loc109 = loc(fused[#loc70, #loc71])
+#loc110 = loc(fused[#loc72, #loc73])

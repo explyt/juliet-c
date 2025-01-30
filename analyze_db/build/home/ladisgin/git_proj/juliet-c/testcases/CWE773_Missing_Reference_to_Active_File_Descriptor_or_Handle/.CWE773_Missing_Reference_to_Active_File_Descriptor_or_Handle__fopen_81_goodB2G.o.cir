@@ -1,0 +1,114 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.struct<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.struct<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.struct<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc9 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":24:86)
+#loc10 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":24:93)
+#loc11 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":24:100)
+#loc35 = loc(fused[#loc10, #loc11])
+!ty__IO_FILE = !cir.struct<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.struct<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.struct<struct "_IO_FILE">>, !cir.ptr<!void>, !cir.ptr<!cir.ptr<!cir.struct<struct "_IO_FILE">>>, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty_anon_struct = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.struct<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_base = !cir.struct<class "CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81::CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G = !cir.struct<class "CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81::CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G" {!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle/CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<!llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @fclose(!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc32)
+  cir.func private @fopen(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc33)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"GoodSink_fopen.txt\00" : !cir.array<!s8i x 19>> : !cir.array<!s8i x 19> {alignment = 1 : i64} loc(#loc5)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"w+\00" : !cir.array<!s8i x 3>> : !cir.array<!s8i x 3> {alignment = 1 : i64} loc(#loc6)
+  cir.func @_ZNK70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G6actionEP8_IO_FILE(%arg0: !cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G> loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":24:86), %arg1: !cir.ptr<!ty__IO_FILE> loc(fused[#loc10, #loc11])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc9)
+    %1 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data", init] {alignment = 8 : i64} loc(#loc35)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G>> loc(#loc12)
+    cir.store %arg1, %1 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc12)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G>>, !cir.ptr<!ty_CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_813A3ACWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G> loc(#loc9)
+    cir.br ^bb1 loc(#loc36)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc15)
+    %4 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc16)
+    %5 = cir.cmp(ne, %3, %4) : !cir.ptr<!ty__IO_FILE>, !cir.bool loc(#loc37)
+    cir.brcond %5 ^bb2, ^bb3 loc(#loc38)
+  ^bb2:  // pred: ^bb1
+    %6 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc18)
+    %7 = cir.call @fclose(%6) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc19)
+    cir.br ^bb3 loc(#loc14)
+  ^bb3:  // 2 preds: ^bb1, ^bb2
+    cir.br ^bb4 loc(#loc14)
+  ^bb4:  // pred: ^bb3
+    %8 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 19>> loc(#loc5)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 19>>), !cir.ptr<!s8i> loc(#loc5)
+    %10 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc6)
+    %11 = cir.cast(array_to_ptrdecay, %10 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc6)
+    %12 = cir.call @fopen(%9, %11) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc20)
+    cir.store %12, %1 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc39)
+    cir.br ^bb5 loc(#loc40)
+  ^bb5:  // pred: ^bb4
+    %13 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc25)
+    %14 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc26)
+    %15 = cir.cmp(ne, %13, %14) : !cir.ptr<!ty__IO_FILE>, !cir.bool loc(#loc41)
+    cir.brcond %15 ^bb6, ^bb7 loc(#loc42)
+  ^bb6:  // pred: ^bb5
+    %16 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc28)
+    %17 = cir.call @fclose(%16) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc29)
+    cir.br ^bb7 loc(#loc24)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    cir.br ^bb8 loc(#loc24)
+  ^bb8:  // pred: ^bb7
+    cir.return loc(#loc8)
+  } loc(#loc34)
+  cir.global external dsolocal @_ZTVN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2GE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G6actionEP8_IO_FILE> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc43)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc30)
+  cir.global external @_ZTSN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2GE = #cir.const_array<"N70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2GE" : !cir.array<!s8i x 154>> : !cir.array<!s8i x 154> {alignment = 1 : i64} loc(#loc30)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc30)
+  cir.global linkonce_odr comdat @_ZTSN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8175CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_baseE = #cir.const_array<"N70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8175CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_baseE" : !cir.array<!s8i x 151>> : !cir.array<!s8i x 151> {alignment = 1 : i64} loc(#loc30)
+  cir.global constant external @_ZTIN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8175CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8175CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc30)
+  cir.global constant external @_ZTIN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2GE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8178CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN70CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_8175CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc30)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle/CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":0:0)
+#loc1 = loc("/usr/include/stdio.h":184:1)
+#loc2 = loc("/usr/include/stdio.h":184:36)
+#loc3 = loc("/usr/include/stdio.h":264:1)
+#loc4 = loc("/usr/include/stdio.h":266:3)
+#loc5 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":31:18)
+#loc6 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":31:40)
+#loc7 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":24:1)
+#loc8 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":37:1)
+#loc12 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":25:1)
+#loc13 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":27:5)
+#loc14 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":30:5)
+#loc15 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":27:9)
+#loc16 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":27:17)
+#loc17 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":28:5)
+#loc18 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":29:16)
+#loc19 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":29:9)
+#loc20 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":31:12)
+#loc21 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":31:5)
+#loc22 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":31:44)
+#loc23 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":33:5)
+#loc24 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":36:5)
+#loc25 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":33:9)
+#loc26 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":33:17)
+#loc27 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":34:5)
+#loc28 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":35:16)
+#loc29 = loc("CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81_goodB2G.cpp":35:9)
+#loc30 = loc("./CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81.h":41:1)
+#loc31 = loc("./CWE773_Missing_Reference_to_Active_File_Descriptor_or_Handle__fopen_81.h":45:1)
+#loc32 = loc(fused[#loc1, #loc2])
+#loc33 = loc(fused[#loc3, #loc4])
+#loc34 = loc(fused[#loc7, #loc8])
+#loc36 = loc(fused[#loc13, #loc14])
+#loc37 = loc(fused[#loc15, #loc16])
+#loc38 = loc(fused[#loc17, #loc14])
+#loc39 = loc(fused[#loc21, #loc22])
+#loc40 = loc(fused[#loc23, #loc24])
+#loc41 = loc(fused[#loc25, #loc26])
+#loc42 = loc(fused[#loc27, #loc24])
+#loc43 = loc(fused[#loc30, #loc31])

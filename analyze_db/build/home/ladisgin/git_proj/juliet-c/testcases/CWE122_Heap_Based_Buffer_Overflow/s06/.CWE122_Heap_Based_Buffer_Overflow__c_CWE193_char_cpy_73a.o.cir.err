@@ -1,0 +1,62 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+warning: unknown warning option '-Wno-terminate' [-Wunknown-warning-option]
+clang: /home/ladisgin/git_proj/clangir/clang/lib/CIR/CodeGen/CIRGenExpr.cpp:577: clang::CIRGen::CIRGenCallee clang::CIRGen::CIRGenFunction::emitCallee(const clang::Expr*): Assertion `!dyn_cast<CXXPseudoDestructorExpr>(E) && "NYI"' failed.
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+Stack dump:
+0.	Program arguments: /home/ladisgin/git_proj/clangir/build/bin/clang -S -Xclang -emit-cir-flat -std=c++11 -Wno-terminate -std=c++11 -I ../../../testcasesupport -c CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_cpy_73a.cpp -o /home/ladisgin/git_proj/juliet-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s06/.CWE122_Heap_Based_Buffer_Overflow__c_CWE193_char_cpy_73a.o.cir
+1.	<eof> parser at end of file
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
+0  clang     0x0000000001aad6ab llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 43
+1  clang     0x0000000001aaabe4 llvm::sys::CleanupOnSignal(unsigned long) + 132
+2  clang     0x00000000019f4550
+3  libc.so.6 0x00007f0735741050
+4  libc.so.6 0x00007f073579a114
+5  libc.so.6 0x00007f0735740f9e gsignal + 30
+6  libc.so.6 0x00007f0735728942 abort + 223
+7  libc.so.6 0x00007f073572885e
+8  libc.so.6 0x00007f07357390c7
+9  clang     0x00000000032465f7 clang::CIRGen::CIRGenFunction::emitCallee(clang::Expr const*) + 695
+10 clang     0x0000000003246983 clang::CIRGen::CIRGenFunction::emitCallExpr(clang::CallExpr const*, clang::CIRGen::ReturnValueSlot) + 371
+11 clang     0x000000000327be7a
+12 clang     0x000000000328bd1e clang::CIRGen::CIRGenFunction::emitScalarExpr(clang::Expr const*) + 62
+13 clang     0x0000000003239777 clang::CIRGen::CIRGenFunction::emitAnyExpr(clang::Expr const*, clang::CIRGen::AggValueSlot, bool) + 87
+14 clang     0x0000000003242084 clang::CIRGen::CIRGenFunction::emitIgnoredExpr(clang::Expr const*) + 164
+15 clang     0x00000000032bc8f5 clang::CIRGen::CIRGenFunction::emitStmt(clang::Stmt const*, bool, llvm::ArrayRef<clang::Attr const*>) + 197
+16 clang     0x00000000032bf4cf clang::CIRGen::CIRGenFunction::emitCompoundStmtWithoutScope(clang::CompoundStmt const&, bool, clang::CIRGen::AggValueSlot) + 143
+17 clang     0x000000000329d46b clang::CIRGen::CIRGenFunction::emitFunctionBody(clang::Stmt const*) + 171
+18 clang     0x00000000032a2d97 clang::CIRGen::CIRGenFunction::generateCode(clang::GlobalDecl, cir::FuncOp, clang::CIRGen::CIRGenFunctionInfo const&) + 1975
+19 clang     0x00000000031e0b38 clang::CIRGen::CIRGenModule::emitGlobalFunctionDefinition(clang::GlobalDecl, mlir::Operation*) + 440
+20 clang     0x00000000031e1155 clang::CIRGen::CIRGenModule::emitGlobalDefinition(clang::GlobalDecl, mlir::Operation*) + 165
+21 clang     0x00000000031e19db clang::CIRGen::CIRGenModule::emitDeferred(unsigned int) + 331
+22 clang     0x00000000031e1953 clang::CIRGen::CIRGenModule::emitDeferred(unsigned int) + 195
+23 clang     0x00000000031e1953 clang::CIRGen::CIRGenModule::emitDeferred(unsigned int) + 195
+24 clang     0x00000000031e1953 clang::CIRGen::CIRGenModule::emitDeferred(unsigned int) + 195
+25 clang     0x00000000031e1953 clang::CIRGen::CIRGenModule::emitDeferred(unsigned int) + 195
+26 clang     0x00000000031e1953 clang::CIRGen::CIRGenModule::emitDeferred(unsigned int) + 195
+27 clang     0x00000000031e1b28 clang::CIRGen::CIRGenModule::Release() + 24
+28 clang     0x000000000309a0ee
+29 clang     0x00000000053c2d8c clang::ParseAST(clang::Sema&, bool, bool) + 1212
+30 clang     0x000000000273e7b9 clang::FrontendAction::Execute() + 169
+31 clang     0x00000000026ba99e clang::CompilerInstance::ExecuteAction(clang::FrontendAction&) + 1886
+32 clang     0x00000000028247ee clang::ExecuteCompilerInvocation(clang::CompilerInstance*) + 1742
+33 clang     0x000000000052312b cc1_main(llvm::ArrayRef<char const*>, char const*, void*) + 6299
+34 clang     0x000000000051a0c0
+35 clang     0x000000000247dfa9
+36 clang     0x00000000019f49b2 llvm::CrashRecoveryContext::RunSafely(llvm::function_ref<void ()>) + 146
+37 clang     0x000000000248036e
+38 clang     0x000000000243df5b clang::driver::Compilation::ExecuteCommand(clang::driver::Command const&, clang::driver::Command const*&, bool) const + 155
+39 clang     0x000000000243f01e clang::driver::Compilation::ExecuteJobs(clang::driver::JobList const&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&, bool) const + 222
+40 clang     0x000000000244b114 clang::driver::Driver::ExecuteCompilation(clang::driver::Compilation&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&) + 356
+41 clang     0x000000000051f2d1 clang_main(int, char**, llvm::ToolContext const&) + 9169
+42 clang     0x000000000042abd3 main + 83
+43 libc.so.6 0x00007f073572a248
+44 libc.so.6 0x00007f073572a30b __libc_start_main + 139
+45 clang     0x00000000005196f5 _start + 37
+clang: error: clang frontend command failed with exit code 134 (use -v to see invocation)
+clang version 20.0.0git (git@github.com:llvm/clangir.git 888f00c5bd78e8355c9f7288c1a3237884a04dbc)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /home/ladisgin/git_proj/clangir/build/bin
+Build config: +assertions
+clang: error: unable to execute command: Aborted (core dumped)
+clang: note: diagnostic msg: Error generating preprocessed source(s).

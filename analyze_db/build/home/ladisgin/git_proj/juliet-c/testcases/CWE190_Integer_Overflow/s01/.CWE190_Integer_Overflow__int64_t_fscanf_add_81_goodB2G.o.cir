@@ -1,0 +1,91 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc8 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":25:62)
+#loc9 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":25:69)
+#loc10 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":25:77)
+#loc30 = loc(fused[#loc9, #loc10])
+!ty_anon_struct = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.struct<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_base = !cir.struct<class "CWE190_Integer_Overflow__int64_t_fscanf_add_81::CWE190_Integer_Overflow__int64_t_fscanf_add_81_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G = !cir.struct<class "CWE190_Integer_Overflow__int64_t_fscanf_add_81::CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G" {!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printLongLongLine(!s64i) loc(#loc27)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc28)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"data value is too large to perform arithmetic safely.\00" : !cir.array<!s8i x 54>> : !cir.array<!s8i x 54> {alignment = 1 : i64} loc(#loc5)
+  cir.func @_ZNK46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G6actionEl(%arg0: !cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G> loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":25:62), %arg1: !s64i loc(fused[#loc9, #loc10])) extra(#fn_attr) {
+    %0 = cir.alloca !s64i, !cir.ptr<!s64i>, ["result", init] {alignment = 8 : i64} loc(#loc31)
+    %1 = cir.alloca !cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc8)
+    %2 = cir.alloca !s64i, !cir.ptr<!s64i>, ["data", init] {alignment = 8 : i64} loc(#loc30)
+    cir.store %arg0, %1 : !cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G>> loc(#loc13)
+    cir.store %arg1, %2 : !s64i, !cir.ptr<!s64i> loc(#loc13)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G>>, !cir.ptr<!ty_CWE190_Integer_Overflow__int64_t_fscanf_add_813A3ACWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G> loc(#loc8)
+    cir.br ^bb1 loc(#loc32)
+  ^bb1:  // pred: ^bb0
+    %4 = cir.load %2 : !cir.ptr<!s64i>, !s64i loc(#loc16)
+    %5 = cir.const #cir.int<9223372036854775807> : !s64i loc(#loc17)
+    %6 = cir.cmp(lt, %4, %5) : !s64i, !cir.bool loc(#loc33)
+    cir.brcond %6 ^bb2, ^bb3 loc(#loc34)
+  ^bb2:  // pred: ^bb1
+    %7 = cir.load %2 : !cir.ptr<!s64i>, !s64i loc(#loc21)
+    %8 = cir.const #cir.int<1> : !s32i loc(#loc12)
+    %9 = cir.cast(integral, %8 : !s32i), !s64i loc(#loc12)
+    %10 = cir.binop(add, %7, %9) nsw : !s64i loc(#loc21)
+    cir.store %10, %0 : !s64i, !cir.ptr<!s64i> loc(#loc31)
+    %11 = cir.load %0 : !cir.ptr<!s64i>, !s64i loc(#loc22)
+    cir.call @printLongLongLine(%11) : (!s64i) -> () loc(#loc23)
+    cir.br ^bb4 loc(#loc19)
+  ^bb3:  // pred: ^bb1
+    %12 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 54>> loc(#loc5)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 54>>), !cir.ptr<!s8i> loc(#loc5)
+    cir.call @printLine(%13) : (!cir.ptr<!s8i>) -> () loc(#loc24)
+    cir.br ^bb4 loc(#loc15)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    cir.br ^bb5 loc(#loc15)
+  ^bb5:  // pred: ^bb4
+    cir.return loc(#loc7)
+  } loc(#loc29)
+  cir.global external dsolocal @_ZTVN46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2GE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G6actionEl> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc35)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc25)
+  cir.global external @_ZTSN46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2GE = #cir.const_array<"N46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2GE" : !cir.array<!s8i x 106>> : !cir.array<!s8i x 106> {alignment = 1 : i64} loc(#loc25)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc25)
+  cir.global linkonce_odr comdat @_ZTSN46CWE190_Integer_Overflow__int64_t_fscanf_add_8151CWE190_Integer_Overflow__int64_t_fscanf_add_81_baseE = #cir.const_array<"N46CWE190_Integer_Overflow__int64_t_fscanf_add_8151CWE190_Integer_Overflow__int64_t_fscanf_add_81_baseE" : !cir.array<!s8i x 103>> : !cir.array<!s8i x 103> {alignment = 1 : i64} loc(#loc25)
+  cir.global constant external @_ZTIN46CWE190_Integer_Overflow__int64_t_fscanf_add_8151CWE190_Integer_Overflow__int64_t_fscanf_add_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN46CWE190_Integer_Overflow__int64_t_fscanf_add_8151CWE190_Integer_Overflow__int64_t_fscanf_add_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc25)
+  cir.global constant external @_ZTIN46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2GE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN46CWE190_Integer_Overflow__int64_t_fscanf_add_8154CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN46CWE190_Integer_Overflow__int64_t_fscanf_add_8151CWE190_Integer_Overflow__int64_t_fscanf_add_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc25)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE190_Integer_Overflow/s01/CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":26:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":26:49)
+#loc3 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc4 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc5 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":35:19)
+#loc6 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":25:1)
+#loc7 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":37:1)
+#loc11 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":30:9)
+#loc12 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":30:33)
+#loc13 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":26:1)
+#loc14 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":28:5)
+#loc15 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":36:5)
+#loc16 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":28:9)
+#loc17 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":28:16)
+#loc18 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":29:5)
+#loc19 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":32:5)
+#loc20 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":34:5)
+#loc21 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":30:26)
+#loc22 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":31:27)
+#loc23 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":31:9)
+#loc24 = loc("CWE190_Integer_Overflow__int64_t_fscanf_add_81_goodB2G.cpp":35:9)
+#loc25 = loc("./CWE190_Integer_Overflow__int64_t_fscanf_add_81.h":48:1)
+#loc26 = loc("./CWE190_Integer_Overflow__int64_t_fscanf_add_81.h":52:1)
+#loc27 = loc(fused[#loc1, #loc2])
+#loc28 = loc(fused[#loc3, #loc4])
+#loc29 = loc(fused[#loc6, #loc7])
+#loc31 = loc(fused[#loc11, #loc12])
+#loc32 = loc(fused[#loc14, #loc15])
+#loc33 = loc(fused[#loc16, #loc17])
+#loc34 = loc(fused[#loc18, #loc19, #loc20, #loc15])
+#loc35 = loc(fused[#loc25, #loc26])

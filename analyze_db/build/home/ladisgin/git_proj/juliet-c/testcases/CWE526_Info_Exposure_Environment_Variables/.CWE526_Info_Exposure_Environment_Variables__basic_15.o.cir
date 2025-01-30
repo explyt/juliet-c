@@ -1,0 +1,157 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_15.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc48)
+  cir.func private @getenv(!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc49)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"PATH\00" : !cir.array<!s8i x 5>> : !cir.array<!s8i x 5> {alignment = 1 : i64} loc(#loc5)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc6)
+  cir.func no_proto @CWE526_Info_Exposure_Environment_Variables__basic_15_bad() extra(#fn_attr1) {
+    cir.br ^bb1 loc(#loc51)
+  ^bb1:  // pred: ^bb0
+    %0 = cir.const #cir.int<6> : !s32i loc(#loc11)
+    cir.br ^bb2 loc(#loc9)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %0 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc9)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc12)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %1 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 5>> loc(#loc5)
+    %2 = cir.cast(array_to_ptrdecay, %1 : !cir.ptr<!cir.array<!s8i x 5>>), !cir.ptr<!s8i> loc(#loc5)
+    %3 = cir.call @getenv(%2) : (!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc13)
+    cir.call @printLine(%3) : (!cir.ptr<!s8i>) -> () loc(#loc14)
+    cir.br ^bb6 loc(#loc15)
+  ^bb5:  // pred: ^bb2
+    %4 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc6)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc6)
+    cir.call @printLine(%5) : (!cir.ptr<!s8i>) -> () loc(#loc16)
+    cir.br ^bb6 loc(#loc17)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc10)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc8)
+  } loc(#loc50)
+  cir.func no_proto @CWE526_Info_Exposure_Environment_Variables__basic_15_good() extra(#fn_attr1) {
+    %0 = cir.get_global @good1 : !cir.ptr<!cir.func<!void ()>> loc(#loc53)
+    cir.call %0() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc20)
+    %1 = cir.get_global @good2 : !cir.ptr<!cir.func<!void ()>> loc(#loc54)
+    cir.call %1() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc22)
+    cir.return loc(#loc19)
+  } loc(#loc52)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"Not in path\00" : !cir.array<!s8i x 12>> : !cir.array<!s8i x 12> {alignment = 1 : i64} loc(#loc24)
+  cir.func no_proto internal private @good1() extra(#fn_attr1) {
+    cir.br ^bb1 loc(#loc56)
+  ^bb1:  // pred: ^bb0
+    %0 = cir.const #cir.int<5> : !s32i loc(#loc29)
+    cir.br ^bb2 loc(#loc27)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %0 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc27)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc30)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %1 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc31)
+    %2 = cir.cast(array_to_ptrdecay, %1 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc31)
+    cir.call @printLine(%2) : (!cir.ptr<!s8i>) -> () loc(#loc32)
+    cir.br ^bb6 loc(#loc33)
+  ^bb5:  // pred: ^bb2
+    %3 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 12>> loc(#loc24)
+    %4 = cir.cast(array_to_ptrdecay, %3 : !cir.ptr<!cir.array<!s8i x 12>>), !cir.ptr<!s8i> loc(#loc24)
+    cir.call @printLine(%4) : (!cir.ptr<!s8i>) -> () loc(#loc34)
+    cir.br ^bb6 loc(#loc35)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc28)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc26)
+  } loc(#loc55)
+  cir.func no_proto internal private @good2() extra(#fn_attr1) {
+    cir.br ^bb1 loc(#loc58)
+  ^bb1:  // pred: ^bb0
+    %0 = cir.const #cir.int<6> : !s32i loc(#loc40)
+    cir.br ^bb2 loc(#loc38)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %0 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc38)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc41)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %1 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 12>> loc(#loc42)
+    %2 = cir.cast(array_to_ptrdecay, %1 : !cir.ptr<!cir.array<!s8i x 12>>), !cir.ptr<!s8i> loc(#loc42)
+    cir.call @printLine(%2) : (!cir.ptr<!s8i>) -> () loc(#loc43)
+    cir.br ^bb6 loc(#loc44)
+  ^bb5:  // pred: ^bb2
+    %3 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc45)
+    %4 = cir.cast(array_to_ptrdecay, %3 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc45)
+    cir.call @printLine(%4) : (!cir.ptr<!s8i>) -> () loc(#loc46)
+    cir.br ^bb6 loc(#loc47)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc39)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc37)
+  } loc(#loc57)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE526_Info_Exposure_Environment_Variables/CWE526_Info_Exposure_Environment_Variables__basic_15.c":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("/usr/include/stdlib.h":773:1)
+#loc4 = loc("/usr/include/stdlib.h":773:50)
+#loc5 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":26:26)
+#loc6 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":30:19)
+#loc7 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":20:1)
+#loc8 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":33:1)
+#loc9 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":22:5)
+#loc10 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":32:5)
+#loc11 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":22:12)
+#loc12 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":24:5)
+#loc13 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":26:19)
+#loc14 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":26:9)
+#loc15 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":27:9)
+#loc16 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":30:9)
+#loc17 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":31:9)
+#loc18 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":71:1)
+#loc19 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":75:1)
+#loc20 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":73:5)
+#loc21 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":73:11)
+#loc22 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":74:5)
+#loc23 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":74:11)
+#loc24 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":50:19)
+#loc25 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":40:1)
+#loc26 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":53:1)
+#loc27 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":42:5)
+#loc28 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":52:5)
+#loc29 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":42:12)
+#loc30 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":44:5)
+#loc31 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":46:19)
+#loc32 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":46:9)
+#loc33 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":47:9)
+#loc34 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":50:9)
+#loc35 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":51:9)
+#loc36 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":56:1)
+#loc37 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":69:1)
+#loc38 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":58:5)
+#loc39 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":68:5)
+#loc40 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":58:12)
+#loc41 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":60:5)
+#loc42 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":62:19)
+#loc43 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":62:9)
+#loc44 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":63:9)
+#loc45 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":66:19)
+#loc46 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":66:9)
+#loc47 = loc("CWE526_Info_Exposure_Environment_Variables__basic_15.c":67:9)
+#loc48 = loc(fused[#loc1, #loc2])
+#loc49 = loc(fused[#loc3, #loc4])
+#loc50 = loc(fused[#loc7, #loc8])
+#loc51 = loc(fused[#loc9, #loc10])
+#loc52 = loc(fused[#loc18, #loc19])
+#loc53 = loc(fused[#loc20, #loc21])
+#loc54 = loc(fused[#loc22, #loc23])
+#loc55 = loc(fused[#loc25, #loc26])
+#loc56 = loc(fused[#loc27, #loc28])
+#loc57 = loc(fused[#loc36, #loc37])
+#loc58 = loc(fused[#loc38, #loc39])

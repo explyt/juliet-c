@@ -1,0 +1,98 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc6 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":25:62)
+#loc7 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":25:69)
+#loc8 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":25:73)
+#loc27 = loc(fused[#loc7, #loc8])
+!ty_anon_struct = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.struct<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_base = !cir.struct<class "CWE400_Resource_Exhaustion__fscanf_for_loop_81::CWE400_Resource_Exhaustion__fscanf_for_loop_81_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B = !cir.struct<class "CWE400_Resource_Exhaustion__fscanf_for_loop_81::CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B" {!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE400_Resource_Exhaustion/s01/CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc25)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"Hello\00" : !cir.array<!s8i x 6>> : !cir.array<!s8i x 6> {alignment = 1 : i64} loc(#loc3)
+  cir.func @_ZNK46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B6actionEi(%arg0: !cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B> loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":25:62), %arg1: !s32i loc(fused[#loc7, #loc8])) extra(#fn_attr) {
+    %0 = cir.alloca !u64i, !cir.ptr<!u64i>, ["i", init] {alignment = 8 : i64} loc(#loc28)
+    %1 = cir.alloca !cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc6)
+    %2 = cir.alloca !s32i, !cir.ptr<!s32i>, ["count", init] {alignment = 4 : i64} loc(#loc27)
+    cir.store %arg0, %1 : !cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B>> loc(#loc11)
+    cir.store %arg1, %2 : !s32i, !cir.ptr<!s32i> loc(#loc11)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B>>, !cir.ptr<!ty_CWE400_Resource_Exhaustion__fscanf_for_loop_813A3ACWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B> loc(#loc6)
+    cir.br ^bb1 loc(#loc29)
+  ^bb1:  // pred: ^bb0
+    %4 = cir.const #cir.int<0> : !s32i loc(#loc10)
+    %5 = cir.cast(integral, %4 : !s32i), !u64i loc(#loc10)
+    cir.store %5, %0 : !u64i, !cir.ptr<!u64i> loc(#loc28)
+    cir.br ^bb2 loc(#loc30)
+  ^bb2:  // pred: ^bb1
+    %6 = cir.const #cir.int<0> : !s32i loc(#loc16)
+    %7 = cir.cast(integral, %6 : !s32i), !u64i loc(#loc16)
+    cir.store %7, %0 : !u64i, !cir.ptr<!u64i> loc(#loc31)
+    cir.br ^bb3 loc(#loc30)
+  ^bb3:  // 2 preds: ^bb2, ^bb5
+    %8 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc18)
+    %9 = cir.load %2 : !cir.ptr<!s32i>, !s32i loc(#loc19)
+    %10 = cir.cast(integral, %9 : !s32i), !u64i loc(#loc19)
+    %11 = cir.cmp(lt, %8, %10) : !u64i, !cir.bool loc(#loc32)
+    cir.brcond %11 ^bb4, ^bb6 loc(#loc32)
+  ^bb4:  // pred: ^bb3
+    %12 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 6>> loc(#loc3)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 6>>), !cir.ptr<!s8i> loc(#loc3)
+    cir.call @printLine(%13) : (!cir.ptr<!s8i>) -> () loc(#loc20)
+    cir.br ^bb5 loc(#loc15)
+  ^bb5:  // pred: ^bb4
+    %14 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc21)
+    %15 = cir.unary(inc, %14) : !u64i, !u64i loc(#loc22)
+    cir.store %15, %0 : !u64i, !cir.ptr<!u64i> loc(#loc33)
+    cir.br ^bb3 loc(#loc30)
+  ^bb6:  // pred: ^bb3
+    cir.br ^bb7 loc(#loc15)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc13)
+  ^bb8:  // pred: ^bb7
+    cir.return loc(#loc5)
+  } loc(#loc26)
+  cir.global external dsolocal @_ZTVN46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2BE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B6actionEi> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc34)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc23)
+  cir.global external @_ZTSN46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2BE = #cir.const_array<"N46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2BE" : !cir.array<!s8i x 106>> : !cir.array<!s8i x 106> {alignment = 1 : i64} loc(#loc23)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc23)
+  cir.global linkonce_odr comdat @_ZTSN46CWE400_Resource_Exhaustion__fscanf_for_loop_8151CWE400_Resource_Exhaustion__fscanf_for_loop_81_baseE = #cir.const_array<"N46CWE400_Resource_Exhaustion__fscanf_for_loop_8151CWE400_Resource_Exhaustion__fscanf_for_loop_81_baseE" : !cir.array<!s8i x 103>> : !cir.array<!s8i x 103> {alignment = 1 : i64} loc(#loc23)
+  cir.global constant external @_ZTIN46CWE400_Resource_Exhaustion__fscanf_for_loop_8151CWE400_Resource_Exhaustion__fscanf_for_loop_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN46CWE400_Resource_Exhaustion__fscanf_for_loop_8151CWE400_Resource_Exhaustion__fscanf_for_loop_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc23)
+  cir.global constant external @_ZTIN46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2BE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN46CWE400_Resource_Exhaustion__fscanf_for_loop_8154CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN46CWE400_Resource_Exhaustion__fscanf_for_loop_8151CWE400_Resource_Exhaustion__fscanf_for_loop_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc23)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE400_Resource_Exhaustion/s01/CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":32:23)
+#loc4 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":25:1)
+#loc5 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":35:1)
+#loc9 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":28:9)
+#loc10 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":28:20)
+#loc11 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":26:1)
+#loc12 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":27:5)
+#loc13 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":34:5)
+#loc14 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:9)
+#loc15 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":33:9)
+#loc16 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:18)
+#loc17 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:14)
+#loc18 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:21)
+#loc19 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:33)
+#loc20 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":32:13)
+#loc21 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:41)
+#loc22 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_81_goodG2B.cpp":30:40)
+#loc23 = loc("./CWE400_Resource_Exhaustion__fscanf_for_loop_81.h":42:1)
+#loc24 = loc("./CWE400_Resource_Exhaustion__fscanf_for_loop_81.h":46:1)
+#loc25 = loc(fused[#loc1, #loc2])
+#loc26 = loc(fused[#loc4, #loc5])
+#loc28 = loc(fused[#loc9, #loc10])
+#loc29 = loc(fused[#loc12, #loc13])
+#loc30 = loc(fused[#loc14, #loc15])
+#loc31 = loc(fused[#loc17, #loc16])
+#loc32 = loc(fused[#loc18, #loc19])
+#loc33 = loc(fused[#loc22, #loc21])
+#loc34 = loc(fused[#loc23, #loc24])

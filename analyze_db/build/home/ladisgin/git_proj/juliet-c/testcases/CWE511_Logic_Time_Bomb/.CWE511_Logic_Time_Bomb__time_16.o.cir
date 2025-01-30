@@ -1,0 +1,156 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE511_Logic_Time_Bomb/CWE511_Logic_Time_Bomb__time_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @time(!cir.ptr<!s64i>) -> !s64i extra(#fn_attr) loc(#loc47)
+  cir.func private @unlink(!cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc48)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"important_file.txt\00" : !cir.array<!s8i x 19>> : !cir.array<!s8i x 19> {alignment = 1 : i64} loc(#loc5)
+  cir.func no_proto @CWE511_Logic_Time_Bomb__time_16_bad() extra(#fn_attr1) {
+    %0 = cir.alloca !s64i, !cir.ptr<!s64i>, ["currentTime"] {alignment = 8 : i64} loc(#loc50)
+    cir.br ^bb1 loc(#loc51)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc51)
+  ^bb2:  // pred: ^bb1
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc12)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc12)
+    cir.brcond %2 ^bb3, ^bb10 loc(#loc12)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc52)
+  ^bb4:  // pred: ^bb3
+    %3 = cir.call @time(%0) : (!cir.ptr<!s64i>) -> !s64i extra(#fn_attr) loc(#loc15)
+    cir.br ^bb5 loc(#loc53)
+  ^bb5:  // pred: ^bb4
+    %4 = cir.load %0 : !cir.ptr<!s64i>, !s64i loc(#loc18)
+    %5 = cir.const #cir.int<1199163600> : !s32i loc(#loc19)
+    %6 = cir.cast(integral, %5 : !s32i), !s64i loc(#loc19)
+    %7 = cir.cmp(gt, %4, %6) : !s64i, !cir.bool loc(#loc54)
+    cir.brcond %7 ^bb6, ^bb7 loc(#loc55)
+  ^bb6:  // pred: ^bb5
+    %8 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 19>> loc(#loc5)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 19>>), !cir.ptr<!s8i> loc(#loc5)
+    %10 = cir.call @unlink(%9) : (!cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc21)
+    cir.br ^bb7 loc(#loc17)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    cir.br ^bb8 loc(#loc17)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc14)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc22)
+  ^bb10:  // 2 preds: ^bb2, ^bb9
+    cir.br ^bb11 loc(#loc11)
+  ^bb11:  // pred: ^bb10
+    cir.return loc(#loc7)
+  } loc(#loc49)
+  cir.func no_proto @CWE511_Logic_Time_Bomb__time_16_good() extra(#fn_attr1) {
+    %0 = cir.get_global @good1 : !cir.ptr<!cir.func<!void ()>> loc(#loc57)
+    cir.call %0() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc25)
+    cir.return loc(#loc24)
+  } loc(#loc56)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc58)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"Happy New Year!\00" : !cir.array<!s8i x 16>> : !cir.array<!s8i x 16> {alignment = 1 : i64} loc(#loc29)
+  cir.func no_proto internal private @good1() extra(#fn_attr1) {
+    %0 = cir.alloca !s64i, !cir.ptr<!s64i>, ["currentTime"] {alignment = 8 : i64} loc(#loc60)
+    cir.br ^bb1 loc(#loc61)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc61)
+  ^bb2:  // pred: ^bb1
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc36)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc36)
+    cir.brcond %2 ^bb3, ^bb10 loc(#loc36)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc62)
+  ^bb4:  // pred: ^bb3
+    %3 = cir.call @time(%0) : (!cir.ptr<!s64i>) -> !s64i extra(#fn_attr) loc(#loc39)
+    cir.br ^bb5 loc(#loc63)
+  ^bb5:  // pred: ^bb4
+    %4 = cir.load %0 : !cir.ptr<!s64i>, !s64i loc(#loc42)
+    %5 = cir.const #cir.int<1199163600> : !s32i loc(#loc43)
+    %6 = cir.cast(integral, %5 : !s32i), !s64i loc(#loc43)
+    %7 = cir.cmp(gt, %4, %6) : !s64i, !cir.bool loc(#loc64)
+    cir.brcond %7 ^bb6, ^bb7 loc(#loc65)
+  ^bb6:  // pred: ^bb5
+    %8 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 16>> loc(#loc29)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 16>>), !cir.ptr<!s8i> loc(#loc29)
+    cir.call @printLine(%9) : (!cir.ptr<!s8i>) -> () loc(#loc45)
+    cir.br ^bb7 loc(#loc41)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    cir.br ^bb8 loc(#loc41)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc38)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc46)
+  ^bb10:  // 2 preds: ^bb2, ^bb9
+    cir.br ^bb11 loc(#loc35)
+  ^bb11:  // pred: ^bb10
+    cir.return loc(#loc31)
+  } loc(#loc59)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE511_Logic_Time_Bomb/CWE511_Logic_Time_Bomb__time_16.c":0:0)
+#loc1 = loc("/usr/include/time.h":76:1)
+#loc2 = loc("/usr/include/time.h":76:38)
+#loc3 = loc("/usr/include/unistd.h":858:1)
+#loc4 = loc("/usr/include/unistd.h":858:48)
+#loc5 = loc("CWE511_Logic_Time_Bomb__time_16.c":41:24)
+#loc6 = loc("CWE511_Logic_Time_Bomb__time_16.c":31:1)
+#loc7 = loc("CWE511_Logic_Time_Bomb__time_16.c":46:1)
+#loc8 = loc("CWE511_Logic_Time_Bomb__time_16.c":36:13)
+#loc9 = loc("CWE511_Logic_Time_Bomb__time_16.c":36:20)
+#loc10 = loc("CWE511_Logic_Time_Bomb__time_16.c":33:5)
+#loc11 = loc("CWE511_Logic_Time_Bomb__time_16.c":45:5)
+#loc12 = loc("CWE511_Logic_Time_Bomb__time_16.c":33:11)
+#loc13 = loc("CWE511_Logic_Time_Bomb__time_16.c":35:9)
+#loc14 = loc("CWE511_Logic_Time_Bomb__time_16.c":43:9)
+#loc15 = loc("CWE511_Logic_Time_Bomb__time_16.c":38:13)
+#loc16 = loc("CWE511_Logic_Time_Bomb__time_16.c":39:13)
+#loc17 = loc("CWE511_Logic_Time_Bomb__time_16.c":42:13)
+#loc18 = loc("CWE511_Logic_Time_Bomb__time_16.c":39:17)
+#loc19 = loc("CWE511_Logic_Time_Bomb__time_16.c":39:31)
+#loc20 = loc("CWE511_Logic_Time_Bomb__time_16.c":40:13)
+#loc21 = loc("CWE511_Logic_Time_Bomb__time_16.c":41:17)
+#loc22 = loc("CWE511_Logic_Time_Bomb__time_16.c":44:9)
+#loc23 = loc("CWE511_Logic_Time_Bomb__time_16.c":70:1)
+#loc24 = loc("CWE511_Logic_Time_Bomb__time_16.c":73:1)
+#loc25 = loc("CWE511_Logic_Time_Bomb__time_16.c":72:5)
+#loc26 = loc("CWE511_Logic_Time_Bomb__time_16.c":72:11)
+#loc27 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc28 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc29 = loc("CWE511_Logic_Time_Bomb__time_16.c":63:27)
+#loc30 = loc("CWE511_Logic_Time_Bomb__time_16.c":53:1)
+#loc31 = loc("CWE511_Logic_Time_Bomb__time_16.c":68:1)
+#loc32 = loc("CWE511_Logic_Time_Bomb__time_16.c":58:13)
+#loc33 = loc("CWE511_Logic_Time_Bomb__time_16.c":58:20)
+#loc34 = loc("CWE511_Logic_Time_Bomb__time_16.c":55:5)
+#loc35 = loc("CWE511_Logic_Time_Bomb__time_16.c":67:5)
+#loc36 = loc("CWE511_Logic_Time_Bomb__time_16.c":55:11)
+#loc37 = loc("CWE511_Logic_Time_Bomb__time_16.c":57:9)
+#loc38 = loc("CWE511_Logic_Time_Bomb__time_16.c":65:9)
+#loc39 = loc("CWE511_Logic_Time_Bomb__time_16.c":60:13)
+#loc40 = loc("CWE511_Logic_Time_Bomb__time_16.c":61:13)
+#loc41 = loc("CWE511_Logic_Time_Bomb__time_16.c":64:13)
+#loc42 = loc("CWE511_Logic_Time_Bomb__time_16.c":61:17)
+#loc43 = loc("CWE511_Logic_Time_Bomb__time_16.c":61:31)
+#loc44 = loc("CWE511_Logic_Time_Bomb__time_16.c":62:13)
+#loc45 = loc("CWE511_Logic_Time_Bomb__time_16.c":63:17)
+#loc46 = loc("CWE511_Logic_Time_Bomb__time_16.c":66:9)
+#loc47 = loc(fused[#loc1, #loc2])
+#loc48 = loc(fused[#loc3, #loc4])
+#loc49 = loc(fused[#loc6, #loc7])
+#loc50 = loc(fused[#loc8, #loc9])
+#loc51 = loc(fused[#loc10, #loc11])
+#loc52 = loc(fused[#loc13, #loc14])
+#loc53 = loc(fused[#loc16, #loc17])
+#loc54 = loc(fused[#loc18, #loc19])
+#loc55 = loc(fused[#loc20, #loc17])
+#loc56 = loc(fused[#loc23, #loc24])
+#loc57 = loc(fused[#loc25, #loc26])
+#loc58 = loc(fused[#loc27, #loc28])
+#loc59 = loc(fused[#loc30, #loc31])
+#loc60 = loc(fused[#loc32, #loc33])
+#loc61 = loc(fused[#loc34, #loc35])
+#loc62 = loc(fused[#loc37, #loc38])
+#loc63 = loc(fused[#loc40, #loc41])
+#loc64 = loc(fused[#loc42, #loc43])
+#loc65 = loc(fused[#loc44, #loc41])

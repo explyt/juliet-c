@@ -1,0 +1,659 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_multiply_15.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i64 = dense<64> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc207)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc3)
+  cir.func private @printIntLine(!s32i) loc(#loc208)
+  cir.func no_proto @CWE190_Integer_Overflow__int_max_multiply_15_bad() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc210)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc211)
+    %2 = cir.const #cir.int<0> : !s32i loc(#loc12)
+    cir.store %2, %1 : !s32i, !cir.ptr<!s32i> loc(#loc212)
+    cir.br ^bb1 loc(#loc213)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc16)
+    cir.br ^bb2 loc(#loc14)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc14)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc17)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<2147483647> : !s32i loc(#loc18)
+    cir.store %4, %1 : !s32i, !cir.ptr<!s32i> loc(#loc214)
+    cir.br ^bb6 loc(#loc20)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc3)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc3)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc21)
+    cir.br ^bb6 loc(#loc22)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc15)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc215)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc25)
+    cir.br ^bb9 loc(#loc23)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb16 [
+      7: ^bb11
+    ] loc(#loc23)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc26)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    cir.br ^bb12 loc(#loc216)
+  ^bb12:  // pred: ^bb11
+    %8 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc29)
+    %9 = cir.const #cir.int<0> : !s32i loc(#loc30)
+    %10 = cir.cmp(gt, %8, %9) : !s32i, !cir.bool loc(#loc217)
+    cir.brcond %10 ^bb13, ^bb14 loc(#loc218)
+  ^bb13:  // pred: ^bb12
+    %11 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc32)
+    %12 = cir.const #cir.int<2> : !s32i loc(#loc9)
+    %13 = cir.binop(mul, %11, %12) nsw : !s32i loc(#loc32)
+    cir.store %13, %0 : !s32i, !cir.ptr<!s32i> loc(#loc210)
+    %14 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc33)
+    cir.call @printIntLine(%14) : (!s32i) -> () loc(#loc34)
+    cir.br ^bb14 loc(#loc28)
+  ^bb14:  // 2 preds: ^bb12, ^bb13
+    cir.br ^bb15 loc(#loc28)
+  ^bb15:  // pred: ^bb14
+    cir.br ^bb17 loc(#loc35)
+  ^bb16:  // pred: ^bb9
+    %15 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc36)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc36)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc37)
+    cir.br ^bb17 loc(#loc38)
+  ^bb17:  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc24)
+  ^bb18:  // pred: ^bb17
+    cir.return loc(#loc7)
+  } loc(#loc209)
+  cir.func no_proto @CWE190_Integer_Overflow__int_max_multiply_15_good() extra(#fn_attr) {
+    %0 = cir.get_global @goodB2G1 : !cir.ptr<!cir.func<!void ()>> loc(#loc220)
+    cir.call %0() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc41)
+    %1 = cir.get_global @goodB2G2 : !cir.ptr<!cir.func<!void ()>> loc(#loc221)
+    cir.call %1() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc43)
+    %2 = cir.get_global @goodG2B1 : !cir.ptr<!cir.func<!void ()>> loc(#loc222)
+    cir.call %2() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc45)
+    %3 = cir.get_global @goodG2B2 : !cir.ptr<!cir.func<!void ()>> loc(#loc223)
+    cir.call %3() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc47)
+    cir.return loc(#loc40)
+  } loc(#loc219)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"data value is too large to perform arithmetic safely.\00" : !cir.array<!s8i x 54>> : !cir.array<!s8i x 54> {alignment = 1 : i64} loc(#loc49)
+  cir.func no_proto internal private @goodB2G1() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc225)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc226)
+    %2 = cir.const #cir.int<0> : !s32i loc(#loc56)
+    cir.store %2, %1 : !s32i, !cir.ptr<!s32i> loc(#loc227)
+    cir.br ^bb1 loc(#loc228)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc60)
+    cir.br ^bb2 loc(#loc58)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc58)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc61)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<2147483647> : !s32i loc(#loc62)
+    cir.store %4, %1 : !s32i, !cir.ptr<!s32i> loc(#loc229)
+    cir.br ^bb6 loc(#loc64)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc65)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc65)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc66)
+    cir.br ^bb6 loc(#loc67)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc59)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc230)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<8> : !s32i loc(#loc70)
+    cir.br ^bb9 loc(#loc68)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc68)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc71)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %8 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc72)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc72)
+    cir.call @printLine(%9) : (!cir.ptr<!s8i>) -> () loc(#loc73)
+    cir.br ^bb22 loc(#loc74)
+  ^bb12:  // pred: ^bb9
+    cir.br ^bb13 loc(#loc231)
+  ^bb13:  // pred: ^bb12
+    %10 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc77)
+    %11 = cir.const #cir.int<0> : !s32i loc(#loc78)
+    %12 = cir.cmp(gt, %10, %11) : !s32i, !cir.bool loc(#loc232)
+    cir.brcond %12 ^bb14, ^bb20 loc(#loc233)
+  ^bb14:  // pred: ^bb13
+    cir.br ^bb15 loc(#loc234)
+  ^bb15:  // pred: ^bb14
+    %13 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc82)
+    %14 = cir.const #cir.int<2147483647> : !s32i loc(#loc83)
+    %15 = cir.const #cir.int<2> : !s32i loc(#loc84)
+    %16 = cir.binop(div, %14, %15) : !s32i loc(#loc235)
+    %17 = cir.cmp(lt, %13, %16) : !s32i, !cir.bool loc(#loc236)
+    cir.brcond %17 ^bb16, ^bb17 loc(#loc237)
+  ^bb16:  // pred: ^bb15
+    %18 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc89)
+    %19 = cir.const #cir.int<2> : !s32i loc(#loc53)
+    %20 = cir.binop(mul, %18, %19) nsw : !s32i loc(#loc89)
+    cir.store %20, %0 : !s32i, !cir.ptr<!s32i> loc(#loc225)
+    %21 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc90)
+    cir.call @printIntLine(%21) : (!s32i) -> () loc(#loc91)
+    cir.br ^bb18 loc(#loc87)
+  ^bb17:  // pred: ^bb15
+    %22 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 54>> loc(#loc49)
+    %23 = cir.cast(array_to_ptrdecay, %22 : !cir.ptr<!cir.array<!s8i x 54>>), !cir.ptr<!s8i> loc(#loc49)
+    cir.call @printLine(%23) : (!cir.ptr<!s8i>) -> () loc(#loc92)
+    cir.br ^bb18 loc(#loc81)
+  ^bb18:  // 2 preds: ^bb16, ^bb17
+    cir.br ^bb19 loc(#loc81)
+  ^bb19:  // pred: ^bb18
+    cir.br ^bb20 loc(#loc76)
+  ^bb20:  // 2 preds: ^bb13, ^bb19
+    cir.br ^bb21 loc(#loc76)
+  ^bb21:  // pred: ^bb20
+    cir.br ^bb22 loc(#loc93)
+  ^bb22:  // 2 preds: ^bb11, ^bb21
+    cir.br ^bb23 loc(#loc69)
+  ^bb23:  // pred: ^bb22
+    cir.return loc(#loc51)
+  } loc(#loc224)
+  cir.func no_proto internal private @goodB2G2() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc239)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc240)
+    %2 = cir.const #cir.int<0> : !s32i loc(#loc100)
+    cir.store %2, %1 : !s32i, !cir.ptr<!s32i> loc(#loc241)
+    cir.br ^bb1 loc(#loc242)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc104)
+    cir.br ^bb2 loc(#loc102)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc102)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc105)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<2147483647> : !s32i loc(#loc106)
+    cir.store %4, %1 : !s32i, !cir.ptr<!s32i> loc(#loc243)
+    cir.br ^bb6 loc(#loc108)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc109)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc109)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc110)
+    cir.br ^bb6 loc(#loc111)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc103)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc244)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc114)
+    cir.br ^bb9 loc(#loc112)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb21 [
+      7: ^bb11
+    ] loc(#loc112)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc115)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    cir.br ^bb12 loc(#loc245)
+  ^bb12:  // pred: ^bb11
+    %8 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc118)
+    %9 = cir.const #cir.int<0> : !s32i loc(#loc119)
+    %10 = cir.cmp(gt, %8, %9) : !s32i, !cir.bool loc(#loc246)
+    cir.brcond %10 ^bb13, ^bb19 loc(#loc247)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc248)
+  ^bb14:  // pred: ^bb13
+    %11 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc123)
+    %12 = cir.const #cir.int<2147483647> : !s32i loc(#loc124)
+    %13 = cir.const #cir.int<2> : !s32i loc(#loc125)
+    %14 = cir.binop(div, %12, %13) : !s32i loc(#loc249)
+    %15 = cir.cmp(lt, %11, %14) : !s32i, !cir.bool loc(#loc250)
+    cir.brcond %15 ^bb15, ^bb16 loc(#loc251)
+  ^bb15:  // pred: ^bb14
+    %16 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc130)
+    %17 = cir.const #cir.int<2> : !s32i loc(#loc97)
+    %18 = cir.binop(mul, %16, %17) nsw : !s32i loc(#loc130)
+    cir.store %18, %0 : !s32i, !cir.ptr<!s32i> loc(#loc239)
+    %19 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc131)
+    cir.call @printIntLine(%19) : (!s32i) -> () loc(#loc132)
+    cir.br ^bb17 loc(#loc128)
+  ^bb16:  // pred: ^bb14
+    %20 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 54>> loc(#loc133)
+    %21 = cir.cast(array_to_ptrdecay, %20 : !cir.ptr<!cir.array<!s8i x 54>>), !cir.ptr<!s8i> loc(#loc133)
+    cir.call @printLine(%21) : (!cir.ptr<!s8i>) -> () loc(#loc134)
+    cir.br ^bb17 loc(#loc122)
+  ^bb17:  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc122)
+  ^bb18:  // pred: ^bb17
+    cir.br ^bb19 loc(#loc117)
+  ^bb19:  // 2 preds: ^bb12, ^bb18
+    cir.br ^bb20 loc(#loc117)
+  ^bb20:  // pred: ^bb19
+    cir.br ^bb22 loc(#loc135)
+  ^bb21:  // pred: ^bb9
+    %22 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc136)
+    %23 = cir.cast(array_to_ptrdecay, %22 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc136)
+    cir.call @printLine(%23) : (!cir.ptr<!s8i>) -> () loc(#loc137)
+    cir.br ^bb22 loc(#loc138)
+  ^bb22:  // 2 preds: ^bb20, ^bb21
+    cir.br ^bb23 loc(#loc113)
+  ^bb23:  // pred: ^bb22
+    cir.return loc(#loc95)
+  } loc(#loc238)
+  cir.func no_proto internal private @goodG2B1() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc253)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc254)
+    %2 = cir.const #cir.int<0> : !s32i loc(#loc145)
+    cir.store %2, %1 : !s32i, !cir.ptr<!s32i> loc(#loc255)
+    cir.br ^bb1 loc(#loc256)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc149)
+    cir.br ^bb2 loc(#loc147)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc147)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc150)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc151)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc151)
+    cir.call @printLine(%5) : (!cir.ptr<!s8i>) -> () loc(#loc152)
+    cir.br ^bb6 loc(#loc153)
+  ^bb5:  // pred: ^bb2
+    %6 = cir.const #cir.int<2> : !s32i loc(#loc154)
+    cir.store %6, %1 : !s32i, !cir.ptr<!s32i> loc(#loc257)
+    cir.br ^bb6 loc(#loc156)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc148)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc258)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc159)
+    cir.br ^bb9 loc(#loc157)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb16 [
+      7: ^bb11
+    ] loc(#loc157)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc160)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    cir.br ^bb12 loc(#loc259)
+  ^bb12:  // pred: ^bb11
+    %8 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc163)
+    %9 = cir.const #cir.int<0> : !s32i loc(#loc164)
+    %10 = cir.cmp(gt, %8, %9) : !s32i, !cir.bool loc(#loc260)
+    cir.brcond %10 ^bb13, ^bb14 loc(#loc261)
+  ^bb13:  // pred: ^bb12
+    %11 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc166)
+    %12 = cir.const #cir.int<2> : !s32i loc(#loc142)
+    %13 = cir.binop(mul, %11, %12) nsw : !s32i loc(#loc166)
+    cir.store %13, %0 : !s32i, !cir.ptr<!s32i> loc(#loc253)
+    %14 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc167)
+    cir.call @printIntLine(%14) : (!s32i) -> () loc(#loc168)
+    cir.br ^bb14 loc(#loc162)
+  ^bb14:  // 2 preds: ^bb12, ^bb13
+    cir.br ^bb15 loc(#loc162)
+  ^bb15:  // pred: ^bb14
+    cir.br ^bb17 loc(#loc169)
+  ^bb16:  // pred: ^bb9
+    %15 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc170)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc170)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc171)
+    cir.br ^bb17 loc(#loc172)
+  ^bb17:  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc158)
+  ^bb18:  // pred: ^bb17
+    cir.return loc(#loc140)
+  } loc(#loc252)
+  cir.func no_proto internal private @goodG2B2() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc263)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc264)
+    %2 = cir.const #cir.int<0> : !s32i loc(#loc179)
+    cir.store %2, %1 : !s32i, !cir.ptr<!s32i> loc(#loc265)
+    cir.br ^bb1 loc(#loc266)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc183)
+    cir.br ^bb2 loc(#loc181)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc181)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc184)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<2> : !s32i loc(#loc185)
+    cir.store %4, %1 : !s32i, !cir.ptr<!s32i> loc(#loc267)
+    cir.br ^bb6 loc(#loc187)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc188)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc188)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc189)
+    cir.br ^bb6 loc(#loc190)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc182)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc268)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc193)
+    cir.br ^bb9 loc(#loc191)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb16 [
+      7: ^bb11
+    ] loc(#loc191)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc194)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    cir.br ^bb12 loc(#loc269)
+  ^bb12:  // pred: ^bb11
+    %8 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc197)
+    %9 = cir.const #cir.int<0> : !s32i loc(#loc198)
+    %10 = cir.cmp(gt, %8, %9) : !s32i, !cir.bool loc(#loc270)
+    cir.brcond %10 ^bb13, ^bb14 loc(#loc271)
+  ^bb13:  // pred: ^bb12
+    %11 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc200)
+    %12 = cir.const #cir.int<2> : !s32i loc(#loc176)
+    %13 = cir.binop(mul, %11, %12) nsw : !s32i loc(#loc200)
+    cir.store %13, %0 : !s32i, !cir.ptr<!s32i> loc(#loc263)
+    %14 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc201)
+    cir.call @printIntLine(%14) : (!s32i) -> () loc(#loc202)
+    cir.br ^bb14 loc(#loc196)
+  ^bb14:  // 2 preds: ^bb12, ^bb13
+    cir.br ^bb15 loc(#loc196)
+  ^bb15:  // pred: ^bb14
+    cir.br ^bb17 loc(#loc203)
+  ^bb16:  // pred: ^bb9
+    %15 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc204)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc204)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc205)
+    cir.br ^bb17 loc(#loc206)
+  ^bb17:  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc192)
+  ^bb18:  // pred: ^bb17
+    cir.return loc(#loc174)
+  } loc(#loc262)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE190_Integer_Overflow/s03/CWE190_Integer_Overflow__int_max_multiply_15.c":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":35:19)
+#loc4 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc5 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc6 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":22:1)
+#loc7 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":53:1)
+#loc8 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":44:13)
+#loc9 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":44:33)
+#loc10 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":24:5)
+#loc11 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":24:9)
+#loc12 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":26:12)
+#loc13 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":26:5)
+#loc14 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":27:5)
+#loc15 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":37:5)
+#loc16 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":27:12)
+#loc17 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":29:5)
+#loc18 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":31:16)
+#loc19 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":31:9)
+#loc20 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":32:9)
+#loc21 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":35:9)
+#loc22 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":36:9)
+#loc23 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":38:5)
+#loc24 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":52:5)
+#loc25 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":38:12)
+#loc26 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":40:5)
+#loc27 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":41:9)
+#loc28 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":46:9)
+#loc29 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":41:12)
+#loc30 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":41:19)
+#loc31 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":42:9)
+#loc32 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":44:26)
+#loc33 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":45:26)
+#loc34 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":45:13)
+#loc35 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":47:9)
+#loc36 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":50:19)
+#loc37 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":50:9)
+#loc38 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":51:9)
+#loc39 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":209:1)
+#loc40 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":215:1)
+#loc41 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":211:5)
+#loc42 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":211:14)
+#loc43 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":212:5)
+#loc44 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":212:14)
+#loc45 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":213:5)
+#loc46 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":213:14)
+#loc47 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":214:5)
+#loc48 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":214:14)
+#loc49 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":93:27)
+#loc50 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":60:1)
+#loc51 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":98:1)
+#loc52 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":88:17)
+#loc53 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":88:37)
+#loc54 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":62:5)
+#loc55 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":62:9)
+#loc56 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":64:12)
+#loc57 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":64:5)
+#loc58 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":65:5)
+#loc59 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":75:5)
+#loc60 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":65:12)
+#loc61 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":67:5)
+#loc62 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":69:16)
+#loc63 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":69:9)
+#loc64 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":70:9)
+#loc65 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":73:19)
+#loc66 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":73:9)
+#loc67 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":74:9)
+#loc68 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":76:5)
+#loc69 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":97:5)
+#loc70 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":76:12)
+#loc71 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":78:5)
+#loc72 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":80:19)
+#loc73 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":80:9)
+#loc74 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":81:9)
+#loc75 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":83:9)
+#loc76 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":95:9)
+#loc77 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":83:12)
+#loc78 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":83:19)
+#loc79 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":84:9)
+#loc80 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":86:13)
+#loc81 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":94:13)
+#loc82 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":86:17)
+#loc83 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":86:25)
+#loc84 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":86:33)
+#loc85 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":86:34)
+#loc86 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":87:13)
+#loc87 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":90:13)
+#loc88 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":92:13)
+#loc89 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":88:30)
+#loc90 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":89:30)
+#loc91 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":89:17)
+#loc92 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":93:17)
+#loc93 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":96:9)
+#loc94 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":101:1)
+#loc95 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":139:1)
+#loc96 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":125:17)
+#loc97 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":125:37)
+#loc98 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":103:5)
+#loc99 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":103:9)
+#loc100 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":105:12)
+#loc101 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":105:5)
+#loc102 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":106:5)
+#loc103 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":116:5)
+#loc104 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":106:12)
+#loc105 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":108:5)
+#loc106 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":110:16)
+#loc107 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":110:9)
+#loc108 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":111:9)
+#loc109 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":114:19)
+#loc110 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":114:9)
+#loc111 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":115:9)
+#loc112 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":117:5)
+#loc113 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":138:5)
+#loc114 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":117:12)
+#loc115 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":119:5)
+#loc116 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":120:9)
+#loc117 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":132:9)
+#loc118 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":120:12)
+#loc119 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":120:19)
+#loc120 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":121:9)
+#loc121 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":123:13)
+#loc122 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":131:13)
+#loc123 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":123:17)
+#loc124 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":123:25)
+#loc125 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":123:33)
+#loc126 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":123:34)
+#loc127 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":124:13)
+#loc128 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":127:13)
+#loc129 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":129:13)
+#loc130 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":125:30)
+#loc131 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":126:30)
+#loc132 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":126:17)
+#loc133 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":130:27)
+#loc134 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":130:17)
+#loc135 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":133:9)
+#loc136 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":136:19)
+#loc137 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":136:9)
+#loc138 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":137:9)
+#loc139 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":142:1)
+#loc140 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":173:1)
+#loc141 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":164:13)
+#loc142 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":164:33)
+#loc143 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":144:5)
+#loc144 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":144:9)
+#loc145 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":146:12)
+#loc146 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":146:5)
+#loc147 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":147:5)
+#loc148 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":157:5)
+#loc149 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":147:12)
+#loc150 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":149:5)
+#loc151 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":151:19)
+#loc152 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":151:9)
+#loc153 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":152:9)
+#loc154 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":155:16)
+#loc155 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":155:9)
+#loc156 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":156:9)
+#loc157 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":158:5)
+#loc158 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":172:5)
+#loc159 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":158:12)
+#loc160 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":160:5)
+#loc161 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":161:9)
+#loc162 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":166:9)
+#loc163 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":161:12)
+#loc164 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":161:19)
+#loc165 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":162:9)
+#loc166 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":164:26)
+#loc167 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":165:26)
+#loc168 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":165:13)
+#loc169 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":167:9)
+#loc170 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":170:19)
+#loc171 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":170:9)
+#loc172 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":171:9)
+#loc173 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":176:1)
+#loc174 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":207:1)
+#loc175 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":198:13)
+#loc176 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":198:33)
+#loc177 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":178:5)
+#loc178 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":178:9)
+#loc179 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":180:12)
+#loc180 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":180:5)
+#loc181 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":181:5)
+#loc182 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":191:5)
+#loc183 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":181:12)
+#loc184 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":183:5)
+#loc185 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":185:16)
+#loc186 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":185:9)
+#loc187 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":186:9)
+#loc188 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":189:19)
+#loc189 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":189:9)
+#loc190 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":190:9)
+#loc191 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":192:5)
+#loc192 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":206:5)
+#loc193 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":192:12)
+#loc194 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":194:5)
+#loc195 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":195:9)
+#loc196 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":200:9)
+#loc197 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":195:12)
+#loc198 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":195:19)
+#loc199 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":196:9)
+#loc200 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":198:26)
+#loc201 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":199:26)
+#loc202 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":199:13)
+#loc203 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":201:9)
+#loc204 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":204:19)
+#loc205 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":204:9)
+#loc206 = loc("CWE190_Integer_Overflow__int_max_multiply_15.c":205:9)
+#loc207 = loc(fused[#loc1, #loc2])
+#loc208 = loc(fused[#loc4, #loc5])
+#loc209 = loc(fused[#loc6, #loc7])
+#loc210 = loc(fused[#loc8, #loc9])
+#loc211 = loc(fused[#loc10, #loc11])
+#loc212 = loc(fused[#loc13, #loc12])
+#loc213 = loc(fused[#loc14, #loc15])
+#loc214 = loc(fused[#loc19, #loc18])
+#loc215 = loc(fused[#loc23, #loc24])
+#loc216 = loc(fused[#loc27, #loc28])
+#loc217 = loc(fused[#loc29, #loc30])
+#loc218 = loc(fused[#loc31, #loc28])
+#loc219 = loc(fused[#loc39, #loc40])
+#loc220 = loc(fused[#loc41, #loc42])
+#loc221 = loc(fused[#loc43, #loc44])
+#loc222 = loc(fused[#loc45, #loc46])
+#loc223 = loc(fused[#loc47, #loc48])
+#loc224 = loc(fused[#loc50, #loc51])
+#loc225 = loc(fused[#loc52, #loc53])
+#loc226 = loc(fused[#loc54, #loc55])
+#loc227 = loc(fused[#loc57, #loc56])
+#loc228 = loc(fused[#loc58, #loc59])
+#loc229 = loc(fused[#loc63, #loc62])
+#loc230 = loc(fused[#loc68, #loc69])
+#loc231 = loc(fused[#loc75, #loc76])
+#loc232 = loc(fused[#loc77, #loc78])
+#loc233 = loc(fused[#loc79, #loc76])
+#loc234 = loc(fused[#loc80, #loc81])
+#loc235 = loc(fused[#loc83, #loc84])
+#loc236 = loc(fused[#loc82, #loc85])
+#loc237 = loc(fused[#loc86, #loc87, #loc88, #loc81])
+#loc238 = loc(fused[#loc94, #loc95])
+#loc239 = loc(fused[#loc96, #loc97])
+#loc240 = loc(fused[#loc98, #loc99])
+#loc241 = loc(fused[#loc101, #loc100])
+#loc242 = loc(fused[#loc102, #loc103])
+#loc243 = loc(fused[#loc107, #loc106])
+#loc244 = loc(fused[#loc112, #loc113])
+#loc245 = loc(fused[#loc116, #loc117])
+#loc246 = loc(fused[#loc118, #loc119])
+#loc247 = loc(fused[#loc120, #loc117])
+#loc248 = loc(fused[#loc121, #loc122])
+#loc249 = loc(fused[#loc124, #loc125])
+#loc250 = loc(fused[#loc123, #loc126])
+#loc251 = loc(fused[#loc127, #loc128, #loc129, #loc122])
+#loc252 = loc(fused[#loc139, #loc140])
+#loc253 = loc(fused[#loc141, #loc142])
+#loc254 = loc(fused[#loc143, #loc144])
+#loc255 = loc(fused[#loc146, #loc145])
+#loc256 = loc(fused[#loc147, #loc148])
+#loc257 = loc(fused[#loc155, #loc154])
+#loc258 = loc(fused[#loc157, #loc158])
+#loc259 = loc(fused[#loc161, #loc162])
+#loc260 = loc(fused[#loc163, #loc164])
+#loc261 = loc(fused[#loc165, #loc162])
+#loc262 = loc(fused[#loc173, #loc174])
+#loc263 = loc(fused[#loc175, #loc176])
+#loc264 = loc(fused[#loc177, #loc178])
+#loc265 = loc(fused[#loc180, #loc179])
+#loc266 = loc(fused[#loc181, #loc182])
+#loc267 = loc(fused[#loc186, #loc185])
+#loc268 = loc(fused[#loc191, #loc192])
+#loc269 = loc(fused[#loc195, #loc196])
+#loc270 = loc(fused[#loc197, #loc198])
+#loc271 = loc(fused[#loc199, #loc196])

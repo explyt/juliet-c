@@ -1,0 +1,52 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc5 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":25:81)
+#loc6 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":25:88)
+#loc7 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":25:103)
+!ty_TwoIntsClass = !cir.struct<class "TwoIntsClass" {!s32i, !s32i} #cir.record.decl.ast>
+#loc15 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.struct<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_base = !cir.struct<class "CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82::CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad = !cir.struct<class "CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82::CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad" {!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s05/CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @free(!cir.ptr<!void>) extra(#fn_attr) loc(#loc13)
+  cir.func @_ZN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad6actionEP12TwoIntsClass(%arg0: !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad> loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":25:81), %arg1: !cir.ptr<!ty_TwoIntsClass> loc(fused[#loc6, #loc7])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !cir.ptr<!ty_TwoIntsClass>, !cir.ptr<!cir.ptr<!ty_TwoIntsClass>>, ["data", init] {alignment = 8 : i64} loc(#loc15)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad>> loc(#loc8)
+    cir.store %arg1, %1 : !cir.ptr<!ty_TwoIntsClass>, !cir.ptr<!cir.ptr<!ty_TwoIntsClass>> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad>>, !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_823A3ACWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad> loc(#loc5)
+    %3 = cir.get_global @free : !cir.ptr<!cir.func<!void (!cir.ptr<!void>)>> loc(#loc9)
+    %4 = cir.load %1 : !cir.ptr<!cir.ptr<!ty_TwoIntsClass>>, !cir.ptr<!ty_TwoIntsClass> loc(#loc10)
+    %5 = cir.cast(bitcast, %4 : !cir.ptr<!ty_TwoIntsClass>), !cir.ptr<!void> loc(#loc10)
+    cir.call @free(%5) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc9)
+    cir.return loc(#loc4)
+  } loc(#loc14)
+  cir.global external dsolocal @_ZTVN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad6actionEP12TwoIntsClass> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc16)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc11)
+  cir.global external @_ZTSN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_badE = #cir.const_array<"N69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_badE" : !cir.array<!s8i x 148>> : !cir.array<!s8i x 148> {alignment = 1 : i64} loc(#loc11)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc11)
+  cir.global linkonce_odr comdat @_ZTSN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8274CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_baseE = #cir.const_array<"N69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8274CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_baseE" : !cir.array<!s8i x 149>> : !cir.array<!s8i x 149> {alignment = 1 : i64} loc(#loc11)
+  cir.global constant external @_ZTIN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8274CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8274CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc11)
+  cir.global constant external @_ZTIN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8273CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN69CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_8274CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc11)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s05/CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":0:0)
+#loc1 = loc("/usr/include/stdlib.h":687:1)
+#loc2 = loc("/usr/include/stdlib.h":687:32)
+#loc3 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":25:1)
+#loc4 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":30:1)
+#loc8 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":26:1)
+#loc9 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":29:5)
+#loc10 = loc("CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82_bad.cpp":29:10)
+#loc11 = loc("./CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82.h":32:1)
+#loc12 = loc("./CWE762_Mismatched_Memory_Management_Routines__new_array_free_class_82.h":36:1)
+#loc13 = loc(fused[#loc1, #loc2])
+#loc14 = loc(fused[#loc3, #loc4])
+#loc16 = loc(fused[#loc11, #loc12])

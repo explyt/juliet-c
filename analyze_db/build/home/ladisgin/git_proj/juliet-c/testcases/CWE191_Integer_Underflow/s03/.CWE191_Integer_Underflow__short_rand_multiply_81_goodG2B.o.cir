@@ -1,0 +1,80 @@
+!s16i = !cir.int<s, 16>
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc5 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":25:64)
+#loc6 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":25:71)
+#loc7 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":25:77)
+#loc23 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.struct<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_base = !cir.struct<class "CWE191_Integer_Underflow__short_rand_multiply_81::CWE191_Integer_Underflow__short_rand_multiply_81_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B = !cir.struct<class "CWE191_Integer_Underflow__short_rand_multiply_81::CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B" {!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @printIntLine(!s32i) loc(#loc21)
+  cir.func @_ZNK48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B6actionEs(%arg0: !cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B> loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":25:64), %arg1: !s16i loc(fused[#loc6, #loc7])) extra(#fn_attr) {
+    %0 = cir.alloca !s16i, !cir.ptr<!s16i>, ["result", init] {alignment = 2 : i64} loc(#loc24)
+    %1 = cir.alloca !cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %2 = cir.alloca !s16i, !cir.ptr<!s16i>, ["data", init] {alignment = 2 : i64} loc(#loc23)
+    cir.store %arg0, %1 : !cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B>> loc(#loc10)
+    cir.store %arg1, %2 : !s16i, !cir.ptr<!s16i> loc(#loc10)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B>>, !cir.ptr<!ty_CWE191_Integer_Underflow__short_rand_multiply_813A3ACWE191_Integer_Underflow__short_rand_multiply_81_goodG2B> loc(#loc5)
+    cir.br ^bb1 loc(#loc25)
+  ^bb1:  // pred: ^bb0
+    %4 = cir.load %2 : !cir.ptr<!s16i>, !s16i loc(#loc13)
+    %5 = cir.cast(integral, %4 : !s16i), !s32i loc(#loc13)
+    %6 = cir.const #cir.int<0> : !s32i loc(#loc14)
+    %7 = cir.cmp(lt, %5, %6) : !s32i, !cir.bool loc(#loc26)
+    cir.brcond %7 ^bb2, ^bb3 loc(#loc27)
+  ^bb2:  // pred: ^bb1
+    %8 = cir.load %2 : !cir.ptr<!s16i>, !s16i loc(#loc16)
+    %9 = cir.cast(integral, %8 : !s16i), !s32i loc(#loc16)
+    %10 = cir.const #cir.int<2> : !s32i loc(#loc9)
+    %11 = cir.binop(mul, %9, %10) nsw : !s32i loc(#loc16)
+    %12 = cir.cast(integral, %11 : !s32i), !s16i loc(#loc16)
+    cir.store %12, %0 : !s16i, !cir.ptr<!s16i> loc(#loc24)
+    %13 = cir.load %0 : !cir.ptr<!s16i>, !s16i loc(#loc17)
+    %14 = cir.cast(integral, %13 : !s16i), !s32i loc(#loc17)
+    cir.call @printIntLine(%14) : (!s32i) -> () loc(#loc18)
+    cir.br ^bb3 loc(#loc12)
+  ^bb3:  // 2 preds: ^bb1, ^bb2
+    cir.br ^bb4 loc(#loc12)
+  ^bb4:  // pred: ^bb3
+    cir.return loc(#loc4)
+  } loc(#loc22)
+  cir.global external dsolocal @_ZTVN48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2BE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B6actionEs> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc28)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc19)
+  cir.global external @_ZTSN48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2BE = #cir.const_array<"N48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2BE" : !cir.array<!s8i x 110>> : !cir.array<!s8i x 110> {alignment = 1 : i64} loc(#loc19)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc19)
+  cir.global linkonce_odr comdat @_ZTSN48CWE191_Integer_Underflow__short_rand_multiply_8153CWE191_Integer_Underflow__short_rand_multiply_81_baseE = #cir.const_array<"N48CWE191_Integer_Underflow__short_rand_multiply_8153CWE191_Integer_Underflow__short_rand_multiply_81_baseE" : !cir.array<!s8i x 107>> : !cir.array<!s8i x 107> {alignment = 1 : i64} loc(#loc19)
+  cir.global constant external @_ZTIN48CWE191_Integer_Underflow__short_rand_multiply_8153CWE191_Integer_Underflow__short_rand_multiply_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN48CWE191_Integer_Underflow__short_rand_multiply_8153CWE191_Integer_Underflow__short_rand_multiply_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc19)
+  cir.global constant external @_ZTIN48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2BE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN48CWE191_Integer_Underflow__short_rand_multiply_8156CWE191_Integer_Underflow__short_rand_multiply_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN48CWE191_Integer_Underflow__short_rand_multiply_8153CWE191_Integer_Underflow__short_rand_multiply_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc19)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE191_Integer_Underflow/s03/CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc3 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":25:1)
+#loc4 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":33:1)
+#loc8 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":30:9)
+#loc9 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":30:31)
+#loc10 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":26:1)
+#loc11 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":27:5)
+#loc12 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":32:5)
+#loc13 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":27:8)
+#loc14 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":27:15)
+#loc15 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":28:5)
+#loc16 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":30:24)
+#loc17 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":31:22)
+#loc18 = loc("CWE191_Integer_Underflow__short_rand_multiply_81_goodG2B.cpp":31:9)
+#loc19 = loc("./CWE191_Integer_Underflow__short_rand_multiply_81.h":42:1)
+#loc20 = loc("./CWE191_Integer_Underflow__short_rand_multiply_81.h":46:1)
+#loc21 = loc(fused[#loc1, #loc2])
+#loc22 = loc(fused[#loc3, #loc4])
+#loc24 = loc(fused[#loc8, #loc9])
+#loc25 = loc(fused[#loc11, #loc12])
+#loc26 = loc(fused[#loc13, #loc14])
+#loc27 = loc(fused[#loc15, #loc12])
+#loc28 = loc(fused[#loc19, #loc20])

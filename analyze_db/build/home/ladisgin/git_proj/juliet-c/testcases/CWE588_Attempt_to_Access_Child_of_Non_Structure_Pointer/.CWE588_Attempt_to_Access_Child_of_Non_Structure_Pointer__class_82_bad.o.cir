@@ -1,0 +1,54 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone})>
+#loc5 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":24:77)
+#loc6 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":24:84)
+#loc7 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":24:91)
+!ty_TwoIntsClass = !cir.struct<class "TwoIntsClass" {!s32i, !s32i} #cir.record.decl.ast>
+#loc17 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.struct<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.struct<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_base = !cir.struct<class "CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82::CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_base" {!cir.ptr<!cir.ptr<!cir.func<!u32i ()>>>} #cir.record.decl.ast>
+!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad = !cir.struct<class "CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82::CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad" {!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_base} #cir.record.decl.ast>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer/CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printIntLine(!s32i) loc(#loc15)
+  cir.func @_ZN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad6actionEPv(%arg0: !cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad> loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":24:77), %arg1: !cir.ptr<!void> loc(fused[#loc6, #loc7])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !cir.ptr<!void>, !cir.ptr<!cir.ptr<!void>>, ["data", init] {alignment = 8 : i64} loc(#loc17)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad>> loc(#loc8)
+    cir.store %arg1, %1 : !cir.ptr<!void>, !cir.ptr<!cir.ptr<!void>> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad>>, !cir.ptr<!ty_CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_823A3ACWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad> loc(#loc5)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!void>>, !cir.ptr<!void> loc(#loc9)
+    %4 = cir.cast(bitcast, %3 : !cir.ptr<!void>), !cir.ptr<!ty_TwoIntsClass> loc(#loc9)
+    %5 = cir.get_member %4[1] {name = "intTwo"} : !cir.ptr<!ty_TwoIntsClass> -> !cir.ptr<!s32i> loc(#loc10)
+    %6 = cir.load %5 : !cir.ptr<!s32i>, !s32i loc(#loc11)
+    cir.call @printIntLine(%6) : (!s32i) -> () loc(#loc12)
+    cir.return loc(#loc4)
+  } loc(#loc16)
+  cir.global external dsolocal @_ZTVN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad6actionEPv> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc18)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc13)
+  cir.global external @_ZTSN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_badE = #cir.const_array<"N65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_badE" : !cir.array<!s8i x 140>> : !cir.array<!s8i x 140> {alignment = 1 : i64} loc(#loc13)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc13)
+  cir.global linkonce_odr comdat @_ZTSN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8270CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_baseE = #cir.const_array<"N65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8270CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_baseE" : !cir.array<!s8i x 141>> : !cir.array<!s8i x 141> {alignment = 1 : i64} loc(#loc13)
+  cir.global constant external @_ZTIN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8270CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8270CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc13)
+  cir.global constant external @_ZTIN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8269CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN65CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_8270CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc13)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer/CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase_io.h":18:1)
+#loc2 = loc("../../testcasesupport/std_testcase_io.h":18:33)
+#loc3 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":24:1)
+#loc4 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":28:1)
+#loc8 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":25:1)
+#loc9 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":27:52)
+#loc10 = loc("../../testcasesupport/std_testcase.h":65:13)
+#loc11 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":27:60)
+#loc12 = loc("CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82_bad.cpp":27:5)
+#loc13 = loc("./CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82.h":31:1)
+#loc14 = loc("./CWE588_Attempt_to_Access_Child_of_Non_Structure_Pointer__class_82.h":35:1)
+#loc15 = loc(fused[#loc1, #loc2])
+#loc16 = loc(fused[#loc3, #loc4])
+#loc18 = loc(fused[#loc13, #loc14])

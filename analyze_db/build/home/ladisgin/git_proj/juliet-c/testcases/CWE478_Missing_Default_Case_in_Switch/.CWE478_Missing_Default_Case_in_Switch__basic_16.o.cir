@@ -1,0 +1,217 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone})>
+module @"/home/ladisgin/git_proj/juliet-c/testcases/CWE478_Missing_Default_Case_in_Switch/CWE478_Missing_Default_Case_in_Switch__basic_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", dlti.dl_spec = #dlti.dl_spec<i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"shouldn't see this value\00" : !cir.array<!s8i x 25>> : !cir.array<!s8i x 25> {alignment = 1 : i64} loc(#loc1)
+  cir.func private @rand() -> !s32i extra(#fn_attr) loc(#loc66)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"0\00" : !cir.array<!s8i x 2>> : !cir.array<!s8i x 2> {alignment = 1 : i64} loc(#loc4)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"1\00" : !cir.array<!s8i x 2>> : !cir.array<!s8i x 2> {alignment = 1 : i64} loc(#loc5)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc67)
+  cir.func no_proto @CWE478_Missing_Default_Case_in_Switch__basic_16_bad() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["charString", init] {alignment = 8 : i64} loc(#loc69)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x"] {alignment = 4 : i64} loc(#loc70)
+    cir.br ^bb1 loc(#loc71)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc71)
+  ^bb2:  // pred: ^bb1
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc15)
+    %3 = cir.cast(int_to_bool, %2 : !s32i), !cir.bool loc(#loc15)
+    cir.brcond %3 ^bb3, ^bb13 loc(#loc15)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc72)
+  ^bb4:  // pred: ^bb3
+    %4 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 25>> loc(#loc1)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 25>>), !cir.ptr<!s8i> loc(#loc1)
+    cir.store %5, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc69)
+    %6 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc18)
+    %7 = cir.const #cir.int<3> : !s32i loc(#loc19)
+    %8 = cir.binop(rem, %6, %7) : !s32i loc(#loc73)
+    cir.store %8, %1 : !s32i, !cir.ptr<!s32i> loc(#loc74)
+    cir.br ^bb5 loc(#loc75)
+  ^bb5:  // pred: ^bb4
+    %9 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc24)
+    cir.br ^bb6 loc(#loc22)
+  ^bb6:  // pred: ^bb5
+    cir.switch.flat %9 : !s32i, ^bb10 [
+      0: ^bb8,
+      1: ^bb9
+    ] loc(#loc22)
+  ^bb7:  // no predecessors
+    cir.br ^bb8 loc(#loc25)
+  ^bb8:  // 2 preds: ^bb6, ^bb7
+    %10 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc4)
+    %11 = cir.cast(array_to_ptrdecay, %10 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc4)
+    cir.store %11, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc76)
+    cir.br ^bb10 loc(#loc27)
+  ^bb9:  // pred: ^bb6
+    %12 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc5)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc5)
+    cir.store %13, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc77)
+    cir.br ^bb10 loc(#loc29)
+  ^bb10:  // 3 preds: ^bb6, ^bb8, ^bb9
+    cir.br ^bb11 loc(#loc23)
+  ^bb11:  // pred: ^bb10
+    %14 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc30)
+    cir.call @printLine(%14) : (!cir.ptr<!s8i>) -> () loc(#loc31)
+    cir.br ^bb12 loc(#loc17)
+  ^bb12:  // pred: ^bb11
+    cir.br ^bb13 loc(#loc32)
+  ^bb13:  // 2 preds: ^bb2, ^bb12
+    cir.br ^bb14 loc(#loc14)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc9)
+  } loc(#loc68)
+  cir.func no_proto @CWE478_Missing_Default_Case_in_Switch__basic_16_good() extra(#fn_attr1) {
+    %0 = cir.get_global @good1 : !cir.ptr<!cir.func<!void ()>> loc(#loc79)
+    cir.call %0() : (!cir.ptr<!cir.func<!void ()>>) -> () loc(#loc35)
+    cir.return loc(#loc34)
+  } loc(#loc78)
+  cir.func no_proto internal private @good1() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["charString", init] {alignment = 8 : i64} loc(#loc81)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x"] {alignment = 4 : i64} loc(#loc82)
+    cir.br ^bb1 loc(#loc83)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc83)
+  ^bb2:  // pred: ^bb1
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc45)
+    %3 = cir.cast(int_to_bool, %2 : !s32i), !cir.bool loc(#loc45)
+    cir.brcond %3 ^bb3, ^bb14 loc(#loc45)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc84)
+  ^bb4:  // pred: ^bb3
+    %4 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 25>> loc(#loc40)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 25>>), !cir.ptr<!s8i> loc(#loc40)
+    cir.store %5, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc81)
+    %6 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc48)
+    %7 = cir.const #cir.int<3> : !s32i loc(#loc49)
+    %8 = cir.binop(rem, %6, %7) : !s32i loc(#loc85)
+    cir.store %8, %1 : !s32i, !cir.ptr<!s32i> loc(#loc86)
+    cir.br ^bb5 loc(#loc87)
+  ^bb5:  // pred: ^bb4
+    %9 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc54)
+    cir.br ^bb6 loc(#loc52)
+  ^bb6:  // pred: ^bb5
+    cir.switch.flat %9 : !s32i, ^bb10 [
+      0: ^bb8,
+      1: ^bb9
+    ] loc(#loc52)
+  ^bb7:  // no predecessors
+    cir.br ^bb8 loc(#loc55)
+  ^bb8:  // 2 preds: ^bb6, ^bb7
+    %10 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc56)
+    %11 = cir.cast(array_to_ptrdecay, %10 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc56)
+    cir.store %11, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc88)
+    cir.br ^bb11 loc(#loc58)
+  ^bb9:  // pred: ^bb6
+    %12 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc59)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc59)
+    cir.store %13, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc89)
+    cir.br ^bb11 loc(#loc61)
+  ^bb10:  // pred: ^bb6
+    cir.return loc(#loc62)
+  ^bb11:  // 2 preds: ^bb8, ^bb9
+    cir.br ^bb12 loc(#loc53)
+  ^bb12:  // pred: ^bb11
+    %14 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc63)
+    cir.call @printLine(%14) : (!cir.ptr<!s8i>) -> () loc(#loc64)
+    cir.br ^bb13 loc(#loc47)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc65)
+  ^bb14:  // 2 preds: ^bb2, ^bb13
+    cir.br ^bb15 loc(#loc44)
+  ^bb15:  // pred: ^bb14
+    cir.return loc(#loc38)
+  } loc(#loc80)
+} loc(#loc)
+#loc = loc("/home/ladisgin/git_proj/juliet-c/testcases/CWE478_Missing_Default_Case_in_Switch/CWE478_Missing_Default_Case_in_Switch__basic_16.c":0:0)
+#loc1 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":25:38)
+#loc2 = loc("/usr/include/stdlib.h":573:1)
+#loc3 = loc("/usr/include/stdlib.h":573:24)
+#loc4 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":31:30)
+#loc5 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":34:30)
+#loc6 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc7 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc8 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":20:1)
+#loc9 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":42:1)
+#loc10 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":25:13)
+#loc11 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":26:13)
+#loc12 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":26:17)
+#loc13 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":22:5)
+#loc14 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":41:5)
+#loc15 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":22:11)
+#loc16 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":24:9)
+#loc17 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":39:9)
+#loc18 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":27:18)
+#loc19 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":27:27)
+#loc20 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":27:13)
+#loc21 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":27:28)
+#loc22 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":28:13)
+#loc23 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":37:13)
+#loc24 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":28:21)
+#loc25 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":30:13)
+#loc26 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":31:17)
+#loc27 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":32:17)
+#loc28 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":34:17)
+#loc29 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":35:17)
+#loc30 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":38:23)
+#loc31 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":38:13)
+#loc32 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":40:9)
+#loc33 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":75:1)
+#loc34 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":78:1)
+#loc35 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":77:5)
+#loc36 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":77:11)
+#loc37 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":49:1)
+#loc38 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":73:1)
+#loc39 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":54:13)
+#loc40 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":54:38)
+#loc41 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":55:13)
+#loc42 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":55:17)
+#loc43 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":51:5)
+#loc44 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":72:5)
+#loc45 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":51:11)
+#loc46 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":53:9)
+#loc47 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":70:9)
+#loc48 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":56:18)
+#loc49 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":56:27)
+#loc50 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":56:13)
+#loc51 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":56:28)
+#loc52 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":57:13)
+#loc53 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":68:13)
+#loc54 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":57:21)
+#loc55 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":59:13)
+#loc56 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":60:30)
+#loc57 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":60:17)
+#loc58 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":61:17)
+#loc59 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":63:30)
+#loc60 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":63:17)
+#loc61 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":64:17)
+#loc62 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":67:17)
+#loc63 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":69:23)
+#loc64 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":69:13)
+#loc65 = loc("CWE478_Missing_Default_Case_in_Switch__basic_16.c":71:9)
+#loc66 = loc(fused[#loc2, #loc3])
+#loc67 = loc(fused[#loc6, #loc7])
+#loc68 = loc(fused[#loc8, #loc9])
+#loc69 = loc(fused[#loc10, #loc1])
+#loc70 = loc(fused[#loc11, #loc12])
+#loc71 = loc(fused[#loc13, #loc14])
+#loc72 = loc(fused[#loc16, #loc17])
+#loc73 = loc(fused[#loc18, #loc19])
+#loc74 = loc(fused[#loc20, #loc21])
+#loc75 = loc(fused[#loc22, #loc23])
+#loc76 = loc(fused[#loc26, #loc4])
+#loc77 = loc(fused[#loc28, #loc5])
+#loc78 = loc(fused[#loc33, #loc34])
+#loc79 = loc(fused[#loc35, #loc36])
+#loc80 = loc(fused[#loc37, #loc38])
+#loc81 = loc(fused[#loc39, #loc40])
+#loc82 = loc(fused[#loc41, #loc42])
+#loc83 = loc(fused[#loc43, #loc44])
+#loc84 = loc(fused[#loc46, #loc47])
+#loc85 = loc(fused[#loc48, #loc49])
+#loc86 = loc(fused[#loc50, #loc51])
+#loc87 = loc(fused[#loc52, #loc53])
+#loc88 = loc(fused[#loc57, #loc56])
+#loc89 = loc(fused[#loc60, #loc59])
