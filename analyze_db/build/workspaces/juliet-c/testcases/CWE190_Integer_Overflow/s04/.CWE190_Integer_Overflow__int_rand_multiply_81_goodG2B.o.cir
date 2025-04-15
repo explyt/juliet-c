@@ -1,0 +1,71 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc5 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":25:61)
+#loc6 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":25:68)
+#loc7 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":25:72)
+#loc23 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_base = !cir.record<class "CWE190_Integer_Overflow__int_rand_multiply_81::CWE190_Integer_Overflow__int_rand_multiply_81_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B = !cir.record<class "CWE190_Integer_Overflow__int_rand_multiply_81::CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B" {!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, "dlti.mangling_mode" = "e", "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printIntLine(!s32i) loc(#loc21)
+  cir.func @_ZNK45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B6actionEi(%arg0: !cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B> loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":25:61), %arg1: !s32i loc(fused[#loc6, #loc7])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc23)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B>> loc(#loc8)
+    cir.store %arg1, %1 : !s32i, !cir.ptr<!s32i> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B>>, !cir.ptr<!ty_CWE190_Integer_Overflow__int_rand_multiply_813A3ACWE190_Integer_Overflow__int_rand_multiply_81_goodG2B> loc(#loc5)
+    cir.scope {
+      %3 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc11)
+      %4 = cir.const #cir.int<0> : !s32i loc(#loc12)
+      %5 = cir.cmp(gt, %3, %4) : !s32i, !cir.bool loc(#loc25)
+      cir.if %5 {
+        %6 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc27)
+        %7 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc16)
+        %8 = cir.const #cir.int<2> : !s32i loc(#loc15)
+        %9 = cir.binop(mul, %7, %8) nsw : !s32i loc(#loc16)
+        cir.store %9, %6 : !s32i, !cir.ptr<!s32i> loc(#loc27)
+        %10 = cir.load %6 : !cir.ptr<!s32i>, !s32i loc(#loc17)
+        cir.call @printIntLine(%10) : (!s32i) -> () loc(#loc18)
+      } loc(#loc26)
+    } loc(#loc24)
+    cir.return loc(#loc4)
+  } loc(#loc22)
+  cir.global external dsolocal @_ZTVN45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2BE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B6actionEi> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc28)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc19)
+  cir.global external @_ZTSN45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2BE = #cir.const_array<"N45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2BE" : !cir.array<!s8i x 104>> : !cir.array<!s8i x 104> {alignment = 1 : i64} loc(#loc19)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc19)
+  cir.global linkonce_odr comdat @_ZTSN45CWE190_Integer_Overflow__int_rand_multiply_8150CWE190_Integer_Overflow__int_rand_multiply_81_baseE = #cir.const_array<"N45CWE190_Integer_Overflow__int_rand_multiply_8150CWE190_Integer_Overflow__int_rand_multiply_81_baseE" : !cir.array<!s8i x 101>> : !cir.array<!s8i x 101> {alignment = 1 : i64} loc(#loc19)
+  cir.global constant external @_ZTIN45CWE190_Integer_Overflow__int_rand_multiply_8150CWE190_Integer_Overflow__int_rand_multiply_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN45CWE190_Integer_Overflow__int_rand_multiply_8150CWE190_Integer_Overflow__int_rand_multiply_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc19)
+  cir.global constant external @_ZTIN45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2BE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN45CWE190_Integer_Overflow__int_rand_multiply_8153CWE190_Integer_Overflow__int_rand_multiply_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN45CWE190_Integer_Overflow__int_rand_multiply_8150CWE190_Integer_Overflow__int_rand_multiply_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc19)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE190_Integer_Overflow/s04/CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc3 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":25:1)
+#loc4 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":33:1)
+#loc8 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":26:1)
+#loc9 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":27:5)
+#loc10 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":32:5)
+#loc11 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":27:8)
+#loc12 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":27:15)
+#loc13 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":28:5)
+#loc14 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":30:9)
+#loc15 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":30:29)
+#loc16 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":30:22)
+#loc17 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":31:22)
+#loc18 = loc("CWE190_Integer_Overflow__int_rand_multiply_81_goodG2B.cpp":31:9)
+#loc19 = loc("./CWE190_Integer_Overflow__int_rand_multiply_81.h":42:1)
+#loc20 = loc("./CWE190_Integer_Overflow__int_rand_multiply_81.h":46:1)
+#loc21 = loc(fused[#loc1, #loc2])
+#loc22 = loc(fused[#loc3, #loc4])
+#loc24 = loc(fused[#loc9, #loc10])
+#loc25 = loc(fused[#loc11, #loc12])
+#loc26 = loc(fused[#loc13, #loc10])
+#loc27 = loc(fused[#loc14, #loc15])
+#loc28 = loc(fused[#loc19, #loc20])

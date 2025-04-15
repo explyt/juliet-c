@@ -1,0 +1,113 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#false = #cir.bool<false> : !cir.bool
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc8 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":25:54)
+#loc9 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":25:61)
+#loc10 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":25:65)
+#true = #cir.bool<true> : !cir.bool
+#loc36 = loc(fused[#loc9, #loc10])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_base = !cir.record<class "CWE126_Buffer_Overread__CWE129_rand_82::CWE126_Buffer_Overread__CWE129_rand_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G = !cir.record<class "CWE126_Buffer_Overread__CWE129_rand_82::CWE126_Buffer_Overread__CWE129_rand_82_goodB2G" {!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e", "dlti.endianness" = "little">} {
+  cir.func private @printIntLine(!s32i) loc(#loc33)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc34)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"ERROR: Array index is out-of-bounds\00" : !cir.array<!s8i x 36>> : !cir.array<!s8i x 36> {alignment = 1 : i64} loc(#loc5)
+  cir.func @_ZN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2G6actionEi(%arg0: !cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G> loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":25:54), %arg1: !s32i loc(fused[#loc9, #loc10])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc8)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc36)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G>> loc(#loc11)
+    cir.store %arg1, %1 : !s32i, !cir.ptr<!s32i> loc(#loc11)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G>>, !cir.ptr<!ty_CWE126_Buffer_Overread__CWE129_rand_823A3ACWE126_Buffer_Overread__CWE129_rand_82_goodB2G> loc(#loc8)
+    cir.scope {
+      %3 = cir.alloca !cir.array<!s32i x 10>, !cir.ptr<!cir.array<!s32i x 10>>, ["buffer"] {alignment = 16 : i64} loc(#loc38)
+      %4 = cir.const #cir.zero : !cir.array<!s32i x 10> loc(#loc38)
+      cir.store %4, %3 : !cir.array<!s32i x 10>, !cir.ptr<!cir.array<!s32i x 10>> loc(#loc38)
+      cir.scope {
+        %5 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc18)
+        %6 = cir.const #cir.int<0> : !s32i loc(#loc19)
+        %7 = cir.cmp(ge, %5, %6) : !s32i, !cir.bool loc(#loc40)
+        %8 = cir.ternary(%7, true {
+          %9 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc21)
+          %10 = cir.const #cir.int<10> : !s32i loc(#loc22)
+          %11 = cir.cmp(lt, %9, %10) : !s32i, !cir.bool loc(#loc41)
+          %12 = cir.ternary(%11, true {
+            %13 = cir.const #true loc(#loc20)
+            cir.yield %13 : !cir.bool loc(#loc20)
+          }, false {
+            %13 = cir.const #false loc(#loc20)
+            cir.yield %13 : !cir.bool loc(#loc20)
+          }) : (!cir.bool) -> !cir.bool loc(#loc20)
+          cir.yield %12 : !cir.bool loc(#loc20)
+        }, false {
+          %9 = cir.const #false loc(#loc20)
+          cir.yield %9 : !cir.bool loc(#loc20)
+        }) : (!cir.bool) -> !cir.bool loc(#loc20)
+        cir.if %8 {
+          %9 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc27)
+          %10 = cir.cast(array_to_ptrdecay, %3 : !cir.ptr<!cir.array<!s32i x 10>>), !cir.ptr<!s32i> loc(#loc28)
+          %11 = cir.ptr_stride(%10 : !cir.ptr<!s32i>, %9 : !s32i), !cir.ptr<!s32i> loc(#loc28)
+          %12 = cir.load %11 : !cir.ptr<!s32i>, !s32i loc(#loc28)
+          cir.call @printIntLine(%12) : (!s32i) -> () loc(#loc29)
+        } else {
+          %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 36>> loc(#loc5)
+          %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 36>>), !cir.ptr<!s8i> loc(#loc5)
+          cir.call @printLine(%10) : (!cir.ptr<!s8i>) -> () loc(#loc30)
+        } loc(#loc42)
+      } loc(#loc39)
+    } loc(#loc37)
+    cir.return loc(#loc7)
+  } loc(#loc35)
+  cir.global external dsolocal @_ZTVN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2GE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2G6actionEi> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc43)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc31)
+  cir.global external @_ZTSN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2GE = #cir.const_array<"N38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2GE" : !cir.array<!s8i x 90>> : !cir.array<!s8i x 90> {alignment = 1 : i64} loc(#loc31)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc31)
+  cir.global linkonce_odr comdat @_ZTSN38CWE126_Buffer_Overread__CWE129_rand_8243CWE126_Buffer_Overread__CWE129_rand_82_baseE = #cir.const_array<"N38CWE126_Buffer_Overread__CWE129_rand_8243CWE126_Buffer_Overread__CWE129_rand_82_baseE" : !cir.array<!s8i x 87>> : !cir.array<!s8i x 87> {alignment = 1 : i64} loc(#loc31)
+  cir.global constant external @_ZTIN38CWE126_Buffer_Overread__CWE129_rand_8243CWE126_Buffer_Overread__CWE129_rand_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN38CWE126_Buffer_Overread__CWE129_rand_8243CWE126_Buffer_Overread__CWE129_rand_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc31)
+  cir.global constant external @_ZTIN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2GE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN38CWE126_Buffer_Overread__CWE129_rand_8246CWE126_Buffer_Overread__CWE129_rand_82_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN38CWE126_Buffer_Overread__CWE129_rand_8243CWE126_Buffer_Overread__CWE129_rand_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc31)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE126_Buffer_Overread/s01/CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc3 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc4 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc5 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":36:23)
+#loc6 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":25:1)
+#loc7 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":39:1)
+#loc11 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":26:1)
+#loc12 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":27:5)
+#loc13 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":38:5)
+#loc14 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":28:9)
+#loc15 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":28:30)
+#loc16 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:9)
+#loc17 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":37:9)
+#loc18 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:13)
+#loc19 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:21)
+#loc20 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:23)
+#loc21 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:26)
+#loc22 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:34)
+#loc23 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":30:36)
+#loc24 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":31:9)
+#loc25 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":33:9)
+#loc26 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":35:9)
+#loc27 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":32:33)
+#loc28 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":32:26)
+#loc29 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":32:13)
+#loc30 = loc("CWE126_Buffer_Overread__CWE129_rand_82_goodB2G.cpp":36:13)
+#loc31 = loc("./CWE126_Buffer_Overread__CWE129_rand_82.h":48:1)
+#loc32 = loc("./CWE126_Buffer_Overread__CWE129_rand_82.h":52:1)
+#loc33 = loc(fused[#loc1, #loc2])
+#loc34 = loc(fused[#loc3, #loc4])
+#loc35 = loc(fused[#loc6, #loc7])
+#loc37 = loc(fused[#loc12, #loc13])
+#loc38 = loc(fused[#loc14, #loc15])
+#loc39 = loc(fused[#loc16, #loc17])
+#loc40 = loc(fused[#loc18, #loc19])
+#loc41 = loc(fused[#loc21, #loc23])
+#loc42 = loc(fused[#loc24, #loc25, #loc26, #loc17])
+#loc43 = loc(fused[#loc31, #loc32])

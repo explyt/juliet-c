@@ -1,0 +1,418 @@
+!s16i = !cir.int<s, 16>
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!ty___locale_data = !cir.record<struct "__locale_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty___pthread_internal_list = !cir.record<struct "__pthread_internal_list" {!cir.ptr<!cir.record<struct "__pthread_internal_list">>, !cir.ptr<!cir.record<struct "__pthread_internal_list">>} #cir.record.decl.ast>
+!ty_anon2E0 = !cir.record<union "anon.0" {!u32i, !cir.array<!s8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Aios_base3A3A_Words = !cir.record<struct "std::ios_base::_Words" {!cir.ptr<!void>, !s64i} #cir.record.decl.ast>
+!ty___locale_struct = !cir.record<struct "__locale_struct" {!cir.array<!cir.ptr<!ty___locale_data> x 13>, !cir.ptr<!u16i>, !cir.ptr<!s32i>, !cir.ptr<!s32i>, !cir.array<!cir.ptr<!s8i> x 13>} #cir.record.decl.ast>
+!ty___mbstate_t = !cir.record<struct "__mbstate_t" {!s32i, !ty_anon2E0} #cir.record.decl.ast>
+!ty___pthread_mutex_s = !cir.record<struct "__pthread_mutex_s" {!s32i, !u32i, !s32i, !u32i, !s32i, !s16i, !s16i, !ty___pthread_internal_list} #cir.record.decl.ast>
+!ty_pthread_mutex_t = !cir.record<union "pthread_mutex_t" {!ty___pthread_mutex_s, !cir.array<!s8i x 40>, !s64i} #cir.record.decl.ast>
+!ty_std3A3A__basic_file3Cchar3E = !cir.record<class "std::__basic_file<char>" packed padded {!cir.ptr<!ty__IO_FILE>, !cir.bool, !cir.array<!u8i x 7>} #cir.record.decl.ast>
+!ty_std3A3Abasic_ostream3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_ostream<char, std::char_traits<char>>" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !cir.record<class "std::basic_ios<char, std::char_traits<char>>" {!cir.record<class "std::ios_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i, !s64i, !s32i, !s32i, !s32i, !cir.ptr<!cir.record<struct "std::ios_base::_Callback_list" {!cir.ptr<!cir.record<struct "std::ios_base::_Callback_list">>, !cir.ptr<!cir.func<(!u32i, !cir.ptr<!cir.record<class "std::ios_base">>, !s32i)>>, !s32i, !s32i} #cir.record.decl.ast>>, !ty_std3A3Aios_base3A3A_Words, !cir.array<!ty_std3A3Aios_base3A3A_Words x 8>, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Words>, !cir.record<class "std::locale" {!cir.ptr<!cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !u64i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>, !cir.ptr<!cir.record<class "std::basic_ostream<char, std::char_traits<char>>">>, !s8i, !cir.bool, !cir.ptr<!cir.record<class "std::basic_streambuf<char, std::char_traits<char>>" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.record<class "std::locale" {!cir.ptr<!cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !u64i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>>, !cir.ptr<!cir.record<class "std::ctype<char>" packed padded {!cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>, !cir.array<!u8i x 4>, !cir.ptr<!ty___locale_struct>, !cir.bool, !cir.array<!u8i x 7>, !cir.ptr<!s32i>, !cir.ptr<!s32i>, !cir.ptr<!u16i>, !s8i, !cir.array<!s8i x 256>, !cir.array<!s8i x 256>, !s8i, !cir.array<!u8i x 6>} #cir.record.decl.ast>>, !cir.ptr<!cir.record<class "std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char>>>" padded {!cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>, !cir.array<!u8i x 4>} #cir.record.decl.ast>>, !cir.ptr<!cir.record<class "std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char>>>" padded {!cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>, !cir.array<!u8i x 4>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>
+!ty_std3A3Abasic_ostream3Cchar2C_std3A3Achar_traits3Cchar3E3E2Ebase = !cir.record<class "std::basic_ostream<char, std::char_traits<char>>.base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_std3A3Aios_base3A3A_Callback_list = !cir.record<struct "std::ios_base::_Callback_list" {!cir.ptr<!cir.record<struct "std::ios_base::_Callback_list">>, !cir.ptr<!cir.func<(!u32i, !cir.ptr<!cir.record<class "std::ios_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i, !s64i, !s32i, !s32i, !s32i, !cir.ptr<!cir.record<struct "std::ios_base::_Callback_list">>, !ty_std3A3Aios_base3A3A_Words, !cir.array<!ty_std3A3Aios_base3A3A_Words x 8>, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Words>, !cir.record<class "std::locale" {!cir.ptr<!cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !u64i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>>, !s32i)>>, !s32i, !s32i} #cir.record.decl.ast>
+!ty_std3A3Alocale3A3Afacet = !cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Alocale3A3Afacet2Ebase = !cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>
+!ty_std3A3A__codecvt_abstract_base3Cchar2C_char2C___mbstate_t3E2Ebase = !cir.record<class "std::__codecvt_abstract_base<char, char, __mbstate_t>.base" {!ty_std3A3Alocale3A3Afacet2Ebase} #cir.record.decl.ast>
+!ty_std3A3Actype3Cchar3E = !cir.record<class "std::ctype<char>" packed padded {!ty_std3A3Alocale3A3Afacet2Ebase, !cir.array<!u8i x 4>, !cir.ptr<!ty___locale_struct>, !cir.bool, !cir.array<!u8i x 7>, !cir.ptr<!s32i>, !cir.ptr<!s32i>, !cir.ptr<!u16i>, !s8i, !cir.array<!s8i x 256>, !cir.array<!s8i x 256>, !s8i, !cir.array<!u8i x 6>} #cir.record.decl.ast>
+!ty_std3A3Anum_get3Cchar2C_std3A3Aistreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E = !cir.record<class "std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char>>>" padded {!ty_std3A3Alocale3A3Afacet2Ebase, !cir.array<!u8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Anum_put3Cchar2C_std3A3Aostreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E = !cir.record<class "std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char>>>" padded {!ty_std3A3Alocale3A3Afacet2Ebase, !cir.array<!u8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Acodecvt3Cchar2C_char2C___mbstate_t3E = !cir.record<class "std::codecvt<char, char, __mbstate_t>" {!ty_std3A3A__codecvt_abstract_base3Cchar2C_char2C___mbstate_t3E2Ebase, !cir.ptr<!ty___locale_struct>} #cir.record.decl.ast>
+!ty_std3A3Alocale3A3A_Impl = !cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!ty_std3A3Alocale3A3Afacet>>, !u64i, !cir.ptr<!cir.ptr<!ty_std3A3Alocale3A3Afacet>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>
+!ty_std3A3Alocale = !cir.record<class "std::locale" {!cir.ptr<!ty_std3A3Alocale3A3A_Impl>} #cir.record.decl.ast>
+!ty_std3A3Abasic_streambuf3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_streambuf<char, std::char_traits<char>>" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !ty_std3A3Alocale} #cir.record.decl.ast>
+!ty_std3A3Aios_base = !cir.record<class "std::ios_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i, !s64i, !s32i, !s32i, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Callback_list>, !ty_std3A3Aios_base3A3A_Words, !cir.array<!ty_std3A3Aios_base3A3A_Words x 8>, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Words>, !ty_std3A3Alocale} #cir.record.decl.ast>
+!ty_std3A3Abasic_filebuf3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_filebuf<char, std::char_traits<char>>" {!ty_std3A3Abasic_streambuf3Cchar2C_std3A3Achar_traits3Cchar3E3E, !ty_pthread_mutex_t, !ty_std3A3A__basic_file3Cchar3E, !s32i, !ty___mbstate_t, !ty___mbstate_t, !ty___mbstate_t, !cir.ptr<!s8i>, !u64i, !cir.bool, !cir.bool, !cir.bool, !s8i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.bool, !cir.ptr<!ty_std3A3Acodecvt3Cchar2C_char2C___mbstate_t3E>, !cir.ptr<!s8i>, !s64i, !cir.ptr<!s8i>, !cir.ptr<!s8i>} #cir.record.decl.ast>
+!ty_std3A3Abasic_ios3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_ios<char, std::char_traits<char>>" {!ty_std3A3Aios_base, !cir.ptr<!ty_std3A3Abasic_ostream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !s8i, !cir.bool, !cir.ptr<!ty_std3A3Abasic_streambuf3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!ty_std3A3Actype3Cchar3E>, !cir.ptr<!ty_std3A3Anum_put3Cchar2C_std3A3Aostreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E>, !cir.ptr<!ty_std3A3Anum_get3Cchar2C_std3A3Aistreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E>} #cir.record.decl.ast>
+!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_ofstream<char, std::char_traits<char>>" {!ty_std3A3Abasic_ostream3Cchar2C_std3A3Achar_traits3Cchar3E3E2Ebase, !ty_std3A3Abasic_filebuf3Cchar2C_std3A3Achar_traits3Cchar3E3E, !ty_std3A3Abasic_ios3Cchar2C_std3A3Achar_traits3Cchar3E3E}>
+module @"/workspaces/juliet-c/testcases/CWE36_Absolute_Path_Traversal/s02/CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<272> = dense<64> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @strlen(!cir.ptr<!s8i>) -> !u64i extra(#fn_attr) loc(#loc129)
+  cir.func private @getenv(!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc130)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"ADD\00" : !cir.array<!s8i x 4>> : !cir.array<!s8i x 4> {alignment = 1 : i64} loc(#loc5)
+  cir.func private @strncat(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u64i) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc131)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc132)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc10)
+  cir.func private @_ZNSt14basic_ofstreamIcSt11char_traitsIcEEC1Ev(!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) loc(#loc133)
+  cir.func private @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode(!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!s8i>, !s32i) loc(#loc134)
+  cir.func private @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE5closeEv(!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) loc(#loc135)
+  cir.func private @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) extra(#fn_attr) loc(#loc136)
+  cir.func @_ZN59CWE36_Absolute_Path_Traversal__char_environment_ofstream_153badEv() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc138)
+    %1 = cir.alloca !cir.array<!s8i x 4096>, !cir.ptr<!cir.array<!s8i x 4096>>, ["dataBuffer"] {alignment = 16 : i64} loc(#loc139)
+    %2 = cir.const #cir.zero : !cir.array<!s8i x 4096> loc(#loc139)
+    cir.store %2, %1 : !cir.array<!s8i x 4096>, !cir.ptr<!cir.array<!s8i x 4096>> loc(#loc139)
+    %3 = cir.cast(array_to_ptrdecay, %1 : !cir.ptr<!cir.array<!s8i x 4096>>), !cir.ptr<!s8i> loc(#loc25)
+    cir.store %3, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc140)
+    cir.scope {
+      %4 = cir.const #cir.int<6> : !s32i loc(#loc29)
+      cir.switch (%4 : !s32i) {
+        cir.case(equal, [#cir.int<6> : !s32i]) {
+          cir.scope {
+            %5 = cir.alloca !u64i, !cir.ptr<!u64i>, ["dataLen", init] {alignment = 8 : i64} loc(#loc143)
+            %6 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["environment", init] {alignment = 8 : i64} loc(#loc144)
+            %7 = cir.get_global @strlen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>) -> !u64i>> loc(#loc37)
+            %8 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc38)
+            %9 = cir.call @strlen(%8) : (!cir.ptr<!s8i>) -> !u64i side_effect(pure) extra(#fn_attr) loc(#loc37)
+            cir.store %9, %5 : !u64i, !cir.ptr<!u64i> loc(#loc143)
+            %10 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 4>> loc(#loc5)
+            %11 = cir.cast(array_to_ptrdecay, %10 : !cir.ptr<!cir.array<!s8i x 4>>), !cir.ptr<!s8i> loc(#loc5)
+            %12 = cir.call @getenv(%11) : (!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc39)
+            cir.store %12, %6 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc144)
+            cir.scope {
+              %13 = cir.load %6 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc42)
+              %14 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc43)
+              %15 = cir.cmp(ne, %13, %14) : !cir.ptr<!s8i>, !cir.bool loc(#loc146)
+              cir.if %15 {
+                %16 = cir.get_global @strncat : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u64i) -> !cir.ptr<!s8i>>> loc(#loc45)
+                %17 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc46)
+                %18 = cir.load %5 : !cir.ptr<!u64i>, !u64i loc(#loc47)
+                %19 = cir.ptr_stride(%17 : !cir.ptr<!s8i>, %18 : !u64i), !cir.ptr<!s8i> loc(#loc48)
+                %20 = cir.load %6 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc49)
+                %21 = cir.const #cir.int<4096> : !s32i loc(#loc50)
+                %22 = cir.cast(integral, %21 : !s32i), !u64i loc(#loc50)
+                %23 = cir.load %5 : !cir.ptr<!u64i>, !u64i loc(#loc51)
+                %24 = cir.binop(sub, %22, %23) : !u64i loc(#loc148)
+                %25 = cir.const #cir.int<1> : !s32i loc(#loc52)
+                %26 = cir.cast(integral, %25 : !s32i), !u64i loc(#loc52)
+                %27 = cir.binop(sub, %24, %26) : !u64i loc(#loc149)
+                %28 = cir.call @strncat(%19, %20, %27) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u64i) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc45)
+              } loc(#loc147)
+            } loc(#loc145)
+          } loc(#loc142)
+          cir.break loc(#loc53)
+        } loc(#loc30)
+        cir.case(default, []) {
+          %5 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc10)
+          %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc10)
+          cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc55)
+          cir.break loc(#loc56)
+        } loc(#loc54)
+        cir.yield loc(#loc27)
+      } loc(#loc27)
+    } loc(#loc141)
+    cir.scope {
+      %4 = cir.alloca !ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E, !cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, ["outputFile", init] {alignment = 8 : i64} loc(#loc151)
+      cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEEC1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () loc(#loc60)
+      %5 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc61)
+      %6 = cir.const #cir.int<16> : !s32i loc(#loc152)
+      cir.try synthetic cleanup {
+        cir.call exception @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode(%4, %5, %6) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!s8i>, !s32i) -> () cleanup {
+          cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+          cir.yield loc(#loc65)
+        } loc(#loc65)
+        cir.yield loc(#loc64)
+      } catch [#cir.unwind {
+        cir.resume loc(#loc64)
+      }] loc(#loc64)
+      cir.try synthetic cleanup {
+        cir.call exception @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE5closeEv(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () cleanup {
+          cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+          cir.yield loc(#loc66)
+        } loc(#loc66)
+        cir.yield loc(#loc64)
+      } catch [#cir.unwind {
+        cir.resume loc(#loc64)
+      }] loc(#loc64)
+      cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+    } loc(#loc150)
+    cir.return loc(#loc20)
+  } loc(#loc137)
+  cir.func private @strcat(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc153)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"/tmp/file.txt\00" : !cir.array<!s8i x 14>> : !cir.array<!s8i x 14> {alignment = 1 : i64} loc(#loc69)
+  cir.func internal private @_ZN59CWE36_Absolute_Path_Traversal__char_environment_ofstream_15L8goodG2B1Ev() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc155)
+    %1 = cir.alloca !cir.array<!s8i x 4096>, !cir.ptr<!cir.array<!s8i x 4096>>, ["dataBuffer"] {alignment = 16 : i64} loc(#loc156)
+    %2 = cir.const #cir.zero : !cir.array<!s8i x 4096> loc(#loc156)
+    cir.store %2, %1 : !cir.array<!s8i x 4096>, !cir.ptr<!cir.array<!s8i x 4096>> loc(#loc156)
+    %3 = cir.cast(array_to_ptrdecay, %1 : !cir.ptr<!cir.array<!s8i x 4096>>), !cir.ptr<!s8i> loc(#loc76)
+    cir.store %3, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc157)
+    cir.scope {
+      %4 = cir.const #cir.int<5> : !s32i loc(#loc80)
+      cir.switch (%4 : !s32i) {
+        cir.case(equal, [#cir.int<6> : !s32i]) {
+          %5 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc82)
+          %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc82)
+          cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc83)
+          cir.break loc(#loc84)
+        } loc(#loc81)
+        cir.case(default, []) {
+          %5 = cir.get_global @strcat : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i>>> loc(#loc86)
+          %6 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc87)
+          %7 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 14>> loc(#loc69)
+          %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 14>>), !cir.ptr<!s8i> loc(#loc69)
+          %9 = cir.call @strcat(%6, %8) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc86)
+          cir.break loc(#loc88)
+        } loc(#loc85)
+        cir.yield loc(#loc78)
+      } loc(#loc78)
+    } loc(#loc158)
+    cir.scope {
+      %4 = cir.alloca !ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E, !cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, ["outputFile", init] {alignment = 8 : i64} loc(#loc160)
+      cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEEC1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () loc(#loc92)
+      %5 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc93)
+      %6 = cir.const #cir.int<16> : !s32i loc(#loc152)
+      cir.try synthetic cleanup {
+        cir.call exception @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode(%4, %5, %6) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!s8i>, !s32i) -> () cleanup {
+          cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+          cir.yield loc(#loc95)
+        } loc(#loc95)
+        cir.yield loc(#loc94)
+      } catch [#cir.unwind {
+        cir.resume loc(#loc94)
+      }] loc(#loc94)
+      cir.try synthetic cleanup {
+        cir.call exception @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE5closeEv(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () cleanup {
+          cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+          cir.yield loc(#loc96)
+        } loc(#loc96)
+        cir.yield loc(#loc94)
+      } catch [#cir.unwind {
+        cir.resume loc(#loc94)
+      }] loc(#loc94)
+      cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+    } loc(#loc159)
+    cir.return loc(#loc71)
+  } loc(#loc154)
+  cir.func internal private @_ZN59CWE36_Absolute_Path_Traversal__char_environment_ofstream_15L8goodG2B2Ev() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc162)
+    %1 = cir.alloca !cir.array<!s8i x 4096>, !cir.ptr<!cir.array<!s8i x 4096>>, ["dataBuffer"] {alignment = 16 : i64} loc(#loc163)
+    %2 = cir.const #cir.zero : !cir.array<!s8i x 4096> loc(#loc163)
+    cir.store %2, %1 : !cir.array<!s8i x 4096>, !cir.ptr<!cir.array<!s8i x 4096>> loc(#loc163)
+    %3 = cir.cast(array_to_ptrdecay, %1 : !cir.ptr<!cir.array<!s8i x 4096>>), !cir.ptr<!s8i> loc(#loc103)
+    cir.store %3, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc164)
+    cir.scope {
+      %4 = cir.const #cir.int<6> : !s32i loc(#loc107)
+      cir.switch (%4 : !s32i) {
+        cir.case(equal, [#cir.int<6> : !s32i]) {
+          %5 = cir.get_global @strcat : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i>>> loc(#loc109)
+          %6 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc110)
+          %7 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 14>> loc(#loc111)
+          %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 14>>), !cir.ptr<!s8i> loc(#loc111)
+          %9 = cir.call @strcat(%6, %8) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc109)
+          cir.break loc(#loc112)
+        } loc(#loc108)
+        cir.case(default, []) {
+          %5 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc114)
+          %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc114)
+          cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc115)
+          cir.break loc(#loc116)
+        } loc(#loc113)
+        cir.yield loc(#loc105)
+      } loc(#loc105)
+    } loc(#loc165)
+    cir.scope {
+      %4 = cir.alloca !ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E, !cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, ["outputFile", init] {alignment = 8 : i64} loc(#loc167)
+      cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEEC1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () loc(#loc120)
+      %5 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc121)
+      %6 = cir.const #cir.int<16> : !s32i loc(#loc152)
+      cir.try synthetic cleanup {
+        cir.call exception @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode(%4, %5, %6) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!s8i>, !s32i) -> () cleanup {
+          cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+          cir.yield loc(#loc123)
+        } loc(#loc123)
+        cir.yield loc(#loc122)
+      } catch [#cir.unwind {
+        cir.resume loc(#loc122)
+      }] loc(#loc122)
+      cir.try synthetic cleanup {
+        cir.call exception @_ZNSt14basic_ofstreamIcSt11char_traitsIcEE5closeEv(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () cleanup {
+          cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+          cir.yield loc(#loc124)
+        } loc(#loc124)
+        cir.yield loc(#loc122)
+      } catch [#cir.unwind {
+        cir.resume loc(#loc122)
+      }] loc(#loc122)
+      cir.call @_ZNSt14basic_ofstreamIcSt11char_traitsIcEED1Ev(%4) : (!cir.ptr<!ty_std3A3Abasic_ofstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc136)
+    } loc(#loc166)
+    cir.return loc(#loc98)
+  } loc(#loc161)
+  cir.func @_ZN59CWE36_Absolute_Path_Traversal__char_environment_ofstream_154goodEv() extra(#fn_attr1) {
+    cir.call @_ZN59CWE36_Absolute_Path_Traversal__char_environment_ofstream_15L8goodG2B1Ev() : () -> () loc(#loc127)
+    cir.call @_ZN59CWE36_Absolute_Path_Traversal__char_environment_ofstream_15L8goodG2B2Ev() : () -> () loc(#loc128)
+    cir.return loc(#loc126)
+  } loc(#loc168)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE36_Absolute_Path_Traversal/s02/CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":0:0)
+#loc1 = loc("/usr/include/string.h":407:1)
+#loc2 = loc("/usr/include/string.h":408:33)
+#loc3 = loc("/usr/include/stdlib.h":773:1)
+#loc4 = loc("/usr/include/stdlib.h":773:50)
+#loc5 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":50:37)
+#loc6 = loc("/usr/include/string.h":152:1)
+#loc7 = loc("/usr/include/string.h":153:29)
+#loc8 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc9 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc10 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":61:19)
+#loc11 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":786:7)
+#loc12 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":787:34)
+#loc13 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":927:7)
+#loc14 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":936:7)
+#loc15 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":999:7)
+#loc16 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":1004:7)
+#loc17 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":869:7)
+#loc18 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":870:9)
+#loc19 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":39:1)
+#loc20 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":70:1)
+#loc21 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":41:5)
+#loc22 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":41:12)
+#loc23 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":42:5)
+#loc24 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":42:37)
+#loc25 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":43:12)
+#loc26 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":43:5)
+#loc27 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":44:5)
+#loc28 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":63:5)
+#loc29 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":44:12)
+#loc30 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":46:5)
+#loc31 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":47:5)
+#loc32 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":57:5)
+#loc33 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":49:9)
+#loc34 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":49:37)
+#loc35 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":50:9)
+#loc36 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":50:49)
+#loc37 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":49:26)
+#loc38 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":49:33)
+#loc39 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":50:30)
+#loc40 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":52:9)
+#loc41 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":56:9)
+#loc42 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":52:13)
+#loc43 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":52:28)
+#loc44 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":53:9)
+#loc45 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:13)
+#loc46 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:21)
+#loc47 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:26)
+#loc48 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:25)
+#loc49 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:35)
+#loc50 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:48)
+#loc51 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:61)
+#loc52 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":55:69)
+#loc53 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":58:5)
+#loc54 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":59:5)
+#loc55 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":61:9)
+#loc56 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":62:9)
+#loc57 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":64:5)
+#loc58 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":69:5)
+#loc59 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":65:9)
+#loc60 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":65:18)
+#loc61 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":67:33)
+#loc62 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":928:57)
+#loc63 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":928:67)
+#loc64 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":39:6)
+#loc65 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":67:20)
+#loc66 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":68:20)
+#loc67 = loc("/usr/include/string.h":149:1)
+#loc68 = loc("/usr/include/string.h":150:14)
+#loc69 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":94:22)
+#loc70 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":77:1)
+#loc71 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":104:1)
+#loc72 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":79:5)
+#loc73 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":79:12)
+#loc74 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":80:5)
+#loc75 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":80:37)
+#loc76 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":81:12)
+#loc77 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":81:5)
+#loc78 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":82:5)
+#loc79 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":97:5)
+#loc80 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":82:12)
+#loc81 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":84:5)
+#loc82 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":86:19)
+#loc83 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":86:9)
+#loc84 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":87:9)
+#loc85 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":88:5)
+#loc86 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":94:9)
+#loc87 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":94:16)
+#loc88 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":96:9)
+#loc89 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":98:5)
+#loc90 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":103:5)
+#loc91 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":99:9)
+#loc92 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":99:18)
+#loc93 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":101:33)
+#loc94 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":77:13)
+#loc95 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":101:20)
+#loc96 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":102:20)
+#loc97 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":107:1)
+#loc98 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":134:1)
+#loc99 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":109:5)
+#loc100 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":109:12)
+#loc101 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":110:5)
+#loc102 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":110:37)
+#loc103 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":111:12)
+#loc104 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":111:5)
+#loc105 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":112:5)
+#loc106 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":127:5)
+#loc107 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":112:12)
+#loc108 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":114:5)
+#loc109 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":120:9)
+#loc110 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":120:16)
+#loc111 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":120:22)
+#loc112 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":122:9)
+#loc113 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":123:5)
+#loc114 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":125:19)
+#loc115 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":125:9)
+#loc116 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":126:9)
+#loc117 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":128:5)
+#loc118 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":133:5)
+#loc119 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":129:9)
+#loc120 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":129:18)
+#loc121 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":131:33)
+#loc122 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":107:13)
+#loc123 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":131:20)
+#loc124 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":132:20)
+#loc125 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":136:1)
+#loc126 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":140:1)
+#loc127 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":138:5)
+#loc128 = loc("CWE36_Absolute_Path_Traversal__char_environment_ofstream_15.cpp":139:5)
+#loc129 = loc(fused[#loc1, #loc2])
+#loc130 = loc(fused[#loc3, #loc4])
+#loc131 = loc(fused[#loc6, #loc7])
+#loc132 = loc(fused[#loc8, #loc9])
+#loc133 = loc(fused[#loc11, #loc12])
+#loc134 = loc(fused[#loc13, #loc14])
+#loc135 = loc(fused[#loc15, #loc16])
+#loc136 = loc(fused[#loc17, #loc18])
+#loc137 = loc(fused[#loc19, #loc20])
+#loc138 = loc(fused[#loc21, #loc22])
+#loc139 = loc(fused[#loc23, #loc24])
+#loc140 = loc(fused[#loc26, #loc25])
+#loc141 = loc(fused[#loc27, #loc28])
+#loc142 = loc(fused[#loc31, #loc32])
+#loc143 = loc(fused[#loc33, #loc34])
+#loc144 = loc(fused[#loc35, #loc36])
+#loc145 = loc(fused[#loc40, #loc41])
+#loc146 = loc(fused[#loc42, #loc43])
+#loc147 = loc(fused[#loc44, #loc41])
+#loc148 = loc(fused[#loc50, #loc51])
+#loc149 = loc(fused[#loc50, #loc52])
+#loc150 = loc(fused[#loc57, #loc58])
+#loc151 = loc(fused[#loc59, #loc60])
+#loc152 = loc(fused[#loc62, #loc63])
+#loc153 = loc(fused[#loc67, #loc68])
+#loc154 = loc(fused[#loc70, #loc71])
+#loc155 = loc(fused[#loc72, #loc73])
+#loc156 = loc(fused[#loc74, #loc75])
+#loc157 = loc(fused[#loc77, #loc76])
+#loc158 = loc(fused[#loc78, #loc79])
+#loc159 = loc(fused[#loc89, #loc90])
+#loc160 = loc(fused[#loc91, #loc92])
+#loc161 = loc(fused[#loc97, #loc98])
+#loc162 = loc(fused[#loc99, #loc100])
+#loc163 = loc(fused[#loc101, #loc102])
+#loc164 = loc(fused[#loc104, #loc103])
+#loc165 = loc(fused[#loc105, #loc106])
+#loc166 = loc(fused[#loc117, #loc118])
+#loc167 = loc(fused[#loc119, #loc120])
+#loc168 = loc(fused[#loc125, #loc126])

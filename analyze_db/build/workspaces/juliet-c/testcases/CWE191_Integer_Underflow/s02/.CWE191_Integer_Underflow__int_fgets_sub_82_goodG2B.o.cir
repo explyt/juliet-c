@@ -1,0 +1,61 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc5 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":25:58)
+#loc6 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":25:65)
+#loc7 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":25:69)
+#loc20 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_base = !cir.record<class "CWE191_Integer_Underflow__int_fgets_sub_82::CWE191_Integer_Underflow__int_fgets_sub_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B = !cir.record<class "CWE191_Integer_Underflow__int_fgets_sub_82::CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B" {!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e", "dlti.endianness" = "little">} {
+  cir.func private @printIntLine(!s32i) loc(#loc18)
+  cir.func @_ZN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B6actionEi(%arg0: !cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B> loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":25:58), %arg1: !s32i loc(fused[#loc6, #loc7])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc20)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B>> loc(#loc8)
+    cir.store %arg1, %1 : !s32i, !cir.ptr<!s32i> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B>>, !cir.ptr<!ty_CWE191_Integer_Underflow__int_fgets_sub_823A3ACWE191_Integer_Underflow__int_fgets_sub_82_goodG2B> loc(#loc5)
+    cir.scope {
+      %3 = cir.alloca !s32i, !cir.ptr<!s32i>, ["result", init] {alignment = 4 : i64} loc(#loc22)
+      %4 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc13)
+      %5 = cir.const #cir.int<1> : !s32i loc(#loc12)
+      %6 = cir.binop(sub, %4, %5) nsw : !s32i loc(#loc13)
+      cir.store %6, %3 : !s32i, !cir.ptr<!s32i> loc(#loc22)
+      %7 = cir.load %3 : !cir.ptr<!s32i>, !s32i loc(#loc14)
+      cir.call @printIntLine(%7) : (!s32i) -> () loc(#loc15)
+    } loc(#loc21)
+    cir.return loc(#loc4)
+  } loc(#loc19)
+  cir.global external dsolocal @_ZTVN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2BE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B6actionEi> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc23)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc16)
+  cir.global external @_ZTSN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2BE = #cir.const_array<"N42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2BE" : !cir.array<!s8i x 98>> : !cir.array<!s8i x 98> {alignment = 1 : i64} loc(#loc16)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc16)
+  cir.global linkonce_odr comdat @_ZTSN42CWE191_Integer_Underflow__int_fgets_sub_8247CWE191_Integer_Underflow__int_fgets_sub_82_baseE = #cir.const_array<"N42CWE191_Integer_Underflow__int_fgets_sub_8247CWE191_Integer_Underflow__int_fgets_sub_82_baseE" : !cir.array<!s8i x 95>> : !cir.array<!s8i x 95> {alignment = 1 : i64} loc(#loc16)
+  cir.global constant external @_ZTIN42CWE191_Integer_Underflow__int_fgets_sub_8247CWE191_Integer_Underflow__int_fgets_sub_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN42CWE191_Integer_Underflow__int_fgets_sub_8247CWE191_Integer_Underflow__int_fgets_sub_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc16)
+  cir.global constant external @_ZTIN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2BE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN42CWE191_Integer_Underflow__int_fgets_sub_8250CWE191_Integer_Underflow__int_fgets_sub_82_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN42CWE191_Integer_Underflow__int_fgets_sub_8247CWE191_Integer_Underflow__int_fgets_sub_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc16)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE191_Integer_Underflow/s02/CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc3 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":25:1)
+#loc4 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":32:1)
+#loc8 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":26:1)
+#loc9 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":27:5)
+#loc10 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":31:5)
+#loc11 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":29:9)
+#loc12 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":29:29)
+#loc13 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":29:22)
+#loc14 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":30:22)
+#loc15 = loc("CWE191_Integer_Underflow__int_fgets_sub_82_goodG2B.cpp":30:9)
+#loc16 = loc("./CWE191_Integer_Underflow__int_fgets_sub_82.h":42:1)
+#loc17 = loc("./CWE191_Integer_Underflow__int_fgets_sub_82.h":46:1)
+#loc18 = loc(fused[#loc1, #loc2])
+#loc19 = loc(fused[#loc3, #loc4])
+#loc21 = loc(fused[#loc9, #loc10])
+#loc22 = loc(fused[#loc11, #loc12])
+#loc23 = loc(fused[#loc16, #loc17])

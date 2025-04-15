@@ -1,0 +1,64 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc7 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":25:71)
+#loc8 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":25:78)
+#loc9 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":25:85)
+#loc19 = loc(fused[#loc8, #loc9])
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_base = !cir.record<class "CWE134_Uncontrolled_Format_String__char_file_fprintf_81::CWE134_Uncontrolled_Format_String__char_file_fprintf_81_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B = !cir.record<class "CWE134_Uncontrolled_Format_String__char_file_fprintf_81::CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B" {!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE134_Uncontrolled_Format_String/s02/CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little", "dlti.mangling_mode" = "e">} {
+  cir.func private @fprintf(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i extra(#fn_attr) loc(#loc16)
+  cir.global "private" external @stdout : !cir.ptr<!ty__IO_FILE> {alignment = 8 : i64} loc(#loc17)
+  cir.func @_ZNK55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B6actionEPc(%arg0: !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B> loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":25:71), %arg1: !cir.ptr<!s8i> loc(fused[#loc8, #loc9])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc7)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc19)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B>> loc(#loc10)
+    cir.store %arg1, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc10)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B>>, !cir.ptr<!ty_CWE134_Uncontrolled_Format_String__char_file_fprintf_813A3ACWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B> loc(#loc7)
+    %3 = cir.get_global @fprintf : !cir.ptr<!cir.func<(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i>> loc(#loc11)
+    %4 = cir.get_global @stdout : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc17)
+    %5 = cir.load %4 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc12)
+    %6 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc13)
+    %7 = cir.call @fprintf(%5, %6) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc11)
+    cir.return loc(#loc6)
+  } loc(#loc18)
+  cir.global external dsolocal @_ZTVN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2BE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B6actionEPc> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc20)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc14)
+  cir.global external @_ZTSN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2BE = #cir.const_array<"N55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2BE" : !cir.array<!s8i x 124>> : !cir.array<!s8i x 124> {alignment = 1 : i64} loc(#loc14)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc14)
+  cir.global linkonce_odr comdat @_ZTSN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8160CWE134_Uncontrolled_Format_String__char_file_fprintf_81_baseE = #cir.const_array<"N55CWE134_Uncontrolled_Format_String__char_file_fprintf_8160CWE134_Uncontrolled_Format_String__char_file_fprintf_81_baseE" : !cir.array<!s8i x 121>> : !cir.array<!s8i x 121> {alignment = 1 : i64} loc(#loc14)
+  cir.global constant external @_ZTIN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8160CWE134_Uncontrolled_Format_String__char_file_fprintf_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8160CWE134_Uncontrolled_Format_String__char_file_fprintf_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc14)
+  cir.global constant external @_ZTIN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2BE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8163CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN55CWE134_Uncontrolled_Format_String__char_file_fprintf_8160CWE134_Uncontrolled_Format_String__char_file_fprintf_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc14)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE134_Uncontrolled_Format_String/s02/CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":0:0)
+#loc1 = loc("/usr/include/stdio.h":357:1)
+#loc2 = loc("/usr/include/stdio.h":358:45)
+#loc3 = loc("/usr/include/stdio.h":150:1)
+#loc4 = loc("/usr/include/stdio.h":150:14)
+#loc5 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":25:1)
+#loc6 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":29:1)
+#loc10 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":26:1)
+#loc11 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":28:5)
+#loc12 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":28:13)
+#loc13 = loc("CWE134_Uncontrolled_Format_String__char_file_fprintf_81_goodG2B.cpp":28:21)
+#loc14 = loc("./CWE134_Uncontrolled_Format_String__char_file_fprintf_81.h":46:1)
+#loc15 = loc("./CWE134_Uncontrolled_Format_String__char_file_fprintf_81.h":50:1)
+#loc16 = loc(fused[#loc1, #loc2])
+#loc17 = loc(fused[#loc3, #loc4])
+#loc18 = loc(fused[#loc5, #loc6])
+#loc20 = loc(fused[#loc14, #loc15])

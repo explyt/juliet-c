@@ -1,0 +1,97 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc7 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":23:50)
+#loc8 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":23:98)
+#loc9 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":23:105)
+#loc21 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":30:50)
+#loc32 = loc(fused[#loc8, #loc9])
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G = !cir.record<class "CWE690_NULL_Deref_From_Return__fopen_83::CWE690_NULL_Deref_From_Return__fopen_83_goodB2G" {!cir.ptr<!ty__IO_FILE>} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @fopen(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc30)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"file.txt\00" : !cir.array<!s8i x 9>> : !cir.array<!s8i x 9> {alignment = 1 : i64} loc(#loc3)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"w+\00" : !cir.array<!s8i x 3>> : !cir.array<!s8i x 3> {alignment = 1 : i64} loc(#loc4)
+  cir.func @_ZN39CWE690_NULL_Deref_From_Return__fopen_8347CWE690_NULL_Deref_From_Return__fopen_83_goodB2GC2EP8_IO_FILE(%arg0: !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":23:50), %arg1: !cir.ptr<!ty__IO_FILE> loc(fused[#loc8, #loc9])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc7)
+    %1 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["dataCopy", init] {alignment = 8 : i64} loc(#loc32)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>> loc(#loc10)
+    cir.store %arg1, %1 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc10)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>>, !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> loc(#loc7)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc11)
+    %4 = cir.get_member %2[0] {name = "data"} : !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> -> !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc12)
+    cir.store %3, %4 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc33)
+    %5 = cir.get_global @fopen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE>>> loc(#loc14)
+    %6 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 9>> loc(#loc3)
+    %7 = cir.cast(array_to_ptrdecay, %6 : !cir.ptr<!cir.array<!s8i x 9>>), !cir.ptr<!s8i> loc(#loc3)
+    %8 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc4)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc4)
+    %10 = cir.call @fopen(%7, %9) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc14)
+    %11 = cir.get_member %2[0] {name = "data"} : !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> -> !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc12)
+    cir.store %10, %11 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc34)
+    cir.return loc(#loc6)
+  } loc(#loc31)
+  cir.func private @_ZN39CWE690_NULL_Deref_From_Return__fopen_8347CWE690_NULL_Deref_From_Return__fopen_83_goodB2GC1EP8_IO_FILE(!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>, !cir.ptr<!ty__IO_FILE>) alias(@_ZN39CWE690_NULL_Deref_From_Return__fopen_8347CWE690_NULL_Deref_From_Return__fopen_83_goodB2GC2EP8_IO_FILE) loc(#loc31)
+  cir.func private @fclose(!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc35)
+  cir.func @_ZN39CWE690_NULL_Deref_From_Return__fopen_8347CWE690_NULL_Deref_From_Return__fopen_83_goodB2GD2Ev(%arg0: !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":30:50)) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc21)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>> loc(#loc22)
+    %1 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>>, !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> loc(#loc21)
+    cir.scope {
+      %2 = cir.get_member %1[0] {name = "data"} : !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> -> !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc12)
+      %3 = cir.load %2 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc25)
+      %4 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc26)
+      %5 = cir.cmp(ne, %3, %4) : !cir.ptr<!ty__IO_FILE>, !cir.bool loc(#loc38)
+      cir.if %5 {
+        %6 = cir.get_member %1[0] {name = "data"} : !cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G> -> !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc12)
+        %7 = cir.load %6 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc28)
+        %8 = cir.call @fclose(%7) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc29)
+      } loc(#loc39)
+    } loc(#loc37)
+    cir.return loc(#loc20)
+  } loc(#loc36)
+  cir.func private @_ZN39CWE690_NULL_Deref_From_Return__fopen_8347CWE690_NULL_Deref_From_Return__fopen_83_goodB2GD1Ev(!cir.ptr<!ty_CWE690_NULL_Deref_From_Return__fopen_833A3ACWE690_NULL_Deref_From_Return__fopen_83_goodB2G>) alias(@_ZN39CWE690_NULL_Deref_From_Return__fopen_8347CWE690_NULL_Deref_From_Return__fopen_83_goodB2GD2Ev) loc(#loc36)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":0:0)
+#loc1 = loc("/usr/include/stdio.h":264:1)
+#loc2 = loc("/usr/include/stdio.h":266:3)
+#loc3 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":27:18)
+#loc4 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":27:30)
+#loc5 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":23:1)
+#loc6 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":28:1)
+#loc10 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":24:1)
+#loc11 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":25:12)
+#loc12 = loc("./CWE690_NULL_Deref_From_Return__fopen_83.h":45:12)
+#loc13 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":25:5)
+#loc14 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":27:12)
+#loc15 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":27:5)
+#loc16 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":27:34)
+#loc17 = loc("/usr/include/stdio.h":184:1)
+#loc18 = loc("/usr/include/stdio.h":184:36)
+#loc19 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":30:1)
+#loc20 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":37:1)
+#loc22 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":31:1)
+#loc23 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":33:5)
+#loc24 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":36:5)
+#loc25 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":33:9)
+#loc26 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":33:17)
+#loc27 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":34:5)
+#loc28 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":35:16)
+#loc29 = loc("CWE690_NULL_Deref_From_Return__fopen_83_goodB2G.cpp":35:9)
+#loc30 = loc(fused[#loc1, #loc2])
+#loc31 = loc(fused[#loc5, #loc6])
+#loc33 = loc(fused[#loc13, #loc11])
+#loc34 = loc(fused[#loc15, #loc16])
+#loc35 = loc(fused[#loc17, #loc18])
+#loc36 = loc(fused[#loc19, #loc20])
+#loc37 = loc(fused[#loc23, #loc24])
+#loc38 = loc(fused[#loc25, #loc26])
+#loc39 = loc(fused[#loc27, #loc24])

@@ -1,0 +1,98 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc8 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":30:68)
+#loc9 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":30:75)
+#loc10 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":30:82)
+#loc32 = loc(fused[#loc9, #loc10])
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_base = !cir.record<class "CWE36_Absolute_Path_Traversal__char_environment_fopen_82::CWE36_Absolute_Path_Traversal__char_environment_fopen_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad = !cir.record<class "CWE36_Absolute_Path_Traversal__char_environment_fopen_82::CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad" {!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE36_Absolute_Path_Traversal/s01/CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, "dlti.mangling_mode" = "e", "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @fopen(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc29)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"wb+\00" : !cir.array<!s8i x 4>> : !cir.array<!s8i x 4> {alignment = 1 : i64} loc(#loc3)
+  cir.func private @fclose(!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc30)
+  cir.func @_ZN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad6actionEPc(%arg0: !cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad> loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":30:68), %arg1: !cir.ptr<!s8i> loc(fused[#loc9, #loc10])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc8)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc32)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad>> loc(#loc11)
+    cir.store %arg1, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc11)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad>>, !cir.ptr<!ty_CWE36_Absolute_Path_Traversal__char_environment_fopen_823A3ACWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad> loc(#loc8)
+    cir.scope {
+      %3 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["pFile", init] {alignment = 8 : i64} loc(#loc34)
+      %4 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc15)
+      cir.store %4, %3 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc34)
+      %5 = cir.get_global @fopen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE>>> loc(#loc16)
+      %6 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc17)
+      %7 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 4>> loc(#loc3)
+      %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 4>>), !cir.ptr<!s8i> loc(#loc3)
+      %9 = cir.call @fopen(%6, %8) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc16)
+      cir.store %9, %3 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc35)
+      cir.scope {
+        %10 = cir.load %3 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc22)
+        %11 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc23)
+        %12 = cir.cmp(ne, %10, %11) : !cir.ptr<!ty__IO_FILE>, !cir.bool loc(#loc37)
+        cir.if %12 {
+          %13 = cir.load %3 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc25)
+          %14 = cir.call @fclose(%13) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc26)
+        } loc(#loc38)
+      } loc(#loc36)
+    } loc(#loc33)
+    cir.return loc(#loc7)
+  } loc(#loc31)
+  cir.global external dsolocal @_ZTVN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad6actionEPc> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc39)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc27)
+  cir.global external @_ZTSN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_badE = #cir.const_array<"N56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_badE" : !cir.array<!s8i x 122>> : !cir.array<!s8i x 122> {alignment = 1 : i64} loc(#loc27)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc27)
+  cir.global linkonce_odr comdat @_ZTSN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8261CWE36_Absolute_Path_Traversal__char_environment_fopen_82_baseE = #cir.const_array<"N56CWE36_Absolute_Path_Traversal__char_environment_fopen_8261CWE36_Absolute_Path_Traversal__char_environment_fopen_82_baseE" : !cir.array<!s8i x 123>> : !cir.array<!s8i x 123> {alignment = 1 : i64} loc(#loc27)
+  cir.global constant external @_ZTIN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8261CWE36_Absolute_Path_Traversal__char_environment_fopen_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8261CWE36_Absolute_Path_Traversal__char_environment_fopen_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc27)
+  cir.global constant external @_ZTIN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8260CWE36_Absolute_Path_Traversal__char_environment_fopen_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN56CWE36_Absolute_Path_Traversal__char_environment_fopen_8261CWE36_Absolute_Path_Traversal__char_environment_fopen_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc27)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE36_Absolute_Path_Traversal/s01/CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":0:0)
+#loc1 = loc("/usr/include/stdio.h":264:1)
+#loc2 = loc("/usr/include/stdio.h":266:3)
+#loc3 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":35:29)
+#loc4 = loc("/usr/include/stdio.h":184:1)
+#loc5 = loc("/usr/include/stdio.h":184:36)
+#loc6 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":30:1)
+#loc7 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":41:1)
+#loc11 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":31:1)
+#loc12 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":32:5)
+#loc13 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":40:5)
+#loc14 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":33:9)
+#loc15 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":33:23)
+#loc16 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":35:17)
+#loc17 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":35:23)
+#loc18 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":35:9)
+#loc19 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":35:34)
+#loc20 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":36:9)
+#loc21 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":39:9)
+#loc22 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":36:13)
+#loc23 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":36:22)
+#loc24 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":37:9)
+#loc25 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":38:20)
+#loc26 = loc("CWE36_Absolute_Path_Traversal__char_environment_fopen_82_bad.cpp":38:13)
+#loc27 = loc("./CWE36_Absolute_Path_Traversal__char_environment_fopen_82.h":35:1)
+#loc28 = loc("./CWE36_Absolute_Path_Traversal__char_environment_fopen_82.h":39:1)
+#loc29 = loc(fused[#loc1, #loc2])
+#loc30 = loc(fused[#loc4, #loc5])
+#loc31 = loc(fused[#loc6, #loc7])
+#loc33 = loc(fused[#loc12, #loc13])
+#loc34 = loc(fused[#loc14, #loc15])
+#loc35 = loc(fused[#loc18, #loc19])
+#loc36 = loc(fused[#loc20, #loc21])
+#loc37 = loc(fused[#loc22, #loc23])
+#loc38 = loc(fused[#loc24, #loc21])
+#loc39 = loc(fused[#loc27, #loc28])

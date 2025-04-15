@@ -1,0 +1,76 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68b.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e", "dlti.endianness" = "little">} {
+  cir.global "private" external @CWE690_NULL_Deref_From_Return__fopen_68_badDataForBadSink : !cir.ptr<!ty__IO_FILE> {alignment = 8 : i64} loc(#loc24)
+  cir.func private @fclose(!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc25)
+  cir.func no_proto @CWE690_NULL_Deref_From_Return__fopen_68b_badSink() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data", init] {alignment = 8 : i64} loc(#loc27)
+    %1 = cir.get_global @CWE690_NULL_Deref_From_Return__fopen_68_badDataForBadSink : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc24)
+    %2 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc8)
+    cir.store %2, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc27)
+    %3 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc9)
+    %4 = cir.call @fclose(%3) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc10)
+    cir.return loc(#loc6)
+  } loc(#loc26)
+  cir.global "private" external @CWE690_NULL_Deref_From_Return__fopen_68_badDataForGoodSink : !cir.ptr<!ty__IO_FILE> {alignment = 8 : i64} loc(#loc28)
+  cir.func no_proto @CWE690_NULL_Deref_From_Return__fopen_68b_goodB2GSink() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data", init] {alignment = 8 : i64} loc(#loc30)
+    %1 = cir.get_global @CWE690_NULL_Deref_From_Return__fopen_68_badDataForGoodSink : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc28)
+    %2 = cir.load %1 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc16)
+    cir.store %2, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc30)
+    cir.scope {
+      %3 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc19)
+      %4 = cir.const #cir.ptr<null> : !cir.ptr<!void> loc(#loc20)
+      %5 = cir.cast(bitcast, %4 : !cir.ptr<!void>), !cir.ptr<!ty__IO_FILE> loc(#loc20)
+      %6 = cir.cmp(ne, %3, %5) : !cir.ptr<!ty__IO_FILE>, !cir.bool loc(#loc32)
+      cir.if %6 {
+        %7 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc22)
+        %8 = cir.call @fclose(%7) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc23)
+      } loc(#loc33)
+    } loc(#loc31)
+    cir.return loc(#loc14)
+  } loc(#loc29)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE690_NULL_Deref_From_Return/s01/CWE690_NULL_Deref_From_Return__fopen_68b.c":0:0)
+#loc1 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":19:1)
+#loc2 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":19:15)
+#loc3 = loc("/usr/include/stdio.h":184:1)
+#loc4 = loc("/usr/include/stdio.h":184:36)
+#loc5 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":25:1)
+#loc6 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":30:1)
+#loc7 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":27:5)
+#loc8 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":27:19)
+#loc9 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":29:12)
+#loc10 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":29:5)
+#loc11 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":21:1)
+#loc12 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":21:15)
+#loc13 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":36:1)
+#loc14 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":44:1)
+#loc15 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":38:5)
+#loc16 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":38:19)
+#loc17 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":40:5)
+#loc18 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":43:5)
+#loc19 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":40:9)
+#loc20 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":40:17)
+#loc21 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":41:5)
+#loc22 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":42:16)
+#loc23 = loc("CWE690_NULL_Deref_From_Return__fopen_68b.c":42:9)
+#loc24 = loc(fused[#loc1, #loc2])
+#loc25 = loc(fused[#loc3, #loc4])
+#loc26 = loc(fused[#loc5, #loc6])
+#loc27 = loc(fused[#loc7, #loc8])
+#loc28 = loc(fused[#loc11, #loc12])
+#loc29 = loc(fused[#loc13, #loc14])
+#loc30 = loc(fused[#loc15, #loc16])
+#loc31 = loc(fused[#loc17, #loc18])
+#loc32 = loc(fused[#loc19, #loc20])
+#loc33 = loc(fused[#loc21, #loc18])

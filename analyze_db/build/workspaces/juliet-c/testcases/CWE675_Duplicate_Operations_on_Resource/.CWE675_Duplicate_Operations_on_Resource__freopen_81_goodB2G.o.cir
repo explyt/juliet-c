@@ -1,0 +1,47 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc3 = loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":25:67)
+#loc4 = loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":25:74)
+#loc5 = loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":25:81)
+#loc10 = loc(fused[#loc4, #loc5])
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_base = !cir.record<class "CWE675_Duplicate_Operations_on_Resource__freopen_81::CWE675_Duplicate_Operations_on_Resource__freopen_81_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G = !cir.record<class "CWE675_Duplicate_Operations_on_Resource__freopen_81::CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G" {!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<f128 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func @_ZNK51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G6actionEP8_IO_FILE(%arg0: !cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G> loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":25:67), %arg1: !cir.ptr<!ty__IO_FILE> loc(fused[#loc4, #loc5])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G>>, ["this", init] {alignment = 8 : i64} loc(#loc3)
+    %1 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data", init] {alignment = 8 : i64} loc(#loc10)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G>, !cir.ptr<!cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G>> loc(#loc6)
+    cir.store %arg1, %1 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc6)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G>>, !cir.ptr<!ty_CWE675_Duplicate_Operations_on_Resource__freopen_813A3ACWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G> loc(#loc3)
+    cir.return loc(#loc2)
+  } loc(#loc9)
+  cir.global external dsolocal @_ZTVN51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2GE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G6actionEP8_IO_FILE> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc11)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc7)
+  cir.global external @_ZTSN51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2GE = #cir.const_array<"N51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2GE" : !cir.array<!s8i x 116>> : !cir.array<!s8i x 116> {alignment = 1 : i64} loc(#loc7)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc7)
+  cir.global linkonce_odr comdat @_ZTSN51CWE675_Duplicate_Operations_on_Resource__freopen_8156CWE675_Duplicate_Operations_on_Resource__freopen_81_baseE = #cir.const_array<"N51CWE675_Duplicate_Operations_on_Resource__freopen_8156CWE675_Duplicate_Operations_on_Resource__freopen_81_baseE" : !cir.array<!s8i x 113>> : !cir.array<!s8i x 113> {alignment = 1 : i64} loc(#loc7)
+  cir.global constant external @_ZTIN51CWE675_Duplicate_Operations_on_Resource__freopen_8156CWE675_Duplicate_Operations_on_Resource__freopen_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN51CWE675_Duplicate_Operations_on_Resource__freopen_8156CWE675_Duplicate_Operations_on_Resource__freopen_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc7)
+  cir.global constant external @_ZTIN51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2GE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN51CWE675_Duplicate_Operations_on_Resource__freopen_8159CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2GE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN51CWE675_Duplicate_Operations_on_Resource__freopen_8156CWE675_Duplicate_Operations_on_Resource__freopen_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc7)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":0:0)
+#loc1 = loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":25:1)
+#loc2 = loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":30:1)
+#loc6 = loc("CWE675_Duplicate_Operations_on_Resource__freopen_81_goodB2G.cpp":26:1)
+#loc7 = loc("./CWE675_Duplicate_Operations_on_Resource__freopen_81.h":48:1)
+#loc8 = loc("./CWE675_Duplicate_Operations_on_Resource__freopen_81.h":52:1)
+#loc9 = loc(fused[#loc1, #loc2])
+#loc11 = loc(fused[#loc7, #loc8])

@@ -1,0 +1,52 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+CWE480_Use_of_Incorrect_Operator__basic_09.c:54:12: warning: comparison of function 'helperBad' equal to a null pointer is always false [-Wtautological-pointer-compare]
+   54 |         if(helperBad == NULL)
+      |            ^~~~~~~~~    ~~~~
+CWE480_Use_of_Incorrect_Operator__basic_09.c:54:12: note: prefix with the address-of operator to silence this warning
+   54 |         if(helperBad == NULL)
+      |            ^
+      |            &
+CWE480_Use_of_Incorrect_Operator__basic_09.c:54:12: note: suffix with parentheses to turn this into a function call
+   54 |         if(helperBad == NULL)
+      |            ^
+      |                     ()
+loc(fused["CWE480_Use_of_Incorrect_Operator__basic_09.c":54:12, "CWE480_Use_of_Incorrect_Operator__basic_09.c":54:25]): error: 'cir.cmp' op requires all operands to have the same type
+fatal error: error in backend: CIR codegen: module verification error before running CIR passes
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+Stack dump:
+0.	Program arguments: /workspaces/clangir/install/bin/clang -S -Xclang -emit-cir -Wno-implicit-function-declaration -Wno-int-conversion -Wno-exceptions -Wno-implicit-function-declaration -Wno-int-conversion -I ../../testcasesupport -c CWE480_Use_of_Incorrect_Operator__basic_09.c -o /workspaces/juliet-c/testcases/CWE480_Use_of_Incorrect_Operator/.CWE480_Use_of_Incorrect_Operator__basic_09.o.cir
+1.	<eof> parser at end of file
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
+0  clang     0x000055e384e87b68 llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 40
+1  clang     0x000055e384e8573e llvm::sys::RunSignalHandlers() + 238
+2  clang     0x000055e384df6757
+3  clang     0x000055e384df66ef llvm::CrashRecoveryContext::HandleExit(int) + 47
+4  clang     0x000055e384e82487 llvm::sys::Process::Exit(int, bool) + 39
+5  clang     0x000055e383c59fd6
+6  clang     0x000055e384dfcbb9 llvm::report_fatal_error(llvm::Twine const&, bool) + 265
+7  clang     0x000055e384dfcaa6
+8  clang     0x000055e38613117a
+9  clang     0x000055e388232a09 clang::ParseAST(clang::Sema&, bool, bool) + 617
+10 clang     0x000055e38594dd36 clang::FrontendAction::Execute() + 38
+11 clang     0x000055e3858b93ad clang::CompilerInstance::ExecuteAction(clang::FrontendAction&) + 1149
+12 clang     0x000055e385a36edf clang::ExecuteCompilerInvocation(clang::CompilerInstance*) + 815
+13 clang     0x000055e383c59a7a cc1_main(llvm::ArrayRef<char const*>, char const*, void*) + 6074
+14 clang     0x000055e383c5606d
+15 clang     0x000055e385700339
+16 clang     0x000055e384df6686 llvm::CrashRecoveryContext::RunSafely(llvm::function_ref<void ()>) + 150
+17 clang     0x000055e3856ff892 clang::driver::CC1Command::Execute(llvm::ArrayRef<std::optional<llvm::StringRef>>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>*, bool*) const + 242
+18 clang     0x000055e3856bbc27 clang::driver::Compilation::ExecuteCommand(clang::driver::Command const&, clang::driver::Command const*&, bool) const + 455
+19 clang     0x000055e3856bbf17 clang::driver::Compilation::ExecuteJobs(clang::driver::JobList const&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&, bool) const + 135
+20 clang     0x000055e3856db928 clang::driver::Driver::ExecuteCompilation(clang::driver::Compilation&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&) + 904
+21 clang     0x000055e383c556ba clang_main(int, char**, llvm::ToolContext const&) + 6090
+22 clang     0x000055e383c65147 main + 87
+23 libc.so.6 0x00007f929402a1ca
+24 libc.so.6 0x00007f929402a28b __libc_start_main + 139
+25 clang     0x000055e383c53aa5 _start + 37
+clang: error: clang frontend command failed with exit code 70 (use -v to see invocation)
+clang version 21.0.0git (git@github.com:llvm/clangir.git 4e7a2236d38507e994cbe5b79c888cf86427e7db)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /workspaces/clangir/install/bin
+Build config: +assertions
+clang: note: diagnostic msg: Error generating preprocessed source(s).

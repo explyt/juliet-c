@@ -1,0 +1,74 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc5 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":25:61)
+#loc6 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":25:68)
+#loc7 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":25:73)
+#loc23 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_base = !cir.record<class "CWE191_Integer_Underflow__char_fscanf_multiply_82::CWE191_Integer_Underflow__char_fscanf_multiply_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad = !cir.record<class "CWE191_Integer_Underflow__char_fscanf_multiply_82::CWE191_Integer_Underflow__char_fscanf_multiply_82_bad" {!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little", "dlti.mangling_mode" = "e">} {
+  cir.func private @printHexCharLine(!s8i) loc(#loc21)
+  cir.func @_ZN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_bad6actionEc(%arg0: !cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad> loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":25:61), %arg1: !s8i loc(fused[#loc6, #loc7])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !s8i, !cir.ptr<!s8i>, ["data", init] {alignment = 1 : i64} loc(#loc23)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad>> loc(#loc8)
+    cir.store %arg1, %1 : !s8i, !cir.ptr<!s8i> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad>>, !cir.ptr<!ty_CWE191_Integer_Underflow__char_fscanf_multiply_823A3ACWE191_Integer_Underflow__char_fscanf_multiply_82_bad> loc(#loc5)
+    cir.scope {
+      %3 = cir.load %1 : !cir.ptr<!s8i>, !s8i loc(#loc11)
+      %4 = cir.cast(integral, %3 : !s8i), !s32i loc(#loc11)
+      %5 = cir.const #cir.int<0> : !s32i loc(#loc12)
+      %6 = cir.cmp(lt, %4, %5) : !s32i, !cir.bool loc(#loc25)
+      cir.if %6 {
+        %7 = cir.alloca !s8i, !cir.ptr<!s8i>, ["result", init] {alignment = 1 : i64} loc(#loc27)
+        %8 = cir.load %1 : !cir.ptr<!s8i>, !s8i loc(#loc16)
+        %9 = cir.cast(integral, %8 : !s8i), !s32i loc(#loc16)
+        %10 = cir.const #cir.int<2> : !s32i loc(#loc15)
+        %11 = cir.binop(mul, %9, %10) nsw : !s32i loc(#loc16)
+        %12 = cir.cast(integral, %11 : !s32i), !s8i loc(#loc16)
+        cir.store %12, %7 : !s8i, !cir.ptr<!s8i> loc(#loc27)
+        %13 = cir.load %7 : !cir.ptr<!s8i>, !s8i loc(#loc17)
+        cir.call @printHexCharLine(%13) : (!s8i) -> () loc(#loc18)
+      } loc(#loc26)
+    } loc(#loc24)
+    cir.return loc(#loc4)
+  } loc(#loc22)
+  cir.global external dsolocal @_ZTVN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_bad6actionEc> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc28)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc19)
+  cir.global external @_ZTSN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_badE = #cir.const_array<"N49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_badE" : !cir.array<!s8i x 108>> : !cir.array<!s8i x 108> {alignment = 1 : i64} loc(#loc19)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc19)
+  cir.global linkonce_odr comdat @_ZTSN49CWE191_Integer_Underflow__char_fscanf_multiply_8254CWE191_Integer_Underflow__char_fscanf_multiply_82_baseE = #cir.const_array<"N49CWE191_Integer_Underflow__char_fscanf_multiply_8254CWE191_Integer_Underflow__char_fscanf_multiply_82_baseE" : !cir.array<!s8i x 109>> : !cir.array<!s8i x 109> {alignment = 1 : i64} loc(#loc19)
+  cir.global constant external @_ZTIN49CWE191_Integer_Underflow__char_fscanf_multiply_8254CWE191_Integer_Underflow__char_fscanf_multiply_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN49CWE191_Integer_Underflow__char_fscanf_multiply_8254CWE191_Integer_Underflow__char_fscanf_multiply_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc19)
+  cir.global constant external @_ZTIN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN49CWE191_Integer_Underflow__char_fscanf_multiply_8253CWE191_Integer_Underflow__char_fscanf_multiply_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN49CWE191_Integer_Underflow__char_fscanf_multiply_8254CWE191_Integer_Underflow__char_fscanf_multiply_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc19)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE191_Integer_Underflow/s01/CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":30:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":30:35)
+#loc3 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":25:1)
+#loc4 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":33:1)
+#loc8 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":26:1)
+#loc9 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":27:5)
+#loc10 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":32:5)
+#loc11 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":27:8)
+#loc12 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":27:15)
+#loc13 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":28:5)
+#loc14 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":30:9)
+#loc15 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":30:30)
+#loc16 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":30:23)
+#loc17 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":31:26)
+#loc18 = loc("CWE191_Integer_Underflow__char_fscanf_multiply_82_bad.cpp":31:9)
+#loc19 = loc("./CWE191_Integer_Underflow__char_fscanf_multiply_82.h":32:1)
+#loc20 = loc("./CWE191_Integer_Underflow__char_fscanf_multiply_82.h":36:1)
+#loc21 = loc(fused[#loc1, #loc2])
+#loc22 = loc(fused[#loc3, #loc4])
+#loc24 = loc(fused[#loc9, #loc10])
+#loc25 = loc(fused[#loc11, #loc12])
+#loc26 = loc(fused[#loc13, #loc10])
+#loc27 = loc(fused[#loc14, #loc15])
+#loc28 = loc(fused[#loc19, #loc20])
