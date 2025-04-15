@@ -28,6 +28,14 @@ ClangIR is a new IR for Clang, which is an MLIR dialect for C/C++ based language
 
 Documentation: [https://llvm.github.io/clangir](https://llvm.github.io/clangir)
 
+```
+clang version 21.0.0git (git@github.com:llvm/clangir.git 4e7a2236d38507e994cbe5b79c888cf86427e7db)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /workspaces/clangir/install/bin
+Build config: +assertions
+```
+
 ## License
 
 The original Juliet Test Suite is released as "Public Domain" by NIST.

@@ -1,0 +1,48 @@
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc5 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":25:80)
+#loc6 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":25:87)
+#loc7 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":25:94)
+#loc14 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_base = !cir.record<class "CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82::CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad = !cir.record<class "CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82::CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad" {!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s03/CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i8 = dense<8> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @_ZdlPv(!cir.ptr<!void>) extra(#fn_attr) loc(#loc12)
+  cir.func @_ZN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad6actionEPc(%arg0: !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad> loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":25:80), %arg1: !cir.ptr<!s8i> loc(fused[#loc6, #loc7])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc14)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad>> loc(#loc8)
+    cir.store %arg1, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc8)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad>>, !cir.ptr<!ty_CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_823A3ACWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad> loc(#loc5)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc9)
+    %4 = cir.cast(bitcast, %3 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc9)
+    cir.call @_ZdlPv(%4) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc5)
+    cir.return loc(#loc4)
+  } loc(#loc13)
+  cir.global external dsolocal @_ZTVN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad6actionEPc> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc15)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc10)
+  cir.global external @_ZTSN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_badE = #cir.const_array<"N68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_badE" : !cir.array<!s8i x 146>> : !cir.array<!s8i x 146> {alignment = 1 : i64} loc(#loc10)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc10)
+  cir.global linkonce_odr comdat @_ZTSN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8273CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_baseE = #cir.const_array<"N68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8273CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_baseE" : !cir.array<!s8i x 147>> : !cir.array<!s8i x 147> {alignment = 1 : i64} loc(#loc10)
+  cir.global constant external @_ZTIN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8273CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8273CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc10)
+  cir.global constant external @_ZTIN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8272CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN68CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_8273CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc10)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s03/CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":0:0)
+#loc1 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":130:1)
+#loc2 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":131:41)
+#loc3 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":25:1)
+#loc4 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":30:1)
+#loc8 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":26:1)
+#loc9 = loc("CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82_bad.cpp":29:12)
+#loc10 = loc("./CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82.h":32:1)
+#loc11 = loc("./CWE762_Mismatched_Memory_Management_Routines__delete_char_realloc_82.h":36:1)
+#loc12 = loc(fused[#loc1, #loc2])
+#loc13 = loc(fused[#loc3, #loc4])
+#loc15 = loc(fused[#loc10, #loc11])

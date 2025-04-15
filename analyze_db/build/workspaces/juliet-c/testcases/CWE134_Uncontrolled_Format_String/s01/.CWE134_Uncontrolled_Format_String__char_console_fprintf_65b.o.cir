@@ -1,0 +1,87 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc7 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":26:74)
+#loc8 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":26:81)
+#loc15 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":37:78)
+#loc16 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":37:85)
+#loc24 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":44:78)
+#loc25 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":44:85)
+#loc33 = loc(fused[#loc7, #loc8])
+#loc35 = loc(fused[#loc15, #loc16])
+#loc37 = loc(fused[#loc24, #loc25])
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE134_Uncontrolled_Format_String/s01/CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<270> = dense<32> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @fprintf(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i extra(#fn_attr) loc(#loc30)
+  cir.global "private" external @stdout : !cir.ptr<!ty__IO_FILE> {alignment = 8 : i64} loc(#loc31)
+  cir.func @CWE134_Uncontrolled_Format_String__char_console_fprintf_65b_badSink(%arg0: !cir.ptr<!s8i> loc(fused[#loc7, #loc8])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc33)
+    cir.store %arg0, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc9)
+    %1 = cir.get_global @fprintf : !cir.ptr<!cir.func<(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i>> loc(#loc10)
+    %2 = cir.get_global @stdout : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc31)
+    %3 = cir.load %2 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc11)
+    %4 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc12)
+    %5 = cir.call @fprintf(%3, %4) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc10)
+    cir.return loc(#loc6)
+  } loc(#loc32)
+  cir.func @CWE134_Uncontrolled_Format_String__char_console_fprintf_65b_goodG2BSink(%arg0: !cir.ptr<!s8i> loc(fused[#loc15, #loc16])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc35)
+    cir.store %arg0, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc17)
+    %1 = cir.get_global @fprintf : !cir.ptr<!cir.func<(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i>> loc(#loc18)
+    %2 = cir.get_global @stdout : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc31)
+    %3 = cir.load %2 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc19)
+    %4 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc20)
+    %5 = cir.call @fprintf(%3, %4) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc18)
+    cir.return loc(#loc14)
+  } loc(#loc34)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"%s\0A\00" : !cir.array<!s8i x 4>> : !cir.array<!s8i x 4> {alignment = 1 : i64} loc(#loc21)
+  cir.func @CWE134_Uncontrolled_Format_String__char_console_fprintf_65b_goodB2GSink(%arg0: !cir.ptr<!s8i> loc(fused[#loc24, #loc25])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc37)
+    cir.store %arg0, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc26)
+    %1 = cir.get_global @fprintf : !cir.ptr<!cir.func<(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i>> loc(#loc27)
+    %2 = cir.get_global @stdout : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc31)
+    %3 = cir.load %2 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc28)
+    %4 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 4>> loc(#loc21)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 4>>), !cir.ptr<!s8i> loc(#loc21)
+    %6 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc29)
+    %7 = cir.call @fprintf(%3, %5, %6) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !s32i extra(#fn_attr) loc(#loc27)
+    cir.return loc(#loc23)
+  } loc(#loc36)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE134_Uncontrolled_Format_String/s01/CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":0:0)
+#loc1 = loc("/usr/include/stdio.h":357:1)
+#loc2 = loc("/usr/include/stdio.h":358:45)
+#loc3 = loc("/usr/include/stdio.h":150:1)
+#loc4 = loc("/usr/include/stdio.h":150:14)
+#loc5 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":26:1)
+#loc6 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":30:1)
+#loc9 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":27:1)
+#loc10 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":29:5)
+#loc11 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":29:13)
+#loc12 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":29:21)
+#loc13 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":37:1)
+#loc14 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":41:1)
+#loc17 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":38:1)
+#loc18 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":40:5)
+#loc19 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":40:13)
+#loc20 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":40:21)
+#loc21 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":47:21)
+#loc22 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":44:1)
+#loc23 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":48:1)
+#loc26 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":45:1)
+#loc27 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":47:5)
+#loc28 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":47:13)
+#loc29 = loc("CWE134_Uncontrolled_Format_String__char_console_fprintf_65b.c":47:29)
+#loc30 = loc(fused[#loc1, #loc2])
+#loc31 = loc(fused[#loc3, #loc4])
+#loc32 = loc(fused[#loc5, #loc6])
+#loc34 = loc(fused[#loc13, #loc14])
+#loc36 = loc(fused[#loc22, #loc23])

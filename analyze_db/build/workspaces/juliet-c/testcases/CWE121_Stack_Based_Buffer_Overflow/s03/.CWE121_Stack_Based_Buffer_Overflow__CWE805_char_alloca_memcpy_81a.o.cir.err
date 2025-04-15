@@ -1,0 +1,43 @@
+clang: warning: argument unused during compilation: '-c' [-Wunused-command-line-argument]
+warning: unknown warning option '-Wno-terminate' [-Wunknown-warning-option]
+loc(fused["CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_81a.cpp":34:95, "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_81a.cpp":34:164]): error: operand #0 does not dominate this use
+loc(fused["CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_81a.cpp":51:95, "CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_81a.cpp":51:168]): error: operand #0 does not dominate this use
+fatal error: error in backend: CIR codegen: module verification error before running CIR passes
+PLEASE submit a bug report to https://github.com/llvm/llvm-project/issues/ and include the crash backtrace, preprocessed source, and associated run script.
+Stack dump:
+0.	Program arguments: /workspaces/clangir/install/bin/clang -S -Xclang -emit-cir-flat -std=c++11 -Wno-terminate -std=c++11 -I ../../../testcasesupport -c CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_81a.cpp -o /workspaces/juliet-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s03/.CWE121_Stack_Based_Buffer_Overflow__CWE805_char_alloca_memcpy_81a.o.cir
+1.	<eof> parser at end of file
+Stack dump without symbol names (ensure you have llvm-symbolizer in your PATH or set the environment var `LLVM_SYMBOLIZER_PATH` to point to it):
+0  clang     0x000055912d778b68 llvm::sys::PrintStackTrace(llvm::raw_ostream&, int) + 40
+1  clang     0x000055912d77673e llvm::sys::RunSignalHandlers() + 238
+2  clang     0x000055912d6e7757
+3  clang     0x000055912d6e76ef llvm::CrashRecoveryContext::HandleExit(int) + 47
+4  clang     0x000055912d773487 llvm::sys::Process::Exit(int, bool) + 39
+5  clang     0x000055912c54afd6
+6  clang     0x000055912d6edbb9 llvm::report_fatal_error(llvm::Twine const&, bool) + 265
+7  clang     0x000055912d6edaa6
+8  clang     0x000055912ea2217a
+9  clang     0x0000559130b23a09 clang::ParseAST(clang::Sema&, bool, bool) + 617
+10 clang     0x000055912e23ed36 clang::FrontendAction::Execute() + 38
+11 clang     0x000055912e1aa3ad clang::CompilerInstance::ExecuteAction(clang::FrontendAction&) + 1149
+12 clang     0x000055912e327edf clang::ExecuteCompilerInvocation(clang::CompilerInstance*) + 815
+13 clang     0x000055912c54aa7a cc1_main(llvm::ArrayRef<char const*>, char const*, void*) + 6074
+14 clang     0x000055912c54706d
+15 clang     0x000055912dff1339
+16 clang     0x000055912d6e7686 llvm::CrashRecoveryContext::RunSafely(llvm::function_ref<void ()>) + 150
+17 clang     0x000055912dff0892 clang::driver::CC1Command::Execute(llvm::ArrayRef<std::optional<llvm::StringRef>>, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>*, bool*) const + 242
+18 clang     0x000055912dfacc27 clang::driver::Compilation::ExecuteCommand(clang::driver::Command const&, clang::driver::Command const*&, bool) const + 455
+19 clang     0x000055912dfacf17 clang::driver::Compilation::ExecuteJobs(clang::driver::JobList const&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&, bool) const + 135
+20 clang     0x000055912dfcc928 clang::driver::Driver::ExecuteCompilation(clang::driver::Compilation&, llvm::SmallVectorImpl<std::pair<int, clang::driver::Command const*>>&) + 904
+21 clang     0x000055912c5466ba clang_main(int, char**, llvm::ToolContext const&) + 6090
+22 clang     0x000055912c556147 main + 87
+23 libc.so.6 0x00007ff264a2a1ca
+24 libc.so.6 0x00007ff264a2a28b __libc_start_main + 139
+25 clang     0x000055912c544aa5 _start + 37
+clang: error: clang frontend command failed with exit code 70 (use -v to see invocation)
+clang version 21.0.0git (git@github.com:llvm/clangir.git 4e7a2236d38507e994cbe5b79c888cf86427e7db)
+Target: x86_64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /workspaces/clangir/install/bin
+Build config: +assertions
+clang: note: diagnostic msg: Error generating preprocessed source(s).

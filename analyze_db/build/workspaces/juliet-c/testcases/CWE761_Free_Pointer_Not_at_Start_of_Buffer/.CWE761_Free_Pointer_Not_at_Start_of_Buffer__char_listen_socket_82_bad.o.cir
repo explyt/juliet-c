@@ -1,0 +1,122 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc8 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":26:77)
+#loc9 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":26:84)
+#loc10 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":26:91)
+#loc35 = loc(fused[#loc9, #loc10])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_base = !cir.record<class "CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82::CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad = !cir.record<class "CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82::CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad" {!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i64 = dense<64> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e">} {
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc32)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"We have a match!\00" : !cir.array<!s8i x 17>> : !cir.array<!s8i x 17> {alignment = 1 : i64} loc(#loc3)
+  cir.func private @free(!cir.ptr<!void>) extra(#fn_attr) loc(#loc33)
+  cir.func @_ZN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad6actionEPc(%arg0: !cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad> loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":26:77), %arg1: !cir.ptr<!s8i> loc(fused[#loc9, #loc10])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc8)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc35)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad>, !cir.ptr<!cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad>> loc(#loc11)
+    cir.store %arg1, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc11)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad>>, !cir.ptr<!ty_CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_823A3ACWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad> loc(#loc8)
+    cir.br ^bb1 loc(#loc36)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc36)
+  ^bb2:  // 2 preds: ^bb1, ^bb10
+    %3 = cir.load deref %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc14)
+    %4 = cir.load %3 : !cir.ptr<!s8i>, !s8i loc(#loc15)
+    %5 = cir.cast(integral, %4 : !s8i), !s32i loc(#loc15)
+    %6 = cir.const #cir.int<0> : !s8i loc(#loc16)
+    %7 = cir.cast(integral, %6 : !s8i), !s32i loc(#loc16)
+    %8 = cir.cmp(ne, %5, %7) : !s32i, !cir.bool loc(#loc37)
+    cir.brcond %8 ^bb3, ^bb11 loc(#loc37)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc38)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb5 loc(#loc39)
+  ^bb5:  // pred: ^bb4
+    %9 = cir.load deref %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc20)
+    %10 = cir.load %9 : !cir.ptr<!s8i>, !s8i loc(#loc21)
+    %11 = cir.cast(integral, %10 : !s8i), !s32i loc(#loc21)
+    %12 = cir.const #cir.int<83> : !s8i loc(#loc22)
+    %13 = cir.cast(integral, %12 : !s8i), !s32i loc(#loc22)
+    %14 = cir.cmp(eq, %11, %13) : !s32i, !cir.bool loc(#loc40)
+    cir.brcond %14 ^bb6, ^bb7 loc(#loc41)
+  ^bb6:  // pred: ^bb5
+    %15 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 17>> loc(#loc3)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 17>>), !cir.ptr<!s8i> loc(#loc3)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc24)
+    cir.br ^bb11 loc(#loc25)
+  ^bb7:  // pred: ^bb5
+    cir.br ^bb8 loc(#loc19)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc13)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc13)
+  ^bb10:  // pred: ^bb9
+    %17 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc26)
+    %18 = cir.const #cir.int<1> : !s32i loc(#loc42)
+    %19 = cir.ptr_stride(%17 : !cir.ptr<!s8i>, %18 : !s32i), !cir.ptr<!s8i> loc(#loc42)
+    cir.store %19, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc42)
+    cir.br ^bb2 loc(#loc36)
+  ^bb11:  // 2 preds: ^bb2, ^bb6
+    cir.br ^bb12 loc(#loc13)
+  ^bb12:  // pred: ^bb11
+    %20 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc28)
+    %21 = cir.cast(bitcast, %20 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc28)
+    cir.call @free(%21) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc29)
+    cir.return loc(#loc7)
+  } loc(#loc34)
+  cir.global external dsolocal @_ZTVN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad6actionEPc> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc43)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc30)
+  cir.global external @_ZTSN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_badE = #cir.const_array<"N65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_badE" : !cir.array<!s8i x 140>> : !cir.array<!s8i x 140> {alignment = 1 : i64} loc(#loc30)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc30)
+  cir.global linkonce_odr comdat @_ZTSN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8270CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_baseE = #cir.const_array<"N65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8270CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_baseE" : !cir.array<!s8i x 141>> : !cir.array<!s8i x 141> {alignment = 1 : i64} loc(#loc30)
+  cir.global constant external @_ZTIN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8270CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8270CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc30)
+  cir.global constant external @_ZTIN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8269CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN65CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_8270CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc30)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE761_Free_Pointer_Not_at_Start_of_Buffer/CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":34:23)
+#loc4 = loc("/usr/include/stdlib.h":687:1)
+#loc5 = loc("/usr/include/stdlib.h":687:32)
+#loc6 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":26:1)
+#loc7 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":39:1)
+#loc11 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":27:1)
+#loc12 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":30:5)
+#loc13 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":37:5)
+#loc14 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":30:13)
+#loc15 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":30:12)
+#loc16 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":30:21)
+#loc17 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":31:5)
+#loc18 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":32:9)
+#loc19 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":36:9)
+#loc20 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":32:14)
+#loc21 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":32:13)
+#loc22 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":32:22)
+#loc23 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":33:9)
+#loc24 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":34:13)
+#loc25 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":35:13)
+#loc26 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":30:31)
+#loc27 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":30:27)
+#loc28 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":38:10)
+#loc29 = loc("CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82_bad.cpp":38:5)
+#loc30 = loc("./CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82.h":33:1)
+#loc31 = loc("./CWE761_Free_Pointer_Not_at_Start_of_Buffer__char_listen_socket_82.h":37:1)
+#loc32 = loc(fused[#loc1, #loc2])
+#loc33 = loc(fused[#loc4, #loc5])
+#loc34 = loc(fused[#loc6, #loc7])
+#loc36 = loc(fused[#loc12, #loc13])
+#loc37 = loc(fused[#loc15, #loc16])
+#loc38 = loc(fused[#loc17, #loc13])
+#loc39 = loc(fused[#loc18, #loc19])
+#loc40 = loc(fused[#loc21, #loc22])
+#loc41 = loc(fused[#loc23, #loc19])
+#loc42 = loc(fused[#loc27, #loc26])
+#loc43 = loc(fused[#loc30, #loc31])

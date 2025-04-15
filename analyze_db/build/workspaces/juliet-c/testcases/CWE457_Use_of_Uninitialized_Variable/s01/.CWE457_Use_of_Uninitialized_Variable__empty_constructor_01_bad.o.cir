@@ -1,0 +1,68 @@
+!s32i = !cir.int<s, 32>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#fn_attr1 = #cir<extra({nothrow = #cir.nothrow})>
+#loc3 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":16:9)
+#loc12 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":27:5)
+#loc13 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":27:37)
+!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass = !cir.record<class "CWE457_Use_of_Uninitialized_Variable__empty_constructor_01::BadClass" {!s32i} #cir.record.decl.ast>
+#loc24 = loc(fused[#loc12, #loc13])
+module @"/workspaces/juliet-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e">} {
+  cir.func private @_Znwm(!u64i) -> !cir.ptr<!void> loc(#loc19)
+  cir.func linkonce_odr @_ZN58CWE457_Use_of_Uninitialized_Variable__empty_constructor_018BadClassC2Ev(%arg0: !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass> loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":16:9)) extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>, !cir.ptr<!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>>, ["this", init] {alignment = 8 : i64} loc(#loc3)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>, !cir.ptr<!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>> loc(#loc5)
+    %1 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>>, !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass> loc(#loc3)
+    cir.return loc(#loc4)
+  } loc(#loc20)
+  cir.func private @_ZdlPv(!cir.ptr<!void>) extra(#fn_attr1) loc(#loc21)
+  cir.func private @printIntLine(!s32i) loc(#loc22)
+  cir.func @_ZN58CWE457_Use_of_Uninitialized_Variable__empty_constructor_013badEv() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>, !cir.ptr<!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>>, ["badClassObject", init] {alignment = 8 : i64} loc(#loc24)
+    %1 = cir.const #cir.int<4> : !u64i loc(#loc25)
+    %2 = cir.call @_Znwm(%1) : (!u64i) -> !cir.ptr<!void> loc(#loc24)
+    %3 = cir.cast(bitcast, %2 : !cir.ptr<!void>), !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass> loc(#loc25)
+    cir.br ^bb1 loc(#loc24)
+  ^bb1:  // pred: ^bb0
+    cir.try_call @_ZN58CWE457_Use_of_Uninitialized_Variable__empty_constructor_018BadClassC2Ev(%3) ^bb2, ^bb3 : (!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>) -> () loc(#loc13)
+  ^bb2:  // pred: ^bb1
+    cir.br ^bb5 loc(#loc24)
+  ^bb3:  // pred: ^bb1
+    %exception_ptr, %type_id = cir.eh.inflight_exception cleanup loc(#loc24)
+    cir.call @_ZdlPv(%2) : (!cir.ptr<!void>) -> () extra(#fn_attr1) loc(#loc24)
+    cir.br ^bb4(%exception_ptr, %type_id : !cir.ptr<!void>, !u32i) loc(#loc24)
+  ^bb4(%4: !cir.ptr<!void> loc(fused[#loc12, #loc13]), %5: !u32i loc(fused[#loc12, #loc13])):  // pred: ^bb3
+    cir.resume %4, %5 loc(#loc24)
+  ^bb5:  // pred: ^bb2
+    cir.store %3, %0 : !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>, !cir.ptr<!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>> loc(#loc24)
+    %6 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass>>, !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass> loc(#loc15)
+    %7 = cir.get_member %6[0] {name = "intOne"} : !cir.ptr<!ty_CWE457_Use_of_Uninitialized_Variable__empty_constructor_013A3ABadClass> -> !cir.ptr<!s32i> loc(#loc16)
+    %8 = cir.load %7 : !cir.ptr<!s32i>, !s32i loc(#loc17)
+    cir.call @printIntLine(%8) : (!s32i) -> () loc(#loc18)
+    cir.return loc(#loc11)
+  } loc(#loc23)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":0:0)
+#loc1 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":126:20)
+#loc2 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":127:41)
+#loc4 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":19:9)
+#loc5 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":17:9)
+#loc6 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":130:1)
+#loc7 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":131:41)
+#loc8 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc9 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc10 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":24:1)
+#loc11 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":29:1)
+#loc14 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":27:33)
+#loc15 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":28:18)
+#loc16 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":21:13)
+#loc17 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":28:34)
+#loc18 = loc("CWE457_Use_of_Uninitialized_Variable__empty_constructor_01_bad.cpp":28:5)
+#loc19 = loc(fused[#loc1, #loc2])
+#loc20 = loc(fused[#loc3, #loc4])
+#loc21 = loc(fused[#loc6, #loc7])
+#loc22 = loc(fused[#loc8, #loc9])
+#loc23 = loc(fused[#loc10, #loc11])
+#loc25 = loc(fused[#loc14, #loc13])

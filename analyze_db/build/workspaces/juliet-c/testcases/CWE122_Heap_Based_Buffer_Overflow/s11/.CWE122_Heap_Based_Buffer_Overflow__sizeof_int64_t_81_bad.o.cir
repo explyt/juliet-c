@@ -1,0 +1,61 @@
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc7 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":24:64)
+#loc8 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":24:71)
+#loc9 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":24:81)
+#loc21 = loc(fused[#loc8, #loc9])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_base = !cir.record<class "CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81::CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad = !cir.record<class "CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81::CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad" {!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i64 = dense<64> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little", "dlti.mangling_mode" = "e">} {
+  cir.func private @printLongLongLine(!s64i) loc(#loc18)
+  cir.func private @free(!cir.ptr<!void>) extra(#fn_attr) loc(#loc19)
+  cir.func @_ZNK52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad6actionEPl(%arg0: !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad> loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":24:64), %arg1: !cir.ptr<!s64i> loc(fused[#loc8, #loc9])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad>, !cir.ptr<!cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc7)
+    %1 = cir.alloca !cir.ptr<!s64i>, !cir.ptr<!cir.ptr<!s64i>>, ["data", init] {alignment = 8 : i64} loc(#loc21)
+    cir.store %arg0, %0 : !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad>, !cir.ptr<!cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad>> loc(#loc10)
+    cir.store %arg1, %1 : !cir.ptr<!s64i>, !cir.ptr<!cir.ptr<!s64i>> loc(#loc10)
+    %2 = cir.load %0 : !cir.ptr<!cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad>>, !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_813A3ACWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad> loc(#loc7)
+    %3 = cir.load deref %1 : !cir.ptr<!cir.ptr<!s64i>>, !cir.ptr<!s64i> loc(#loc11)
+    %4 = cir.load %3 : !cir.ptr<!s64i>, !s64i loc(#loc12)
+    cir.call @printLongLongLine(%4) : (!s64i) -> () loc(#loc13)
+    %5 = cir.get_global @free : !cir.ptr<!cir.func<(!cir.ptr<!void>)>> loc(#loc14)
+    %6 = cir.load %1 : !cir.ptr<!cir.ptr<!s64i>>, !cir.ptr<!s64i> loc(#loc15)
+    %7 = cir.cast(bitcast, %6 : !cir.ptr<!s64i>), !cir.ptr<!void> loc(#loc15)
+    cir.call @free(%7) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc14)
+    cir.return loc(#loc6)
+  } loc(#loc20)
+  cir.global external dsolocal @_ZTVN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad6actionEPl> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc22)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc16)
+  cir.global external @_ZTSN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_badE = #cir.const_array<"N52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_badE" : !cir.array<!s8i x 114>> : !cir.array<!s8i x 114> {alignment = 1 : i64} loc(#loc16)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc16)
+  cir.global linkonce_odr comdat @_ZTSN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8157CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_baseE = #cir.const_array<"N52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8157CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_baseE" : !cir.array<!s8i x 115>> : !cir.array<!s8i x 115> {alignment = 1 : i64} loc(#loc16)
+  cir.global constant external @_ZTIN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8157CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8157CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc16)
+  cir.global constant external @_ZTIN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8156CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN52CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_8157CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc16)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s11/CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":26:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":26:49)
+#loc3 = loc("/usr/include/stdlib.h":687:1)
+#loc4 = loc("/usr/include/stdlib.h":687:32)
+#loc5 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":24:1)
+#loc6 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":29:1)
+#loc10 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":25:1)
+#loc11 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":27:24)
+#loc12 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":27:23)
+#loc13 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":27:5)
+#loc14 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":28:5)
+#loc15 = loc("CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81_bad.cpp":28:10)
+#loc16 = loc("./CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81.h":31:1)
+#loc17 = loc("./CWE122_Heap_Based_Buffer_Overflow__sizeof_int64_t_81.h":35:1)
+#loc18 = loc(fused[#loc1, #loc2])
+#loc19 = loc(fused[#loc3, #loc4])
+#loc20 = loc(fused[#loc5, #loc6])
+#loc22 = loc(fused[#loc16, #loc17])

@@ -1,0 +1,133 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc5 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":24:82)
+#loc6 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":24:89)
+#loc7 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":24:99)
+#loc40 = loc(fused[#loc6, #loc7])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_base = !cir.record<class "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82::CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B = !cir.record<class "CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82::CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B" {!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i32 = dense<32> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little">} {
+  cir.func private @printLongLongLine(!s64i) loc(#loc38)
+  cir.func @_ZN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B6actionEPl(%arg0: !cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B> loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":24:82), %arg1: !cir.ptr<!s64i> loc(fused[#loc6, #loc7])) extra(#fn_attr) {
+    %0 = cir.alloca !cir.array<!s64i x 100>, !cir.ptr<!cir.array<!s64i x 100>>, ["source"] {alignment = 16 : i64} loc(#loc41)
+    %1 = cir.alloca !u64i, !cir.ptr<!u64i>, ["i"] {alignment = 8 : i64} loc(#loc42)
+    %2 = cir.alloca !cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B>>, ["this", init] {alignment = 8 : i64} loc(#loc5)
+    %3 = cir.alloca !cir.ptr<!s64i>, !cir.ptr<!cir.ptr<!s64i>>, ["data", init] {alignment = 8 : i64} loc(#loc40)
+    cir.store %arg0, %2 : !cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B>, !cir.ptr<!cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B>> loc(#loc12)
+    cir.store %arg1, %3 : !cir.ptr<!s64i>, !cir.ptr<!cir.ptr<!s64i>> loc(#loc12)
+    %4 = cir.load %2 : !cir.ptr<!cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B>>, !cir.ptr<!ty_CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_823A3ACWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B> loc(#loc5)
+    cir.br ^bb1 loc(#loc43)
+  ^bb1:  // pred: ^bb0
+    %5 = cir.const #cir.zero : !cir.array<!s64i x 100> loc(#loc41)
+    cir.store %5, %0 : !cir.array<!s64i x 100>, !cir.ptr<!cir.array<!s64i x 100>> loc(#loc41)
+    cir.br ^bb2 loc(#loc44)
+  ^bb2:  // pred: ^bb1
+    cir.br ^bb3 loc(#loc45)
+  ^bb3:  // pred: ^bb2
+    %6 = cir.const #cir.int<0> : !s32i loc(#loc19)
+    %7 = cir.cast(integral, %6 : !s32i), !u64i loc(#loc19)
+    cir.store %7, %1 : !u64i, !cir.ptr<!u64i> loc(#loc46)
+    cir.br ^bb4 loc(#loc45)
+  ^bb4:  // 2 preds: ^bb3, ^bb8
+    %8 = cir.load %1 : !cir.ptr<!u64i>, !u64i loc(#loc21)
+    %9 = cir.const #cir.int<100> : !s32i loc(#loc22)
+    %10 = cir.cast(integral, %9 : !s32i), !u64i loc(#loc22)
+    %11 = cir.cmp(lt, %8, %10) : !u64i, !cir.bool loc(#loc47)
+    cir.brcond %11 ^bb5, ^bb9 loc(#loc47)
+  ^bb5:  // pred: ^bb4
+    cir.br ^bb6 loc(#loc48)
+  ^bb6:  // pred: ^bb5
+    %12 = cir.load %1 : !cir.ptr<!u64i>, !u64i loc(#loc24)
+    %13 = cir.cast(array_to_ptrdecay, %0 : !cir.ptr<!cir.array<!s64i x 100>>), !cir.ptr<!s64i> loc(#loc25)
+    %14 = cir.ptr_stride(%13 : !cir.ptr<!s64i>, %12 : !u64i), !cir.ptr<!s64i> loc(#loc25)
+    %15 = cir.load %14 : !cir.ptr<!s64i>, !s64i loc(#loc25)
+    %16 = cir.load %3 : !cir.ptr<!cir.ptr<!s64i>>, !cir.ptr<!s64i> loc(#loc26)
+    %17 = cir.load %1 : !cir.ptr<!u64i>, !u64i loc(#loc27)
+    %18 = cir.ptr_stride(%16 : !cir.ptr<!s64i>, %17 : !u64i), !cir.ptr<!s64i> loc(#loc28)
+    cir.store %15, %18 : !s64i, !cir.ptr<!s64i> loc(#loc49)
+    cir.br ^bb7 loc(#loc18)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc18)
+  ^bb8:  // pred: ^bb7
+    %19 = cir.load %1 : !cir.ptr<!u64i>, !u64i loc(#loc30)
+    %20 = cir.unary(inc, %19) : !u64i, !u64i loc(#loc31)
+    cir.store %20, %1 : !u64i, !cir.ptr<!u64i> loc(#loc50)
+    cir.br ^bb4 loc(#loc45)
+  ^bb9:  // pred: ^bb4
+    cir.br ^bb10 loc(#loc18)
+  ^bb10:  // pred: ^bb9
+    %21 = cir.load %3 : !cir.ptr<!cir.ptr<!s64i>>, !cir.ptr<!s64i> loc(#loc32)
+    %22 = cir.const #cir.int<0> : !s32i loc(#loc33)
+    %23 = cir.ptr_stride(%21 : !cir.ptr<!s64i>, %22 : !s32i), !cir.ptr<!s64i> loc(#loc34)
+    %24 = cir.load %23 : !cir.ptr<!s64i>, !s64i loc(#loc32)
+    cir.call @printLongLongLine(%24) : (!s64i) -> () loc(#loc35)
+    cir.br ^bb11 loc(#loc16)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc14)
+  ^bb12:  // pred: ^bb11
+    cir.return loc(#loc4)
+  } loc(#loc39)
+  cir.global external dsolocal @_ZTVN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2BE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B6actionEPl> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc51)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc36)
+  cir.global external @_ZTSN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2BE = #cir.const_array<"N66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2BE" : !cir.array<!s8i x 146>> : !cir.array<!s8i x 146> {alignment = 1 : i64} loc(#loc36)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc36)
+  cir.global linkonce_odr comdat @_ZTSN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8271CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_baseE = #cir.const_array<"N66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8271CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_baseE" : !cir.array<!s8i x 143>> : !cir.array<!s8i x 143> {alignment = 1 : i64} loc(#loc36)
+  cir.global constant external @_ZTIN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8271CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8271CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc36)
+  cir.global constant external @_ZTIN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2BE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8274CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2BE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN66CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_8271CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc36)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE121_Stack_Based_Buffer_Overflow/s04/CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":26:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":26:49)
+#loc3 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":24:1)
+#loc4 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":38:1)
+#loc8 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":27:9)
+#loc9 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":27:33)
+#loc10 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":29:13)
+#loc11 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":29:20)
+#loc12 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":25:1)
+#loc13 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":26:5)
+#loc14 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":37:5)
+#loc15 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":28:9)
+#loc16 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":36:9)
+#loc17 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:13)
+#loc18 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":34:13)
+#loc19 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:22)
+#loc20 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:18)
+#loc21 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:25)
+#loc22 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:29)
+#loc23 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":32:13)
+#loc24 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":33:34)
+#loc25 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":33:27)
+#loc26 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":33:17)
+#loc27 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":33:22)
+#loc28 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":33:23)
+#loc29 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":33:35)
+#loc30 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:35)
+#loc31 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":31:34)
+#loc32 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":35:31)
+#loc33 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":35:36)
+#loc34 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":35:37)
+#loc35 = loc("CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82_goodG2B.cpp":35:13)
+#loc36 = loc("./CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82.h":40:1)
+#loc37 = loc("./CWE121_Stack_Based_Buffer_Overflow__CWE805_int64_t_declare_loop_82.h":44:1)
+#loc38 = loc(fused[#loc1, #loc2])
+#loc39 = loc(fused[#loc3, #loc4])
+#loc41 = loc(fused[#loc8, #loc9])
+#loc42 = loc(fused[#loc10, #loc11])
+#loc43 = loc(fused[#loc13, #loc14])
+#loc44 = loc(fused[#loc15, #loc16])
+#loc45 = loc(fused[#loc17, #loc18])
+#loc46 = loc(fused[#loc20, #loc19])
+#loc47 = loc(fused[#loc21, #loc22])
+#loc48 = loc(fused[#loc23, #loc18])
+#loc49 = loc(fused[#loc26, #loc29])
+#loc50 = loc(fused[#loc31, #loc30])
+#loc51 = loc(fused[#loc36, #loc37])

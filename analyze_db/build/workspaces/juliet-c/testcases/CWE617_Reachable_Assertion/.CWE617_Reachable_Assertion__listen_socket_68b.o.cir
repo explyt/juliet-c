@@ -1,0 +1,107 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE617_Reachable_Assertion/CWE617_Reachable_Assertion__listen_socket_68b.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, "dlti.mangling_mode" = "e", "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.global "private" external @CWE617_Reachable_Assertion__listen_socket_68_badData : !s32i {alignment = 4 : i64} loc(#loc17)
+  cir.func private @__assert_fail(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) extra(#fn_attr) loc(#loc18)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"data > ASSERT_VALUE\00" : !cir.array<!s8i x 20>> : !cir.array<!s8i x 20> {alignment = 1 : i64} loc(#loc5)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"CWE617_Reachable_Assertion__listen_socket_68b.c\00" : !cir.array<!s8i x 48>> : !cir.array<!s8i x 48> {alignment = 1 : i64} loc(#loc5)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"void CWE617_Reachable_Assertion__listen_socket_68b_badSink()\00" : !cir.array<!s8i x 61>> : !cir.array<!s8i x 61> {alignment = 1 : i64} loc(#loc5)
+  cir.func no_proto @CWE617_Reachable_Assertion__listen_socket_68b_badSink() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc20)
+    %1 = cir.get_global @CWE617_Reachable_Assertion__listen_socket_68_badData : !cir.ptr<!s32i> loc(#loc17)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc9)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc20)
+    %3 = cir.const #cir.int<4> : !u64i loc(#loc5)
+    cir.br ^bb1 loc(#loc5)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc5)
+  ^bb2:  // pred: ^bb1
+    %4 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc5)
+    %5 = cir.const #cir.int<5> : !s32i loc(#loc5)
+    %6 = cir.cmp(gt, %4, %5) : !s32i, !cir.bool loc(#loc5)
+    cir.brcond %6 ^bb3, ^bb4 loc(#loc5)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb5 loc(#loc5)
+  ^bb4:  // pred: ^bb2
+    %7 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc5)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc5)
+    %9 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 48>> loc(#loc5)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 48>>), !cir.ptr<!s8i> loc(#loc5)
+    %11 = cir.const #cir.int<56> : !s32i loc(#loc5)
+    %12 = cir.cast(integral, %11 : !s32i), !u32i loc(#loc5)
+    %13 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 61>> loc(#loc5)
+    %14 = cir.cast(array_to_ptrdecay, %13 : !cir.ptr<!cir.array<!s8i x 61>>), !cir.ptr<!s8i> loc(#loc5)
+    cir.call @__assert_fail(%8, %10, %12, %14) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc5)
+    cir.br ^bb5 loc(#loc5)
+  ^bb5:  // 2 preds: ^bb3, ^bb4
+    cir.br ^bb6 loc(#loc5)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb7 loc(#loc5)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc7)
+  } loc(#loc19)
+  cir.global "private" external @CWE617_Reachable_Assertion__listen_socket_68_goodG2BData : !s32i {alignment = 4 : i64} loc(#loc21)
+  cir.global "private" constant cir_private dsolocal @".str.3" = #cir.const_array<"void CWE617_Reachable_Assertion__listen_socket_68b_goodG2BSink()\00" : !cir.array<!s8i x 65>> : !cir.array<!s8i x 65> {alignment = 1 : i64} loc(#loc12)
+  cir.func no_proto @CWE617_Reachable_Assertion__listen_socket_68b_goodG2BSink() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data", init] {alignment = 4 : i64} loc(#loc23)
+    %1 = cir.get_global @CWE617_Reachable_Assertion__listen_socket_68_goodG2BData : !cir.ptr<!s32i> loc(#loc21)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc16)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc23)
+    %3 = cir.const #cir.int<4> : !u64i loc(#loc12)
+    cir.br ^bb1 loc(#loc12)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc12)
+  ^bb2:  // pred: ^bb1
+    %4 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc12)
+    %5 = cir.const #cir.int<5> : !s32i loc(#loc12)
+    %6 = cir.cmp(gt, %4, %5) : !s32i, !cir.bool loc(#loc12)
+    cir.brcond %6 ^bb3, ^bb4 loc(#loc12)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb5 loc(#loc12)
+  ^bb4:  // pred: ^bb2
+    %7 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc12)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc12)
+    %9 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 48>> loc(#loc12)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 48>>), !cir.ptr<!s8i> loc(#loc12)
+    %11 = cir.const #cir.int<68> : !s32i loc(#loc12)
+    %12 = cir.cast(integral, %11 : !s32i), !u32i loc(#loc12)
+    %13 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 65>> loc(#loc12)
+    %14 = cir.cast(array_to_ptrdecay, %13 : !cir.ptr<!cir.array<!s8i x 65>>), !cir.ptr<!s8i> loc(#loc12)
+    cir.call @__assert_fail(%8, %10, %12, %14) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc12)
+    cir.br ^bb5 loc(#loc12)
+  ^bb5:  // 2 preds: ^bb3, ^bb4
+    cir.br ^bb6 loc(#loc12)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb7 loc(#loc12)
+  ^bb7:  // pred: ^bb6
+    cir.return loc(#loc14)
+  } loc(#loc22)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE617_Reachable_Assertion/CWE617_Reachable_Assertion__listen_socket_68b.c":0:0)
+#loc1 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":45:1)
+#loc2 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":45:12)
+#loc3 = loc("/usr/include/assert.h":69:1)
+#loc4 = loc("/usr/include/assert.h":71:43)
+#loc5 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":56:5)
+#loc6 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":52:1)
+#loc7 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":57:1)
+#loc8 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":54:5)
+#loc9 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":54:16)
+#loc10 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":46:1)
+#loc11 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":46:12)
+#loc12 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":68:5)
+#loc13 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":64:1)
+#loc14 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":69:1)
+#loc15 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":66:5)
+#loc16 = loc("CWE617_Reachable_Assertion__listen_socket_68b.c":66:16)
+#loc17 = loc(fused[#loc1, #loc2])
+#loc18 = loc(fused[#loc3, #loc4])
+#loc19 = loc(fused[#loc6, #loc7])
+#loc20 = loc(fused[#loc8, #loc9])
+#loc21 = loc(fused[#loc10, #loc11])
+#loc22 = loc(fused[#loc13, #loc14])
+#loc23 = loc(fused[#loc15, #loc16])

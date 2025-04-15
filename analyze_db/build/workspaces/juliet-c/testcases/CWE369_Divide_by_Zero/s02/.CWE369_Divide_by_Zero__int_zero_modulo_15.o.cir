@@ -1,0 +1,538 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_zero_modulo_15.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<f80 = dense<128> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e", "dlti.endianness" = "little">} {
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc173)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc3)
+  cir.func private @printIntLine(!s32i) loc(#loc174)
+  cir.func no_proto @CWE369_Divide_by_Zero__int_zero_modulo_15_bad() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc176)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc10)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc11)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc177)
+    cir.br ^bb1 loc(#loc178)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc15)
+    cir.br ^bb2 loc(#loc13)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc13)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc16)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<0> : !s32i loc(#loc17)
+    cir.store %4, %0 : !s32i, !cir.ptr<!s32i> loc(#loc179)
+    cir.br ^bb6 loc(#loc19)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc3)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc3)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc20)
+    cir.br ^bb6 loc(#loc21)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc14)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc180)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc24)
+    cir.br ^bb9 loc(#loc22)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc22)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc25)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %8 = cir.const #cir.int<100> : !s32i loc(#loc26)
+    %9 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc27)
+    %10 = cir.binop(rem, %8, %9) : !s32i loc(#loc181)
+    cir.call @printIntLine(%10) : (!s32i) -> () loc(#loc28)
+    cir.br ^bb13 loc(#loc29)
+  ^bb12:  // pred: ^bb9
+    %11 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc30)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc30)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc31)
+    cir.br ^bb13 loc(#loc32)
+  ^bb13:  // 2 preds: ^bb11, ^bb12
+    cir.br ^bb14 loc(#loc23)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc7)
+  } loc(#loc175)
+  cir.func no_proto @CWE369_Divide_by_Zero__int_zero_modulo_15_good() extra(#fn_attr) {
+    %0 = cir.get_global @goodB2G1 : !cir.ptr<!cir.func<()>> loc(#loc183)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc35)
+    %1 = cir.get_global @goodB2G2 : !cir.ptr<!cir.func<()>> loc(#loc184)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc37)
+    %2 = cir.get_global @goodG2B1 : !cir.ptr<!cir.func<()>> loc(#loc185)
+    cir.call %2() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc39)
+    %3 = cir.get_global @goodG2B2 : !cir.ptr<!cir.func<()>> loc(#loc186)
+    cir.call %3() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc41)
+    cir.return loc(#loc34)
+  } loc(#loc182)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"This would result in a divide by zero\00" : !cir.array<!s8i x 38>> : !cir.array<!s8i x 38> {alignment = 1 : i64} loc(#loc43)
+  cir.func no_proto internal private @goodB2G1() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc188)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc48)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc49)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc189)
+    cir.br ^bb1 loc(#loc190)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc53)
+    cir.br ^bb2 loc(#loc51)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc51)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc54)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<0> : !s32i loc(#loc55)
+    cir.store %4, %0 : !s32i, !cir.ptr<!s32i> loc(#loc191)
+    cir.br ^bb6 loc(#loc57)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc58)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc58)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc59)
+    cir.br ^bb6 loc(#loc60)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc52)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc192)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<8> : !s32i loc(#loc63)
+    cir.br ^bb9 loc(#loc61)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc61)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc64)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %8 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc65)
+    %9 = cir.cast(array_to_ptrdecay, %8 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc65)
+    cir.call @printLine(%9) : (!cir.ptr<!s8i>) -> () loc(#loc66)
+    cir.br ^bb18 loc(#loc67)
+  ^bb12:  // pred: ^bb9
+    cir.br ^bb13 loc(#loc193)
+  ^bb13:  // pred: ^bb12
+    %10 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc70)
+    %11 = cir.const #cir.int<0> : !s32i loc(#loc71)
+    %12 = cir.cmp(ne, %10, %11) : !s32i, !cir.bool loc(#loc194)
+    cir.brcond %12 ^bb14, ^bb15 loc(#loc195)
+  ^bb14:  // pred: ^bb13
+    %13 = cir.const #cir.int<100> : !s32i loc(#loc75)
+    %14 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc76)
+    %15 = cir.binop(rem, %13, %14) : !s32i loc(#loc196)
+    cir.call @printIntLine(%15) : (!s32i) -> () loc(#loc77)
+    cir.br ^bb16 loc(#loc73)
+  ^bb15:  // pred: ^bb13
+    %16 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 38>> loc(#loc43)
+    %17 = cir.cast(array_to_ptrdecay, %16 : !cir.ptr<!cir.array<!s8i x 38>>), !cir.ptr<!s8i> loc(#loc43)
+    cir.call @printLine(%17) : (!cir.ptr<!s8i>) -> () loc(#loc78)
+    cir.br ^bb16 loc(#loc69)
+  ^bb16:  // 2 preds: ^bb14, ^bb15
+    cir.br ^bb17 loc(#loc69)
+  ^bb17:  // pred: ^bb16
+    cir.br ^bb18 loc(#loc79)
+  ^bb18:  // 2 preds: ^bb11, ^bb17
+    cir.br ^bb19 loc(#loc62)
+  ^bb19:  // pred: ^bb18
+    cir.return loc(#loc45)
+  } loc(#loc187)
+  cir.func no_proto internal private @goodB2G2() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc198)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc84)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc85)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc199)
+    cir.br ^bb1 loc(#loc200)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc89)
+    cir.br ^bb2 loc(#loc87)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc87)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc90)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<0> : !s32i loc(#loc91)
+    cir.store %4, %0 : !s32i, !cir.ptr<!s32i> loc(#loc201)
+    cir.br ^bb6 loc(#loc93)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc94)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc94)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc95)
+    cir.br ^bb6 loc(#loc96)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc88)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc202)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc99)
+    cir.br ^bb9 loc(#loc97)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb17 [
+      7: ^bb11
+    ] loc(#loc97)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc100)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    cir.br ^bb12 loc(#loc203)
+  ^bb12:  // pred: ^bb11
+    %8 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc103)
+    %9 = cir.const #cir.int<0> : !s32i loc(#loc104)
+    %10 = cir.cmp(ne, %8, %9) : !s32i, !cir.bool loc(#loc204)
+    cir.brcond %10 ^bb13, ^bb14 loc(#loc205)
+  ^bb13:  // pred: ^bb12
+    %11 = cir.const #cir.int<100> : !s32i loc(#loc108)
+    %12 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc109)
+    %13 = cir.binop(rem, %11, %12) : !s32i loc(#loc206)
+    cir.call @printIntLine(%13) : (!s32i) -> () loc(#loc110)
+    cir.br ^bb15 loc(#loc106)
+  ^bb14:  // pred: ^bb12
+    %14 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 38>> loc(#loc111)
+    %15 = cir.cast(array_to_ptrdecay, %14 : !cir.ptr<!cir.array<!s8i x 38>>), !cir.ptr<!s8i> loc(#loc111)
+    cir.call @printLine(%15) : (!cir.ptr<!s8i>) -> () loc(#loc112)
+    cir.br ^bb15 loc(#loc102)
+  ^bb15:  // 2 preds: ^bb13, ^bb14
+    cir.br ^bb16 loc(#loc102)
+  ^bb16:  // pred: ^bb15
+    cir.br ^bb18 loc(#loc113)
+  ^bb17:  // pred: ^bb9
+    %16 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc114)
+    %17 = cir.cast(array_to_ptrdecay, %16 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc114)
+    cir.call @printLine(%17) : (!cir.ptr<!s8i>) -> () loc(#loc115)
+    cir.br ^bb18 loc(#loc116)
+  ^bb18:  // 2 preds: ^bb16, ^bb17
+    cir.br ^bb19 loc(#loc98)
+  ^bb19:  // pred: ^bb18
+    cir.return loc(#loc81)
+  } loc(#loc197)
+  cir.func no_proto internal private @goodG2B1() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc208)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc121)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc122)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc209)
+    cir.br ^bb1 loc(#loc210)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc126)
+    cir.br ^bb2 loc(#loc124)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc124)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc127)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc128)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc128)
+    cir.call @printLine(%5) : (!cir.ptr<!s8i>) -> () loc(#loc129)
+    cir.br ^bb6 loc(#loc130)
+  ^bb5:  // pred: ^bb2
+    %6 = cir.const #cir.int<7> : !s32i loc(#loc131)
+    cir.store %6, %0 : !s32i, !cir.ptr<!s32i> loc(#loc211)
+    cir.br ^bb6 loc(#loc133)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc125)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc212)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc136)
+    cir.br ^bb9 loc(#loc134)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc134)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc137)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %8 = cir.const #cir.int<100> : !s32i loc(#loc138)
+    %9 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc139)
+    %10 = cir.binop(rem, %8, %9) : !s32i loc(#loc213)
+    cir.call @printIntLine(%10) : (!s32i) -> () loc(#loc140)
+    cir.br ^bb13 loc(#loc141)
+  ^bb12:  // pred: ^bb9
+    %11 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc142)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc142)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc143)
+    cir.br ^bb13 loc(#loc144)
+  ^bb13:  // 2 preds: ^bb11, ^bb12
+    cir.br ^bb14 loc(#loc135)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc118)
+  } loc(#loc207)
+  cir.func no_proto internal private @goodG2B2() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc215)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc149)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc150)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc216)
+    cir.br ^bb1 loc(#loc217)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc154)
+    cir.br ^bb2 loc(#loc152)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc152)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc155)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<7> : !s32i loc(#loc156)
+    cir.store %4, %0 : !s32i, !cir.ptr<!s32i> loc(#loc218)
+    cir.br ^bb6 loc(#loc158)
+  ^bb5:  // pred: ^bb2
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc159)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc159)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc160)
+    cir.br ^bb6 loc(#loc161)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc153)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc219)
+  ^bb8:  // pred: ^bb7
+    %7 = cir.const #cir.int<7> : !s32i loc(#loc164)
+    cir.br ^bb9 loc(#loc162)
+  ^bb9:  // pred: ^bb8
+    cir.switch.flat %7 : !s32i, ^bb12 [
+      7: ^bb11
+    ] loc(#loc162)
+  ^bb10:  // no predecessors
+    cir.br ^bb11 loc(#loc165)
+  ^bb11:  // 2 preds: ^bb9, ^bb10
+    %8 = cir.const #cir.int<100> : !s32i loc(#loc166)
+    %9 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc167)
+    %10 = cir.binop(rem, %8, %9) : !s32i loc(#loc220)
+    cir.call @printIntLine(%10) : (!s32i) -> () loc(#loc168)
+    cir.br ^bb13 loc(#loc169)
+  ^bb12:  // pred: ^bb9
+    %11 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc170)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc170)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc171)
+    cir.br ^bb13 loc(#loc172)
+  ^bb13:  // 2 preds: ^bb11, ^bb12
+    cir.br ^bb14 loc(#loc163)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc146)
+  } loc(#loc214)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE369_Divide_by_Zero/s02/CWE369_Divide_by_Zero__int_zero_modulo_15.c":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":35:19)
+#loc4 = loc("../../../testcasesupport/std_testcase_io.h":18:1)
+#loc5 = loc("../../../testcasesupport/std_testcase_io.h":18:33)
+#loc6 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":22:1)
+#loc7 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":49:1)
+#loc8 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":24:5)
+#loc9 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":24:9)
+#loc10 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":26:13)
+#loc11 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":26:12)
+#loc12 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":26:5)
+#loc13 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":27:5)
+#loc14 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":37:5)
+#loc15 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":27:12)
+#loc16 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":29:5)
+#loc17 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":31:16)
+#loc18 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":31:9)
+#loc19 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":32:9)
+#loc20 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":35:9)
+#loc21 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":36:9)
+#loc22 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":38:5)
+#loc23 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":48:5)
+#loc24 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":38:12)
+#loc25 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":40:5)
+#loc26 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":42:22)
+#loc27 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":42:28)
+#loc28 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":42:9)
+#loc29 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":43:9)
+#loc30 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":46:19)
+#loc31 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":46:9)
+#loc32 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":47:9)
+#loc33 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":189:1)
+#loc34 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":195:1)
+#loc35 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":191:5)
+#loc36 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":191:14)
+#loc37 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":192:5)
+#loc38 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":192:14)
+#loc39 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":193:5)
+#loc40 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":193:14)
+#loc41 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":194:5)
+#loc42 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":194:14)
+#loc43 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":86:23)
+#loc44 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":56:1)
+#loc45 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":90:1)
+#loc46 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":58:5)
+#loc47 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":58:9)
+#loc48 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":60:13)
+#loc49 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":60:12)
+#loc50 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":60:5)
+#loc51 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":61:5)
+#loc52 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":71:5)
+#loc53 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":61:12)
+#loc54 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":63:5)
+#loc55 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":65:16)
+#loc56 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":65:9)
+#loc57 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":66:9)
+#loc58 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":69:19)
+#loc59 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":69:9)
+#loc60 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":70:9)
+#loc61 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":72:5)
+#loc62 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":89:5)
+#loc63 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":72:12)
+#loc64 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":74:5)
+#loc65 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":76:19)
+#loc66 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":76:9)
+#loc67 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":77:9)
+#loc68 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":80:9)
+#loc69 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":87:9)
+#loc70 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":80:13)
+#loc71 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":80:21)
+#loc72 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":81:9)
+#loc73 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":83:9)
+#loc74 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":85:9)
+#loc75 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":82:26)
+#loc76 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":82:32)
+#loc77 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":82:13)
+#loc78 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":86:13)
+#loc79 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":88:9)
+#loc80 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":93:1)
+#loc81 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":127:1)
+#loc82 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":95:5)
+#loc83 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":95:9)
+#loc84 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":97:13)
+#loc85 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":97:12)
+#loc86 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":97:5)
+#loc87 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":98:5)
+#loc88 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":108:5)
+#loc89 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":98:12)
+#loc90 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":100:5)
+#loc91 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":102:16)
+#loc92 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":102:9)
+#loc93 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":103:9)
+#loc94 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":106:19)
+#loc95 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":106:9)
+#loc96 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":107:9)
+#loc97 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":109:5)
+#loc98 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":126:5)
+#loc99 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":109:12)
+#loc100 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":111:5)
+#loc101 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":113:9)
+#loc102 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":120:9)
+#loc103 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":113:13)
+#loc104 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":113:21)
+#loc105 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":114:9)
+#loc106 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":116:9)
+#loc107 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":118:9)
+#loc108 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":115:26)
+#loc109 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":115:32)
+#loc110 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":115:13)
+#loc111 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":119:23)
+#loc112 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":119:13)
+#loc113 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":121:9)
+#loc114 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":124:19)
+#loc115 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":124:9)
+#loc116 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":125:9)
+#loc117 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":130:1)
+#loc118 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":157:1)
+#loc119 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":132:5)
+#loc120 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":132:9)
+#loc121 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":134:13)
+#loc122 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":134:12)
+#loc123 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":134:5)
+#loc124 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":135:5)
+#loc125 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":145:5)
+#loc126 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":135:12)
+#loc127 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":137:5)
+#loc128 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":139:19)
+#loc129 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":139:9)
+#loc130 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":140:9)
+#loc131 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":143:16)
+#loc132 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":143:9)
+#loc133 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":144:9)
+#loc134 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":146:5)
+#loc135 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":156:5)
+#loc136 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":146:12)
+#loc137 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":148:5)
+#loc138 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":150:22)
+#loc139 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":150:28)
+#loc140 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":150:9)
+#loc141 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":151:9)
+#loc142 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":154:19)
+#loc143 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":154:9)
+#loc144 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":155:9)
+#loc145 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":160:1)
+#loc146 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":187:1)
+#loc147 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":162:5)
+#loc148 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":162:9)
+#loc149 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":164:13)
+#loc150 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":164:12)
+#loc151 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":164:5)
+#loc152 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":165:5)
+#loc153 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":175:5)
+#loc154 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":165:12)
+#loc155 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":167:5)
+#loc156 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":169:16)
+#loc157 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":169:9)
+#loc158 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":170:9)
+#loc159 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":173:19)
+#loc160 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":173:9)
+#loc161 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":174:9)
+#loc162 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":176:5)
+#loc163 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":186:5)
+#loc164 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":176:12)
+#loc165 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":178:5)
+#loc166 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":180:22)
+#loc167 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":180:28)
+#loc168 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":180:9)
+#loc169 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":181:9)
+#loc170 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":184:19)
+#loc171 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":184:9)
+#loc172 = loc("CWE369_Divide_by_Zero__int_zero_modulo_15.c":185:9)
+#loc173 = loc(fused[#loc1, #loc2])
+#loc174 = loc(fused[#loc4, #loc5])
+#loc175 = loc(fused[#loc6, #loc7])
+#loc176 = loc(fused[#loc8, #loc9])
+#loc177 = loc(fused[#loc12, #loc10])
+#loc178 = loc(fused[#loc13, #loc14])
+#loc179 = loc(fused[#loc18, #loc17])
+#loc180 = loc(fused[#loc22, #loc23])
+#loc181 = loc(fused[#loc26, #loc27])
+#loc182 = loc(fused[#loc33, #loc34])
+#loc183 = loc(fused[#loc35, #loc36])
+#loc184 = loc(fused[#loc37, #loc38])
+#loc185 = loc(fused[#loc39, #loc40])
+#loc186 = loc(fused[#loc41, #loc42])
+#loc187 = loc(fused[#loc44, #loc45])
+#loc188 = loc(fused[#loc46, #loc47])
+#loc189 = loc(fused[#loc50, #loc48])
+#loc190 = loc(fused[#loc51, #loc52])
+#loc191 = loc(fused[#loc56, #loc55])
+#loc192 = loc(fused[#loc61, #loc62])
+#loc193 = loc(fused[#loc68, #loc69])
+#loc194 = loc(fused[#loc70, #loc71])
+#loc195 = loc(fused[#loc72, #loc73, #loc74, #loc69])
+#loc196 = loc(fused[#loc75, #loc76])
+#loc197 = loc(fused[#loc80, #loc81])
+#loc198 = loc(fused[#loc82, #loc83])
+#loc199 = loc(fused[#loc86, #loc84])
+#loc200 = loc(fused[#loc87, #loc88])
+#loc201 = loc(fused[#loc92, #loc91])
+#loc202 = loc(fused[#loc97, #loc98])
+#loc203 = loc(fused[#loc101, #loc102])
+#loc204 = loc(fused[#loc103, #loc104])
+#loc205 = loc(fused[#loc105, #loc106, #loc107, #loc102])
+#loc206 = loc(fused[#loc108, #loc109])
+#loc207 = loc(fused[#loc117, #loc118])
+#loc208 = loc(fused[#loc119, #loc120])
+#loc209 = loc(fused[#loc123, #loc121])
+#loc210 = loc(fused[#loc124, #loc125])
+#loc211 = loc(fused[#loc132, #loc131])
+#loc212 = loc(fused[#loc134, #loc135])
+#loc213 = loc(fused[#loc138, #loc139])
+#loc214 = loc(fused[#loc145, #loc146])
+#loc215 = loc(fused[#loc147, #loc148])
+#loc216 = loc(fused[#loc151, #loc149])
+#loc217 = loc(fused[#loc152, #loc153])
+#loc218 = loc(fused[#loc157, #loc156])
+#loc219 = loc(fused[#loc162, #loc163])
+#loc220 = loc(fused[#loc166, #loc167])

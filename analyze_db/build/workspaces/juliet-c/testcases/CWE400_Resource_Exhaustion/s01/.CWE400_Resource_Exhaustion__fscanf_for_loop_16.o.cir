@@ -1,0 +1,483 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#false = #cir.bool<false> : !cir.bool
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc76 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:27)
+#true = #cir.bool<true> : !cir.bool
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE400_Resource_Exhaustion/s01/CWE400_Resource_Exhaustion__fscanf_for_loop_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e", "dlti.endianness" = "little">} {
+  cir.func private @__isoc99_fscanf(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i loc(#loc128)
+  cir.global "private" external @stdin : !cir.ptr<!ty__IO_FILE> {alignment = 8 : i64} loc(#loc129)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"%d\00" : !cir.array<!s8i x 3>> : !cir.array<!s8i x 3> {alignment = 1 : i64} loc(#loc5)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc130)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"Hello\00" : !cir.array<!s8i x 6>> : !cir.array<!s8i x 6> {alignment = 1 : i64} loc(#loc8)
+  cir.func no_proto @CWE400_Resource_Exhaustion__fscanf_for_loop_16_bad() extra(#fn_attr) {
+    %0 = cir.alloca !u64i, !cir.ptr<!u64i>, ["i", init] {alignment = 8 : i64} loc(#loc132)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["count"] {alignment = 4 : i64} loc(#loc133)
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc15)
+    %3 = cir.unary(minus, %2) nsw : !s32i, !s32i loc(#loc16)
+    cir.store %3, %1 : !s32i, !cir.ptr<!s32i> loc(#loc134)
+    cir.br ^bb1 loc(#loc135)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc135)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %4 = cir.const #cir.int<1> : !s32i loc(#loc20)
+    %5 = cir.cast(int_to_bool, %4 : !s32i), !cir.bool loc(#loc20)
+    cir.brcond %5 ^bb3, ^bb6 loc(#loc20)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc136)
+  ^bb4:  // pred: ^bb3
+    %6 = cir.get_global @__isoc99_fscanf : !cir.ptr<!cir.func<(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i>> loc(#loc22)
+    %7 = cir.get_global @stdin : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc129)
+    %8 = cir.load %7 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc23)
+    %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc5)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc5)
+    %11 = cir.call @__isoc99_fscanf(%8, %10, %1) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, !cir.ptr<!s32i>) -> !s32i loc(#loc22)
+    cir.br ^bb6 loc(#loc24)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc19)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc19)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc137)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc137)
+  ^bb9:  // 2 preds: ^bb8, ^bb22
+    %12 = cir.const #cir.int<1> : !s32i loc(#loc27)
+    %13 = cir.cast(int_to_bool, %12 : !s32i), !cir.bool loc(#loc27)
+    cir.brcond %13 ^bb10, ^bb23 loc(#loc27)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc138)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc139)
+  ^bb12:  // pred: ^bb11
+    %14 = cir.const #cir.int<0> : !s32i loc(#loc12)
+    %15 = cir.cast(integral, %14 : !s32i), !u64i loc(#loc12)
+    cir.store %15, %0 : !u64i, !cir.ptr<!u64i> loc(#loc132)
+    cir.br ^bb13 loc(#loc140)
+  ^bb13:  // pred: ^bb12
+    %16 = cir.const #cir.int<0> : !s32i loc(#loc33)
+    %17 = cir.cast(integral, %16 : !s32i), !u64i loc(#loc33)
+    cir.store %17, %0 : !u64i, !cir.ptr<!u64i> loc(#loc141)
+    cir.br ^bb14 loc(#loc140)
+  ^bb14:  // 2 preds: ^bb13, ^bb18
+    %18 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc35)
+    %19 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc36)
+    %20 = cir.cast(integral, %19 : !s32i), !u64i loc(#loc36)
+    %21 = cir.cmp(lt, %18, %20) : !u64i, !cir.bool loc(#loc142)
+    cir.brcond %21 ^bb15, ^bb19 loc(#loc37)
+  ^bb15:  // pred: ^bb14
+    cir.br ^bb16 loc(#loc143)
+  ^bb16:  // pred: ^bb15
+    %22 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 6>> loc(#loc8)
+    %23 = cir.cast(array_to_ptrdecay, %22 : !cir.ptr<!cir.array<!s8i x 6>>), !cir.ptr<!s8i> loc(#loc8)
+    cir.call @printLine(%23) : (!cir.ptr<!s8i>) -> () loc(#loc39)
+    cir.br ^bb17 loc(#loc32)
+  ^bb17:  // pred: ^bb16
+    cir.br ^bb18 loc(#loc32)
+  ^bb18:  // pred: ^bb17
+    %24 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc40)
+    %25 = cir.unary(inc, %24) : !u64i, !u64i loc(#loc41)
+    cir.store %25, %0 : !u64i, !cir.ptr<!u64i> loc(#loc144)
+    cir.br ^bb14 loc(#loc140)
+  ^bb19:  // pred: ^bb14
+    cir.br ^bb20 loc(#loc32)
+  ^bb20:  // pred: ^bb19
+    cir.br ^bb21 loc(#loc30)
+  ^bb21:  // pred: ^bb20
+    cir.br ^bb23 loc(#loc42)
+  ^bb22:  // no predecessors
+    cir.br ^bb9 loc(#loc26)
+  ^bb23:  // 2 preds: ^bb9, ^bb21
+    cir.br ^bb24 loc(#loc26)
+  ^bb24:  // pred: ^bb23
+    cir.return loc(#loc10)
+  } loc(#loc131)
+  cir.func no_proto @CWE400_Resource_Exhaustion__fscanf_for_loop_16_good() extra(#fn_attr) {
+    %0 = cir.get_global @goodB2G : !cir.ptr<!cir.func<()>> loc(#loc146)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc45)
+    %1 = cir.get_global @goodG2B : !cir.ptr<!cir.func<()>> loc(#loc147)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc47)
+    cir.return loc(#loc44)
+  } loc(#loc145)
+  cir.func no_proto internal private @goodB2G() extra(#fn_attr) {
+    %0 = cir.alloca !u64i, !cir.ptr<!u64i>, ["i", init] {alignment = 8 : i64} loc(#loc149)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["count"] {alignment = 4 : i64} loc(#loc150)
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc55)
+    %3 = cir.unary(minus, %2) nsw : !s32i, !s32i loc(#loc56)
+    cir.store %3, %1 : !s32i, !cir.ptr<!s32i> loc(#loc151)
+    cir.br ^bb1 loc(#loc152)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc152)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %4 = cir.const #cir.int<1> : !s32i loc(#loc60)
+    %5 = cir.cast(int_to_bool, %4 : !s32i), !cir.bool loc(#loc60)
+    cir.brcond %5 ^bb3, ^bb6 loc(#loc60)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc153)
+  ^bb4:  // pred: ^bb3
+    %6 = cir.get_global @__isoc99_fscanf : !cir.ptr<!cir.func<(!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, ...) -> !s32i>> loc(#loc62)
+    %7 = cir.get_global @stdin : !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc129)
+    %8 = cir.load %7 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc63)
+    %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc64)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc64)
+    %11 = cir.call @__isoc99_fscanf(%8, %10, %1) : (!cir.ptr<!ty__IO_FILE>, !cir.ptr<!s8i>, !cir.ptr<!s32i>) -> !s32i loc(#loc62)
+    cir.br ^bb6 loc(#loc65)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc59)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc59)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc154)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc154)
+  ^bb9:  // 2 preds: ^bb8, ^bb34
+    %12 = cir.const #cir.int<1> : !s32i loc(#loc68)
+    %13 = cir.cast(int_to_bool, %12 : !s32i), !cir.bool loc(#loc68)
+    cir.brcond %13 ^bb10, ^bb35 loc(#loc68)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc155)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc156)
+  ^bb12:  // pred: ^bb11
+    %14 = cir.const #cir.int<0> : !s32i loc(#loc52)
+    %15 = cir.cast(integral, %14 : !s32i), !u64i loc(#loc52)
+    cir.store %15, %0 : !u64i, !cir.ptr<!u64i> loc(#loc149)
+    cir.br ^bb13 loc(#loc157)
+  ^bb13:  // pred: ^bb12
+    %16 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc74)
+    %17 = cir.const #cir.int<0> : !s32i loc(#loc75)
+    %18 = cir.cmp(gt, %16, %17) : !s32i, !cir.bool loc(#loc158)
+    cir.brcond %18 ^bb14, ^bb19 loc(#loc76)
+  ^bb14:  // pred: ^bb13
+    %19 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc77)
+    %20 = cir.const #cir.int<20> : !s32i loc(#loc78)
+    %21 = cir.cmp(le, %19, %20) : !s32i, !cir.bool loc(#loc159)
+    cir.brcond %21 ^bb15, ^bb16 loc(#loc76)
+  ^bb15:  // pred: ^bb14
+    %22 = cir.const #true loc(#loc76)
+    cir.br ^bb17(%22 : !cir.bool) loc(#loc76)
+  ^bb16:  // pred: ^bb14
+    %23 = cir.const #false loc(#loc76)
+    cir.br ^bb17(%23 : !cir.bool) loc(#loc76)
+  ^bb17(%24: !cir.bool loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:27)):  // 2 preds: ^bb15, ^bb16
+    cir.br ^bb18 loc(#loc76)
+  ^bb18:  // pred: ^bb17
+    cir.br ^bb20(%24 : !cir.bool) loc(#loc76)
+  ^bb19:  // pred: ^bb13
+    %25 = cir.const #false loc(#loc76)
+    cir.br ^bb20(%25 : !cir.bool) loc(#loc76)
+  ^bb20(%26: !cir.bool loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:27)):  // 2 preds: ^bb18, ^bb19
+    cir.br ^bb21 loc(#loc76)
+  ^bb21:  // pred: ^bb20
+    cir.brcond %26 ^bb22, ^bb31 loc(#loc160)
+  ^bb22:  // pred: ^bb21
+    cir.br ^bb23 loc(#loc161)
+  ^bb23:  // pred: ^bb22
+    %27 = cir.const #cir.int<0> : !s32i loc(#loc82)
+    %28 = cir.cast(integral, %27 : !s32i), !u64i loc(#loc82)
+    cir.store %28, %0 : !u64i, !cir.ptr<!u64i> loc(#loc162)
+    cir.br ^bb24 loc(#loc161)
+  ^bb24:  // 2 preds: ^bb23, ^bb28
+    %29 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc84)
+    %30 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc85)
+    %31 = cir.cast(integral, %30 : !s32i), !u64i loc(#loc85)
+    %32 = cir.cmp(lt, %29, %31) : !u64i, !cir.bool loc(#loc163)
+    cir.brcond %32 ^bb25, ^bb29 loc(#loc86)
+  ^bb25:  // pred: ^bb24
+    cir.br ^bb26 loc(#loc164)
+  ^bb26:  // pred: ^bb25
+    %33 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 6>> loc(#loc88)
+    %34 = cir.cast(array_to_ptrdecay, %33 : !cir.ptr<!cir.array<!s8i x 6>>), !cir.ptr<!s8i> loc(#loc88)
+    cir.call @printLine(%34) : (!cir.ptr<!s8i>) -> () loc(#loc89)
+    cir.br ^bb27 loc(#loc81)
+  ^bb27:  // pred: ^bb26
+    cir.br ^bb28 loc(#loc81)
+  ^bb28:  // pred: ^bb27
+    %35 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc90)
+    %36 = cir.unary(inc, %35) : !u64i, !u64i loc(#loc91)
+    cir.store %36, %0 : !u64i, !cir.ptr<!u64i> loc(#loc165)
+    cir.br ^bb24 loc(#loc161)
+  ^bb29:  // pred: ^bb24
+    cir.br ^bb30 loc(#loc81)
+  ^bb30:  // pred: ^bb29
+    cir.br ^bb31 loc(#loc73)
+  ^bb31:  // 2 preds: ^bb21, ^bb30
+    cir.br ^bb32 loc(#loc73)
+  ^bb32:  // pred: ^bb31
+    cir.br ^bb33 loc(#loc71)
+  ^bb33:  // pred: ^bb32
+    cir.br ^bb35 loc(#loc92)
+  ^bb34:  // no predecessors
+    cir.br ^bb9 loc(#loc67)
+  ^bb35:  // 2 preds: ^bb9, ^bb33
+    cir.br ^bb36 loc(#loc67)
+  ^bb36:  // pred: ^bb35
+    cir.return loc(#loc50)
+  } loc(#loc148)
+  cir.func no_proto internal private @goodG2B() extra(#fn_attr) {
+    %0 = cir.alloca !u64i, !cir.ptr<!u64i>, ["i", init] {alignment = 8 : i64} loc(#loc167)
+    %1 = cir.alloca !s32i, !cir.ptr<!s32i>, ["count"] {alignment = 4 : i64} loc(#loc168)
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc99)
+    %3 = cir.unary(minus, %2) nsw : !s32i, !s32i loc(#loc100)
+    cir.store %3, %1 : !s32i, !cir.ptr<!s32i> loc(#loc169)
+    cir.br ^bb1 loc(#loc170)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc170)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %4 = cir.const #cir.int<1> : !s32i loc(#loc104)
+    %5 = cir.cast(int_to_bool, %4 : !s32i), !cir.bool loc(#loc104)
+    cir.brcond %5 ^bb3, ^bb6 loc(#loc104)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc171)
+  ^bb4:  // pred: ^bb3
+    %6 = cir.const #cir.int<20> : !s32i loc(#loc106)
+    cir.store %6, %1 : !s32i, !cir.ptr<!s32i> loc(#loc172)
+    cir.br ^bb6 loc(#loc108)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc103)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc103)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc173)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc173)
+  ^bb9:  // 2 preds: ^bb8, ^bb22
+    %7 = cir.const #cir.int<1> : !s32i loc(#loc111)
+    %8 = cir.cast(int_to_bool, %7 : !s32i), !cir.bool loc(#loc111)
+    cir.brcond %8 ^bb10, ^bb23 loc(#loc111)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc174)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc175)
+  ^bb12:  // pred: ^bb11
+    %9 = cir.const #cir.int<0> : !s32i loc(#loc96)
+    %10 = cir.cast(integral, %9 : !s32i), !u64i loc(#loc96)
+    cir.store %10, %0 : !u64i, !cir.ptr<!u64i> loc(#loc167)
+    cir.br ^bb13 loc(#loc176)
+  ^bb13:  // pred: ^bb12
+    %11 = cir.const #cir.int<0> : !s32i loc(#loc117)
+    %12 = cir.cast(integral, %11 : !s32i), !u64i loc(#loc117)
+    cir.store %12, %0 : !u64i, !cir.ptr<!u64i> loc(#loc177)
+    cir.br ^bb14 loc(#loc176)
+  ^bb14:  // 2 preds: ^bb13, ^bb18
+    %13 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc119)
+    %14 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc120)
+    %15 = cir.cast(integral, %14 : !s32i), !u64i loc(#loc120)
+    %16 = cir.cmp(lt, %13, %15) : !u64i, !cir.bool loc(#loc178)
+    cir.brcond %16 ^bb15, ^bb19 loc(#loc121)
+  ^bb15:  // pred: ^bb14
+    cir.br ^bb16 loc(#loc179)
+  ^bb16:  // pred: ^bb15
+    %17 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 6>> loc(#loc123)
+    %18 = cir.cast(array_to_ptrdecay, %17 : !cir.ptr<!cir.array<!s8i x 6>>), !cir.ptr<!s8i> loc(#loc123)
+    cir.call @printLine(%18) : (!cir.ptr<!s8i>) -> () loc(#loc124)
+    cir.br ^bb17 loc(#loc116)
+  ^bb17:  // pred: ^bb16
+    cir.br ^bb18 loc(#loc116)
+  ^bb18:  // pred: ^bb17
+    %19 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc125)
+    %20 = cir.unary(inc, %19) : !u64i, !u64i loc(#loc126)
+    cir.store %20, %0 : !u64i, !cir.ptr<!u64i> loc(#loc180)
+    cir.br ^bb14 loc(#loc176)
+  ^bb19:  // pred: ^bb14
+    cir.br ^bb20 loc(#loc116)
+  ^bb20:  // pred: ^bb19
+    cir.br ^bb21 loc(#loc114)
+  ^bb21:  // pred: ^bb20
+    cir.br ^bb23 loc(#loc127)
+  ^bb22:  // no predecessors
+    cir.br ^bb9 loc(#loc110)
+  ^bb23:  // 2 preds: ^bb9, ^bb21
+    cir.br ^bb24 loc(#loc110)
+  ^bb24:  // pred: ^bb23
+    cir.return loc(#loc94)
+  } loc(#loc166)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE400_Resource_Exhaustion/s01/CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":0:0)
+#loc1 = loc("/usr/include/stdio.h":463:1)
+#loc2 = loc("/usr/include/stdio.h":465:33)
+#loc3 = loc("/usr/include/stdio.h":149:1)
+#loc4 = loc("/usr/include/stdio.h":149:14)
+#loc5 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":30:23)
+#loc6 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc7 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc8 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":40:27)
+#loc9 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":22:1)
+#loc10 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":45:1)
+#loc11 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":36:13)
+#loc12 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":36:24)
+#loc13 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":24:5)
+#loc14 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":24:9)
+#loc15 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":26:14)
+#loc16 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":26:13)
+#loc17 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":26:5)
+#loc18 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":27:5)
+#loc19 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":32:5)
+#loc20 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":27:11)
+#loc21 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":28:5)
+#loc22 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":30:9)
+#loc23 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":30:16)
+#loc24 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":31:9)
+#loc25 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":33:5)
+#loc26 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":44:5)
+#loc27 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":33:11)
+#loc28 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":34:5)
+#loc29 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":35:9)
+#loc30 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":42:9)
+#loc31 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:13)
+#loc32 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":41:13)
+#loc33 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:22)
+#loc34 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:18)
+#loc35 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:25)
+#loc36 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:37)
+#loc37 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:27)
+#loc38 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":39:13)
+#loc39 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":40:17)
+#loc40 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:45)
+#loc41 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":38:44)
+#loc42 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":43:9)
+#loc43 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":106:1)
+#loc44 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":110:1)
+#loc45 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":108:5)
+#loc46 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":108:13)
+#loc47 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":109:5)
+#loc48 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":109:13)
+#loc49 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":52:1)
+#loc50 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":78:1)
+#loc51 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":66:13)
+#loc52 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":66:24)
+#loc53 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":54:5)
+#loc54 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":54:9)
+#loc55 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":56:14)
+#loc56 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":56:13)
+#loc57 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":56:5)
+#loc58 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":57:5)
+#loc59 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":62:5)
+#loc60 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":57:11)
+#loc61 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":58:5)
+#loc62 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":60:9)
+#loc63 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":60:16)
+#loc64 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":60:23)
+#loc65 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":61:9)
+#loc66 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":63:5)
+#loc67 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":77:5)
+#loc68 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":63:11)
+#loc69 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":64:5)
+#loc70 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":65:9)
+#loc71 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":75:9)
+#loc72 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:13)
+#loc73 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":74:13)
+#loc74 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:17)
+#loc75 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:25)
+#loc77 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:30)
+#loc78 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":68:39)
+#loc79 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":69:13)
+#loc80 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:17)
+#loc81 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":73:17)
+#loc82 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:26)
+#loc83 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:22)
+#loc84 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:29)
+#loc85 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:41)
+#loc86 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:31)
+#loc87 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":71:17)
+#loc88 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":72:31)
+#loc89 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":72:21)
+#loc90 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:49)
+#loc91 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":70:48)
+#loc92 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":76:9)
+#loc93 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":81:1)
+#loc94 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":104:1)
+#loc95 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":95:13)
+#loc96 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":95:24)
+#loc97 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":83:5)
+#loc98 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":83:9)
+#loc99 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":85:14)
+#loc100 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":85:13)
+#loc101 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":85:5)
+#loc102 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":86:5)
+#loc103 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":91:5)
+#loc104 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":86:11)
+#loc105 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":87:5)
+#loc106 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":89:17)
+#loc107 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":89:9)
+#loc108 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":90:9)
+#loc109 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":92:5)
+#loc110 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":103:5)
+#loc111 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":92:11)
+#loc112 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":93:5)
+#loc113 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":94:9)
+#loc114 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":101:9)
+#loc115 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:13)
+#loc116 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":100:13)
+#loc117 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:22)
+#loc118 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:18)
+#loc119 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:25)
+#loc120 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:37)
+#loc121 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:27)
+#loc122 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":98:13)
+#loc123 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":99:27)
+#loc124 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":99:17)
+#loc125 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:45)
+#loc126 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":97:44)
+#loc127 = loc("CWE400_Resource_Exhaustion__fscanf_for_loop_16.c":102:9)
+#loc128 = loc(fused[#loc1, #loc2])
+#loc129 = loc(fused[#loc3, #loc4])
+#loc130 = loc(fused[#loc6, #loc7])
+#loc131 = loc(fused[#loc9, #loc10])
+#loc132 = loc(fused[#loc11, #loc12])
+#loc133 = loc(fused[#loc13, #loc14])
+#loc134 = loc(fused[#loc17, #loc15])
+#loc135 = loc(fused[#loc18, #loc19])
+#loc136 = loc(fused[#loc21, #loc19])
+#loc137 = loc(fused[#loc25, #loc26])
+#loc138 = loc(fused[#loc28, #loc26])
+#loc139 = loc(fused[#loc29, #loc30])
+#loc140 = loc(fused[#loc31, #loc32])
+#loc141 = loc(fused[#loc34, #loc33])
+#loc142 = loc(fused[#loc35, #loc36])
+#loc143 = loc(fused[#loc38, #loc32])
+#loc144 = loc(fused[#loc41, #loc40])
+#loc145 = loc(fused[#loc43, #loc44])
+#loc146 = loc(fused[#loc45, #loc46])
+#loc147 = loc(fused[#loc47, #loc48])
+#loc148 = loc(fused[#loc49, #loc50])
+#loc149 = loc(fused[#loc51, #loc52])
+#loc150 = loc(fused[#loc53, #loc54])
+#loc151 = loc(fused[#loc57, #loc55])
+#loc152 = loc(fused[#loc58, #loc59])
+#loc153 = loc(fused[#loc61, #loc59])
+#loc154 = loc(fused[#loc66, #loc67])
+#loc155 = loc(fused[#loc69, #loc67])
+#loc156 = loc(fused[#loc70, #loc71])
+#loc157 = loc(fused[#loc72, #loc73])
+#loc158 = loc(fused[#loc74, #loc75])
+#loc159 = loc(fused[#loc77, #loc78])
+#loc160 = loc(fused[#loc79, #loc73])
+#loc161 = loc(fused[#loc80, #loc81])
+#loc162 = loc(fused[#loc83, #loc82])
+#loc163 = loc(fused[#loc84, #loc85])
+#loc164 = loc(fused[#loc87, #loc81])
+#loc165 = loc(fused[#loc91, #loc90])
+#loc166 = loc(fused[#loc93, #loc94])
+#loc167 = loc(fused[#loc95, #loc96])
+#loc168 = loc(fused[#loc97, #loc98])
+#loc169 = loc(fused[#loc101, #loc99])
+#loc170 = loc(fused[#loc102, #loc103])
+#loc171 = loc(fused[#loc105, #loc103])
+#loc172 = loc(fused[#loc107, #loc106])
+#loc173 = loc(fused[#loc109, #loc110])
+#loc174 = loc(fused[#loc112, #loc110])
+#loc175 = loc(fused[#loc113, #loc114])
+#loc176 = loc(fused[#loc115, #loc116])
+#loc177 = loc(fused[#loc118, #loc117])
+#loc178 = loc(fused[#loc119, #loc120])
+#loc179 = loc(fused[#loc122, #loc116])
+#loc180 = loc(fused[#loc126, #loc125])

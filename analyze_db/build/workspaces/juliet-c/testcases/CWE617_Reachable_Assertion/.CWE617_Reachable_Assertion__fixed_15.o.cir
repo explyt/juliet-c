@@ -1,0 +1,281 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE617_Reachable_Assertion/CWE617_Reachable_Assertion__fixed_15.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little", "dlti.mangling_mode" = "e">} {
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc68)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc3)
+  cir.func private @__assert_fail(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) extra(#fn_attr) loc(#loc69)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"data > ASSERT_VALUE\00" : !cir.array<!s8i x 20>> : !cir.array<!s8i x 20> {alignment = 1 : i64} loc(#loc6)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"CWE617_Reachable_Assertion__fixed_15.c\00" : !cir.array<!s8i x 39>> : !cir.array<!s8i x 39> {alignment = 1 : i64} loc(#loc6)
+  cir.global "private" constant cir_private dsolocal @".str.3" = #cir.const_array<"void CWE617_Reachable_Assertion__fixed_15_bad()\00" : !cir.array<!s8i x 48>> : !cir.array<!s8i x 48> {alignment = 1 : i64} loc(#loc6)
+  cir.func no_proto @CWE617_Reachable_Assertion__fixed_15_bad() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc71)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc11)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc12)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc72)
+    cir.br ^bb1 loc(#loc73)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc16)
+    cir.br ^bb2 loc(#loc14)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc14)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc17)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<5> : !s32i loc(#loc18)
+    %5 = cir.const #cir.int<1> : !s32i loc(#loc19)
+    %6 = cir.binop(sub, %4, %5) nsw : !s32i loc(#loc18)
+    cir.store %6, %0 : !s32i, !cir.ptr<!s32i> loc(#loc74)
+    cir.br ^bb6 loc(#loc21)
+  ^bb5:  // pred: ^bb2
+    %7 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc3)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc3)
+    cir.call @printLine(%8) : (!cir.ptr<!s8i>) -> () loc(#loc22)
+    cir.br ^bb6 loc(#loc23)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc15)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc6)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc6)
+  ^bb9:  // pred: ^bb8
+    %9 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc6)
+    %10 = cir.const #cir.int<5> : !s32i loc(#loc6)
+    %11 = cir.cmp(gt, %9, %10) : !s32i, !cir.bool loc(#loc6)
+    cir.brcond %11 ^bb10, ^bb11 loc(#loc6)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb12 loc(#loc6)
+  ^bb11:  // pred: ^bb9
+    %12 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc6)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc6)
+    %14 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 39>> loc(#loc6)
+    %15 = cir.cast(array_to_ptrdecay, %14 : !cir.ptr<!cir.array<!s8i x 39>>), !cir.ptr<!s8i> loc(#loc6)
+    %16 = cir.const #cir.int<42> : !s32i loc(#loc6)
+    %17 = cir.cast(integral, %16 : !s32i), !u32i loc(#loc6)
+    %18 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 48>> loc(#loc6)
+    %19 = cir.cast(array_to_ptrdecay, %18 : !cir.ptr<!cir.array<!s8i x 48>>), !cir.ptr<!s8i> loc(#loc6)
+    cir.call @__assert_fail(%13, %15, %17, %19) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc6)
+    cir.br ^bb12 loc(#loc6)
+  ^bb12:  // 2 preds: ^bb10, ^bb11
+    cir.br ^bb13 loc(#loc6)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc6)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc8)
+  } loc(#loc70)
+  cir.func no_proto @CWE617_Reachable_Assertion__fixed_15_good() extra(#fn_attr1) {
+    %0 = cir.get_global @goodG2B1 : !cir.ptr<!cir.func<()>> loc(#loc76)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc26)
+    %1 = cir.get_global @goodG2B2 : !cir.ptr<!cir.func<()>> loc(#loc77)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc28)
+    cir.return loc(#loc25)
+  } loc(#loc75)
+  cir.global "private" constant cir_private dsolocal @".str.4" = #cir.const_array<"void goodG2B1()\00" : !cir.array<!s8i x 16>> : !cir.array<!s8i x 16> {alignment = 1 : i64} loc(#loc30)
+  cir.func no_proto internal private @goodG2B1() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc79)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc35)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc36)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc80)
+    cir.br ^bb1 loc(#loc81)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc40)
+    cir.br ^bb2 loc(#loc38)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc38)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc41)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc42)
+    %5 = cir.cast(array_to_ptrdecay, %4 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc42)
+    cir.call @printLine(%5) : (!cir.ptr<!s8i>) -> () loc(#loc43)
+    cir.br ^bb6 loc(#loc44)
+  ^bb5:  // pred: ^bb2
+    %6 = cir.const #cir.int<5> : !s32i loc(#loc45)
+    %7 = cir.const #cir.int<1> : !s32i loc(#loc46)
+    %8 = cir.binop(add, %6, %7) nsw : !s32i loc(#loc45)
+    cir.store %8, %0 : !s32i, !cir.ptr<!s32i> loc(#loc82)
+    cir.br ^bb6 loc(#loc48)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc39)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc30)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc30)
+  ^bb9:  // pred: ^bb8
+    %9 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc30)
+    %10 = cir.const #cir.int<5> : !s32i loc(#loc30)
+    %11 = cir.cmp(gt, %9, %10) : !s32i, !cir.bool loc(#loc30)
+    cir.brcond %11 ^bb10, ^bb11 loc(#loc30)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb12 loc(#loc30)
+  ^bb11:  // pred: ^bb9
+    %12 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc30)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc30)
+    %14 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 39>> loc(#loc30)
+    %15 = cir.cast(array_to_ptrdecay, %14 : !cir.ptr<!cir.array<!s8i x 39>>), !cir.ptr<!s8i> loc(#loc30)
+    %16 = cir.const #cir.int<67> : !s32i loc(#loc30)
+    %17 = cir.cast(integral, %16 : !s32i), !u32i loc(#loc30)
+    %18 = cir.get_global @".str.4" : !cir.ptr<!cir.array<!s8i x 16>> loc(#loc30)
+    %19 = cir.cast(array_to_ptrdecay, %18 : !cir.ptr<!cir.array<!s8i x 16>>), !cir.ptr<!s8i> loc(#loc30)
+    cir.call @__assert_fail(%13, %15, %17, %19) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc30)
+    cir.br ^bb12 loc(#loc30)
+  ^bb12:  // 2 preds: ^bb10, ^bb11
+    cir.br ^bb13 loc(#loc30)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc30)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc32)
+  } loc(#loc78)
+  cir.global "private" constant cir_private dsolocal @".str.5" = #cir.const_array<"void goodG2B2()\00" : !cir.array<!s8i x 16>> : !cir.array<!s8i x 16> {alignment = 1 : i64} loc(#loc49)
+  cir.func no_proto internal private @goodG2B2() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["data"] {alignment = 4 : i64} loc(#loc84)
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc54)
+    %2 = cir.unary(minus, %1) nsw : !s32i, !s32i loc(#loc55)
+    cir.store %2, %0 : !s32i, !cir.ptr<!s32i> loc(#loc85)
+    cir.br ^bb1 loc(#loc86)
+  ^bb1:  // pred: ^bb0
+    %3 = cir.const #cir.int<6> : !s32i loc(#loc59)
+    cir.br ^bb2 loc(#loc57)
+  ^bb2:  // pred: ^bb1
+    cir.switch.flat %3 : !s32i, ^bb5 [
+      6: ^bb4
+    ] loc(#loc57)
+  ^bb3:  // no predecessors
+    cir.br ^bb4 loc(#loc60)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    %4 = cir.const #cir.int<5> : !s32i loc(#loc61)
+    %5 = cir.const #cir.int<1> : !s32i loc(#loc62)
+    %6 = cir.binop(add, %4, %5) nsw : !s32i loc(#loc61)
+    cir.store %6, %0 : !s32i, !cir.ptr<!s32i> loc(#loc87)
+    cir.br ^bb6 loc(#loc64)
+  ^bb5:  // pred: ^bb2
+    %7 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc65)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc65)
+    cir.call @printLine(%8) : (!cir.ptr<!s8i>) -> () loc(#loc66)
+    cir.br ^bb6 loc(#loc67)
+  ^bb6:  // 2 preds: ^bb4, ^bb5
+    cir.br ^bb7 loc(#loc58)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc49)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc49)
+  ^bb9:  // pred: ^bb8
+    %9 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc49)
+    %10 = cir.const #cir.int<5> : !s32i loc(#loc49)
+    %11 = cir.cmp(gt, %9, %10) : !s32i, !cir.bool loc(#loc49)
+    cir.brcond %11 ^bb10, ^bb11 loc(#loc49)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb12 loc(#loc49)
+  ^bb11:  // pred: ^bb9
+    %12 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc49)
+    %13 = cir.cast(array_to_ptrdecay, %12 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc49)
+    %14 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 39>> loc(#loc49)
+    %15 = cir.cast(array_to_ptrdecay, %14 : !cir.ptr<!cir.array<!s8i x 39>>), !cir.ptr<!s8i> loc(#loc49)
+    %16 = cir.const #cir.int<88> : !s32i loc(#loc49)
+    %17 = cir.cast(integral, %16 : !s32i), !u32i loc(#loc49)
+    %18 = cir.get_global @".str.5" : !cir.ptr<!cir.array<!s8i x 16>> loc(#loc49)
+    %19 = cir.cast(array_to_ptrdecay, %18 : !cir.ptr<!cir.array<!s8i x 16>>), !cir.ptr<!s8i> loc(#loc49)
+    cir.call @__assert_fail(%13, %15, %17, %19) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u32i, !cir.ptr<!s8i>) -> () extra(#fn_attr) loc(#loc49)
+    cir.br ^bb12 loc(#loc49)
+  ^bb12:  // 2 preds: ^bb10, ^bb11
+    cir.br ^bb13 loc(#loc49)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc49)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc51)
+  } loc(#loc83)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE617_Reachable_Assertion/CWE617_Reachable_Assertion__fixed_15.c":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc2 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc3 = loc("CWE617_Reachable_Assertion__fixed_15.c":38:19)
+#loc4 = loc("/usr/include/assert.h":69:1)
+#loc5 = loc("/usr/include/assert.h":71:43)
+#loc6 = loc("CWE617_Reachable_Assertion__fixed_15.c":42:5)
+#loc7 = loc("CWE617_Reachable_Assertion__fixed_15.c":25:1)
+#loc8 = loc("CWE617_Reachable_Assertion__fixed_15.c":43:1)
+#loc9 = loc("CWE617_Reachable_Assertion__fixed_15.c":27:5)
+#loc10 = loc("CWE617_Reachable_Assertion__fixed_15.c":27:9)
+#loc11 = loc("CWE617_Reachable_Assertion__fixed_15.c":29:13)
+#loc12 = loc("CWE617_Reachable_Assertion__fixed_15.c":29:12)
+#loc13 = loc("CWE617_Reachable_Assertion__fixed_15.c":29:5)
+#loc14 = loc("CWE617_Reachable_Assertion__fixed_15.c":30:5)
+#loc15 = loc("CWE617_Reachable_Assertion__fixed_15.c":40:5)
+#loc16 = loc("CWE617_Reachable_Assertion__fixed_15.c":30:12)
+#loc17 = loc("CWE617_Reachable_Assertion__fixed_15.c":32:5)
+#loc18 = loc("CWE617_Reachable_Assertion__fixed_15.c":34:16)
+#loc19 = loc("CWE617_Reachable_Assertion__fixed_15.c":34:29)
+#loc20 = loc("CWE617_Reachable_Assertion__fixed_15.c":34:9)
+#loc21 = loc("CWE617_Reachable_Assertion__fixed_15.c":35:9)
+#loc22 = loc("CWE617_Reachable_Assertion__fixed_15.c":38:9)
+#loc23 = loc("CWE617_Reachable_Assertion__fixed_15.c":39:9)
+#loc24 = loc("CWE617_Reachable_Assertion__fixed_15.c":91:1)
+#loc25 = loc("CWE617_Reachable_Assertion__fixed_15.c":95:1)
+#loc26 = loc("CWE617_Reachable_Assertion__fixed_15.c":93:5)
+#loc27 = loc("CWE617_Reachable_Assertion__fixed_15.c":93:14)
+#loc28 = loc("CWE617_Reachable_Assertion__fixed_15.c":94:5)
+#loc29 = loc("CWE617_Reachable_Assertion__fixed_15.c":94:14)
+#loc30 = loc("CWE617_Reachable_Assertion__fixed_15.c":67:5)
+#loc31 = loc("CWE617_Reachable_Assertion__fixed_15.c":50:1)
+#loc32 = loc("CWE617_Reachable_Assertion__fixed_15.c":68:1)
+#loc33 = loc("CWE617_Reachable_Assertion__fixed_15.c":52:5)
+#loc34 = loc("CWE617_Reachable_Assertion__fixed_15.c":52:9)
+#loc35 = loc("CWE617_Reachable_Assertion__fixed_15.c":54:13)
+#loc36 = loc("CWE617_Reachable_Assertion__fixed_15.c":54:12)
+#loc37 = loc("CWE617_Reachable_Assertion__fixed_15.c":54:5)
+#loc38 = loc("CWE617_Reachable_Assertion__fixed_15.c":55:5)
+#loc39 = loc("CWE617_Reachable_Assertion__fixed_15.c":65:5)
+#loc40 = loc("CWE617_Reachable_Assertion__fixed_15.c":55:12)
+#loc41 = loc("CWE617_Reachable_Assertion__fixed_15.c":57:5)
+#loc42 = loc("CWE617_Reachable_Assertion__fixed_15.c":59:19)
+#loc43 = loc("CWE617_Reachable_Assertion__fixed_15.c":59:9)
+#loc44 = loc("CWE617_Reachable_Assertion__fixed_15.c":60:9)
+#loc45 = loc("CWE617_Reachable_Assertion__fixed_15.c":63:16)
+#loc46 = loc("CWE617_Reachable_Assertion__fixed_15.c":63:29)
+#loc47 = loc("CWE617_Reachable_Assertion__fixed_15.c":63:9)
+#loc48 = loc("CWE617_Reachable_Assertion__fixed_15.c":64:9)
+#loc49 = loc("CWE617_Reachable_Assertion__fixed_15.c":88:5)
+#loc50 = loc("CWE617_Reachable_Assertion__fixed_15.c":71:1)
+#loc51 = loc("CWE617_Reachable_Assertion__fixed_15.c":89:1)
+#loc52 = loc("CWE617_Reachable_Assertion__fixed_15.c":73:5)
+#loc53 = loc("CWE617_Reachable_Assertion__fixed_15.c":73:9)
+#loc54 = loc("CWE617_Reachable_Assertion__fixed_15.c":75:13)
+#loc55 = loc("CWE617_Reachable_Assertion__fixed_15.c":75:12)
+#loc56 = loc("CWE617_Reachable_Assertion__fixed_15.c":75:5)
+#loc57 = loc("CWE617_Reachable_Assertion__fixed_15.c":76:5)
+#loc58 = loc("CWE617_Reachable_Assertion__fixed_15.c":86:5)
+#loc59 = loc("CWE617_Reachable_Assertion__fixed_15.c":76:12)
+#loc60 = loc("CWE617_Reachable_Assertion__fixed_15.c":78:5)
+#loc61 = loc("CWE617_Reachable_Assertion__fixed_15.c":80:16)
+#loc62 = loc("CWE617_Reachable_Assertion__fixed_15.c":80:29)
+#loc63 = loc("CWE617_Reachable_Assertion__fixed_15.c":80:9)
+#loc64 = loc("CWE617_Reachable_Assertion__fixed_15.c":81:9)
+#loc65 = loc("CWE617_Reachable_Assertion__fixed_15.c":84:19)
+#loc66 = loc("CWE617_Reachable_Assertion__fixed_15.c":84:9)
+#loc67 = loc("CWE617_Reachable_Assertion__fixed_15.c":85:9)
+#loc68 = loc(fused[#loc1, #loc2])
+#loc69 = loc(fused[#loc4, #loc5])
+#loc70 = loc(fused[#loc7, #loc8])
+#loc71 = loc(fused[#loc9, #loc10])
+#loc72 = loc(fused[#loc13, #loc11])
+#loc73 = loc(fused[#loc14, #loc15])
+#loc74 = loc(fused[#loc20, #loc19])
+#loc75 = loc(fused[#loc24, #loc25])
+#loc76 = loc(fused[#loc26, #loc27])
+#loc77 = loc(fused[#loc28, #loc29])
+#loc78 = loc(fused[#loc31, #loc32])
+#loc79 = loc(fused[#loc33, #loc34])
+#loc80 = loc(fused[#loc37, #loc35])
+#loc81 = loc(fused[#loc38, #loc39])
+#loc82 = loc(fused[#loc47, #loc46])
+#loc83 = loc(fused[#loc50, #loc51])
+#loc84 = loc(fused[#loc52, #loc53])
+#loc85 = loc(fused[#loc56, #loc54])
+#loc86 = loc(fused[#loc57, #loc58])
+#loc87 = loc(fused[#loc63, #loc62])

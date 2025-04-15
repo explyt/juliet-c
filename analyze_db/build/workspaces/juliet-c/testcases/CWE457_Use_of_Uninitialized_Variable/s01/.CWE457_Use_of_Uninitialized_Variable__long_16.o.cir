@@ -1,0 +1,216 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__long_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i1 = dense<8> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @printLongLine(!s64i) loc(#loc61)
+  cir.func no_proto @CWE457_Use_of_Uninitialized_Variable__long_16_bad() extra(#fn_attr) {
+    %0 = cir.alloca !s64i, !cir.ptr<!s64i>, ["data"] {alignment = 8 : i64} loc(#loc63)
+    cir.br ^bb1 loc(#loc64)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc64)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc9)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc9)
+    cir.brcond %2 ^bb3, ^bb6 loc(#loc9)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc65)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb6 loc(#loc11)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc8)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc8)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc66)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc66)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %3 = cir.const #cir.int<1> : !s32i loc(#loc14)
+    %4 = cir.cast(int_to_bool, %3 : !s32i), !cir.bool loc(#loc14)
+    cir.brcond %4 ^bb10, ^bb13 loc(#loc14)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc67)
+  ^bb11:  // pred: ^bb10
+    %5 = cir.load %0 : !cir.ptr<!s64i>, !s64i loc(#loc16)
+    cir.call @printLongLine(%5) : (!s64i) -> () loc(#loc17)
+    cir.br ^bb13 loc(#loc18)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc13)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc13)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc4)
+  } loc(#loc62)
+  cir.func no_proto @CWE457_Use_of_Uninitialized_Variable__long_16_good() extra(#fn_attr) {
+    %0 = cir.get_global @goodB2G : !cir.ptr<!cir.func<()>> loc(#loc69)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc21)
+    %1 = cir.get_global @goodG2B : !cir.ptr<!cir.func<()>> loc(#loc70)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc23)
+    cir.return loc(#loc20)
+  } loc(#loc68)
+  cir.func no_proto internal private @goodB2G() extra(#fn_attr) {
+    %0 = cir.alloca !s64i, !cir.ptr<!s64i>, ["data"] {alignment = 8 : i64} loc(#loc72)
+    cir.br ^bb1 loc(#loc73)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc73)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc31)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc31)
+    cir.brcond %2 ^bb3, ^bb6 loc(#loc31)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc74)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb6 loc(#loc33)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc30)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc30)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc75)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc75)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %3 = cir.const #cir.int<1> : !s32i loc(#loc36)
+    %4 = cir.cast(int_to_bool, %3 : !s32i), !cir.bool loc(#loc36)
+    cir.brcond %4 ^bb10, ^bb13 loc(#loc36)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc76)
+  ^bb11:  // pred: ^bb10
+    %5 = cir.const #cir.int<5> : !s64i loc(#loc38)
+    cir.store %5, %0 : !s64i, !cir.ptr<!s64i> loc(#loc77)
+    %6 = cir.load %0 : !cir.ptr<!s64i>, !s64i loc(#loc40)
+    cir.call @printLongLine(%6) : (!s64i) -> () loc(#loc41)
+    cir.br ^bb13 loc(#loc42)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc35)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc35)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc26)
+  } loc(#loc71)
+  cir.func no_proto internal private @goodG2B() extra(#fn_attr) {
+    %0 = cir.alloca !s64i, !cir.ptr<!s64i>, ["data"] {alignment = 8 : i64} loc(#loc79)
+    cir.br ^bb1 loc(#loc80)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc80)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc49)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc49)
+    cir.brcond %2 ^bb3, ^bb6 loc(#loc49)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc81)
+  ^bb4:  // pred: ^bb3
+    %3 = cir.const #cir.int<5> : !s64i loc(#loc51)
+    cir.store %3, %0 : !s64i, !cir.ptr<!s64i> loc(#loc82)
+    cir.br ^bb6 loc(#loc53)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc48)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc48)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc83)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc83)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %4 = cir.const #cir.int<1> : !s32i loc(#loc56)
+    %5 = cir.cast(int_to_bool, %4 : !s32i), !cir.bool loc(#loc56)
+    cir.brcond %5 ^bb10, ^bb13 loc(#loc56)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc84)
+  ^bb11:  // pred: ^bb10
+    %6 = cir.load %0 : !cir.ptr<!s64i>, !s64i loc(#loc58)
+    cir.call @printLongLine(%6) : (!s64i) -> () loc(#loc59)
+    cir.br ^bb13 loc(#loc60)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc55)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc55)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc44)
+  } loc(#loc78)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE457_Use_of_Uninitialized_Variable/s01/CWE457_Use_of_Uninitialized_Variable__long_16.c":0:0)
+#loc1 = loc("../../../testcasesupport/std_testcase_io.h":24:1)
+#loc2 = loc("../../../testcasesupport/std_testcase_io.h":24:35)
+#loc3 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":24:1)
+#loc4 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":39:1)
+#loc5 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":26:5)
+#loc6 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":26:10)
+#loc7 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":27:5)
+#loc8 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":32:5)
+#loc9 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":27:11)
+#loc10 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":28:5)
+#loc11 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":31:9)
+#loc12 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":33:5)
+#loc13 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":38:5)
+#loc14 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":33:11)
+#loc15 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":34:5)
+#loc16 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":36:23)
+#loc17 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":36:9)
+#loc18 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":37:9)
+#loc19 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":82:1)
+#loc20 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":86:1)
+#loc21 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":84:5)
+#loc22 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":84:13)
+#loc23 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":85:5)
+#loc24 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":85:13)
+#loc25 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":46:1)
+#loc26 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":62:1)
+#loc27 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":48:5)
+#loc28 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":48:10)
+#loc29 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":49:5)
+#loc30 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":54:5)
+#loc31 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":49:11)
+#loc32 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":50:5)
+#loc33 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":53:9)
+#loc34 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":55:5)
+#loc35 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":61:5)
+#loc36 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":55:11)
+#loc37 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":56:5)
+#loc38 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":58:16)
+#loc39 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":58:9)
+#loc40 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":59:23)
+#loc41 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":59:9)
+#loc42 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":60:9)
+#loc43 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":65:1)
+#loc44 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":80:1)
+#loc45 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":67:5)
+#loc46 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":67:10)
+#loc47 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":68:5)
+#loc48 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":73:5)
+#loc49 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":68:11)
+#loc50 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":69:5)
+#loc51 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":71:16)
+#loc52 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":71:9)
+#loc53 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":72:9)
+#loc54 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":74:5)
+#loc55 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":79:5)
+#loc56 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":74:11)
+#loc57 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":75:5)
+#loc58 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":77:23)
+#loc59 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":77:9)
+#loc60 = loc("CWE457_Use_of_Uninitialized_Variable__long_16.c":78:9)
+#loc61 = loc(fused[#loc1, #loc2])
+#loc62 = loc(fused[#loc3, #loc4])
+#loc63 = loc(fused[#loc5, #loc6])
+#loc64 = loc(fused[#loc7, #loc8])
+#loc65 = loc(fused[#loc10, #loc8])
+#loc66 = loc(fused[#loc12, #loc13])
+#loc67 = loc(fused[#loc15, #loc13])
+#loc68 = loc(fused[#loc19, #loc20])
+#loc69 = loc(fused[#loc21, #loc22])
+#loc70 = loc(fused[#loc23, #loc24])
+#loc71 = loc(fused[#loc25, #loc26])
+#loc72 = loc(fused[#loc27, #loc28])
+#loc73 = loc(fused[#loc29, #loc30])
+#loc74 = loc(fused[#loc32, #loc30])
+#loc75 = loc(fused[#loc34, #loc35])
+#loc76 = loc(fused[#loc37, #loc35])
+#loc77 = loc(fused[#loc39, #loc38])
+#loc78 = loc(fused[#loc43, #loc44])
+#loc79 = loc(fused[#loc45, #loc46])
+#loc80 = loc(fused[#loc47, #loc48])
+#loc81 = loc(fused[#loc50, #loc48])
+#loc82 = loc(fused[#loc52, #loc51])
+#loc83 = loc(fused[#loc54, #loc55])
+#loc84 = loc(fused[#loc57, #loc55])

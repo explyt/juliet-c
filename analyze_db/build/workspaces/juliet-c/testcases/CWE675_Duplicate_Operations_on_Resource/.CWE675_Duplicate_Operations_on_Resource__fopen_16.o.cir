@@ -1,0 +1,279 @@
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i1 = dense<8> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, !llvm.ptr = dense<64> : vector<4xi64>, f80 = dense<128> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little", "dlti.mangling_mode" = "e">} {
+  cir.func private @fopen(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc82)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"BadSource_fopen.txt\00" : !cir.array<!s8i x 20>> : !cir.array<!s8i x 20> {alignment = 1 : i64} loc(#loc3)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"w+\00" : !cir.array<!s8i x 3>> : !cir.array<!s8i x 3> {alignment = 1 : i64} loc(#loc4)
+  cir.func private @fclose(!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc83)
+  cir.func no_proto @CWE675_Duplicate_Operations_on_Resource__fopen_16_bad() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data"] {alignment = 8 : i64} loc(#loc85)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc11)
+    cir.store %1, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc86)
+    cir.br ^bb1 loc(#loc87)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc87)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc15)
+    %3 = cir.cast(int_to_bool, %2 : !s32i), !cir.bool loc(#loc15)
+    cir.brcond %3 ^bb3, ^bb6 loc(#loc15)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc88)
+  ^bb4:  // pred: ^bb3
+    %4 = cir.get_global @fopen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE>>> loc(#loc17)
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc3)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc3)
+    %7 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc4)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc4)
+    %9 = cir.call @fopen(%6, %8) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc17)
+    cir.store %9, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc89)
+    %10 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc20)
+    %11 = cir.call @fclose(%10) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc21)
+    cir.br ^bb6 loc(#loc22)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc14)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc14)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc90)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc90)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %12 = cir.const #cir.int<1> : !s32i loc(#loc25)
+    %13 = cir.cast(int_to_bool, %12 : !s32i), !cir.bool loc(#loc25)
+    cir.brcond %13 ^bb10, ^bb13 loc(#loc25)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc91)
+  ^bb11:  // pred: ^bb10
+    %14 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc27)
+    %15 = cir.call @fclose(%14) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc28)
+    cir.br ^bb13 loc(#loc29)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc24)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc24)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc8)
+  } loc(#loc84)
+  cir.func no_proto @CWE675_Duplicate_Operations_on_Resource__fopen_16_good() extra(#fn_attr) {
+    %0 = cir.get_global @goodB2G : !cir.ptr<!cir.func<()>> loc(#loc93)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc32)
+    %1 = cir.get_global @goodG2B : !cir.ptr<!cir.func<()>> loc(#loc94)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc34)
+    cir.return loc(#loc31)
+  } loc(#loc92)
+  cir.func no_proto internal private @goodB2G() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data"] {alignment = 8 : i64} loc(#loc96)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc40)
+    cir.store %1, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc97)
+    cir.br ^bb1 loc(#loc98)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc98)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc44)
+    %3 = cir.cast(int_to_bool, %2 : !s32i), !cir.bool loc(#loc44)
+    cir.brcond %3 ^bb3, ^bb6 loc(#loc44)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc99)
+  ^bb4:  // pred: ^bb3
+    %4 = cir.get_global @fopen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE>>> loc(#loc46)
+    %5 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 20>> loc(#loc47)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 20>>), !cir.ptr<!s8i> loc(#loc47)
+    %7 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc48)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc48)
+    %9 = cir.call @fopen(%6, %8) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc46)
+    cir.store %9, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc100)
+    %10 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc51)
+    %11 = cir.call @fclose(%10) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc52)
+    cir.br ^bb6 loc(#loc53)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc43)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc43)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc101)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc101)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %12 = cir.const #cir.int<1> : !s32i loc(#loc56)
+    %13 = cir.cast(int_to_bool, %12 : !s32i), !cir.bool loc(#loc56)
+    cir.brcond %13 ^bb10, ^bb13 loc(#loc56)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc102)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb13 loc(#loc58)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc55)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc55)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc37)
+  } loc(#loc95)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"GoodSource_fopen.txt\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc59)
+  cir.func no_proto internal private @goodG2B() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>>, ["data"] {alignment = 8 : i64} loc(#loc104)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!ty__IO_FILE> loc(#loc64)
+    cir.store %1, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc105)
+    cir.br ^bb1 loc(#loc106)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc106)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc68)
+    %3 = cir.cast(int_to_bool, %2 : !s32i), !cir.bool loc(#loc68)
+    cir.brcond %3 ^bb3, ^bb6 loc(#loc68)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc107)
+  ^bb4:  // pred: ^bb3
+    %4 = cir.get_global @fopen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE>>> loc(#loc70)
+    %5 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc59)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc59)
+    %7 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 3>> loc(#loc71)
+    %8 = cir.cast(array_to_ptrdecay, %7 : !cir.ptr<!cir.array<!s8i x 3>>), !cir.ptr<!s8i> loc(#loc71)
+    %9 = cir.call @fopen(%6, %8) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!ty__IO_FILE> loc(#loc70)
+    cir.store %9, %0 : !cir.ptr<!ty__IO_FILE>, !cir.ptr<!cir.ptr<!ty__IO_FILE>> loc(#loc108)
+    cir.br ^bb6 loc(#loc74)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc67)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc67)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc109)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc109)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %10 = cir.const #cir.int<1> : !s32i loc(#loc77)
+    %11 = cir.cast(int_to_bool, %10 : !s32i), !cir.bool loc(#loc77)
+    cir.brcond %11 ^bb10, ^bb13 loc(#loc77)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc110)
+  ^bb11:  // pred: ^bb10
+    %12 = cir.load %0 : !cir.ptr<!cir.ptr<!ty__IO_FILE>>, !cir.ptr<!ty__IO_FILE> loc(#loc79)
+    %13 = cir.call @fclose(%12) : (!cir.ptr<!ty__IO_FILE>) -> !s32i loc(#loc80)
+    cir.br ^bb13 loc(#loc81)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc76)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc76)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc61)
+  } loc(#loc103)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE675_Duplicate_Operations_on_Resource/CWE675_Duplicate_Operations_on_Resource__fopen_16.c":0:0)
+#loc1 = loc("/usr/include/stdio.h":264:1)
+#loc2 = loc("/usr/include/stdio.h":266:3)
+#loc3 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":28:22)
+#loc4 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":28:45)
+#loc5 = loc("/usr/include/stdio.h":184:1)
+#loc6 = loc("/usr/include/stdio.h":184:36)
+#loc7 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":22:1)
+#loc8 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":39:1)
+#loc9 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":24:5)
+#loc10 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":24:12)
+#loc11 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":25:12)
+#loc12 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":25:5)
+#loc13 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":26:5)
+#loc14 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":32:5)
+#loc15 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":26:11)
+#loc16 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":27:5)
+#loc17 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":28:16)
+#loc18 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":28:9)
+#loc19 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":28:49)
+#loc20 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":30:16)
+#loc21 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":30:9)
+#loc22 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":31:9)
+#loc23 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":33:5)
+#loc24 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":38:5)
+#loc25 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":33:11)
+#loc26 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":34:5)
+#loc27 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":36:16)
+#loc28 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":36:9)
+#loc29 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":37:9)
+#loc30 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":85:1)
+#loc31 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":89:1)
+#loc32 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":87:5)
+#loc33 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":87:13)
+#loc34 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":88:5)
+#loc35 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":88:13)
+#loc36 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":46:1)
+#loc37 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":64:1)
+#loc38 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":48:5)
+#loc39 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":48:12)
+#loc40 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":49:12)
+#loc41 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":49:5)
+#loc42 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":50:5)
+#loc43 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":56:5)
+#loc44 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":50:11)
+#loc45 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":51:5)
+#loc46 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":52:16)
+#loc47 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":52:22)
+#loc48 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":52:45)
+#loc49 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":52:9)
+#loc50 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":52:49)
+#loc51 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":54:16)
+#loc52 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":54:9)
+#loc53 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":55:9)
+#loc54 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":57:5)
+#loc55 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":63:5)
+#loc56 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":57:11)
+#loc57 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":58:5)
+#loc58 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":62:9)
+#loc59 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":74:22)
+#loc60 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":67:1)
+#loc61 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":83:1)
+#loc62 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":69:5)
+#loc63 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":69:12)
+#loc64 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":70:12)
+#loc65 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":70:5)
+#loc66 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":71:5)
+#loc67 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":76:5)
+#loc68 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":71:11)
+#loc69 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":72:5)
+#loc70 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":74:16)
+#loc71 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":74:46)
+#loc72 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":74:9)
+#loc73 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":74:50)
+#loc74 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":75:9)
+#loc75 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":77:5)
+#loc76 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":82:5)
+#loc77 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":77:11)
+#loc78 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":78:5)
+#loc79 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":80:16)
+#loc80 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":80:9)
+#loc81 = loc("CWE675_Duplicate_Operations_on_Resource__fopen_16.c":81:9)
+#loc82 = loc(fused[#loc1, #loc2])
+#loc83 = loc(fused[#loc5, #loc6])
+#loc84 = loc(fused[#loc7, #loc8])
+#loc85 = loc(fused[#loc9, #loc10])
+#loc86 = loc(fused[#loc12, #loc11])
+#loc87 = loc(fused[#loc13, #loc14])
+#loc88 = loc(fused[#loc16, #loc14])
+#loc89 = loc(fused[#loc18, #loc19])
+#loc90 = loc(fused[#loc23, #loc24])
+#loc91 = loc(fused[#loc26, #loc24])
+#loc92 = loc(fused[#loc30, #loc31])
+#loc93 = loc(fused[#loc32, #loc33])
+#loc94 = loc(fused[#loc34, #loc35])
+#loc95 = loc(fused[#loc36, #loc37])
+#loc96 = loc(fused[#loc38, #loc39])
+#loc97 = loc(fused[#loc41, #loc40])
+#loc98 = loc(fused[#loc42, #loc43])
+#loc99 = loc(fused[#loc45, #loc43])
+#loc100 = loc(fused[#loc49, #loc50])
+#loc101 = loc(fused[#loc54, #loc55])
+#loc102 = loc(fused[#loc57, #loc55])
+#loc103 = loc(fused[#loc60, #loc61])
+#loc104 = loc(fused[#loc62, #loc63])
+#loc105 = loc(fused[#loc65, #loc64])
+#loc106 = loc(fused[#loc66, #loc67])
+#loc107 = loc(fused[#loc69, #loc67])
+#loc108 = loc(fused[#loc72, #loc73])
+#loc109 = loc(fused[#loc75, #loc76])
+#loc110 = loc(fused[#loc78, #loc76])

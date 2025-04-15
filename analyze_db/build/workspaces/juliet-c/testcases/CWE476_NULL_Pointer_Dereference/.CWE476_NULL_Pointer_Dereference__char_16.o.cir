@@ -1,0 +1,273 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, "dlti.stack_alignment" = 128 : i64, "dlti.endianness" = "little", "dlti.mangling_mode" = "e">} {
+  cir.func private @printHexCharLine(!s8i) loc(#loc80)
+  cir.func no_proto @CWE476_NULL_Pointer_Dereference__char_16_bad() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc82)
+    cir.br ^bb1 loc(#loc83)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc83)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc9)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc9)
+    cir.brcond %2 ^bb3, ^bb6 loc(#loc9)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc84)
+  ^bb4:  // pred: ^bb3
+    %3 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc11)
+    cir.store %3, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc85)
+    cir.br ^bb6 loc(#loc13)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc8)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc8)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc86)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc86)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %4 = cir.const #cir.int<1> : !s32i loc(#loc16)
+    %5 = cir.cast(int_to_bool, %4 : !s32i), !cir.bool loc(#loc16)
+    cir.brcond %5 ^bb10, ^bb13 loc(#loc16)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc87)
+  ^bb11:  // pred: ^bb10
+    %6 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc18)
+    %7 = cir.const #cir.int<0> : !s32i loc(#loc19)
+    %8 = cir.ptr_stride(%6 : !cir.ptr<!s8i>, %7 : !s32i), !cir.ptr<!s8i> loc(#loc20)
+    %9 = cir.load %8 : !cir.ptr<!s8i>, !s8i loc(#loc18)
+    cir.call @printHexCharLine(%9) : (!s8i) -> () loc(#loc21)
+    cir.br ^bb13 loc(#loc22)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc15)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc15)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc4)
+  } loc(#loc81)
+  cir.func no_proto @CWE476_NULL_Pointer_Dereference__char_16_good() extra(#fn_attr) {
+    %0 = cir.get_global @goodB2G : !cir.ptr<!cir.func<()>> loc(#loc89)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc25)
+    %1 = cir.get_global @goodG2B : !cir.ptr<!cir.func<()>> loc(#loc90)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc27)
+    cir.return loc(#loc24)
+  } loc(#loc88)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc91)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"data is NULL\00" : !cir.array<!s8i x 13>> : !cir.array<!s8i x 13> {alignment = 1 : i64} loc(#loc31)
+  cir.func no_proto internal private @goodB2G() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc93)
+    cir.br ^bb1 loc(#loc94)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc94)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc38)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc38)
+    cir.brcond %2 ^bb3, ^bb6 loc(#loc38)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc95)
+  ^bb4:  // pred: ^bb3
+    %3 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc40)
+    cir.store %3, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc96)
+    cir.br ^bb6 loc(#loc42)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc37)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc37)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc97)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc97)
+  ^bb9:  // 2 preds: ^bb8, ^bb17
+    %4 = cir.const #cir.int<1> : !s32i loc(#loc45)
+    %5 = cir.cast(int_to_bool, %4 : !s32i), !cir.bool loc(#loc45)
+    cir.brcond %5 ^bb10, ^bb18 loc(#loc45)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc98)
+  ^bb11:  // pred: ^bb10
+    cir.br ^bb12 loc(#loc99)
+  ^bb12:  // pred: ^bb11
+    %6 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc49)
+    %7 = cir.const #cir.ptr<null> : !cir.ptr<!void> loc(#loc50)
+    %8 = cir.cast(bitcast, %7 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc50)
+    %9 = cir.cmp(ne, %6, %8) : !cir.ptr<!s8i>, !cir.bool loc(#loc100)
+    cir.brcond %9 ^bb13, ^bb14 loc(#loc101)
+  ^bb13:  // pred: ^bb12
+    %10 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc54)
+    %11 = cir.const #cir.int<0> : !s32i loc(#loc55)
+    %12 = cir.ptr_stride(%10 : !cir.ptr<!s8i>, %11 : !s32i), !cir.ptr<!s8i> loc(#loc56)
+    %13 = cir.load %12 : !cir.ptr<!s8i>, !s8i loc(#loc54)
+    cir.call @printHexCharLine(%13) : (!s8i) -> () loc(#loc57)
+    cir.br ^bb15 loc(#loc52)
+  ^bb14:  // pred: ^bb12
+    %14 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 13>> loc(#loc31)
+    %15 = cir.cast(array_to_ptrdecay, %14 : !cir.ptr<!cir.array<!s8i x 13>>), !cir.ptr<!s8i> loc(#loc31)
+    cir.call @printLine(%15) : (!cir.ptr<!s8i>) -> () loc(#loc58)
+    cir.br ^bb15 loc(#loc48)
+  ^bb15:  // 2 preds: ^bb13, ^bb14
+    cir.br ^bb16 loc(#loc48)
+  ^bb16:  // pred: ^bb15
+    cir.br ^bb18 loc(#loc59)
+  ^bb17:  // no predecessors
+    cir.br ^bb9 loc(#loc44)
+  ^bb18:  // 2 preds: ^bb9, ^bb16
+    cir.br ^bb19 loc(#loc44)
+  ^bb19:  // pred: ^bb18
+    cir.return loc(#loc33)
+  } loc(#loc92)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"Good\00" : !cir.array<!s8i x 5>> : !cir.array<!s8i x 5> {alignment = 1 : i64} loc(#loc60)
+  cir.func no_proto internal private @goodG2B() extra(#fn_attr) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc103)
+    cir.br ^bb1 loc(#loc104)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc104)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc67)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc67)
+    cir.brcond %2 ^bb3, ^bb6 loc(#loc67)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc105)
+  ^bb4:  // pred: ^bb3
+    %3 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 5>> loc(#loc60)
+    %4 = cir.cast(array_to_ptrdecay, %3 : !cir.ptr<!cir.array<!s8i x 5>>), !cir.ptr<!s8i> loc(#loc60)
+    cir.store %4, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc106)
+    cir.br ^bb6 loc(#loc70)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc66)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc66)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc107)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc107)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %5 = cir.const #cir.int<1> : !s32i loc(#loc73)
+    %6 = cir.cast(int_to_bool, %5 : !s32i), !cir.bool loc(#loc73)
+    cir.brcond %6 ^bb10, ^bb13 loc(#loc73)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc108)
+  ^bb11:  // pred: ^bb10
+    %7 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc75)
+    %8 = cir.const #cir.int<0> : !s32i loc(#loc76)
+    %9 = cir.ptr_stride(%7 : !cir.ptr<!s8i>, %8 : !s32i), !cir.ptr<!s8i> loc(#loc77)
+    %10 = cir.load %9 : !cir.ptr<!s8i>, !s8i loc(#loc75)
+    cir.call @printHexCharLine(%10) : (!s8i) -> () loc(#loc78)
+    cir.br ^bb13 loc(#loc79)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc72)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc72)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc62)
+  } loc(#loc102)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE476_NULL_Pointer_Dereference/CWE476_NULL_Pointer_Dereference__char_16.c":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase_io.h":30:1)
+#loc2 = loc("../../testcasesupport/std_testcase_io.h":30:35)
+#loc3 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":24:1)
+#loc4 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":40:1)
+#loc5 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":26:5)
+#loc6 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":26:12)
+#loc7 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":27:5)
+#loc8 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":32:5)
+#loc9 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":27:11)
+#loc10 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":28:5)
+#loc11 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":30:16)
+#loc12 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":30:9)
+#loc13 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":31:9)
+#loc14 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":33:5)
+#loc15 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":39:5)
+#loc16 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":33:11)
+#loc17 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":34:5)
+#loc18 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":37:26)
+#loc19 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":37:31)
+#loc20 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":37:32)
+#loc21 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":37:9)
+#loc22 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":38:9)
+#loc23 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":91:1)
+#loc24 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":95:1)
+#loc25 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":93:5)
+#loc26 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":93:13)
+#loc27 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":94:5)
+#loc28 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":94:13)
+#loc29 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc30 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc31 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":66:23)
+#loc32 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":47:1)
+#loc33 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":70:1)
+#loc34 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":49:5)
+#loc35 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":49:12)
+#loc36 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":50:5)
+#loc37 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":55:5)
+#loc38 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":50:11)
+#loc39 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":51:5)
+#loc40 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":53:16)
+#loc41 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":53:9)
+#loc42 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":54:9)
+#loc43 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":56:5)
+#loc44 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":69:5)
+#loc45 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":56:11)
+#loc46 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":57:5)
+#loc47 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":59:9)
+#loc48 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":67:9)
+#loc49 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":59:13)
+#loc50 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":59:21)
+#loc51 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":60:9)
+#loc52 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":63:9)
+#loc53 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":65:9)
+#loc54 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":62:30)
+#loc55 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":62:35)
+#loc56 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":62:36)
+#loc57 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":62:13)
+#loc58 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":66:13)
+#loc59 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":68:9)
+#loc60 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":79:16)
+#loc61 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":73:1)
+#loc62 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":89:1)
+#loc63 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":75:5)
+#loc64 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":75:12)
+#loc65 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":76:5)
+#loc66 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":81:5)
+#loc67 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":76:11)
+#loc68 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":77:5)
+#loc69 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":79:9)
+#loc70 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":80:9)
+#loc71 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":82:5)
+#loc72 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":88:5)
+#loc73 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":82:11)
+#loc74 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":83:5)
+#loc75 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":86:26)
+#loc76 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":86:31)
+#loc77 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":86:32)
+#loc78 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":86:9)
+#loc79 = loc("CWE476_NULL_Pointer_Dereference__char_16.c":87:9)
+#loc80 = loc(fused[#loc1, #loc2])
+#loc81 = loc(fused[#loc3, #loc4])
+#loc82 = loc(fused[#loc5, #loc6])
+#loc83 = loc(fused[#loc7, #loc8])
+#loc84 = loc(fused[#loc10, #loc8])
+#loc85 = loc(fused[#loc12, #loc11])
+#loc86 = loc(fused[#loc14, #loc15])
+#loc87 = loc(fused[#loc17, #loc15])
+#loc88 = loc(fused[#loc23, #loc24])
+#loc89 = loc(fused[#loc25, #loc26])
+#loc90 = loc(fused[#loc27, #loc28])
+#loc91 = loc(fused[#loc29, #loc30])
+#loc92 = loc(fused[#loc32, #loc33])
+#loc93 = loc(fused[#loc34, #loc35])
+#loc94 = loc(fused[#loc36, #loc37])
+#loc95 = loc(fused[#loc39, #loc37])
+#loc96 = loc(fused[#loc41, #loc40])
+#loc97 = loc(fused[#loc43, #loc44])
+#loc98 = loc(fused[#loc46, #loc44])
+#loc99 = loc(fused[#loc47, #loc48])
+#loc100 = loc(fused[#loc49, #loc50])
+#loc101 = loc(fused[#loc51, #loc52, #loc53, #loc48])
+#loc102 = loc(fused[#loc61, #loc62])
+#loc103 = loc(fused[#loc63, #loc64])
+#loc104 = loc(fused[#loc65, #loc66])
+#loc105 = loc(fused[#loc68, #loc66])
+#loc106 = loc(fused[#loc69, #loc60])
+#loc107 = loc(fused[#loc71, #loc72])
+#loc108 = loc(fused[#loc74, #loc72])

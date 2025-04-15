@@ -1,0 +1,287 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+!u64i = !cir.int<u, 64>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s07/CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.global "private" constant cir_private @__const._ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16L7goodB2GEv.myString = #cir.const_array<"myString\00" : !cir.array<!s8i x 9>> : !cir.array<!s8i x 9> loc(#loc86)
+  cir.global "private" constant cir_private @__const._ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_163badEv.myString = #cir.const_array<"myString\00" : !cir.array<!s8i x 9>> : !cir.array<!s8i x 9> loc(#loc87)
+  cir.func private @strdup(!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc88)
+  cir.func private @_ZdlPv(!cir.ptr<!void>) extra(#fn_attr) loc(#loc89)
+  cir.func @_ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_163badEv() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.array<!s8i x 9>, !cir.ptr<!cir.array<!s8i x 9>>, ["myString"] {alignment = 1 : i64} loc(#loc87)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc91)
+    %2 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc13)
+    cir.store %2, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc92)
+    cir.br ^bb1 loc(#loc93)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc93)
+  ^bb2:  // 2 preds: ^bb1, ^bb7
+    %3 = cir.const #cir.int<1> : !s32i loc(#loc17)
+    %4 = cir.cast(int_to_bool, %3 : !s32i), !cir.bool loc(#loc17)
+    cir.brcond %4 ^bb3, ^bb8 loc(#loc17)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc94)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb5 loc(#loc95)
+  ^bb5:  // pred: ^bb4
+    %5 = cir.get_global @__const._ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_163badEv.myString : !cir.ptr<!cir.array<!s8i x 9>> loc(#loc87)
+    cir.copy %5 to %0 : !cir.ptr<!cir.array<!s8i x 9>> loc(#loc87)
+    %6 = cir.cast(array_to_ptrdecay, %0 : !cir.ptr<!cir.array<!s8i x 9>>), !cir.ptr<!s8i> loc(#loc21)
+    %7 = cir.call @strdup(%6) : (!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc22)
+    cir.store %7, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc96)
+    cir.br ^bb6 loc(#loc20)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb8 loc(#loc25)
+  ^bb7:  // no predecessors
+    cir.br ^bb2 loc(#loc16)
+  ^bb8:  // 2 preds: ^bb2, ^bb6
+    cir.br ^bb9 loc(#loc16)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc97)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc97)
+  ^bb11:  // 2 preds: ^bb10, ^bb14
+    %8 = cir.const #cir.int<1> : !s32i loc(#loc28)
+    %9 = cir.cast(int_to_bool, %8 : !s32i), !cir.bool loc(#loc28)
+    cir.brcond %9 ^bb12, ^bb15 loc(#loc28)
+  ^bb12:  // pred: ^bb11
+    cir.br ^bb13 loc(#loc98)
+  ^bb13:  // pred: ^bb12
+    %10 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc30)
+    %11 = cir.cast(bitcast, %10 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc30)
+    cir.call @_ZdlPv(%11) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc31)
+    cir.br ^bb15 loc(#loc32)
+  ^bb14:  // no predecessors
+    cir.br ^bb11 loc(#loc27)
+  ^bb15:  // 2 preds: ^bb11, ^bb13
+    cir.br ^bb16 loc(#loc27)
+  ^bb16:  // pred: ^bb15
+    cir.return loc(#loc10)
+  } loc(#loc90)
+  cir.func private @free(!cir.ptr<!void>) extra(#fn_attr) loc(#loc99)
+  cir.func internal private @_ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16L7goodB2GEv() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.array<!s8i x 9>, !cir.ptr<!cir.array<!s8i x 9>>, ["myString"] {alignment = 1 : i64} loc(#loc86)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc101)
+    %2 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc39)
+    cir.store %2, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc102)
+    cir.br ^bb1 loc(#loc103)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc103)
+  ^bb2:  // 2 preds: ^bb1, ^bb7
+    %3 = cir.const #cir.int<1> : !s32i loc(#loc43)
+    %4 = cir.cast(int_to_bool, %3 : !s32i), !cir.bool loc(#loc43)
+    cir.brcond %4 ^bb3, ^bb8 loc(#loc43)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc104)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb5 loc(#loc105)
+  ^bb5:  // pred: ^bb4
+    %5 = cir.get_global @__const._ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16L7goodB2GEv.myString : !cir.ptr<!cir.array<!s8i x 9>> loc(#loc86)
+    cir.copy %5 to %0 : !cir.ptr<!cir.array<!s8i x 9>> loc(#loc86)
+    %6 = cir.cast(array_to_ptrdecay, %0 : !cir.ptr<!cir.array<!s8i x 9>>), !cir.ptr<!s8i> loc(#loc47)
+    %7 = cir.call @strdup(%6) : (!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc48)
+    cir.store %7, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc106)
+    cir.br ^bb6 loc(#loc46)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb8 loc(#loc51)
+  ^bb7:  // no predecessors
+    cir.br ^bb2 loc(#loc42)
+  ^bb8:  // 2 preds: ^bb2, ^bb6
+    cir.br ^bb9 loc(#loc42)
+  ^bb9:  // pred: ^bb8
+    cir.br ^bb10 loc(#loc107)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc107)
+  ^bb11:  // 2 preds: ^bb10, ^bb14
+    %8 = cir.const #cir.int<1> : !s32i loc(#loc54)
+    %9 = cir.cast(int_to_bool, %8 : !s32i), !cir.bool loc(#loc54)
+    cir.brcond %9 ^bb12, ^bb15 loc(#loc54)
+  ^bb12:  // pred: ^bb11
+    cir.br ^bb13 loc(#loc108)
+  ^bb13:  // pred: ^bb12
+    %10 = cir.get_global @free : !cir.ptr<!cir.func<(!cir.ptr<!void>)>> loc(#loc56)
+    %11 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc57)
+    %12 = cir.cast(bitcast, %11 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc57)
+    cir.call @free(%12) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc56)
+    cir.br ^bb15 loc(#loc58)
+  ^bb14:  // no predecessors
+    cir.br ^bb11 loc(#loc53)
+  ^bb15:  // 2 preds: ^bb11, ^bb13
+    cir.br ^bb16 loc(#loc53)
+  ^bb16:  // pred: ^bb15
+    cir.return loc(#loc36)
+  } loc(#loc100)
+  cir.func private @_Znwm(!u64i) -> !cir.ptr<!void> loc(#loc109)
+  cir.func internal private @_ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16L7goodG2BEv() extra(#fn_attr1) {
+    %0 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data"] {alignment = 8 : i64} loc(#loc111)
+    %1 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc65)
+    cir.store %1, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc112)
+    cir.br ^bb1 loc(#loc113)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc113)
+  ^bb2:  // 2 preds: ^bb1, ^bb5
+    %2 = cir.const #cir.int<1> : !s32i loc(#loc69)
+    %3 = cir.cast(int_to_bool, %2 : !s32i), !cir.bool loc(#loc69)
+    cir.brcond %3 ^bb3, ^bb6 loc(#loc69)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc114)
+  ^bb4:  // pred: ^bb3
+    %4 = cir.const #cir.int<1> : !u64i loc(#loc115)
+    %5 = cir.call @_Znwm(%4) : (!u64i) -> !cir.ptr<!void> loc(#loc73)
+    %6 = cir.cast(bitcast, %5 : !cir.ptr<!void>), !cir.ptr<!s8i> loc(#loc115)
+    cir.store %6, %0 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc116)
+    cir.br ^bb6 loc(#loc75)
+  ^bb5:  // no predecessors
+    cir.br ^bb2 loc(#loc68)
+  ^bb6:  // 2 preds: ^bb2, ^bb4
+    cir.br ^bb7 loc(#loc68)
+  ^bb7:  // pred: ^bb6
+    cir.br ^bb8 loc(#loc117)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc117)
+  ^bb9:  // 2 preds: ^bb8, ^bb12
+    %7 = cir.const #cir.int<1> : !s32i loc(#loc78)
+    %8 = cir.cast(int_to_bool, %7 : !s32i), !cir.bool loc(#loc78)
+    cir.brcond %8 ^bb10, ^bb13 loc(#loc78)
+  ^bb10:  // pred: ^bb9
+    cir.br ^bb11 loc(#loc118)
+  ^bb11:  // pred: ^bb10
+    %9 = cir.load %0 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc80)
+    %10 = cir.cast(bitcast, %9 : !cir.ptr<!s8i>), !cir.ptr<!void> loc(#loc80)
+    cir.call @_ZdlPv(%10) : (!cir.ptr<!void>) -> () extra(#fn_attr) loc(#loc73)
+    cir.br ^bb13 loc(#loc81)
+  ^bb12:  // no predecessors
+    cir.br ^bb9 loc(#loc77)
+  ^bb13:  // 2 preds: ^bb9, ^bb11
+    cir.br ^bb14 loc(#loc77)
+  ^bb14:  // pred: ^bb13
+    cir.return loc(#loc62)
+  } loc(#loc110)
+  cir.func @_ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_164goodEv() extra(#fn_attr1) {
+    cir.call @_ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16L7goodB2GEv() : () -> () loc(#loc84)
+    cir.call @_ZN67CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16L7goodG2BEv() : () -> () loc(#loc85)
+    cir.return loc(#loc83)
+  } loc(#loc119)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE762_Mismatched_Memory_Management_Routines/s07/CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":0:0)
+#loc1 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":62:13)
+#loc2 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":62:31)
+#loc3 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":34:13)
+#loc4 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":34:31)
+#loc5 = loc("/usr/include/string.h":187:1)
+#loc6 = loc("/usr/include/string.h":188:35)
+#loc7 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":130:1)
+#loc8 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":131:41)
+#loc9 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":26:1)
+#loc10 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":47:1)
+#loc11 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":28:5)
+#loc12 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":28:12)
+#loc13 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":30:12)
+#loc14 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":30:5)
+#loc15 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":31:5)
+#loc16 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":39:5)
+#loc17 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":31:11)
+#loc18 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":32:5)
+#loc19 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":33:9)
+#loc20 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":37:9)
+#loc21 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":36:27)
+#loc22 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":36:20)
+#loc23 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":36:13)
+#loc24 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":36:35)
+#loc25 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":38:9)
+#loc26 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":40:5)
+#loc27 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":46:5)
+#loc28 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":40:11)
+#loc29 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":41:5)
+#loc30 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":44:16)
+#loc31 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":26:6)
+#loc32 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":45:9)
+#loc33 = loc("/usr/include/stdlib.h":687:1)
+#loc34 = loc("/usr/include/stdlib.h":687:32)
+#loc35 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":54:1)
+#loc36 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":74:1)
+#loc37 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":56:5)
+#loc38 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":56:12)
+#loc39 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":58:12)
+#loc40 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":58:5)
+#loc41 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":59:5)
+#loc42 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":67:5)
+#loc43 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":59:11)
+#loc44 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":60:5)
+#loc45 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":61:9)
+#loc46 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":65:9)
+#loc47 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":64:27)
+#loc48 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":64:20)
+#loc49 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":64:13)
+#loc50 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":64:35)
+#loc51 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":66:9)
+#loc52 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":68:5)
+#loc53 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":73:5)
+#loc54 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":68:11)
+#loc55 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":69:5)
+#loc56 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":71:9)
+#loc57 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":71:14)
+#loc58 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":72:9)
+#loc59 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":126:20)
+#loc60 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/new":127:41)
+#loc61 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":77:1)
+#loc62 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":95:1)
+#loc63 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":79:5)
+#loc64 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":79:12)
+#loc65 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":81:12)
+#loc66 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":81:5)
+#loc67 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":82:5)
+#loc68 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":87:5)
+#loc69 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":82:11)
+#loc70 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":83:5)
+#loc71 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":85:16)
+#loc72 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":85:20)
+#loc73 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":77:13)
+#loc74 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":85:9)
+#loc75 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":86:9)
+#loc76 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":88:5)
+#loc77 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":94:5)
+#loc78 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":88:11)
+#loc79 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":89:5)
+#loc80 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":92:16)
+#loc81 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":93:9)
+#loc82 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":97:1)
+#loc83 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":101:1)
+#loc84 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":99:5)
+#loc85 = loc("CWE762_Mismatched_Memory_Management_Routines__strdup_delete_char_16.cpp":100:5)
+#loc86 = loc(fused[#loc1, #loc2])
+#loc87 = loc(fused[#loc3, #loc4])
+#loc88 = loc(fused[#loc5, #loc6])
+#loc89 = loc(fused[#loc7, #loc8])
+#loc90 = loc(fused[#loc9, #loc10])
+#loc91 = loc(fused[#loc11, #loc12])
+#loc92 = loc(fused[#loc14, #loc13])
+#loc93 = loc(fused[#loc15, #loc16])
+#loc94 = loc(fused[#loc18, #loc16])
+#loc95 = loc(fused[#loc19, #loc20])
+#loc96 = loc(fused[#loc23, #loc24])
+#loc97 = loc(fused[#loc26, #loc27])
+#loc98 = loc(fused[#loc29, #loc27])
+#loc99 = loc(fused[#loc33, #loc34])
+#loc100 = loc(fused[#loc35, #loc36])
+#loc101 = loc(fused[#loc37, #loc38])
+#loc102 = loc(fused[#loc40, #loc39])
+#loc103 = loc(fused[#loc41, #loc42])
+#loc104 = loc(fused[#loc44, #loc42])
+#loc105 = loc(fused[#loc45, #loc46])
+#loc106 = loc(fused[#loc49, #loc50])
+#loc107 = loc(fused[#loc52, #loc53])
+#loc108 = loc(fused[#loc55, #loc53])
+#loc109 = loc(fused[#loc59, #loc60])
+#loc110 = loc(fused[#loc61, #loc62])
+#loc111 = loc(fused[#loc63, #loc64])
+#loc112 = loc(fused[#loc66, #loc65])
+#loc113 = loc(fused[#loc67, #loc68])
+#loc114 = loc(fused[#loc70, #loc68])
+#loc115 = loc(fused[#loc71, #loc72])
+#loc116 = loc(fused[#loc74, #loc72])
+#loc117 = loc(fused[#loc76, #loc77])
+#loc118 = loc(fused[#loc79, #loc77])
+#loc119 = loc(fused[#loc82, #loc83])

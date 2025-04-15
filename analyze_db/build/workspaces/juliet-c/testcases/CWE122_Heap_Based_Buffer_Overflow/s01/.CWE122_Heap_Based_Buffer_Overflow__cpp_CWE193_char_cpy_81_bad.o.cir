@@ -1,0 +1,75 @@
+!s8i = !cir.int<s, 8>
+!u32i = !cir.int<u, 32>
+!u8i = !cir.int<u, 8>
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc9 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":24:69)
+#loc10 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":24:76)
+#loc11 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":24:83)
+#loc27 = loc(fused[#loc10, #loc11])
+!ty_anon_struct = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct1 = !cir.record<struct  {!cir.ptr<!u8i>, !cir.ptr<!u8i>, !cir.ptr<!u8i>}>
+!ty_anon_struct2 = !cir.record<struct  {!cir.array<!cir.ptr<!u8i> x 3>}>
+!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_base = !cir.record<class "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81::CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>} #cir.record.decl.ast>
+!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad = !cir.record<class "CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81::CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad" {!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_base} #cir.record.decl.ast>
+module @"/workspaces/juliet-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<270> = dense<32> : vector<4xi64>, i32 = dense<32> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, i1 = dense<8> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.global "private" constant cir_private @__const._ZNK57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad6actionEPc.source = #cir.const_array<"AAAAAAAAAA\00" : !cir.array<!s8i x 11>> : !cir.array<!s8i x 11> loc(#loc23)
+  cir.func private @strcpy(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc24)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc25)
+  cir.func @_ZNK57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad6actionEPc(%arg0: !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad> loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":24:69), %arg1: !cir.ptr<!s8i> loc(fused[#loc10, #loc11])) extra(#fn_attr1) {
+    %0 = cir.alloca !cir.array<!s8i x 11>, !cir.ptr<!cir.array<!s8i x 11>>, ["source"] {alignment = 1 : i64} loc(#loc23)
+    %1 = cir.alloca !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad>, !cir.ptr<!cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc9)
+    %2 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["data", init] {alignment = 8 : i64} loc(#loc27)
+    cir.store %arg0, %1 : !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad>, !cir.ptr<!cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad>> loc(#loc12)
+    cir.store %arg1, %2 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc12)
+    %3 = cir.load %1 : !cir.ptr<!cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad>>, !cir.ptr<!ty_CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_813A3ACWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad> loc(#loc9)
+    cir.br ^bb1 loc(#loc28)
+  ^bb1:  // pred: ^bb0
+    %4 = cir.get_global @__const._ZNK57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad6actionEPc.source : !cir.ptr<!cir.array<!s8i x 11>> loc(#loc23)
+    cir.copy %4 to %0 : !cir.ptr<!cir.array<!s8i x 11>> loc(#loc23)
+    %5 = cir.get_global @strcpy : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i>>> loc(#loc15)
+    %6 = cir.load %2 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc16)
+    %7 = cir.cast(array_to_ptrdecay, %0 : !cir.ptr<!cir.array<!s8i x 11>>), !cir.ptr<!s8i> loc(#loc17)
+    %8 = cir.call @strcpy(%6, %7) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc15)
+    %9 = cir.load %2 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc18)
+    cir.call @printLine(%9) : (!cir.ptr<!s8i>) -> () loc(#loc19)
+    %10 = cir.load %2 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc20)
+    cir.delete.array %10 : <!s8i> loc(#loc20)
+    cir.br ^bb2 loc(#loc14)
+  ^bb2:  // pred: ^bb1
+    cir.return loc(#loc8)
+  } loc(#loc26)
+  cir.global external dsolocal @_ZTVN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_badE = #cir.vtable<{#cir.const_array<[#cir.ptr<null> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZNK57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad6actionEPc> : !cir.ptr<!u8i>]> : !cir.array<!cir.ptr<!u8i> x 3>}> : !ty_anon_struct2 {alignment = 8 : i64} loc(#loc29)
+  cir.global "private" external @_ZTVN10__cxxabiv120__si_class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc21)
+  cir.global external @_ZTSN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_badE = #cir.const_array<"N57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_badE" : !cir.array<!s8i x 124>> : !cir.array<!s8i x 124> {alignment = 1 : i64} loc(#loc21)
+  cir.global "private" external @_ZTVN10__cxxabiv117__class_type_infoE : !cir.ptr<!cir.ptr<!u8i>> loc(#loc21)
+  cir.global linkonce_odr comdat @_ZTSN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8162CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_baseE = #cir.const_array<"N57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8162CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_baseE" : !cir.array<!s8i x 125>> : !cir.array<!s8i x 125> {alignment = 1 : i64} loc(#loc21)
+  cir.global constant external @_ZTIN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8162CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_baseE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv117__class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8162CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct {alignment = 8 : i64} loc(#loc21)
+  cir.global constant external @_ZTIN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_badE = #cir.typeinfo<{#cir.global_view<@_ZTVN10__cxxabiv120__si_class_type_infoE, [2 : i32]> : !cir.ptr<!u8i>, #cir.global_view<@_ZTSN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8161CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_badE> : !cir.ptr<!u8i>, #cir.global_view<@_ZTIN57CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_8162CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_baseE> : !cir.ptr<!u8i>}> : !ty_anon_struct1 {alignment = 8 : i64} loc(#loc21)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE122_Heap_Based_Buffer_Overflow/s01/CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":0:0)
+#loc1 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":27:9)
+#loc2 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":27:29)
+#loc3 = loc("/usr/include/string.h":141:1)
+#loc4 = loc("/usr/include/string.h":142:14)
+#loc5 = loc("../../../testcasesupport/std_testcase_io.h":14:1)
+#loc6 = loc("../../../testcasesupport/std_testcase_io.h":14:33)
+#loc7 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":24:1)
+#loc8 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":33:1)
+#loc12 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":25:1)
+#loc13 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":26:5)
+#loc14 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":32:5)
+#loc15 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":29:9)
+#loc16 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":29:16)
+#loc17 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":29:22)
+#loc18 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":30:19)
+#loc19 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":30:9)
+#loc20 = loc("CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81_bad.cpp":31:19)
+#loc21 = loc("./CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81.h":38:1)
+#loc22 = loc("./CWE122_Heap_Based_Buffer_Overflow__cpp_CWE193_char_cpy_81.h":42:1)
+#loc23 = loc(fused[#loc1, #loc2])
+#loc24 = loc(fused[#loc3, #loc4])
+#loc25 = loc(fused[#loc5, #loc6])
+#loc26 = loc(fused[#loc7, #loc8])
+#loc28 = loc(fused[#loc13, #loc14])
+#loc29 = loc(fused[#loc21, #loc22])

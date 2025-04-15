@@ -1,0 +1,125 @@
+!s32i = !cir.int<s, 32>
+#fn_attr = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE482_Comparing_Instead_of_Assigning/CWE482_Comparing_Instead_of_Assigning__basic_16.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<f128 = dense<128> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, i128 = dense<128> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64, "dlti.mangling_mode" = "e">} {
+  cir.func private @printIntLine(!s32i) loc(#loc39)
+  cir.func no_proto @CWE482_Comparing_Instead_of_Assigning__basic_16_bad() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["intBadSink", init] {alignment = 4 : i64} loc(#loc41)
+    cir.br ^bb1 loc(#loc42)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc42)
+  ^bb2:  // 2 preds: ^bb1, ^bb7
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc9)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc9)
+    cir.brcond %2 ^bb3, ^bb8 loc(#loc9)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc43)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb5 loc(#loc44)
+  ^bb5:  // pred: ^bb4
+    %3 = cir.const #cir.int<0> : !s32i loc(#loc6)
+    cir.store %3, %0 : !s32i, !cir.ptr<!s32i> loc(#loc41)
+    %4 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc13)
+    cir.call @printIntLine(%4) : (!s32i) -> () loc(#loc14)
+    %5 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc15)
+    cir.call @printIntLine(%5) : (!s32i) -> () loc(#loc16)
+    cir.br ^bb6 loc(#loc12)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb8 loc(#loc17)
+  ^bb7:  // no predecessors
+    cir.br ^bb2 loc(#loc8)
+  ^bb8:  // 2 preds: ^bb2, ^bb6
+    cir.br ^bb9 loc(#loc8)
+  ^bb9:  // pred: ^bb8
+    cir.return loc(#loc4)
+  } loc(#loc40)
+  cir.func no_proto @CWE482_Comparing_Instead_of_Assigning__basic_16_good() extra(#fn_attr) {
+    %0 = cir.get_global @good1 : !cir.ptr<!cir.func<()>> loc(#loc46)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc20)
+    cir.return loc(#loc19)
+  } loc(#loc45)
+  cir.func no_proto internal private @good1() extra(#fn_attr) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["intGoodSink", init] {alignment = 4 : i64} loc(#loc48)
+    cir.br ^bb1 loc(#loc49)
+  ^bb1:  // pred: ^bb0
+    cir.br ^bb2 loc(#loc49)
+  ^bb2:  // 2 preds: ^bb1, ^bb7
+    %1 = cir.const #cir.int<1> : !s32i loc(#loc28)
+    %2 = cir.cast(int_to_bool, %1 : !s32i), !cir.bool loc(#loc28)
+    cir.brcond %2 ^bb3, ^bb8 loc(#loc28)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb4 loc(#loc50)
+  ^bb4:  // pred: ^bb3
+    cir.br ^bb5 loc(#loc51)
+  ^bb5:  // pred: ^bb4
+    %3 = cir.const #cir.int<0> : !s32i loc(#loc25)
+    cir.store %3, %0 : !s32i, !cir.ptr<!s32i> loc(#loc48)
+    %4 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc32)
+    cir.call @printIntLine(%4) : (!s32i) -> () loc(#loc33)
+    %5 = cir.const #cir.int<5> : !s32i loc(#loc34)
+    cir.store %5, %0 : !s32i, !cir.ptr<!s32i> loc(#loc52)
+    %6 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc36)
+    cir.call @printIntLine(%6) : (!s32i) -> () loc(#loc37)
+    cir.br ^bb6 loc(#loc31)
+  ^bb6:  // pred: ^bb5
+    cir.br ^bb8 loc(#loc38)
+  ^bb7:  // no predecessors
+    cir.br ^bb2 loc(#loc27)
+  ^bb8:  // 2 preds: ^bb2, ^bb6
+    cir.br ^bb9 loc(#loc27)
+  ^bb9:  // pred: ^bb8
+    cir.return loc(#loc23)
+  } loc(#loc47)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE482_Comparing_Instead_of_Assigning/CWE482_Comparing_Instead_of_Assigning__basic_16.c":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase_io.h":18:1)
+#loc2 = loc("../../testcasesupport/std_testcase_io.h":18:33)
+#loc3 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":20:1)
+#loc4 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":34:1)
+#loc5 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":25:13)
+#loc6 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":25:30)
+#loc7 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":22:5)
+#loc8 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":33:5)
+#loc9 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":22:11)
+#loc10 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":23:5)
+#loc11 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":24:9)
+#loc12 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":31:9)
+#loc13 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":27:26)
+#loc14 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":27:13)
+#loc15 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":30:26)
+#loc16 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":30:13)
+#loc17 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":32:9)
+#loc18 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":57:1)
+#loc19 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":60:1)
+#loc20 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":59:5)
+#loc21 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":59:11)
+#loc22 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":41:1)
+#loc23 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":55:1)
+#loc24 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":46:13)
+#loc25 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":46:31)
+#loc26 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":43:5)
+#loc27 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":54:5)
+#loc28 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":43:11)
+#loc29 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":44:5)
+#loc30 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":45:9)
+#loc31 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":52:9)
+#loc32 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":48:26)
+#loc33 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":48:13)
+#loc34 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":50:27)
+#loc35 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":50:13)
+#loc36 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":51:26)
+#loc37 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":51:13)
+#loc38 = loc("CWE482_Comparing_Instead_of_Assigning__basic_16.c":53:9)
+#loc39 = loc(fused[#loc1, #loc2])
+#loc40 = loc(fused[#loc3, #loc4])
+#loc41 = loc(fused[#loc5, #loc6])
+#loc42 = loc(fused[#loc7, #loc8])
+#loc43 = loc(fused[#loc10, #loc8])
+#loc44 = loc(fused[#loc11, #loc12])
+#loc45 = loc(fused[#loc18, #loc19])
+#loc46 = loc(fused[#loc20, #loc21])
+#loc47 = loc(fused[#loc22, #loc23])
+#loc48 = loc(fused[#loc24, #loc25])
+#loc49 = loc(fused[#loc26, #loc27])
+#loc50 = loc(fused[#loc29, #loc27])
+#loc51 = loc(fused[#loc30, #loc31])
+#loc52 = loc(fused[#loc35, #loc34])

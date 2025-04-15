@@ -1,0 +1,339 @@
+!s32i = !cir.int<s, 32>
+!s8i = !cir.int<s, 8>
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+module @"/workspaces/juliet-c/testcases/CWE484_Omitted_Break_Statement_in_Switch/CWE484_Omitted_Break_Statement_in_Switch__basic_13.c" attributes {cir.lang = #cir.lang<c>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<i1 = dense<8> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i16 = dense<16> : vector<2xi64>, i8 = dense<8> : vector<2xi64>, f16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, f128 = dense<128> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, !llvm.ptr<271> = dense<32> : vector<4xi64>, i64 = dense<64> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, "dlti.mangling_mode" = "e", "dlti.endianness" = "little", "dlti.stack_alignment" = 128 : i64>} {
+  cir.global "private" constant external @GLOBAL_CONST_FIVE : !s32i {alignment = 4 : i64} loc(#loc104)
+  cir.func private @rand() -> !s32i extra(#fn_attr) loc(#loc105)
+  cir.func private @printLine(!cir.ptr<!s8i>) loc(#loc106)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"0\00" : !cir.array<!s8i x 2>> : !cir.array<!s8i x 2> {alignment = 1 : i64} loc(#loc7)
+  cir.global "private" constant cir_private dsolocal @".str.1" = #cir.const_array<"1\00" : !cir.array<!s8i x 2>> : !cir.array<!s8i x 2> {alignment = 1 : i64} loc(#loc8)
+  cir.global "private" constant cir_private dsolocal @".str.2" = #cir.const_array<"2\00" : !cir.array<!s8i x 2>> : !cir.array<!s8i x 2> {alignment = 1 : i64} loc(#loc9)
+  cir.global "private" constant cir_private dsolocal @".str.3" = #cir.const_array<"Invalid Number\00" : !cir.array<!s8i x 15>> : !cir.array<!s8i x 15> {alignment = 1 : i64} loc(#loc10)
+  cir.func no_proto @CWE484_Omitted_Break_Statement_in_Switch__basic_13_bad() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x", init] {alignment = 4 : i64} loc(#loc108)
+    cir.br ^bb1 loc(#loc109)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.get_global @GLOBAL_CONST_FIVE : !cir.ptr<!s32i> loc(#loc104)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc17)
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc18)
+    %4 = cir.cmp(eq, %2, %3) : !s32i, !cir.bool loc(#loc110)
+    cir.brcond %4 ^bb2, ^bb15 loc(#loc111)
+  ^bb2:  // pred: ^bb1
+    cir.br ^bb3 loc(#loc112)
+  ^bb3:  // pred: ^bb2
+    %5 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc22)
+    %6 = cir.const #cir.int<3> : !s32i loc(#loc23)
+    %7 = cir.binop(rem, %5, %6) : !s32i loc(#loc113)
+    cir.store %7, %0 : !s32i, !cir.ptr<!s32i> loc(#loc108)
+    cir.br ^bb4 loc(#loc114)
+  ^bb4:  // pred: ^bb3
+    %8 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc26)
+    cir.br ^bb5 loc(#loc24)
+  ^bb5:  // pred: ^bb4
+    cir.switch.flat %8 : !s32i, ^bb11 [
+      0: ^bb7,
+      1: ^bb9,
+      2: ^bb10
+    ] loc(#loc24)
+  ^bb6:  // no predecessors
+    cir.br ^bb7 loc(#loc27)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc7)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc7)
+    cir.call @printLine(%10) : (!cir.ptr<!s8i>) -> () loc(#loc28)
+    cir.br ^bb8 loc(#loc27)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb9 loc(#loc29)
+  ^bb9:  // 2 preds: ^bb5, ^bb8
+    %11 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc8)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc8)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc30)
+    cir.br ^bb12 loc(#loc31)
+  ^bb10:  // pred: ^bb5
+    %13 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc9)
+    %14 = cir.cast(array_to_ptrdecay, %13 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc9)
+    cir.call @printLine(%14) : (!cir.ptr<!s8i>) -> () loc(#loc32)
+    cir.br ^bb12 loc(#loc33)
+  ^bb11:  // pred: ^bb5
+    %15 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 15>> loc(#loc10)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 15>>), !cir.ptr<!s8i> loc(#loc10)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc34)
+    cir.br ^bb12 loc(#loc35)
+  ^bb12:  // 3 preds: ^bb9, ^bb10, ^bb11
+    cir.br ^bb13 loc(#loc25)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc21)
+  ^bb14:  // pred: ^bb13
+    cir.br ^bb15 loc(#loc16)
+  ^bb15:  // 2 preds: ^bb1, ^bb14
+    cir.br ^bb16 loc(#loc16)
+  ^bb16:  // pred: ^bb15
+    cir.return loc(#loc12)
+  } loc(#loc107)
+  cir.func no_proto @CWE484_Omitted_Break_Statement_in_Switch__basic_13_good() extra(#fn_attr1) {
+    %0 = cir.get_global @good1 : !cir.ptr<!cir.func<()>> loc(#loc116)
+    cir.call %0() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc38)
+    %1 = cir.get_global @good2 : !cir.ptr<!cir.func<()>> loc(#loc117)
+    cir.call %1() : (!cir.ptr<!cir.func<()>>) -> () loc(#loc40)
+    cir.return loc(#loc37)
+  } loc(#loc115)
+  cir.global "private" constant cir_private dsolocal @".str.4" = #cir.const_array<"Benign, fixed string\00" : !cir.array<!s8i x 21>> : !cir.array<!s8i x 21> {alignment = 1 : i64} loc(#loc42)
+  cir.func no_proto internal private @good1() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x", init] {alignment = 4 : i64} loc(#loc119)
+    cir.br ^bb1 loc(#loc120)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.get_global @GLOBAL_CONST_FIVE : !cir.ptr<!s32i> loc(#loc104)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc49)
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc50)
+    %4 = cir.cmp(ne, %2, %3) : !s32i, !cir.bool loc(#loc121)
+    cir.brcond %4 ^bb2, ^bb3 loc(#loc122)
+  ^bb2:  // pred: ^bb1
+    %5 = cir.get_global @".str.4" : !cir.ptr<!cir.array<!s8i x 21>> loc(#loc42)
+    %6 = cir.cast(array_to_ptrdecay, %5 : !cir.ptr<!cir.array<!s8i x 21>>), !cir.ptr<!s8i> loc(#loc42)
+    cir.call @printLine(%6) : (!cir.ptr<!s8i>) -> () loc(#loc54)
+    cir.br ^bb15 loc(#loc52)
+  ^bb3:  // pred: ^bb1
+    cir.br ^bb4 loc(#loc123)
+  ^bb4:  // pred: ^bb3
+    %7 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc57)
+    %8 = cir.const #cir.int<3> : !s32i loc(#loc58)
+    %9 = cir.binop(rem, %7, %8) : !s32i loc(#loc124)
+    cir.store %9, %0 : !s32i, !cir.ptr<!s32i> loc(#loc119)
+    cir.br ^bb5 loc(#loc125)
+  ^bb5:  // pred: ^bb4
+    %10 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc61)
+    cir.br ^bb6 loc(#loc59)
+  ^bb6:  // pred: ^bb5
+    cir.switch.flat %10 : !s32i, ^bb11 [
+      0: ^bb8,
+      1: ^bb9,
+      2: ^bb10
+    ] loc(#loc59)
+  ^bb7:  // no predecessors
+    cir.br ^bb8 loc(#loc62)
+  ^bb8:  // 2 preds: ^bb6, ^bb7
+    %11 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc63)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc63)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc64)
+    cir.br ^bb12 loc(#loc65)
+  ^bb9:  // pred: ^bb6
+    %13 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc66)
+    %14 = cir.cast(array_to_ptrdecay, %13 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc66)
+    cir.call @printLine(%14) : (!cir.ptr<!s8i>) -> () loc(#loc67)
+    cir.br ^bb12 loc(#loc68)
+  ^bb10:  // pred: ^bb6
+    %15 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc69)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc69)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc70)
+    cir.br ^bb12 loc(#loc71)
+  ^bb11:  // pred: ^bb6
+    %17 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 15>> loc(#loc72)
+    %18 = cir.cast(array_to_ptrdecay, %17 : !cir.ptr<!cir.array<!s8i x 15>>), !cir.ptr<!s8i> loc(#loc72)
+    cir.call @printLine(%18) : (!cir.ptr<!s8i>) -> () loc(#loc73)
+    cir.br ^bb12 loc(#loc74)
+  ^bb12:  // 4 preds: ^bb8, ^bb9, ^bb10, ^bb11
+    cir.br ^bb13 loc(#loc60)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc56)
+  ^bb14:  // pred: ^bb13
+    cir.br ^bb15 loc(#loc48)
+  ^bb15:  // 2 preds: ^bb2, ^bb14
+    cir.br ^bb16 loc(#loc48)
+  ^bb16:  // pred: ^bb15
+    cir.return loc(#loc44)
+  } loc(#loc118)
+  cir.func no_proto internal private @good2() extra(#fn_attr1) {
+    %0 = cir.alloca !s32i, !cir.ptr<!s32i>, ["x", init] {alignment = 4 : i64} loc(#loc127)
+    cir.br ^bb1 loc(#loc128)
+  ^bb1:  // pred: ^bb0
+    %1 = cir.get_global @GLOBAL_CONST_FIVE : !cir.ptr<!s32i> loc(#loc104)
+    %2 = cir.load %1 : !cir.ptr<!s32i>, !s32i loc(#loc81)
+    %3 = cir.const #cir.int<5> : !s32i loc(#loc82)
+    %4 = cir.cmp(eq, %2, %3) : !s32i, !cir.bool loc(#loc129)
+    cir.brcond %4 ^bb2, ^bb14 loc(#loc130)
+  ^bb2:  // pred: ^bb1
+    cir.br ^bb3 loc(#loc131)
+  ^bb3:  // pred: ^bb2
+    %5 = cir.call @rand() : () -> !s32i extra(#fn_attr) loc(#loc86)
+    %6 = cir.const #cir.int<3> : !s32i loc(#loc87)
+    %7 = cir.binop(rem, %5, %6) : !s32i loc(#loc132)
+    cir.store %7, %0 : !s32i, !cir.ptr<!s32i> loc(#loc127)
+    cir.br ^bb4 loc(#loc133)
+  ^bb4:  // pred: ^bb3
+    %8 = cir.load %0 : !cir.ptr<!s32i>, !s32i loc(#loc90)
+    cir.br ^bb5 loc(#loc88)
+  ^bb5:  // pred: ^bb4
+    cir.switch.flat %8 : !s32i, ^bb10 [
+      0: ^bb7,
+      1: ^bb8,
+      2: ^bb9
+    ] loc(#loc88)
+  ^bb6:  // no predecessors
+    cir.br ^bb7 loc(#loc91)
+  ^bb7:  // 2 preds: ^bb5, ^bb6
+    %9 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc92)
+    %10 = cir.cast(array_to_ptrdecay, %9 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc92)
+    cir.call @printLine(%10) : (!cir.ptr<!s8i>) -> () loc(#loc93)
+    cir.br ^bb11 loc(#loc94)
+  ^bb8:  // pred: ^bb5
+    %11 = cir.get_global @".str.1" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc95)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc95)
+    cir.call @printLine(%12) : (!cir.ptr<!s8i>) -> () loc(#loc96)
+    cir.br ^bb11 loc(#loc97)
+  ^bb9:  // pred: ^bb5
+    %13 = cir.get_global @".str.2" : !cir.ptr<!cir.array<!s8i x 2>> loc(#loc98)
+    %14 = cir.cast(array_to_ptrdecay, %13 : !cir.ptr<!cir.array<!s8i x 2>>), !cir.ptr<!s8i> loc(#loc98)
+    cir.call @printLine(%14) : (!cir.ptr<!s8i>) -> () loc(#loc99)
+    cir.br ^bb11 loc(#loc100)
+  ^bb10:  // pred: ^bb5
+    %15 = cir.get_global @".str.3" : !cir.ptr<!cir.array<!s8i x 15>> loc(#loc101)
+    %16 = cir.cast(array_to_ptrdecay, %15 : !cir.ptr<!cir.array<!s8i x 15>>), !cir.ptr<!s8i> loc(#loc101)
+    cir.call @printLine(%16) : (!cir.ptr<!s8i>) -> () loc(#loc102)
+    cir.br ^bb11 loc(#loc103)
+  ^bb11:  // 4 preds: ^bb7, ^bb8, ^bb9, ^bb10
+    cir.br ^bb12 loc(#loc89)
+  ^bb12:  // pred: ^bb11
+    cir.br ^bb13 loc(#loc85)
+  ^bb13:  // pred: ^bb12
+    cir.br ^bb14 loc(#loc80)
+  ^bb14:  // 2 preds: ^bb1, ^bb13
+    cir.br ^bb15 loc(#loc80)
+  ^bb15:  // pred: ^bb14
+    cir.return loc(#loc76)
+  } loc(#loc126)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE484_Omitted_Break_Statement_in_Switch/CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":0:0)
+#loc1 = loc("../../testcasesupport/std_testcase.h":111:1)
+#loc2 = loc("../../testcasesupport/std_testcase.h":111:18)
+#loc3 = loc("/usr/include/stdlib.h":573:1)
+#loc4 = loc("/usr/include/stdlib.h":573:24)
+#loc5 = loc("../../testcasesupport/std_testcase_io.h":14:1)
+#loc6 = loc("../../testcasesupport/std_testcase_io.h":14:33)
+#loc7 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":30:27)
+#loc8 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":32:27)
+#loc9 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":35:27)
+#loc10 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":38:27)
+#loc11 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":20:1)
+#loc12 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":43:1)
+#loc13 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":25:13)
+#loc14 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":25:32)
+#loc15 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":22:5)
+#loc16 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":42:5)
+#loc17 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":22:8)
+#loc18 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":22:27)
+#loc19 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":23:5)
+#loc20 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":24:9)
+#loc21 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":41:9)
+#loc22 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":25:22)
+#loc23 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":25:31)
+#loc24 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":27:13)
+#loc25 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":40:13)
+#loc26 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":27:21)
+#loc27 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":29:13)
+#loc28 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":30:17)
+#loc29 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":31:13)
+#loc30 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":32:17)
+#loc31 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":33:17)
+#loc32 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":35:17)
+#loc33 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":36:17)
+#loc34 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":38:17)
+#loc35 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":39:17)
+#loc36 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":110:1)
+#loc37 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":114:1)
+#loc38 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":112:5)
+#loc39 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":112:11)
+#loc40 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":113:5)
+#loc41 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":113:11)
+#loc42 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":55:19)
+#loc43 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":50:1)
+#loc44 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":80:1)
+#loc45 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":60:13)
+#loc46 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":60:32)
+#loc47 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":52:5)
+#loc48 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":79:5)
+#loc49 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":52:8)
+#loc50 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":52:27)
+#loc51 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":53:5)
+#loc52 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":56:5)
+#loc53 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":58:5)
+#loc54 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":55:9)
+#loc55 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":59:9)
+#loc56 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":78:9)
+#loc57 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":60:22)
+#loc58 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":60:31)
+#loc59 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":63:13)
+#loc60 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":77:13)
+#loc61 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":63:21)
+#loc62 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":65:13)
+#loc63 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":66:27)
+#loc64 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":66:17)
+#loc65 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":67:17)
+#loc66 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":69:27)
+#loc67 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":69:17)
+#loc68 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":70:17)
+#loc69 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":72:27)
+#loc70 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":72:17)
+#loc71 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":73:17)
+#loc72 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":75:27)
+#loc73 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":75:17)
+#loc74 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":76:17)
+#loc75 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":83:1)
+#loc76 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":108:1)
+#loc77 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":88:13)
+#loc78 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":88:32)
+#loc79 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":85:5)
+#loc80 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":107:5)
+#loc81 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":85:8)
+#loc82 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":85:27)
+#loc83 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":86:5)
+#loc84 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":87:9)
+#loc85 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":106:9)
+#loc86 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":88:22)
+#loc87 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":88:31)
+#loc88 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":91:13)
+#loc89 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":105:13)
+#loc90 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":91:21)
+#loc91 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":93:13)
+#loc92 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":94:27)
+#loc93 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":94:17)
+#loc94 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":95:17)
+#loc95 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":97:27)
+#loc96 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":97:17)
+#loc97 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":98:17)
+#loc98 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":100:27)
+#loc99 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":100:17)
+#loc100 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":101:17)
+#loc101 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":103:27)
+#loc102 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":103:17)
+#loc103 = loc("CWE484_Omitted_Break_Statement_in_Switch__basic_13.c":104:17)
+#loc104 = loc(fused[#loc1, #loc2])
+#loc105 = loc(fused[#loc3, #loc4])
+#loc106 = loc(fused[#loc5, #loc6])
+#loc107 = loc(fused[#loc11, #loc12])
+#loc108 = loc(fused[#loc13, #loc14])
+#loc109 = loc(fused[#loc15, #loc16])
+#loc110 = loc(fused[#loc17, #loc18])
+#loc111 = loc(fused[#loc19, #loc16])
+#loc112 = loc(fused[#loc20, #loc21])
+#loc113 = loc(fused[#loc22, #loc23])
+#loc114 = loc(fused[#loc24, #loc25])
+#loc115 = loc(fused[#loc36, #loc37])
+#loc116 = loc(fused[#loc38, #loc39])
+#loc117 = loc(fused[#loc40, #loc41])
+#loc118 = loc(fused[#loc43, #loc44])
+#loc119 = loc(fused[#loc45, #loc46])
+#loc120 = loc(fused[#loc47, #loc48])
+#loc121 = loc(fused[#loc49, #loc50])
+#loc122 = loc(fused[#loc51, #loc52, #loc53, #loc48])
+#loc123 = loc(fused[#loc55, #loc56])
+#loc124 = loc(fused[#loc57, #loc58])
+#loc125 = loc(fused[#loc59, #loc60])
+#loc126 = loc(fused[#loc75, #loc76])
+#loc127 = loc(fused[#loc77, #loc78])
+#loc128 = loc(fused[#loc79, #loc80])
+#loc129 = loc(fused[#loc81, #loc82])
+#loc130 = loc(fused[#loc83, #loc80])
+#loc131 = loc(fused[#loc84, #loc85])
+#loc132 = loc(fused[#loc86, #loc87])
+#loc133 = loc(fused[#loc88, #loc89])

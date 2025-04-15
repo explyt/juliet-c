@@ -1,0 +1,228 @@
+!s16i = !cir.int<s, 16>
+!s32i = !cir.int<s, 32>
+!s64i = !cir.int<s, 64>
+!s8i = !cir.int<s, 8>
+!ty__IO_codecvt = !cir.record<struct "_IO_codecvt" incomplete>
+!ty__IO_marker = !cir.record<struct "_IO_marker" incomplete>
+!ty__IO_wide_data = !cir.record<struct "_IO_wide_data" incomplete>
+!ty___locale_data = !cir.record<struct "__locale_data" incomplete>
+!u16i = !cir.int<u, 16>
+!u32i = !cir.int<u, 32>
+!u64i = !cir.int<u, 64>
+!u8i = !cir.int<u, 8>
+!void = !cir.void
+#fn_attr = #cir<extra({nothrow = #cir.nothrow})>
+#fn_attr1 = #cir<extra({inline = #cir.inline<no>, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#fn_attr2 = #cir<extra({inline = #cir.inline<no>, nothrow = #cir.nothrow, optnone = #cir.optnone, uwtable = #cir.uwtable<async>})>
+#loc10 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":34:66)
+#loc11 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":34:130)
+#loc12 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":34:137)
+#loc49 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:66)
+#loc64 = loc(fused[#loc11, #loc12])
+!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad = !cir.record<class "CWE23_Relative_Path_Traversal__char_environment_ifstream_83::CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad" {!cir.ptr<!s8i>} #cir.record.decl.ast>
+!ty__IO_FILE = !cir.record<struct "_IO_FILE" {!s32i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!ty__IO_marker>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !s32i, !s32i, !s64i, !u16i, !s8i, !cir.array<!s8i x 1>, !cir.ptr<!void>, !s64i, !cir.ptr<!ty__IO_codecvt>, !cir.ptr<!ty__IO_wide_data>, !cir.ptr<!cir.record<struct "_IO_FILE">>, !cir.ptr<!void>, !u64i, !s32i, !cir.array<!s8i x 20>} #cir.record.decl.ast>
+!ty___pthread_internal_list = !cir.record<struct "__pthread_internal_list" {!cir.ptr<!cir.record<struct "__pthread_internal_list">>, !cir.ptr<!cir.record<struct "__pthread_internal_list">>} #cir.record.decl.ast>
+!ty_anon2E0 = !cir.record<union "anon.0" {!u32i, !cir.array<!s8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Aios_base3A3A_Words = !cir.record<struct "std::ios_base::_Words" {!cir.ptr<!void>, !s64i} #cir.record.decl.ast>
+!ty___locale_struct = !cir.record<struct "__locale_struct" {!cir.array<!cir.ptr<!ty___locale_data> x 13>, !cir.ptr<!u16i>, !cir.ptr<!s32i>, !cir.ptr<!s32i>, !cir.array<!cir.ptr<!s8i> x 13>} #cir.record.decl.ast>
+!ty___mbstate_t = !cir.record<struct "__mbstate_t" {!s32i, !ty_anon2E0} #cir.record.decl.ast>
+!ty___pthread_mutex_s = !cir.record<struct "__pthread_mutex_s" {!s32i, !u32i, !s32i, !u32i, !s32i, !s16i, !s16i, !ty___pthread_internal_list} #cir.record.decl.ast>
+!ty_pthread_mutex_t = !cir.record<union "pthread_mutex_t" {!ty___pthread_mutex_s, !cir.array<!s8i x 40>, !s64i} #cir.record.decl.ast>
+!ty_std3A3A__basic_file3Cchar3E = !cir.record<class "std::__basic_file<char>" packed padded {!cir.ptr<!ty__IO_FILE>, !cir.bool, !cir.array<!u8i x 7>} #cir.record.decl.ast>
+!ty_std3A3Abasic_istream3Cchar2C_std3A3Achar_traits3Cchar3E3E2Ebase = !cir.record<class "std::basic_istream<char, std::char_traits<char>>.base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i} #cir.record.decl.ast>
+!ty_std3A3Abasic_ostream3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_ostream<char, std::char_traits<char>>" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !cir.record<class "std::basic_ios<char, std::char_traits<char>>" {!cir.record<class "std::ios_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i, !s64i, !s32i, !s32i, !s32i, !cir.ptr<!cir.record<struct "std::ios_base::_Callback_list" {!cir.ptr<!cir.record<struct "std::ios_base::_Callback_list">>, !cir.ptr<!cir.func<(!u32i, !cir.ptr<!cir.record<class "std::ios_base">>, !s32i)>>, !s32i, !s32i} #cir.record.decl.ast>>, !ty_std3A3Aios_base3A3A_Words, !cir.array<!ty_std3A3Aios_base3A3A_Words x 8>, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Words>, !cir.record<class "std::locale" {!cir.ptr<!cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !u64i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>, !cir.ptr<!cir.record<class "std::basic_ostream<char, std::char_traits<char>>">>, !s8i, !cir.bool, !cir.ptr<!cir.record<class "std::basic_streambuf<char, std::char_traits<char>>" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.record<class "std::locale" {!cir.ptr<!cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !u64i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>>, !cir.ptr<!cir.record<class "std::ctype<char>" packed padded {!cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>, !cir.array<!u8i x 4>, !cir.ptr<!ty___locale_struct>, !cir.bool, !cir.array<!u8i x 7>, !cir.ptr<!s32i>, !cir.ptr<!s32i>, !cir.ptr<!u16i>, !s8i, !cir.array<!s8i x 256>, !cir.array<!s8i x 256>, !s8i, !cir.array<!u8i x 6>} #cir.record.decl.ast>>, !cir.ptr<!cir.record<class "std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char>>>" padded {!cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>, !cir.array<!u8i x 4>} #cir.record.decl.ast>>, !cir.ptr<!cir.record<class "std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char>>>" padded {!cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>, !cir.array<!u8i x 4>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>
+!ty_std3A3Aios_base3A3A_Callback_list = !cir.record<struct "std::ios_base::_Callback_list" {!cir.ptr<!cir.record<struct "std::ios_base::_Callback_list">>, !cir.ptr<!cir.func<(!u32i, !cir.ptr<!cir.record<class "std::ios_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i, !s64i, !s32i, !s32i, !s32i, !cir.ptr<!cir.record<struct "std::ios_base::_Callback_list">>, !ty_std3A3Aios_base3A3A_Words, !cir.array<!ty_std3A3Aios_base3A3A_Words x 8>, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Words>, !cir.record<class "std::locale" {!cir.ptr<!cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !u64i, !cir.ptr<!cir.ptr<!cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>>} #cir.record.decl.ast>} #cir.record.decl.ast>>, !s32i)>>, !s32i, !s32i} #cir.record.decl.ast>
+!ty_std3A3Alocale3A3Afacet = !cir.record<class "std::locale::facet" packed padded {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i, !cir.array<!u8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Alocale3A3Afacet2Ebase = !cir.record<class "std::locale::facet.base" packed {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s32i} #cir.record.decl.ast>
+!ty_std3A3A__codecvt_abstract_base3Cchar2C_char2C___mbstate_t3E2Ebase = !cir.record<class "std::__codecvt_abstract_base<char, char, __mbstate_t>.base" {!ty_std3A3Alocale3A3Afacet2Ebase} #cir.record.decl.ast>
+!ty_std3A3Actype3Cchar3E = !cir.record<class "std::ctype<char>" packed padded {!ty_std3A3Alocale3A3Afacet2Ebase, !cir.array<!u8i x 4>, !cir.ptr<!ty___locale_struct>, !cir.bool, !cir.array<!u8i x 7>, !cir.ptr<!s32i>, !cir.ptr<!s32i>, !cir.ptr<!u16i>, !s8i, !cir.array<!s8i x 256>, !cir.array<!s8i x 256>, !s8i, !cir.array<!u8i x 6>} #cir.record.decl.ast>
+!ty_std3A3Anum_get3Cchar2C_std3A3Aistreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E = !cir.record<class "std::num_get<char, std::istreambuf_iterator<char, std::char_traits<char>>>" padded {!ty_std3A3Alocale3A3Afacet2Ebase, !cir.array<!u8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Anum_put3Cchar2C_std3A3Aostreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E = !cir.record<class "std::num_put<char, std::ostreambuf_iterator<char, std::char_traits<char>>>" padded {!ty_std3A3Alocale3A3Afacet2Ebase, !cir.array<!u8i x 4>} #cir.record.decl.ast>
+!ty_std3A3Acodecvt3Cchar2C_char2C___mbstate_t3E = !cir.record<class "std::codecvt<char, char, __mbstate_t>" {!ty_std3A3A__codecvt_abstract_base3Cchar2C_char2C___mbstate_t3E2Ebase, !cir.ptr<!ty___locale_struct>} #cir.record.decl.ast>
+!ty_std3A3Alocale3A3A_Impl = !cir.record<class "std::locale::_Impl" {!s32i, !cir.ptr<!cir.ptr<!ty_std3A3Alocale3A3Afacet>>, !u64i, !cir.ptr<!cir.ptr<!ty_std3A3Alocale3A3Afacet>>, !cir.ptr<!cir.ptr<!s8i>>} #cir.record.decl.ast>
+!ty_std3A3Alocale = !cir.record<class "std::locale" {!cir.ptr<!ty_std3A3Alocale3A3A_Impl>} #cir.record.decl.ast>
+!ty_std3A3Abasic_streambuf3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_streambuf<char, std::char_traits<char>>" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !ty_std3A3Alocale} #cir.record.decl.ast>
+!ty_std3A3Aios_base = !cir.record<class "std::ios_base" {!cir.ptr<!cir.ptr<!cir.func<() -> !u32i>>>, !s64i, !s64i, !s32i, !s32i, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Callback_list>, !ty_std3A3Aios_base3A3A_Words, !cir.array<!ty_std3A3Aios_base3A3A_Words x 8>, !s32i, !cir.ptr<!ty_std3A3Aios_base3A3A_Words>, !ty_std3A3Alocale} #cir.record.decl.ast>
+!ty_std3A3Abasic_filebuf3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_filebuf<char, std::char_traits<char>>" {!ty_std3A3Abasic_streambuf3Cchar2C_std3A3Achar_traits3Cchar3E3E, !ty_pthread_mutex_t, !ty_std3A3A__basic_file3Cchar3E, !s32i, !ty___mbstate_t, !ty___mbstate_t, !ty___mbstate_t, !cir.ptr<!s8i>, !u64i, !cir.bool, !cir.bool, !cir.bool, !s8i, !cir.ptr<!s8i>, !cir.ptr<!s8i>, !cir.bool, !cir.ptr<!ty_std3A3Acodecvt3Cchar2C_char2C___mbstate_t3E>, !cir.ptr<!s8i>, !s64i, !cir.ptr<!s8i>, !cir.ptr<!s8i>} #cir.record.decl.ast>
+!ty_std3A3Abasic_ios3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_ios<char, std::char_traits<char>>" {!ty_std3A3Aios_base, !cir.ptr<!ty_std3A3Abasic_ostream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !s8i, !cir.bool, !cir.ptr<!ty_std3A3Abasic_streambuf3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!ty_std3A3Actype3Cchar3E>, !cir.ptr<!ty_std3A3Anum_put3Cchar2C_std3A3Aostreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E>, !cir.ptr<!ty_std3A3Anum_get3Cchar2C_std3A3Aistreambuf_iterator3Cchar2C_std3A3Achar_traits3Cchar3E3E3E>} #cir.record.decl.ast>
+!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E = !cir.record<class "std::basic_ifstream<char, std::char_traits<char>>" {!ty_std3A3Abasic_istream3Cchar2C_std3A3Achar_traits3Cchar3E3E2Ebase, !ty_std3A3Abasic_filebuf3Cchar2C_std3A3Achar_traits3Cchar3E3E, !ty_std3A3Abasic_ios3Cchar2C_std3A3Achar_traits3Cchar3E3E}>
+module @"/workspaces/juliet-c/testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp" attributes {cir.lang = #cir.lang<cxx>, cir.sob = #cir.signed_overflow_behavior<undefined>, cir.triple = "x86_64-unknown-linux-gnu", cir.type_size_info = #cir.type_size_info<char = 8, int = 32, size_t = 64>, cir.uwtable = #cir.uwtable<async>, dlti.dl_spec = #dlti.dl_spec<!llvm.ptr<271> = dense<32> : vector<4xi64>, f128 = dense<128> : vector<2xi64>, !llvm.ptr<272> = dense<64> : vector<4xi64>, f16 = dense<16> : vector<2xi64>, f64 = dense<64> : vector<2xi64>, i16 = dense<16> : vector<2xi64>, i32 = dense<32> : vector<2xi64>, !llvm.ptr = dense<64> : vector<4xi64>, !llvm.ptr<270> = dense<32> : vector<4xi64>, i8 = dense<8> : vector<2xi64>, i1 = dense<8> : vector<2xi64>, i128 = dense<128> : vector<2xi64>, i64 = dense<64> : vector<2xi64>, f80 = dense<128> : vector<2xi64>, "dlti.endianness" = "little", "dlti.mangling_mode" = "e", "dlti.stack_alignment" = 128 : i64>} {
+  cir.func private @strlen(!cir.ptr<!s8i>) -> !u64i extra(#fn_attr) loc(#loc60)
+  cir.func private @getenv(!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc61)
+  cir.global "private" constant cir_private dsolocal @".str" = #cir.const_array<"ADD\00" : !cir.array<!s8i x 4>> : !cir.array<!s8i x 4> {alignment = 1 : i64} loc(#loc5)
+  cir.func private @strncat(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u64i) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc62)
+  cir.func @_ZN59CWE23_Relative_Path_Traversal__char_environment_ifstream_8363CWE23_Relative_Path_Traversal__char_environment_ifstream_83_badC2EPc(%arg0: !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":34:66), %arg1: !cir.ptr<!s8i> loc(fused[#loc11, #loc12])) extra(#fn_attr1) {
+    %0 = cir.alloca !u64i, !cir.ptr<!u64i>, ["dataLen", init] {alignment = 8 : i64} loc(#loc65)
+    %1 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["environment", init] {alignment = 8 : i64} loc(#loc66)
+    %2 = cir.alloca !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc10)
+    %3 = cir.alloca !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>>, ["dataCopy", init] {alignment = 8 : i64} loc(#loc64)
+    cir.store %arg0, %2 : !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>> loc(#loc17)
+    cir.store %arg1, %3 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc17)
+    %4 = cir.load %2 : !cir.ptr<!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>>, !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> loc(#loc10)
+    %5 = cir.load %3 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc18)
+    %6 = cir.get_member %4[0] {name = "data"} : !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc19)
+    cir.store %5, %6 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc67)
+    cir.br ^bb1 loc(#loc68)
+  ^bb1:  // pred: ^bb0
+    %7 = cir.get_global @strlen : !cir.ptr<!cir.func<(!cir.ptr<!s8i>) -> !u64i>> loc(#loc23)
+    %8 = cir.get_member %4[0] {name = "data"} : !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc19)
+    %9 = cir.load %8 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc24)
+    %10 = cir.call @strlen(%9) : (!cir.ptr<!s8i>) -> !u64i side_effect(pure) extra(#fn_attr) loc(#loc23)
+    cir.store %10, %0 : !u64i, !cir.ptr<!u64i> loc(#loc65)
+    %11 = cir.get_global @".str" : !cir.ptr<!cir.array<!s8i x 4>> loc(#loc5)
+    %12 = cir.cast(array_to_ptrdecay, %11 : !cir.ptr<!cir.array<!s8i x 4>>), !cir.ptr<!s8i> loc(#loc5)
+    %13 = cir.call @getenv(%12) : (!cir.ptr<!s8i>) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc25)
+    cir.store %13, %1 : !cir.ptr<!s8i>, !cir.ptr<!cir.ptr<!s8i>> loc(#loc66)
+    cir.br ^bb2 loc(#loc69)
+  ^bb2:  // pred: ^bb1
+    %14 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc28)
+    %15 = cir.const #cir.ptr<null> : !cir.ptr<!s8i> loc(#loc29)
+    %16 = cir.cmp(ne, %14, %15) : !cir.ptr<!s8i>, !cir.bool loc(#loc70)
+    cir.brcond %16 ^bb3, ^bb4 loc(#loc71)
+  ^bb3:  // pred: ^bb2
+    %17 = cir.get_global @strncat : !cir.ptr<!cir.func<(!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u64i) -> !cir.ptr<!s8i>>> loc(#loc31)
+    %18 = cir.get_member %4[0] {name = "data"} : !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc19)
+    %19 = cir.load %18 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc32)
+    %20 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc33)
+    %21 = cir.ptr_stride(%19 : !cir.ptr<!s8i>, %20 : !u64i), !cir.ptr<!s8i> loc(#loc34)
+    %22 = cir.load %1 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc35)
+    %23 = cir.const #cir.int<4096> : !s32i loc(#loc36)
+    %24 = cir.cast(integral, %23 : !s32i), !u64i loc(#loc36)
+    %25 = cir.load %0 : !cir.ptr<!u64i>, !u64i loc(#loc37)
+    %26 = cir.binop(sub, %24, %25) : !u64i loc(#loc72)
+    %27 = cir.const #cir.int<1> : !s32i loc(#loc38)
+    %28 = cir.cast(integral, %27 : !s32i), !u64i loc(#loc38)
+    %29 = cir.binop(sub, %26, %28) : !u64i loc(#loc73)
+    %30 = cir.call @strncat(%21, %22, %29) : (!cir.ptr<!s8i>, !cir.ptr<!s8i>, !u64i) -> !cir.ptr<!s8i> extra(#fn_attr) loc(#loc31)
+    cir.br ^bb4 loc(#loc27)
+  ^bb4:  // 2 preds: ^bb2, ^bb3
+    cir.br ^bb5 loc(#loc27)
+  ^bb5:  // pred: ^bb4
+    cir.br ^bb6 loc(#loc22)
+  ^bb6:  // pred: ^bb5
+    cir.return loc(#loc9)
+  } loc(#loc63)
+  cir.func private @_ZN59CWE23_Relative_Path_Traversal__char_environment_ifstream_8363CWE23_Relative_Path_Traversal__char_environment_ifstream_83_badC1EPc(!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>, !cir.ptr<!s8i>) alias(@_ZN59CWE23_Relative_Path_Traversal__char_environment_ifstream_8363CWE23_Relative_Path_Traversal__char_environment_ifstream_83_badC2EPc) loc(#loc63)
+  cir.func private @_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1Ev(!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) loc(#loc74)
+  cir.func private @_ZNSt14basic_ifstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode(!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!s8i>, !s32i) loc(#loc75)
+  cir.func private @_ZNSt14basic_ifstreamIcSt11char_traitsIcEE5closeEv(!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) loc(#loc76)
+  cir.func private @_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev(!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) extra(#fn_attr) loc(#loc77)
+  cir.func @_ZN59CWE23_Relative_Path_Traversal__char_environment_ifstream_8363CWE23_Relative_Path_Traversal__char_environment_ifstream_83_badD2Ev(%arg0: !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:66)) extra(#fn_attr2) {
+    %0 = cir.alloca !ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E, !cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, ["inputFile", init] {alignment = 8 : i64} loc(#loc79)
+    %1 = cir.alloca !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>>, ["this", init] {alignment = 8 : i64} loc(#loc49)
+    cir.store %arg0, %1 : !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>, !cir.ptr<!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>> loc(#loc52)
+    %2 = cir.load %1 : !cir.ptr<!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>>, !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> loc(#loc49)
+    cir.br ^bb1 loc(#loc80)
+  ^bb1:  // pred: ^bb0
+    cir.call @_ZNSt14basic_ifstreamIcSt11char_traitsIcEEC1Ev(%0) : (!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () loc(#loc51)
+    %3 = cir.get_member %2[0] {name = "data"} : !cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad> -> !cir.ptr<!cir.ptr<!s8i>> loc(#loc19)
+    %4 = cir.load %3 : !cir.ptr<!cir.ptr<!s8i>>, !cir.ptr<!s8i> loc(#loc55)
+    %5 = cir.const #cir.int<8> : !s32i loc(#loc81)
+    cir.br ^bb2 loc(#loc49)
+  ^bb2:  // pred: ^bb1
+    cir.try_call @_ZNSt14basic_ifstreamIcSt11char_traitsIcEE4openEPKcSt13_Ios_Openmode(%0, %4, %5) ^bb3, ^bb4 : (!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>, !cir.ptr<!s8i>, !s32i) -> () loc(#loc58)
+  ^bb3:  // pred: ^bb2
+    cir.br ^bb6 loc(#loc49)
+  ^bb4:  // pred: ^bb2
+    %exception_ptr, %type_id = cir.eh.inflight_exception cleanup loc(#loc49)
+    cir.call @_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev(%0) : (!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc77)
+    cir.br ^bb5(%exception_ptr, %type_id : !cir.ptr<!void>, !u32i) loc(#loc49)
+  ^bb5(%6: !cir.ptr<!void> loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:66), %7: !u32i loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:66)):  // pred: ^bb4
+    cir.resume %6, %7 loc(#loc49)
+  ^bb6:  // pred: ^bb3
+    cir.br ^bb7 loc(#loc49)
+  ^bb7:  // pred: ^bb6
+    cir.try_call @_ZNSt14basic_ifstreamIcSt11char_traitsIcEE5closeEv(%0) ^bb8, ^bb9 : (!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () loc(#loc59)
+  ^bb8:  // pred: ^bb7
+    cir.br ^bb11 loc(#loc49)
+  ^bb9:  // pred: ^bb7
+    %exception_ptr_0, %type_id_1 = cir.eh.inflight_exception cleanup loc(#loc49)
+    cir.call @_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev(%0) : (!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc77)
+    cir.br ^bb10(%exception_ptr_0, %type_id_1 : !cir.ptr<!void>, !u32i) loc(#loc49)
+  ^bb10(%8: !cir.ptr<!void> loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:66), %9: !u32i loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:66)):  // pred: ^bb9
+    cir.resume %8, %9 loc(#loc49)
+  ^bb11:  // pred: ^bb8
+    cir.call @_ZNSt14basic_ifstreamIcSt11char_traitsIcEED1Ev(%0) : (!cir.ptr<!ty_std3A3Abasic_ifstream3Cchar2C_std3A3Achar_traits3Cchar3E3E>) -> () extra(#fn_attr) loc(#loc77)
+    cir.br ^bb12 loc(#loc54)
+  ^bb12:  // pred: ^bb11
+    cir.return loc(#loc48)
+  } loc(#loc78)
+  cir.func private @_ZN59CWE23_Relative_Path_Traversal__char_environment_ifstream_8363CWE23_Relative_Path_Traversal__char_environment_ifstream_83_badD1Ev(!cir.ptr<!ty_CWE23_Relative_Path_Traversal__char_environment_ifstream_833A3ACWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad>) alias(@_ZN59CWE23_Relative_Path_Traversal__char_environment_ifstream_8363CWE23_Relative_Path_Traversal__char_environment_ifstream_83_badD2Ev) loc(#loc78)
+} loc(#loc)
+#loc = loc("/workspaces/juliet-c/testcases/CWE23_Relative_Path_Traversal/s01/CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":0:0)
+#loc1 = loc("/usr/include/string.h":407:1)
+#loc2 = loc("/usr/include/string.h":408:33)
+#loc3 = loc("/usr/include/stdlib.h":773:1)
+#loc4 = loc("/usr/include/stdlib.h":773:50)
+#loc5 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":40:37)
+#loc6 = loc("/usr/include/string.h":152:1)
+#loc7 = loc("/usr/include/string.h":153:29)
+#loc8 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":34:1)
+#loc9 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":48:1)
+#loc13 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":39:9)
+#loc14 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":39:37)
+#loc15 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":40:9)
+#loc16 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":40:49)
+#loc17 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":35:1)
+#loc18 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":36:12)
+#loc19 = loc("./CWE23_Relative_Path_Traversal__char_environment_ifstream_83.h":38:12)
+#loc20 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":36:5)
+#loc21 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":37:5)
+#loc22 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":47:5)
+#loc23 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":39:26)
+#loc24 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":39:33)
+#loc25 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":40:30)
+#loc26 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":42:9)
+#loc27 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":46:9)
+#loc28 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":42:13)
+#loc29 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":42:28)
+#loc30 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":43:9)
+#loc31 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:13)
+#loc32 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:21)
+#loc33 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:26)
+#loc34 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:25)
+#loc35 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:35)
+#loc36 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:48)
+#loc37 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:61)
+#loc38 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":45:69)
+#loc39 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":525:7)
+#loc40 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":526:34)
+#loc41 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":664:7)
+#loc42 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":673:7)
+#loc43 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":736:7)
+#loc44 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":741:7)
+#loc45 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":606:7)
+#loc46 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":607:9)
+#loc47 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":50:1)
+#loc48 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":58:1)
+#loc50 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":53:9)
+#loc51 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":53:18)
+#loc52 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":51:1)
+#loc53 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":52:5)
+#loc54 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":57:5)
+#loc55 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":55:32)
+#loc56 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":665:57)
+#loc57 = loc("/usr/lib/gcc/x86_64-linux-gnu/13/../../../../include/c++/13/fstream":665:67)
+#loc58 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":55:19)
+#loc59 = loc("CWE23_Relative_Path_Traversal__char_environment_ifstream_83_bad.cpp":56:19)
+#loc60 = loc(fused[#loc1, #loc2])
+#loc61 = loc(fused[#loc3, #loc4])
+#loc62 = loc(fused[#loc6, #loc7])
+#loc63 = loc(fused[#loc8, #loc9])
+#loc65 = loc(fused[#loc13, #loc14])
+#loc66 = loc(fused[#loc15, #loc16])
+#loc67 = loc(fused[#loc20, #loc18])
+#loc68 = loc(fused[#loc21, #loc22])
+#loc69 = loc(fused[#loc26, #loc27])
+#loc70 = loc(fused[#loc28, #loc29])
+#loc71 = loc(fused[#loc30, #loc27])
+#loc72 = loc(fused[#loc36, #loc37])
+#loc73 = loc(fused[#loc36, #loc38])
+#loc74 = loc(fused[#loc39, #loc40])
+#loc75 = loc(fused[#loc41, #loc42])
+#loc76 = loc(fused[#loc43, #loc44])
+#loc77 = loc(fused[#loc45, #loc46])
+#loc78 = loc(fused[#loc47, #loc48])
+#loc79 = loc(fused[#loc50, #loc51])
+#loc80 = loc(fused[#loc53, #loc54])
+#loc81 = loc(fused[#loc56, #loc57])
